@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Projeto_ED_25_26" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Projeto_ED_25_26" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Projeto_ED_25_26" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="include" />
+		</Compiler>
+		<Unit filename="src/Caixa.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="include/Caixa.h" />
+		<Unit filename="src/Fila.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="include/Fila.h" />
+		<Unit filename="src/Funcionario.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="include/Funcionario.h" />
+		<Unit filename="src/Hashing.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="include/Hashing.h" />
+		<Unit filename="src/Pessoa.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="include/Pessoa.h" />
+		<Unit filename="src/Produto.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="include/Produto.h" />
+		<Unit filename="src/Relogio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="include/Relogio.h" />
+		<Unit filename="src/Supermercado.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="include/Supermercado.h" />
+		<Unit filename="src/Uteis.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="include/Uteis.h" />
+		<Unit filename="src/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

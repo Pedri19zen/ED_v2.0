@@ -1,0 +1,16 @@
+# Ficheiros do Claude / assistente (nao versionar)
+.claude/
+
+# Artefactos de compilacao
+obj/
+bin/
+*.o
+*.exe
+
+# Ficheiros gerados em tempo de execucao
+historico.csv
+resultado.txt
+
+# Ficheiros transitorios do Code::Blocks
+*.depend
+*.layout
