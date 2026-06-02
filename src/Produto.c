@@ -3,7 +3,17 @@
 #include <string.h>
 #include "Produto.h"
 
-void CriarListaProdutos(ListaProdutos *L) { L->total = 0; }
+void CriarListaProdutos(ListaProdutos *L)
+{
+    L->total = 0;
+    CriarHashingNomes(&L->idxNome);
+}
+
+void DestruirListaProdutos(ListaProdutos *L)
+{
+    DestruirHashingNomes(&L->idxNome);
+    L->total = 0;
+}
 
 /* Adiciona um produto ao catalogo. Devolve o indice ou -1 se cheio. */
 int AdicionarProduto(ListaProdutos *L, int codigo, char *nome,
@@ -20,17 +30,17 @@ int AdicionarProduto(ListaProdutos *L, int codigo, char *nome,
     p->tempoPagar = tempoPagar;
     p->ativo = true;
     L->total++;
+    InserirNomeHash(&L->idxNome, p->nome, L->total - 1);
     return L->total - 1;
 }
 
-/* Procura um produto pelo nome. Devolve o indice ou -1. */
+/* Pesquisa por nome em O(1) media via tabela de dispersao. */
 int PesquisarProduto(ListaProdutos *L, char *nome)
 {
-    int i;
-    for (i = 0; i < L->total; i++)
-        if (L->v[i].ativo && strcmp(L->v[i].nome, nome) == 0)
-            return i;
-    return -1;
+    int idx = PesquisarNomeHash(&L->idxNome, nome);
+    if (idx < 0 || idx >= L->total) return -1;
+    if (!L->v[idx].ativo) return -1;
+    return idx;
 }
 
 int EditarProduto(ListaProdutos *L, char *nome, float novoPreco)
@@ -140,7 +150,7 @@ void MenuProdutos(ListaProdutos *L)
                     int codigo = (L->total > 0) ? (L->v[L->total - 1].codigo + 1) : 90001;
                     if (AdicionarProduto(L, codigo, nome, preco, tComprar, tPagar) >= 0) {
                         printf("Produto adicionado (codigo %d).\n", codigo);
-                        RegistarHistorico("Adicionou produto");
+                        RegistarHistorico("Adicionou produto", nome);
                     } else printf("Catalogo cheio.\n");
                 }
                 break;
@@ -151,14 +161,20 @@ void MenuProdutos(ListaProdutos *L)
                 if (!Confirmar("Confirma a edicao deste produto?")) {
                     printf("Operacao cancelada.\n"); break;
                 }
-                printf(EditarProduto(L, nome, preco) ? "Editado.\n" : "Nao encontrado.\n");
+                if (EditarProduto(L, nome, preco)) {
+                    printf("Editado.\n");
+                    RegistarHistorico("Editou produto", nome);
+                } else printf("Nao encontrado.\n");
                 break;
             case 3:
                 LerString("Nome do produto:", nome, MAX_NOME_PRODUTO);
                 if (!Confirmar("Confirma a remocao deste produto?")) {
                     printf("Operacao cancelada.\n"); break;
                 }
-                printf(RemoverProduto(L, nome) ? "Removido.\n" : "Nao encontrado.\n");
+                if (RemoverProduto(L, nome)) {
+                    printf("Removido.\n");
+                    RegistarHistorico("Removeu produto", nome);
+                } else printf("Nao encontrado.\n");
                 break;
             case 4:
                 LerString("Nome do produto:", nome, MAX_NOME_PRODUTO);

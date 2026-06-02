@@ -75,7 +75,7 @@ static void MenuSimulacao(Supermercado *S)
         }
     }
     S->verboso = verbosoAnterior;
-    RegistarHistorico("Usou a simulacao");
+    RegistarHistorico("Usou a simulacao", NULL);
 }
 
 /* Submenu com as acoes do gerente sobre caixas e clientes. */
@@ -92,7 +92,7 @@ static void MenuGerente(Supermercado *S)
         op = LerOpcao("Opcao:", 0, 3);
         switch (op) {
             case 1:
-                if (AbrirNovaCaixa(S)) RegistarHistorico("Abriu uma caixa");
+                if (AbrirNovaCaixa(S)) RegistarHistorico("Abriu uma caixa", NULL);
                 else printf("Nao foi possivel (sem operadores livres ou limite atingido).\n");
                 break;
             case 2:
@@ -100,7 +100,7 @@ static void MenuGerente(Supermercado *S)
                 if (!Confirmar("Tem a certeza que quer fechar esta caixa?")) {
                     printf("Operacao cancelada.\n"); break;
                 }
-                if (FecharCaixaImediato(S, caixa)) RegistarHistorico("Fechou uma caixa");
+                if (FecharCaixaImediato(S, caixa)) RegistarHistorico("Fechou uma caixa", caixa);
                 break;
             case 3:
                 LerString("Nome do cliente:", nome, MAX_NOME);
@@ -108,7 +108,11 @@ static void MenuGerente(Supermercado *S)
                 if (!Confirmar("Confirma a mudanca de caixa?")) {
                     printf("Operacao cancelada.\n"); break;
                 }
-                if (MoverClienteEntreCaixas(S, nome, caixa)) RegistarHistorico("Moveu um cliente");
+                if (MoverClienteEntreCaixas(S, nome, caixa)) {
+                    char det[2 * MAX_NOME + 8];
+                    snprintf(det, sizeof(det), "%s -> %s", nome, caixa);
+                    RegistarHistorico("Moveu um cliente", det);
+                }
                 break;
         }
     } while (op != 0);
@@ -125,7 +129,7 @@ static void MenuSimulacaoTopo(Supermercado *S)
         printf("0 - Voltar\n");
         op = LerOpcao("Opcao:", 0, 2);
         switch (op) {
-            case 1: RegistarHistorico("Abriu menu de simulacao"); MenuSimulacao(S); break;
+            case 1: RegistarHistorico("Abriu menu de simulacao", NULL); MenuSimulacao(S); break;
             case 2: MenuGerente(S); break;
         }
     } while (op != 0);
@@ -143,11 +147,11 @@ static void MenuGestao(Supermercado *S)
         printf("0 - Voltar\n");
         op = LerOpcao("Opcao:", 0, 3);
         switch (op) {
-            case 1: RegistarHistorico("Abriu gestao de produtos");
+            case 1: RegistarHistorico("Abriu gestao de produtos", NULL);
                     MenuProdutos(&S->produtos); break;
-            case 2: RegistarHistorico("Abriu gestao de clientes");
+            case 2: RegistarHistorico("Abriu gestao de clientes", NULL);
                     MenuClientes(&S->clientes); break;
-            case 3: RegistarHistorico("Abriu gestao de funcionarios");
+            case 3: RegistarHistorico("Abriu gestao de funcionarios", NULL);
                     MenuFuncionarios(&S->funcionarios); break;
         }
     } while (op != 0);
@@ -163,19 +167,25 @@ static void MenuConsultas(Supermercado *S)
         printf("1 - Ver estado atual\n");
         printf("2 - Pesquisar pessoa\n");
         printf("3 - Medidas de desempenho\n");
-        printf("4 - Memoria utilizada/desperdicada\n");
+        printf("4 - Atendidos de uma caixa\n");
+        printf("5 - Memoria utilizada/desperdicada\n");
         printf("0 - Voltar\n");
-        op = LerOpcao("Opcao:", 0, 4);
+        op = LerOpcao("Opcao:", 0, 5);
         switch (op) {
             case 1: VerEstadoAtual(S); break;
             case 2:
                 LerString("Nome da pessoa:", nome, MAX_NOME);
                 PesquisarPessoa(S, nome);
-                RegistarHistorico("Pesquisou uma pessoa");
+                RegistarHistorico("Pesquisou uma pessoa", nome);
                 break;
             case 3: MedidasDesempenho(S);
-                    RegistarHistorico("Viu medidas de desempenho"); break;
-            case 4: MostrarMemoria(S); break;
+                    RegistarHistorico("Viu medidas de desempenho", NULL); break;
+            case 4:
+                LerString("Nome da caixa:", nome, MAX_NOME);
+                ListarAtendidosPorCaixa(S, nome);
+                RegistarHistorico("Listou atendidos de uma caixa", nome);
+                break;
+            case 5: MostrarMemoria(S); break;
         }
     } while (op != 0);
 }
@@ -199,7 +209,7 @@ static void MenuPrincipal(Supermercado *S)
             case 4:
                 if (GravarDados(S, FICH_RESULTADO)) {
                     printf("Relatorio gravado em %s\n", FICH_RESULTADO);
-                    RegistarHistorico("Gravou o relatorio");
+                    RegistarHistorico("Gravou o relatorio", FICH_RESULTADO);
                 } else printf("Falha ao gravar.\n");
                 break;
         }
@@ -225,7 +235,7 @@ int main(void)
     MenuPrincipal(S);
 
     GravarDados(S, FICH_RESULTADO);   /* grava o relatorio final ao sair (req. 2) */
-    RegistarHistorico("Saiu do programa");
+    RegistarHistorico("Saiu do programa", NULL);
     DestruirSupermercado(S);
 
     printf("Ate breve!\n");

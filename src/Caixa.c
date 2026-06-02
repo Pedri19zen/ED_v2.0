@@ -34,10 +34,12 @@ void RegistarAtendido(Caixa *c, char *nomeCliente)
 void ListarAtendidosCaixa(Caixa *c)
 {
     NoNome *p = c->atendidos;
-    printf("  %s atendeu: ", c->nome);
-    if (p == NULL) { printf("(ninguem)\n"); return; }
-    while (p != NULL) { printf("%s ", p->nome); p = p->prox; }
-    printf("\n");
+    int total = 0;
+    for (p = c->atendidos; p != NULL; p = p->prox) total++;
+    printf("  %s -- %d cliente(s) atendido(s):\n", c->nome, total);
+    if (c->atendidos == NULL) { printf("    (ninguem)\n"); return; }
+    for (p = c->atendidos; p != NULL; p = p->prox)
+        printf("    - %s\n", p->nome);
 }
 
 /* Liberta a fila, a lista de atendidos e a propria caixa. */

@@ -57,7 +57,9 @@ void DescartarTecla(void);    /* consome a(s) tecla(s) que estejam no buffer */
 int  EsperarOuTecla(int ms);  /* espera ms; devolve 1 se uma tecla foi premida antes */
 
 /* ---- Historico das acoes do utilizador, gravado em CSV (requisito 3) ---- */
-void IniciarHistorico(void);          /* marca o inicio de uma sessao no historico */
-void RegistarHistorico(char *accao);  /* acrescenta uma linha ao historico.csv */
+void IniciarHistorico(void);                      /* marca o inicio de uma sessao */
+/* Acrescenta uma linha ao historico.csv: "data;accao;detalhe".
+   'detalhe' pode ser NULL ou "" quando a accao nao tem parametros. */
+void RegistarHistorico(char *accao, char *detalhe);
 
 #endif // UTEIS_H_INCLUDED

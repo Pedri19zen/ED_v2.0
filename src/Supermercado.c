@@ -21,8 +21,9 @@
    ===================================================================== */
 
 /* declaracoes adiantadas (definicoes no fim do ficheiro) */
-static void AcrescentarNomeEntrada(Supermercado *S, char *nome);
+static void AcrescentarEntrada(Supermercado *S, Cliente *c);
 static void FormatarNomeCaixa(char *destino, char *original);
+static void ClamparProdutos(Supermercado *S);
 
 /* Conta os clientes que estao dentro da loja (a comprar ou em fila). */
 static int ContarDentroLoja(Supermercado *S)
@@ -100,6 +101,7 @@ static void EntradaCliente(Supermercado *S)
         if (ContarDentroLoja(S) >= CAPACIDADE_LOJA) return;    /* loja cheia */
         c = EscolherClienteParaEntrar(S);
         if (c == NULL) return;                                 /* nao ha disponiveis */
+        if (c->dentroLoja) continue;                           /* defensivo: ja esta dentro */
         c->dentroLoja = true;
         c->naFila = false;
         c->caixaAtual[0] = '\0';
@@ -107,7 +109,11 @@ static void EntradaCliente(Supermercado *S)
         PrepararCarrinho(c, &S->produtos, S->MAX_PRECO, S->TEMPO_ATENDIMENTO_PRODUTO);
         EnfileirarCliente(&S->emCompras, c);
         S->entradasDesdeUpdate++;
-        AcrescentarNomeEntrada(S, c->nome);
+        {
+            int h = (GetTempo(S->relogio) / 3600) % 24;
+            S->entradasPorHora[h]++;
+        }
+        AcrescentarEntrada(S, c);
         if (S->verboso) printf("  [Entrou] %s (%d artigos)\n", c->nome, c->numProdutos);
     }
 }
@@ -155,6 +161,7 @@ static void TerminarAtendimento(Supermercado *S, Caixa *cx)
     if (cx->operador != NULL) {
         cx->operador->pessoasAtendidas++;
         cx->operador->produtosVendidos += c->numProdutos;
+        cx->operador->dinheiroFeito += pago;
     }
     RegistarAtendido(cx, c->nome);
     /* o cliente sai da loja */
@@ -163,6 +170,10 @@ static void TerminarAtendimento(Supermercado *S, Caixa *cx)
     c->caixaAtual[0] = '\0';
     cx->aAtender = NULL;
     S->saidasDesdeUpdate++;
+    {
+        int h = (GetTempo(S->relogio) / 3600) % 24;
+        S->saidasPorHora[h]++;
+    }
 }
 
 /* Fecha uma caixa que estava marcada para fechar e ja esvaziou. */
@@ -281,23 +292,34 @@ Supermercado *CriarSupermercado(char *nome)
     S->entradasDesdeUpdate = 0;
     S->saidasDesdeUpdate = 0;
     S->nomesEntradas[0] = '\0';
+    S->maxFilaObservada = 0;
+    S->dentroLojaPico = 0;
+    S->horaPico = 0;
+    {
+        int k;
+        for (k = 0; k < 24; k++) {
+            S->entradasPorHora[k] = 0;
+            S->saidasPorHora[k] = 0;
+        }
+    }
     return S;
 }
 
-/* Acrescenta um nome ao buffer de "entraram desde a ultima atualizacao",
-   separado por virgulas. Se faltar espaco, deixa "..." no fim e ignora o resto. */
-static void AcrescentarNomeEntrada(Supermercado *S, char *nome)
+/* Acrescenta uma linha "    Nome [ X produtos ]\n" ao buffer de entradas
+   desde a ultima atualizacao. Se faltar espaco, marca com "    ...\n" e para. */
+static void AcrescentarEntrada(Supermercado *S, Cliente *c)
 {
+    char linha[128];
     int usado = (int) strlen(S->nomesEntradas);
     int restante = (int) sizeof(S->nomesEntradas) - usado;
-    int precisa = (int) strlen(nome) + (usado > 0 ? 2 : 0) + 1;
-    if (precisa >= restante) {
-        if (restante > 4 && S->nomesEntradas[usado - 1] != '.')
-            strcat(S->nomesEntradas, "...");
+    snprintf(linha, sizeof(linha), "    %s [ %d produtos ]\n",
+             c->nome, c->numProdutos);
+    if ((int) strlen(linha) + 1 >= restante) {
+        if (restante > 9)
+            strcat(S->nomesEntradas, "    ...\n");
         return;
     }
-    if (usado > 0) strcat(S->nomesEntradas, ", ");
-    strcat(S->nomesEntradas, nome);
+    strcat(S->nomesEntradas, linha);
 }
 
 /* Converte "Caixa1" em "Caixa 1" para uma listagem mais legivel. */
@@ -386,6 +408,7 @@ int InicializarSupermercado(Supermercado *S)
 {
     CarregarConfiguracao(S, FICH_CONFIG);
     CarregarProdutos(&S->produtos, FICH_PRODUTOS);
+    ClamparProdutos(S);                                  /* impoe limites da config */
     CarregarFuncionarios(&S->funcionarios, FICH_FUNCIONARIOS);
     CarregarClientes(&S->clientes, FICH_CLIENTES);       /* pool com nomes reais */
     CarregarDados(S, FICH_DADOS);                        /* caixas + clientes iniciais */
@@ -395,6 +418,24 @@ int InicializarSupermercado(Supermercado *S)
     /* poe o relogio a hora de abertura (ex.: 08:00) */
     S->relogio->tempoAtual = HORA_ABERTURA * 3600;
     return 1;
+}
+
+/* Garante que cada produto carregado respeita os limites da configuracao:
+   preco em ]0, MAX_PRECO] e tempos em [2, TEMPO_ATENDIMENTO_PRODUTO]. */
+static void ClamparProdutos(Supermercado *S)
+{
+    int i;
+    float maxPreco = (float) S->MAX_PRECO;
+    float maxTempo = (float) S->TEMPO_ATENDIMENTO_PRODUTO;
+    for (i = 0; i < S->produtos.total; i++) {
+        Produto *p = &S->produtos.v[i];
+        if (p->preco <= 0)          p->preco = 1;
+        if (p->preco > maxPreco)    p->preco = maxPreco;
+        if (p->tempoComprar < 2)    p->tempoComprar = 2;
+        if (p->tempoComprar > maxTempo) p->tempoComprar = maxTempo;
+        if (p->tempoPagar < 2)      p->tempoPagar = 2;
+        if (p->tempoPagar > maxTempo)   p->tempoPagar = maxTempo;
+    }
 }
 
 /* req. 5: abre uma caixa. Reutiliza uma caixa fechada; se nao houver e ainda
@@ -491,6 +532,14 @@ int MoverClienteEntreCaixas(Supermercado *S, char *nomeCliente, char *nomeCaixa)
     return 1;
 }
 
+/* req. 11: lista os clientes ja atendidos por uma caixa especifica. */
+void ListarAtendidosPorCaixa(Supermercado *S, char *nomeCaixa)
+{
+    Caixa *cx = PesquisarCaixa(&S->caixas, nomeCaixa);
+    if (cx == NULL) { printf("Caixa nao encontrada.\n"); return; }
+    ListarAtendidosCaixa(cx);
+}
+
 /* req. 8: diz onde esta uma pessoa (fora, a comprar, em fila ou a ser atendida). */
 void PesquisarPessoa(Supermercado *S, char *nomeCliente)
 {
@@ -531,8 +580,6 @@ void VerEstadoAtual(Supermercado *S)
     printf("  Clientes na loja: %d\n", ContarDentroLoja(S));
     printf("  Desde a ultima atualizacao: %d entraram | %d sairam\n",
            S->entradasDesdeUpdate, S->saidasDesdeUpdate);
-    if (S->nomesEntradas[0] != '\0')
-        printf("  Entraram: %s\n", S->nomesEntradas);
     printf("----------------------------------------------------\n");
     for (i = 0; i < n; i++) {
         Caixa *cx = vec[i];
@@ -546,6 +593,9 @@ void VerEstadoAtual(Supermercado *S)
         }
     }
     printf("----------------------------------------------------\n");
+    if (S->nomesEntradas[0] != '\0') {
+        printf("  Entraram:\n%s", S->nomesEntradas);
+    }
     /* reinicia os contadores para a proxima atualizacao */
     S->entradasDesdeUpdate = 0;
     S->saidasDesdeUpdate = 0;
@@ -557,7 +607,9 @@ void MedidasDesempenho(Supermercado *S)
 {
     Caixa *vec[MAX_CAIXAS], *maisPessoas = NULL, *maisProdutos = NULL, *maisDinheiro = NULL;
     int n = ObterTodasCaixas(&S->caixas, vec, MAX_CAIXAS), i;
-    Funcionario *menosOp = NULL;
+    Funcionario *menosOp = NULL, *opMaisDinheiro = NULL;
+    int hpico_h = (S->horaPico / 3600) % 24;
+    int hpico_m = (S->horaPico / 60) % 60;
     printf("\n===== Medidas de Desempenho =====\n");
     for (i = 0; i < n; i++) {
         if (maisPessoas == NULL || vec[i]->pessoasAtendidas > maisPessoas->pessoasAtendidas)
@@ -582,16 +634,24 @@ void MedidasDesempenho(Supermercado *S)
         if (!fu->ativo || !fu->dentroLoja) continue;
         if (menosOp == NULL || fu->pessoasAtendidas < menosOp->pessoasAtendidas)
             menosOp = fu;
+        if (opMaisDinheiro == NULL || fu->dinheiroFeito > opMaisDinheiro->dinheiroFeito)
+            opMaisDinheiro = fu;
     }
     if (menosOp)
         printf("Operador que atendeu menos pessoas: %s (%d)\n",
                menosOp->nome, menosOp->pessoasAtendidas);
+    if (opMaisDinheiro)
+        printf("Operador que mais dinheiro fez: %s (%.2f EUR)\n",
+               opMaisDinheiro->nome, opMaisDinheiro->dinheiroFeito);
     printf("Produtos oferecidos (o mais barato de cada carrinho): %d | custo total: %.2f EUR\n",
            S->produtosOferecidos, S->custoOferecido);
     printf("Dinheiro total faturado: %.2f EUR\n", S->totalDinheiro);
     if (S->totalAtendidos > 0)
         printf("Tempo medio de espera: %.1f s\n",
                (float) S->somaTemposEspera / S->totalAtendidos);
+    printf("Maior fila observada: %d pessoas\n", S->maxFilaObservada);
+    printf("Pico de clientes na loja: %d (as %02d:%02d)\n",
+           S->dentroLojaPico, hpico_h, hpico_m);
     printf("\n-- Dinheiro por caixa --\n");
     for (i = 0; i < n; i++)
         printf("  %-8s: %.2f EUR (%d pessoas, %d produtos)\n",
@@ -602,7 +662,8 @@ void MedidasDesempenho(Supermercado *S)
         ListarAtendidosCaixa(vec[i]);
 }
 
-/* req. 9: memoria usada = struct principal + relogio + nos alocados. */
+/* req. 9: memoria usada = struct principal + relogio + nos alocados nas
+   listas/filas/hashes dinamicos. */
 long CalcularMemoriaUtilizada(Supermercado *S)
 {
     Caixa *vec[MAX_CAIXAS];
@@ -617,11 +678,14 @@ long CalcularMemoriaUtilizada(Supermercado *S)
         for (p = vec[i]->atendidos; p != NULL; p = p->prox)
             total += (long) sizeof(NoNome);
     }
+    /* nos dos indices de nomes (clientes + produtos) */
+    total += (long) S->clientes.idxNome.totalEntradas * (long) sizeof(NoHashNome);
+    total += (long) S->produtos.idxNome.totalEntradas * (long) sizeof(NoHashNome);
     return total;
 }
 
 /* req. 10: memoria desperdicada = espaco reservado nos arrays mas nao usado
-   + posicoes vazias da tabela de dispersao. */
+   + posicoes vazias das tabelas de dispersao. */
 long CalcularMemoriaDesperdicada(Supermercado *S)
 {
     long desp = 0;
@@ -632,6 +696,15 @@ long CalcularMemoriaDesperdicada(Supermercado *S)
     for (i = 0; i < TAMANHO_HASH; i++)
         if (S->caixas.tabela[i] == NULL) vazios++;
     desp += (long) vazios * (long) sizeof(NoHash *);
+    /* buckets vazios nos indices de nomes */
+    vazios = 0;
+    for (i = 0; i < TAMANHO_HASH_NOMES; i++)
+        if (S->clientes.idxNome.tabela[i] == NULL) vazios++;
+    desp += (long) vazios * (long) sizeof(NoHashNome *);
+    vazios = 0;
+    for (i = 0; i < TAMANHO_HASH_NOMES; i++)
+        if (S->produtos.idxNome.tabela[i] == NULL) vazios++;
+    desp += (long) vazios * (long) sizeof(NoHashNome *);
     return desp;
 }
 
@@ -648,7 +721,11 @@ int GravarDados(Supermercado *S, char *ficheiro)
     FILE *f = fopen(ficheiro, "w");
     Caixa *vec[MAX_CAIXAS];
     int n = ObterTodasCaixas(&S->caixas, vec, MAX_CAIXAS), i;
+    int hpico_h, hpico_m;
+    Funcionario *opMaisDinheiro = NULL;
     if (f == NULL) return 0;
+    hpico_h = (S->horaPico / 3600) % 24;
+    hpico_m = (S->horaPico / 60) % 60;
     fprintf(f, "=== Relatorio da Simulacao - %s ===\n", S->nome);
     fprintf(f, "Tempo de simulacao: %d s\n", GetTempo(S->relogio));
     fprintf(f, "Clientes atendidos: %d\n", S->totalAtendidos);
@@ -660,14 +737,52 @@ int GravarDados(Supermercado *S, char *ficheiro)
             S->produtosOferecidos, S->custoOferecido);
     fprintf(f, "Dinheiro total faturado: %.2f EUR\n", S->totalDinheiro);
     fprintf(f, "Maximo de caixas abertas em simultaneo: %d\n", S->caixasAbertasMax);
+    fprintf(f, "Maior fila observada: %d pessoas\n", S->maxFilaObservada);
+    fprintf(f, "Pico de clientes dentro da loja: %d (as %02d:%02d)\n",
+            S->dentroLojaPico, hpico_h, hpico_m);
+
+    /* operador que mais dinheiro fez */
+    for (i = 0; i < S->funcionarios.total; i++) {
+        Funcionario *fu = &S->funcionarios.v[i];
+        if (!fu->ativo) continue;
+        if (opMaisDinheiro == NULL || fu->dinheiroFeito > opMaisDinheiro->dinheiroFeito)
+            opMaisDinheiro = fu;
+    }
+    if (opMaisDinheiro)
+        fprintf(f, "Operador que mais dinheiro fez: %s (%.2f EUR)\n",
+                opMaisDinheiro->nome, opMaisDinheiro->dinheiroFeito);
+
     fprintf(f, "\n-- Por caixa --\n");
     for (i = 0; i < n; i++)
         fprintf(f, "%s: atendidos=%d, produtos=%d, dinheiro=%.2f EUR, operador=%s\n",
                 vec[i]->nome, vec[i]->pessoasAtendidas, vec[i]->produtosVendidos,
                 vec[i]->dinheiroFeito,
                 vec[i]->operador ? vec[i]->operador->nome : "-");
+
+    fprintf(f, "\n-- Movimento por hora --\n");
+    fprintf(f, "  hora   entraram   sairam\n");
+    for (i = 0; i < 24; i++)
+        if (S->entradasPorHora[i] > 0 || S->saidasPorHora[i] > 0)
+            fprintf(f, "  %02d:00   %5d     %5d\n", i,
+                    S->entradasPorHora[i], S->saidasPorHora[i]);
     fclose(f);
     return 1;
+}
+
+/* Atualiza o pico de clientes dentro da loja e a maior fila observada. */
+static void AtualizarPicos(Supermercado *S)
+{
+    Caixa *vec[MAX_CAIXAS];
+    int n = ObterTodasCaixas(&S->caixas, vec, MAX_CAIXAS), i;
+    int dentro = ContarDentroLoja(S);
+    if (dentro > S->dentroLojaPico) {
+        S->dentroLojaPico = dentro;
+        S->horaPico = GetTempo(S->relogio);
+    }
+    for (i = 0; i < n; i++) {
+        int f = TamanhoFila(&vec[i]->fila);
+        if (f > S->maxFilaObservada) S->maxFilaObservada = f;
+    }
 }
 
 /* Executa um passo (tick) completo da simulacao. */
@@ -679,6 +794,7 @@ void ExecutarPasso(Supermercado *S)
     AtenderCaixas(S);
     VerificarTemposEspera(S);
     GerirCaixas(S);
+    AtualizarPicos(S);
 }
 
 /* A simulacao "termina" quando nao ha ninguem dentro da loja. */
@@ -717,8 +833,10 @@ void CorrerAteEsvaziar(Supermercado *S, int comPausa)
    principal, por isso sao libertados com ela. */
 void DestruirSupermercado(Supermercado *S)
 {
-    DestruirHashing(&S->caixas);   /* liberta caixas, filas e listas de atendidos */
-    DestruirFila(&S->emCompras);   /* liberta os nos da lista de compras */
+    DestruirHashing(&S->caixas);       /* caixas, filas e listas de atendidos */
+    DestruirFila(&S->emCompras);       /* nos da lista de compras */
+    DestruirListaClientes(&S->clientes); /* tabela de indices de nomes */
+    DestruirListaProdutos(&S->produtos); /* tabela de indices de nomes */
     DestruirRelogio(S->relogio);
     free(S->nome);
     free(S);

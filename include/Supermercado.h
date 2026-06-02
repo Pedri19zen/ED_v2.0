@@ -52,6 +52,13 @@ typedef struct {
     int  entradasDesdeUpdate;
     int  saidasDesdeUpdate;
     char nomesEntradas[1024];   /* nomes acumulados (req. 2: mostra quem entrou) */
+
+    /* metricas acumuladas para o relatorio (req. 2 / 11) */
+    int  maxFilaObservada;      /* maior fila vista em qualquer caixa */
+    int  dentroLojaPico;        /* maximo de clientes dentro da loja em simultaneo */
+    int  horaPico;              /* segundos absolutos em que ocorreu o pico */
+    int  entradasPorHora[24];   /* histograma de entradas */
+    int  saidasPorHora[24];     /* histograma de saidas */
 } Supermercado;
 
 /* ---- ciclo de vida ---- */
@@ -75,6 +82,7 @@ int  AbrirNovaCaixa(Supermercado *S);                                   /* requi
 int  FecharCaixaImediato(Supermercado *S, char *nomeCaixa);             /* requisito 7 */
 int  MoverClienteEntreCaixas(Supermercado *S, char *nomeCliente, char *nomeCaixa); /* req. 4 */
 void PesquisarPessoa(Supermercado *S, char *nomeCliente);               /* requisito 8 */
+void ListarAtendidosPorCaixa(Supermercado *S, char *nomeCaixa);         /* requisito 11 */
 
 /* ---- relatorios / medidas ---- */
 void VerEstadoAtual(Supermercado *S);

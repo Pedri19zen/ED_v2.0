@@ -3,7 +3,17 @@
 #include <string.h>
 #include "Pessoa.h"
 
-void CriarListaClientes(ListaClientes *L) { L->total = 0; }
+void CriarListaClientes(ListaClientes *L)
+{
+    L->total = 0;
+    CriarHashingNomes(&L->idxNome);
+}
+
+void DestruirListaClientes(ListaClientes *L)
+{
+    DestruirHashingNomes(&L->idxNome);
+    L->total = 0;
+}
 
 /* Adiciona um cliente registado (ainda fora da loja). Devolve indice ou -1. */
 int AdicionarCliente(ListaClientes *L, char *nome, int numProdutos)
@@ -26,16 +36,19 @@ int AdicionarCliente(ListaClientes *L, char *nome, int numProdutos)
     c->foiOferecido = false;
     c->caixaAtual[0] = '\0';
     L->total++;
+    /* indexa o nome (aponta para o buffer no array-mestre) */
+    InserirNomeHash(&L->idxNome, c->nome, L->total - 1);
     return L->total - 1;
 }
 
+/* Pesquisa por nome em O(1) media usando a tabela de dispersao.
+   So devolve indice se o cliente ainda estiver "ativo". */
 int PesquisarCliente(ListaClientes *L, char *nome)
 {
-    int i;
-    for (i = 0; i < L->total; i++)
-        if (L->v[i].ativo && strcmp(L->v[i].nome, nome) == 0)
-            return i;
-    return -1;
+    int idx = PesquisarNomeHash(&L->idxNome, nome);
+    if (idx < 0 || idx >= L->total) return -1;
+    if (!L->v[idx].ativo) return -1;
+    return idx;
 }
 
 int EditarCliente(ListaClientes *L, char *nome, int numProdutos)
@@ -158,7 +171,7 @@ void MenuClientes(ListaClientes *L)
                 if (PesquisarCliente(L, nome) >= 0) { printf("Ja existe.\n"); break; }
                 if (AdicionarCliente(L, nome, n) >= 0) {
                     printf("Cliente adicionado.\n");
-                    RegistarHistorico("Adicionou cliente");
+                    RegistarHistorico("Adicionou cliente", nome);
                 } else printf("Sem espaco.\n");
                 break;
             case 2:
@@ -168,7 +181,10 @@ void MenuClientes(ListaClientes *L)
                 if (!Confirmar("Confirma a edicao deste cliente?")) {
                     printf("Operacao cancelada.\n"); break;
                 }
-                printf(EditarCliente(L, nome, n) ? "Editado.\n" : "Nao encontrado.\n");
+                if (EditarCliente(L, nome, n)) {
+                    printf("Editado.\n");
+                    RegistarHistorico("Editou cliente", nome);
+                } else printf("Nao encontrado.\n");
                 break;
             case 3:
                 LerString("Nome:", nome, MAX_NOME);
@@ -176,7 +192,10 @@ void MenuClientes(ListaClientes *L)
                     printf("Operacao cancelada.\n"); break;
                 }
                 r = RemoverCliente(L, nome);
-                if (r == 1) printf("Removido.\n");
+                if (r == 1) {
+                    printf("Removido.\n");
+                    RegistarHistorico("Removeu cliente", nome);
+                }
                 else if (r == -1) printf("Esta na loja, nao pode ser removido agora.\n");
                 else printf("Nao encontrado.\n");
                 break;
@@ -190,9 +209,11 @@ void MenuClientes(ListaClientes *L)
             case 6:
                 n = LerInteiro("Quantos clientes gerar?");
                 if (n > 0) {
+                    char det[32];
                     GerarClientesAleatorios(L, n, 10);
+                    snprintf(det, sizeof(det), "%d clientes", n);
                     printf("Gerados.\n");
-                    RegistarHistorico("Gerou clientes aleatorios");
+                    RegistarHistorico("Gerou clientes aleatorios", det);
                 } else printf("Valor invalido.\n");
                 break;
         }

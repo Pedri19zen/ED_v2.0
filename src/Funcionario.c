@@ -18,6 +18,7 @@ int AdicionarFuncionario(ListaFuncionarios *L, char *nome)
     f->ocupado = false;
     f->pessoasAtendidas = 0;
     f->produtosVendidos = 0;
+    f->dinheiroFeito = 0;
     L->total++;
     return L->total - 1;
 }
@@ -122,7 +123,7 @@ void MenuFuncionarios(ListaFuncionarios *L)
                 if (PesquisarFuncionario(L, nome) >= 0) { printf("Ja existe.\n"); break; }
                 if (AdicionarFuncionario(L, nome) >= 0) {
                     printf("Funcionario adicionado.\n");
-                    RegistarHistorico("Adicionou funcionario");
+                    RegistarHistorico("Adicionou funcionario", nome);
                 } else printf("Sem espaco.\n");
                 break;
             case 2:
@@ -131,7 +132,12 @@ void MenuFuncionarios(ListaFuncionarios *L)
                 if (!Confirmar("Confirma a edicao deste funcionario?")) {
                     printf("Operacao cancelada.\n"); break;
                 }
-                printf(EditarFuncionario(L, nome, novo) ? "Editado.\n" : "Nao encontrado.\n");
+                if (EditarFuncionario(L, nome, novo)) {
+                    char det[2 * MAX_NOME + 8];
+                    snprintf(det, sizeof(det), "%s -> %s", nome, novo);
+                    printf("Editado.\n");
+                    RegistarHistorico("Editou funcionario", det);
+                } else printf("Nao encontrado.\n");
                 break;
             case 3:
                 LerString("Nome:", nome, MAX_NOME);
@@ -139,7 +145,10 @@ void MenuFuncionarios(ListaFuncionarios *L)
                     printf("Operacao cancelada.\n"); break;
                 }
                 r = RemoverFuncionario(L, nome);
-                if (r == 1) printf("Removido.\n");
+                if (r == 1) {
+                    printf("Removido.\n");
+                    RegistarHistorico("Removeu funcionario", nome);
+                }
                 else if (r == -1) printf("Esta a operar uma caixa.\n");
                 else printf("Nao encontrado.\n");
                 break;

@@ -13,6 +13,7 @@ typedef struct {
     bool ocupado;           /* esta a operar uma caixa aberta */
     int  pessoasAtendidas;  /* estatisticas acumuladas */
     int  produtosVendidos;
+    float dinheiroFeito;    /* total faturado pelo operador (sem ofertas) */
 } Funcionario;
 
 /* "Lista" de funcionarios implementada como ARRAY, para acesso rapido. */

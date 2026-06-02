@@ -3,6 +3,7 @@
 
 #include "Uteis.h"
 #include "Produto.h"
+#include "HashingNomes.h"
 
 /* Um cliente do supermercado.
    Os campos booleanos controlam o estado do cliente durante a simulacao e
@@ -24,13 +25,17 @@ typedef struct {
     char  caixaAtual[MAX_NOME]; /* nome da caixa onde esta ("" se nenhuma) */
 } Cliente;
 
-/* "Lista" de clientes implementada como ARRAY, para acesso rapido. */
+/* "Lista" de clientes implementada como ARRAY, para acesso rapido.
+   Acompanha uma tabela de dispersao 'idxNome' (nome -> indice no array)
+   para que PesquisarCliente seja O(1) em vez de varrer 12000 entradas. */
 typedef struct {
     Cliente v[MAX_CLIENTES];
     int total;
+    HashingNomes idxNome;
 } ListaClientes;
 
 void CriarListaClientes(ListaClientes *L);
+void DestruirListaClientes(ListaClientes *L);     /* liberta a tabela idxNome */
 int  AdicionarCliente(ListaClientes *L, char *nome, int numProdutos); /* indice ou -1 */
 int  PesquisarCliente(ListaClientes *L, char *nome);                  /* indice ou -1 */
 int  EditarCliente(ListaClientes *L, char *nome, int numProdutos);

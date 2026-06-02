@@ -121,15 +121,16 @@ void IniciarHistorico(void)
     fclose(f);
 }
 
-/* Acrescenta uma acao do utilizador ao ficheiro historico.csv (data;acao). */
-void RegistarHistorico(char *accao)
+/* Acrescenta uma acao do utilizador ao ficheiro historico.csv.
+   Formato: "data;accao;detalhe" (detalhe pode estar vazio). */
+void RegistarHistorico(char *accao, char *detalhe)
 {
     FILE *f = fopen(FICH_HISTORICO, "a");
     time_t agora = time(NULL);
     char data[32];
     if (f == NULL) return;
     strftime(data, sizeof(data), "%Y-%m-%d %H:%M:%S", localtime(&agora));
-    fprintf(f, "%s;%s\n", data, accao);
+    fprintf(f, "%s;%s;%s\n", data, accao, (detalhe != NULL) ? detalhe : "");
     fclose(f);
 }
 
