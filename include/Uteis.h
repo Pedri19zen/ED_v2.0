@@ -41,6 +41,7 @@ int   LerInteiro(char *txt);                /* devolve o numero, ou -1 se invali
 int   LerOpcao(char *txt, int min, int max);/* insiste ate o valor estar no intervalo */
 float LerFloat(char *txt);                  /* devolve o numero, ou -1 se invalido */
 void  LerString(char *txt, char *destino, int tamanho);
+bool  Confirmar(char *txt);                 /* mostra "txt (S/N)" e devolve true se 'S' */
 
 /* ---- Strings ---- */
 char ToMaiscula(char x);

@@ -128,10 +128,16 @@ void MenuFuncionarios(ListaFuncionarios *L)
             case 2:
                 LerString("Nome atual:", nome, MAX_NOME);
                 LerString("Novo nome:", novo, MAX_NOME);
+                if (!Confirmar("Confirma a edicao deste funcionario?")) {
+                    printf("Operacao cancelada.\n"); break;
+                }
                 printf(EditarFuncionario(L, nome, novo) ? "Editado.\n" : "Nao encontrado.\n");
                 break;
             case 3:
                 LerString("Nome:", nome, MAX_NOME);
+                if (!Confirmar("Confirma a remocao deste funcionario?")) {
+                    printf("Operacao cancelada.\n"); break;
+                }
                 r = RemoverFuncionario(L, nome);
                 if (r == 1) printf("Removido.\n");
                 else if (r == -1) printf("Esta a operar uma caixa.\n");

@@ -165,10 +165,16 @@ void MenuClientes(ListaClientes *L)
                 LerString("Nome:", nome, MAX_NOME);
                 n = LerInteiro("Novo nr. de produtos:");
                 if (n < 1) { printf("Valor invalido.\n"); break; }
+                if (!Confirmar("Confirma a edicao deste cliente?")) {
+                    printf("Operacao cancelada.\n"); break;
+                }
                 printf(EditarCliente(L, nome, n) ? "Editado.\n" : "Nao encontrado.\n");
                 break;
             case 3:
                 LerString("Nome:", nome, MAX_NOME);
+                if (!Confirmar("Confirma a remocao deste cliente?")) {
+                    printf("Operacao cancelada.\n"); break;
+                }
                 r = RemoverCliente(L, nome);
                 if (r == 1) printf("Removido.\n");
                 else if (r == -1) printf("Esta na loja, nao pode ser removido agora.\n");

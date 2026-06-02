@@ -47,6 +47,11 @@ typedef struct {
     float custoOferecido;
     float totalDinheiro;        /* dinheiro total faturado por todas as caixas */
     int   caixasAbertasMax;
+
+    /* contadores reiniciados a cada VerEstadoAtual (mostrados no cabecalho) */
+    int  entradasDesdeUpdate;
+    int  saidasDesdeUpdate;
+    char nomesEntradas[1024];   /* nomes acumulados (req. 2: mostra quem entrou) */
 } Supermercado;
 
 /* ---- ciclo de vida ---- */

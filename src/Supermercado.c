@@ -20,6 +20,10 @@
    Funcoes auxiliares internas (static) - so usadas dentro deste ficheiro
    ===================================================================== */
 
+/* declaracoes adiantadas (definicoes no fim do ficheiro) */
+static void AcrescentarNomeEntrada(Supermercado *S, char *nome);
+static void FormatarNomeCaixa(char *destino, char *original);
+
 /* Conta os clientes que estao dentro da loja (a comprar ou em fila). */
 static int ContarDentroLoja(Supermercado *S)
 {
@@ -102,6 +106,8 @@ static void EntradaCliente(Supermercado *S)
         c->numProdutos = Aleatorio(1, MAX_CARRINHO);
         PrepararCarrinho(c, &S->produtos, S->MAX_PRECO, S->TEMPO_ATENDIMENTO_PRODUTO);
         EnfileirarCliente(&S->emCompras, c);
+        S->entradasDesdeUpdate++;
+        AcrescentarNomeEntrada(S, c->nome);
         if (S->verboso) printf("  [Entrou] %s (%d artigos)\n", c->nome, c->numProdutos);
     }
 }
@@ -156,6 +162,7 @@ static void TerminarAtendimento(Supermercado *S, Caixa *cx)
     c->naFila = false;
     c->caixaAtual[0] = '\0';
     cx->aAtender = NULL;
+    S->saidasDesdeUpdate++;
 }
 
 /* Fecha uma caixa que estava marcada para fechar e ja esvaziou. */
@@ -271,7 +278,35 @@ Supermercado *CriarSupermercado(char *nome)
     S->totalAtendidos = 0; S->totalProdutosVendidos = 0; S->somaTemposEspera = 0;
     S->produtosOferecidos = 0; S->custoOferecido = 0; S->caixasAbertasMax = 0;
     S->totalDinheiro = 0;
+    S->entradasDesdeUpdate = 0;
+    S->saidasDesdeUpdate = 0;
+    S->nomesEntradas[0] = '\0';
     return S;
+}
+
+/* Acrescenta um nome ao buffer de "entraram desde a ultima atualizacao",
+   separado por virgulas. Se faltar espaco, deixa "..." no fim e ignora o resto. */
+static void AcrescentarNomeEntrada(Supermercado *S, char *nome)
+{
+    int usado = (int) strlen(S->nomesEntradas);
+    int restante = (int) sizeof(S->nomesEntradas) - usado;
+    int precisa = (int) strlen(nome) + (usado > 0 ? 2 : 0) + 1;
+    if (precisa >= restante) {
+        if (restante > 4 && S->nomesEntradas[usado - 1] != '.')
+            strcat(S->nomesEntradas, "...");
+        return;
+    }
+    if (usado > 0) strcat(S->nomesEntradas, ", ");
+    strcat(S->nomesEntradas, nome);
+}
+
+/* Converte "Caixa1" em "Caixa 1" para uma listagem mais legivel. */
+static void FormatarNomeCaixa(char *destino, char *original)
+{
+    if (strncmp(original, "Caixa", 5) == 0 && original[5] != '\0' && original[5] != ' ')
+        snprintf(destino, MAX_NOME, "Caixa %s", original + 5);
+    else
+        snprintf(destino, MAX_NOME, "%s", original);
 }
 
 /* Atualiza um parametro de configuracao a partir de um par "CHAVE valor". */
@@ -473,38 +508,48 @@ void PesquisarPessoa(Supermercado *S, char *nomeCliente)
         printf("%s esta em espera na %s.\n", c->nome, c->caixaAtual);
 }
 
-/* Mostra o estado atual da loja e de todas as caixas. */
+/* Mostra o estado atual da loja e de todas as caixas no formato de "frame"
+   da simulacao automatica (cabecalho com hora + caixas em colunas). */
 void VerEstadoAtual(Supermercado *S)
 {
     Caixa *vec[MAX_CAIXAS];
     int n = ObterTodasCaixas(&S->caixas, vec, MAX_CAIXAS), i, j;
+    int t, h, m, sec;
+    char nomeFmt[MAX_NOME];
     /* ordena por nome (bubble sort) para uma listagem estavel */
     for (i = 0; i < n - 1; i++)
         for (j = 0; j < n - 1 - i; j++)
             if (strcmp(vec[j]->nome, vec[j + 1]->nome) > 0) {
-                Caixa *t = vec[j]; vec[j] = vec[j + 1]; vec[j + 1] = t;
+                Caixa *tmp = vec[j]; vec[j] = vec[j + 1]; vec[j + 1] = tmp;
             }
-    {
-        int t = GetTempo(S->relogio);
-        int h = (t / 3600) % 24;
-        int m = (t / 60) % 60;
-        printf("\n===== Estado da loja '%s' (%02d:%02d - %s) =====\n",
-               S->nome, h, m, LojaAberta(S) ? "ABERTA" : "FECHADA");
-    }
-    printf("Clientes dentro: %d | a fazer compras: %d\n",
-           ContarDentroLoja(S), S->emCompras.tamanho);
+    t = GetTempo(S->relogio);
+    h = (t / 3600) % 24;
+    m = (t / 60) % 60;
+    sec = t % 60;
+    printf("\n[%02d:%02d:%02d] ---------- ESTADO DAS CAIXAS -------------------------\n",
+           h, m, sec);
+    printf("  Clientes na loja: %d\n", ContarDentroLoja(S));
+    printf("  Desde a ultima atualizacao: %d entraram | %d sairam\n",
+           S->entradasDesdeUpdate, S->saidasDesdeUpdate);
+    if (S->nomesEntradas[0] != '\0')
+        printf("  Entraram: %s\n", S->nomesEntradas);
+    printf("----------------------------------------------------\n");
     for (i = 0; i < n; i++) {
         Caixa *cx = vec[i];
-        printf("  %-8s [%-8s] op:%-10s fila:%2d atende:%-10s (atendeu %d, %d prod., %.2f EUR)\n",
-               cx->nome,
-               cx->ativa ? (cx->aFechar ? "a fechar" : "aberta") : "fechada",
-               cx->operador ? cx->operador->nome : "-",
-               TamanhoFila(&cx->fila),
-               cx->aAtender ? cx->aAtender->nome : "-",
-               cx->pessoasAtendidas, cx->produtosVendidos, cx->dinheiroFeito);
+        FormatarNomeCaixa(nomeFmt, cx->nome);
+        if (cx->ativa) {
+            printf("  %-8s [ABERTA] | Fila: %2d pessoas | A atender: %s\n",
+                   nomeFmt, TamanhoFila(&cx->fila),
+                   cx->aAtender ? cx->aAtender->nome : "(livre)");
+        } else {
+            printf("  %-8s [FECHADA]\n", nomeFmt);
+        }
     }
-    printf("Produtos oferecidos: %d (custo %.2f EUR) | Dinheiro total: %.2f EUR\n",
-           S->produtosOferecidos, S->custoOferecido, S->totalDinheiro);
+    printf("----------------------------------------------------\n");
+    /* reinicia os contadores para a proxima atualizacao */
+    S->entradasDesdeUpdate = 0;
+    S->saidasDesdeUpdate = 0;
+    S->nomesEntradas[0] = '\0';
 }
 
 /* req. 11: medidas de desempenho do sistema. */

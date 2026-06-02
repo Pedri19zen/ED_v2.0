@@ -78,6 +78,16 @@ void LerString(char *txt, char *destino, int tamanho)
     destino[strcspn(destino, "\r\n")] = '\0';
 }
 
+/* Mostra uma pergunta de confirmacao e devolve true se a resposta for 'S'/'s'. */
+bool Confirmar(char *txt)
+{
+    char linha[16];
+    printf("%s (S/N) ", txt);
+    fflush(stdout);
+    if (fgets(linha, sizeof(linha), stdin) == NULL) return false;
+    return (linha[0] == 'S' || linha[0] == 's');
+}
+
 /* Converte um caracter para maiuscula (apenas a-z). */
 char ToMaiscula(char x)
 {

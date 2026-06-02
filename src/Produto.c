@@ -148,10 +148,16 @@ void MenuProdutos(ListaProdutos *L)
                 LerString("Nome do produto:", nome, MAX_NOME_PRODUTO);
                 preco = LerFloat("Novo preco:");
                 if (preco <= 0) { printf("Preco invalido.\n"); break; }
+                if (!Confirmar("Confirma a edicao deste produto?")) {
+                    printf("Operacao cancelada.\n"); break;
+                }
                 printf(EditarProduto(L, nome, preco) ? "Editado.\n" : "Nao encontrado.\n");
                 break;
             case 3:
                 LerString("Nome do produto:", nome, MAX_NOME_PRODUTO);
+                if (!Confirmar("Confirma a remocao deste produto?")) {
+                    printf("Operacao cancelada.\n"); break;
+                }
                 printf(RemoverProduto(L, nome) ? "Removido.\n" : "Nao encontrado.\n");
                 break;
             case 4:
