@@ -3,11 +3,16 @@
 
 #include "Uteis.h"
 
-/* Um produto do catalogo: nome e preco.
+/* Um produto do catalogo. Os tempos (em segundos) sao especificos do produto:
+   - tempoComprar: tempo que demora a apanha-lo na loja (fase de compras)
+   - tempoPagar:   tempo que demora a passar pela caixa (atendimento)
    'ativo' indica se o registo esta em uso (remover na gestao = desativar). */
 typedef struct {
-    char  nome[MAX_NOME];
+    int   codigo;
+    char  nome[MAX_NOME_PRODUTO];
     float preco;
+    float tempoComprar;
+    float tempoPagar;
     bool  ativo;
 } Produto;
 
@@ -18,7 +23,8 @@ typedef struct {
 } ListaProdutos;
 
 void CriarListaProdutos(ListaProdutos *L);
-int  AdicionarProduto(ListaProdutos *L, char *nome, float preco); /* devolve indice ou -1 */
+int  AdicionarProduto(ListaProdutos *L, int codigo, char *nome,
+                      float preco, float tempoComprar, float tempoPagar); /* indice ou -1 */
 int  PesquisarProduto(ListaProdutos *L, char *nome);              /* devolve indice ou -1 */
 int  EditarProduto(ListaProdutos *L, char *nome, float novoPreco);
 int  RemoverProduto(ListaProdutos *L, char *nome);                /* desativa */

@@ -5,12 +5,16 @@
 #include "Supermercado.h"
 
 /* ---- parametros internos da simulacao (faceis de afinar) ---- */
-#define VELOCIDADE_RELOGIO        8    /* segundos de simulacao por passo */
-#define CADENCIA_ENTRADA_DEFAULT  50   /* % de entrar um cliente por passo */
-#define PROB_FIM_COMPRAS          20   /* % de acabar as compras por passo */
-#define MAX_CARRINHO              10   /* artigos maximos de quem entra ao acaso */
-#define POOL_CLIENTES_MIN         40   /* clientes registados garantidos no arranque */
+#define VELOCIDADE_RELOGIO        10   /* segundos de simulacao por passo */
+#define CADENCIA_ENTRADA_DEFAULT  70   /* % de entrar 1 cliente em cada tentativa */
+#define ENTRADAS_POR_TICK_MAX     4    /* tentativas de entrada em cada passo */
+#define MAX_CARRINHO              5    /* artigos maximos de quem entra ao acaso */
+#define POOL_CLIENTES_MIN         40   /* pool minimo se o ficheiro Clientes.txt falhar */
 #define MAX_ITERACOES_SIM         100000 /* trava de seguranca */
+
+/* ---- horario da loja (a loja so aceita entradas dentro deste intervalo) ---- */
+#define HORA_ABERTURA             8    /* abre as 08:00 */
+#define HORA_FECHO                20   /* fecha as 20:00 */
 
 /* =====================================================================
    Funcoes auxiliares internas (static) - so usadas dentro deste ficheiro
@@ -72,34 +76,49 @@ static Cliente *EscolherClienteParaEntrar(Supermercado *S)
     return NULL;
 }
 
-/* Passo "entrada": tenta fazer entrar um novo cliente na loja. */
-static void EntradaCliente(Supermercado *S)
+/* True se a hora atual estiver dentro do horario de funcionamento. */
+bool LojaAberta(Supermercado *S)
 {
-    Cliente *c;
-    if (!S->aceitarEntradas) return;
-    if (Aleatorio(1, 100) > S->cadenciaEntrada) return;  /* nao entrou ninguem */
-    if (ContarDentroLoja(S) >= CAPACIDADE_LOJA) return;  /* loja cheia */
-    c = EscolherClienteParaEntrar(S);
-    if (c == NULL) return;                               /* ninguem disponivel */
-    c->dentroLoja = true;
-    c->naFila = false;
-    c->caixaAtual[0] = '\0';
-    c->numProdutos = Aleatorio(1, MAX_CARRINHO);
-    PrepararCarrinho(c, &S->produtos, S->MAX_PRECO, S->TEMPO_ATENDIMENTO_PRODUTO);
-    EnfileirarCliente(&S->emCompras, c);
-    if (S->verboso) printf("  [Entrou] %s (%d artigos)\n", c->nome, c->numProdutos);
+    int hora = (GetTempo(S->relogio) / 3600) % 24;
+    return hora >= HORA_ABERTURA && hora < HORA_FECHO;
 }
 
-/* Passo "compras -> caixa": quem acaba as compras vai para a melhor caixa. */
+/* Passo "entrada": pode entrar mais do que um cliente por passo (durante o
+   horario de funcionamento) para manter a loja com movimento. */
+static void EntradaCliente(Supermercado *S)
+{
+    int tentativa;
+    if (!S->aceitarEntradas) return;
+    if (!LojaAberta(S)) return;                           /* fora de horas */
+    for (tentativa = 0; tentativa < ENTRADAS_POR_TICK_MAX; tentativa++) {
+        Cliente *c;
+        if (Aleatorio(1, 100) > S->cadenciaEntrada) continue;  /* nao entrou */
+        if (ContarDentroLoja(S) >= CAPACIDADE_LOJA) return;    /* loja cheia */
+        c = EscolherClienteParaEntrar(S);
+        if (c == NULL) return;                                 /* nao ha disponiveis */
+        c->dentroLoja = true;
+        c->naFila = false;
+        c->caixaAtual[0] = '\0';
+        c->numProdutos = Aleatorio(1, MAX_CARRINHO);
+        PrepararCarrinho(c, &S->produtos, S->MAX_PRECO, S->TEMPO_ATENDIMENTO_PRODUTO);
+        EnfileirarCliente(&S->emCompras, c);
+        if (S->verboso) printf("  [Entrou] %s (%d artigos)\n", c->nome, c->numProdutos);
+    }
+}
+
+/* Passo "compras -> caixa": cada cliente avanca o seu tempo de compras; quando
+   chega a zero, vai para a fila da melhor caixa. */
 static void AvancarCompras(Supermercado *S)
 {
     Cliente *prontos[CAPACIDADE_LOJA];
-    int nProntos = 0, i;
+    int nProntos = 0, i, vel = S->relogio->velocidade;
     NoFila *p;
-    /* 1) descobre quem acaba as compras (percurso so de leitura) */
-    for (p = S->emCompras.inicio; p != NULL && nProntos < CAPACIDADE_LOJA; p = p->prox)
-        if (Aleatorio(1, 100) <= PROB_FIM_COMPRAS)
+    /* 1) avanca o tempo de compras de cada um; marca os que acabaram */
+    for (p = S->emCompras.inicio; p != NULL && nProntos < CAPACIDADE_LOJA; p = p->prox) {
+        p->cliente->tempoComprasRestante -= vel;
+        if (p->cliente->tempoComprasRestante <= 0)
             prontos[nProntos++] = p->cliente;
+    }
     /* 2) move-os para a fila da melhor caixa */
     for (i = 0; i < nProntos; i++) {
         Caixa *cx = EscolherMelhorCaixa(S, NULL);
@@ -326,16 +345,20 @@ int CarregarDados(Supermercado *S, char *ficheiro)
     return 1;
 }
 
-/* Carrega tudo dos ficheiros e garante um conjunto minimo de clientes. */
+/* Carrega tudo dos ficheiros e garante um conjunto minimo de clientes.
+   O relogio comeca a hora da abertura da loja (HORA_ABERTURA). */
 int InicializarSupermercado(Supermercado *S)
 {
     CarregarConfiguracao(S, FICH_CONFIG);
     CarregarProdutos(&S->produtos, FICH_PRODUTOS);
     CarregarFuncionarios(&S->funcionarios, FICH_FUNCIONARIOS);
-    CarregarDados(S, FICH_DADOS);
-    /* garante clientes suficientes para a simulacao ter quem entrar */
+    CarregarClientes(&S->clientes, FICH_CLIENTES);       /* pool com nomes reais */
+    CarregarDados(S, FICH_DADOS);                        /* caixas + clientes iniciais */
+    /* se a "pool" ficou pequena (ex.: Clientes.txt em falta), preenche com nomes "Cli#" */
     if (S->clientes.total < POOL_CLIENTES_MIN)
         GerarClientesAleatorios(&S->clientes, POOL_CLIENTES_MIN - S->clientes.total, MAX_CARRINHO);
+    /* poe o relogio a hora de abertura (ex.: 08:00) */
+    S->relogio->tempoAtual = HORA_ABERTURA * 3600;
     return 1;
 }
 
@@ -461,7 +484,13 @@ void VerEstadoAtual(Supermercado *S)
             if (strcmp(vec[j]->nome, vec[j + 1]->nome) > 0) {
                 Caixa *t = vec[j]; vec[j] = vec[j + 1]; vec[j + 1] = t;
             }
-    printf("\n===== Estado da loja '%s' (t = %d s) =====\n", S->nome, GetTempo(S->relogio));
+    {
+        int t = GetTempo(S->relogio);
+        int h = (t / 3600) % 24;
+        int m = (t / 60) % 60;
+        printf("\n===== Estado da loja '%s' (%02d:%02d - %s) =====\n",
+               S->nome, h, m, LojaAberta(S) ? "ABERTA" : "FECHADA");
+    }
     printf("Clientes dentro: %d | a fazer compras: %d\n",
            ContarDentroLoja(S), S->emCompras.tamanho);
     for (i = 0; i < n; i++) {

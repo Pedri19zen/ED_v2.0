@@ -9,6 +9,7 @@
 #include "Supermercado.h"
 
 #define INTERVALO_AUTO_MS 2000   /* a simulacao mostra o estado a cada 2 segundos */
+#define TICKS_POR_FRAME   3      /* passos de simulacao avancados em cada frame */
 
 /* Avanca a simulacao 'segundos' segundos de uma so vez (sem imprimir os
    eventos, so o estado final). Usado pela opcao "saltar X segundos". */
@@ -53,14 +54,20 @@ static int MenuPausaSimulacao(Supermercado *S)
    ate o utilizador premir uma tecla (que abre o menu de pausa). */
 static void MenuSimulacao(Supermercado *S)
 {
-    int terminar = 0;
+    int terminar = 0, k;
     printf("\n=== Simulacao a correr ===\n");
-    printf("(A simulacao avanca sozinha. Prima uma tecla para o menu de controlo.)\n");
+    printf("(Avanca sozinha; loja aberta entre 08:00 e 20:00. Prima uma tecla para o menu.)\n");
     while (!terminar) {
-        ExecutarPasso(S);
+        /* avanca varios passos por frame para o "dia" ser observavel em tempo razoavel */
+        for (k = 0; k < TICKS_POR_FRAME; k++) ExecutarPasso(S);
         VerEstadoAtual(S);
         fflush(stdout);                             /* mostra ja este "frame" */
-        if (EsperarOuTecla(INTERVALO_AUTO_MS)) {    /* tecla premida antes dos 4 s */
+        /* se a loja fechou e ja nao ha clientes, termina o dia automaticamente */
+        if (!LojaAberta(S) && SimulacaoTerminada(S)) {
+            printf("\n*** Loja fechou e ja nao ha clientes. Fim do dia. ***\n");
+            break;
+        }
+        if (EsperarOuTecla(INTERVALO_AUTO_MS)) {
             DescartarTecla();
             terminar = MenuPausaSimulacao(S);
         }

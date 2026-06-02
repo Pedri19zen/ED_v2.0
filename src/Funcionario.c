@@ -11,6 +11,7 @@ int AdicionarFuncionario(ListaFuncionarios *L, char *nome)
     Funcionario *f;
     if (L->total >= MAX_FUNCIONARIOS) return -1;
     f = &L->v[L->total];
+    f->codigo = 0;        /* sera definido em CarregarFuncionarios se aplicavel */
     CopiarNome(f->nome, nome);
     f->ativo = true;
     f->dentroLoja = true;
@@ -59,16 +60,24 @@ void ListarFuncionarios(ListaFuncionarios *L)
                    L->v[i].pessoasAtendidas, L->v[i].produtosVendidos);
 }
 
-/* Carrega os funcionarios do ficheiro (um nome por linha). */
+/* Carrega os funcionarios do ficheiro. Aceita dois formatos por linha:
+   - "codigo \t nome"      (TSV, formato novo)
+   - "nome"                 (linha simples, formato antigo) */
 int CarregarFuncionarios(ListaFuncionarios *L, char *ficheiro)
 {
     FILE *f = fopen(ficheiro, "r");
-    char linha[128];
+    char linha[128], nome[MAX_NOME];
+    int  codigo, idx;
     if (f == NULL) return 0;
     while (fgets(linha, sizeof(linha), f) != NULL) {
         linha[strcspn(linha, "\r\n")] = '\0';
-        if (linha[0] != '\0')
-            AdicionarFuncionario(L, linha);
+        if (linha[0] == '\0') continue;
+        if (sscanf(linha, "%d\t%49[^\r\n]", &codigo, nome) == 2) {
+            idx = AdicionarFuncionario(L, nome);
+            if (idx >= 0) L->v[idx].codigo = codigo;
+        } else {
+            AdicionarFuncionario(L, linha);  /* formato antigo: linha = nome */
+        }
     }
     fclose(f);
     return 1;

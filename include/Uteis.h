@@ -12,10 +12,11 @@
 #include <stdbool.h>
 
 /* ---- Tamanhos maximos dos arrays-mestre (dados carregados uma vez) ---- */
-#define MAX_NOME           50     /* comprimento maximo de um nome */
-#define MAX_CLIENTES       1000   /* clientes registados (pool da simulacao) */
-#define MAX_PRODUTOS       200    /* produtos no catalogo */
-#define MAX_FUNCIONARIOS   50     /* operadores de caixa */
+#define MAX_NOME           50     /* nome de cliente, caixa ou funcionario */
+#define MAX_NOME_PRODUTO   128    /* nomes de produtos sao mais longos */
+#define MAX_CLIENTES       12000  /* clientes registados (suporta Clientes.txt + Dados.txt) */
+#define MAX_PRODUTOS       10000  /* produtos no catalogo (suporta o ficheiro completo) */
+#define MAX_FUNCIONARIOS   200    /* operadores de caixa (suporta Funcionarios.txt) */
 #define MAX_CAIXAS         100    /* limite ao percorrer o hashing das caixas */
 #define CAPACIDADE_LOJA    100    /* clientes dentro da loja em simultaneo */
 #define TAMANHO_HASH       13     /* tamanho (primo) da tabela das caixas */
@@ -27,6 +28,7 @@
 #define FICH_DADOS         "data/Dados.txt"
 #define FICH_PRODUTOS      "data/Produtos.txt"
 #define FICH_FUNCIONARIOS  "data/Funcionarios.txt"
+#define FICH_CLIENTES      "data/Clientes.txt"
 #define FICH_HISTORICO     "historico.csv"
 #define FICH_RESULTADO     "resultado.txt"
 

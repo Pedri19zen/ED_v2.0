@@ -63,6 +63,7 @@ void ExecutarPasso(Supermercado *S);                       /* um "tick" */
 void ExecutarSimulacao(Supermercado *S, int nPassos, int comPausa);
 void CorrerAteEsvaziar(Supermercado *S, int comPausa);
 int  SimulacaoTerminada(Supermercado *S);
+bool LojaAberta(Supermercado *S);                          /* hora atual em horario? */
 
 /* ---- acoes do gerente ---- */
 int  AbrirNovaCaixa(Supermercado *S);                                   /* requisito 5 */

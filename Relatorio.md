@@ -38,6 +38,16 @@ Foram usadas apenas estruturas das aulas de ED: **arrays**, **listas ligadas / f
 Cada "lista" é `{ T v[MAX]; int total; }`. Para **remover** desativa-se o registo
 (`ativo = false`), mantendo os índices/ponteiros estáveis durante a simulação.
 
+Os três arrays-mestre carregam-se de **ficheiros TAB-separados** com identificadores reais:
+- `data/Produtos.txt` — `codigo \t nome \t preco \t tempoComprar \t tempoPagar` (~9 662 produtos).
+- `data/Clientes.txt` — `codigo \t nome` (~10 000 clientes).
+- `data/Funcionarios.txt` — `codigo \t nome` (cerca de 90 funcionarios; aceita também o
+  formato antigo só com o nome).
+
+Os limites estão dimensionados para o ficheiro completo (`MAX_PRODUTOS=10000`,
+`MAX_CLIENTES=12000`, `MAX_FUNCIONARIOS=200`) e os nomes de produtos usam
+`MAX_NOME_PRODUTO=128` (vão até ~106 caracteres).
+
 O `Cliente` tem campos booleanos que controlam o seu estado e **evitam estados inválidos**
 (entrar duas vezes, sair sem ter entrado):
 
@@ -109,13 +119,16 @@ Produto Cliente Funcionario             │
 A simulação avança por **passos (ticks)**; cada passo corresponde a `velocidade` segundos.
 Em cada passo (`ExecutarPasso`):
 
-1. **Relógio** avança.
-2. **Entrada** de cliente (probabilidade `cadenciaEntrada`%): respeita `CAPACIDADE_LOJA` e
-   nunca deixa um cliente entrar duas vezes; o carrinho é gerado com produtos aleatórios.
+1. **Relógio** avança (arranca às `08:00`; a loja só aceita entradas até `20:00`).
+2. **Entrada** de clientes (até `ENTRADAS_POR_TICK_MAX` por passo, cada com probabilidade
+   `cadenciaEntrada`%): respeita `CAPACIDADE_LOJA`, nunca deixa um cliente entrar duas
+   vezes, e só durante o horário (`HORA_ABERTURA`-`HORA_FECHO`). O carrinho é gerado com
+   produtos aleatórios do catálogo.
 3. **Compras → caixa**: quem termina as compras vai para a **fila mais curta** entre as
    caixas abertas.
-4. **Atendimento**: cada caixa atende o cliente da frente (decrementa `tempoRestante`); os
-   restantes acumulam `tempoEspera`. Ao terminar, o cliente sai e atualizam-se as estatísticas.
+4. **Atendimento**: cada caixa atende o cliente da frente (decrementa `tempoRestante`, que é
+   a soma dos `tempoPagar` dos artigos do carrinho); os restantes acumulam `tempoEspera`.
+   Ao terminar, o cliente sai e atualizam-se as estatísticas.
 5. **Garantia de qualidade**: se `tempoEspera > MAX_ESPERA`, oferece-se ao cliente o
    **produto mais barato** do seu carrinho (regista-se o nº de produtos oferecidos e o custo);
    o dinheiro faturado pela caixa é o valor do carrinho menos esse produto oferecido.

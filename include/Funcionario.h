@@ -6,6 +6,7 @@
 /* Um funcionario / operador de caixa.
    'dentroLoja' indica se esta ao servico; 'ocupado' se esta a operar uma caixa. */
 typedef struct {
+    int  codigo;            /* identificador do funcionario (do ficheiro) */
     char nome[MAX_NOME];
     bool ativo;             /* o registo existe */
     bool dentroLoja;        /* esta ao servico na loja */

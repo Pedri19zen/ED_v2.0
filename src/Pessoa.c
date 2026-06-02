@@ -11,6 +11,7 @@ int AdicionarCliente(ListaClientes *L, char *nome, int numProdutos)
     Cliente *c;
     if (L->total >= MAX_CLIENTES) return -1;
     c = &L->v[L->total];
+    c->codigo = 0;                  /* sera definido por CarregarClientes, se houver */
     CopiarNome(c->nome, nome);
     c->numProdutos = numProdutos;
     c->valorCarrinho = 0;
@@ -18,6 +19,7 @@ int AdicionarCliente(ListaClientes *L, char *nome, int numProdutos)
     c->tempoAtendimento = 0;
     c->tempoRestante = 0;
     c->tempoEspera = 0;
+    c->tempoComprasRestante = 0;
     c->ativo = true;
     c->dentroLoja = false;
     c->naFila = false;
@@ -68,6 +70,26 @@ void ListarClientes(ListaClientes *L)
     }
 }
 
+/* Carrega a "pool" de clientes do ficheiro. Formato (TAB-separado):
+   codigo \t nome
+   As terminacoes \r\n (Windows) sao tratadas. Devolve 1 se conseguiu abrir. */
+int CarregarClientes(ListaClientes *L, char *ficheiro)
+{
+    FILE *f = fopen(ficheiro, "r");
+    char linha[128], nome[MAX_NOME];
+    int codigo, idx;
+    if (f == NULL) return 0;
+    while (fgets(linha, sizeof(linha), f) != NULL) {
+        /* %[^\t\r\n] le o nome ate ao tab/CR/LF */
+        if (sscanf(linha, "%d\t%49[^\t\r\n]", &codigo, nome) == 2) {
+            idx = AdicionarCliente(L, nome, 0);   /* numProdutos definido na entrada */
+            if (idx >= 0) L->v[idx].codigo = codigo;
+        }
+    }
+    fclose(f);
+    return 1;
+}
+
 /* Cria clientes ficticios, util para testar com muitos dados. */
 void GerarClientesAleatorios(ListaClientes *L, int quantos, int maxProdutos)
 {
@@ -85,24 +107,34 @@ void GerarClientesAleatorios(ListaClientes *L, int quantos, int maxProdutos)
 void PrepararCarrinho(Cliente *c, ListaProdutos *prods, int maxPreco, int tempoAtendProduto)
 {
     int k, idx;
-    float preco;
+    float preco, somaPagar = 0.0f, somaComprar = 0.0f;
     if (c->numProdutos < 1) c->numProdutos = 1;
     c->valorCarrinho = 0;
-    c->tempoAtendimento = 0;
     c->precoMenorProduto = -1;   /* sentinela: ainda nao ha artigos */
     for (k = 0; k < c->numProdutos; k++) {
         idx = (prods != NULL) ? ProdutoAleatorio(prods) : -1;
-        if (idx >= 0)
-            preco = prods->v[idx].preco;
-        else
-            preco = (float) Aleatorio(1, maxPreco);  /* sem catalogo: preco ao acaso */
+        if (idx >= 0) {
+            /* usa os tempos especificos do produto */
+            preco        = prods->v[idx].preco;
+            somaPagar   += prods->v[idx].tempoPagar;
+            somaComprar += prods->v[idx].tempoComprar;
+        } else {
+            /* sem catalogo: usa valores aleatorios como fallback */
+            preco        = (float) Aleatorio(1, maxPreco);
+            somaPagar   += (float) Aleatorio(2, tempoAtendProduto);
+            somaComprar += (float) Aleatorio(2, tempoAtendProduto);
+        }
         c->valorCarrinho += preco;
-        /* guarda o preco do artigo mais barato (e o que sera oferecido) */
+        /* guarda o preco do artigo mais barato (sera o oferecido se preciso) */
         if (c->precoMenorProduto < 0 || preco < c->precoMenorProduto)
             c->precoMenorProduto = preco;
-        c->tempoAtendimento += Aleatorio(2, tempoAtendProduto);
     }
     if (c->precoMenorProduto < 0) c->precoMenorProduto = 0;
+    /* arredonda os tempos para segundos inteiros; garante pelo menos 1 segundo */
+    c->tempoAtendimento     = (int)(somaPagar   + 0.5f);
+    c->tempoComprasRestante = (int)(somaComprar + 0.5f);
+    if (c->tempoAtendimento     < 1) c->tempoAtendimento = 1;
+    if (c->tempoComprasRestante < 1) c->tempoComprasRestante = 1;
     c->tempoRestante = c->tempoAtendimento;
     c->tempoEspera = 0;
     c->foiOferecido = false;
