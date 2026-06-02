@@ -8,8 +8,9 @@
 
 #include "Supermercado.h"
 
-#define INTERVALO_AUTO_MS 2000   /* a simulacao mostra o estado a cada 2 segundos */
-#define TICKS_POR_FRAME   3      /* passos de simulacao avancados em cada frame */
+/* Os parametros de ritmo da simulacao automatica (INTERVALO_AUTO_MS,
+   TICKS_POR_FRAME) sao lidos de Configuracao.txt para campos do
+   Supermercado e usados via S->INTERVALO_AUTO_MS / S->TICKS_POR_FRAME. */
 
 /* Avanca a simulacao 'segundos' segundos de uma so vez (sem imprimir os
    eventos, so o estado final). Usado pela opcao "saltar X segundos". */
@@ -52,24 +53,25 @@ static int MenuPausaSimulacao(Supermercado *S)
     } while (1);
 }
 
-/* "Iniciar simulacao": corre sozinha, mostrando o estado a cada INTERVALO_AUTO_MS,
-   ate o utilizador premir uma tecla (que abre o menu de pausa). */
+/* "Iniciar simulacao": corre sozinha, mostrando o estado a cada
+   S->INTERVALO_AUTO_MS, ate o utilizador premir uma tecla (abre menu de pausa). */
 static void MenuSimulacao(Supermercado *S)
 {
     int terminar = 0, k;
     bool verbosoAnterior = S->verboso;
     S->verboso = false;                  /* so o "frame" boxed aparece durante o auto */
     printf("\n=== Simulacao a correr ===\n");
-    printf("(Loja aberta entre 08:00 e 20:00. Prima uma tecla para PAUSAR.)\n");
+    printf("(Loja aberta entre %02d:00 e %02d:00. Prima uma tecla para PAUSAR.)\n",
+           S->HORA_ABERTURA, S->HORA_FECHO);
     while (!terminar) {
-        for (k = 0; k < TICKS_POR_FRAME; k++) ExecutarPasso(S);
+        for (k = 0; k < S->TICKS_POR_FRAME; k++) ExecutarPasso(S);
         VerEstadoAtual(S);
         fflush(stdout);                  /* mostra ja este "frame" */
         if (!LojaAberta(S) && SimulacaoTerminada(S)) {
             printf("\n*** Loja fechou e ja nao ha clientes. Fim do dia. ***\n");
             break;
         }
-        if (EsperarOuTecla(INTERVALO_AUTO_MS)) {
+        if (EsperarOuTecla(S->INTERVALO_AUTO_MS)) {
             DescartarTecla();
             terminar = MenuPausaSimulacao(S);
         }
@@ -82,9 +84,10 @@ static void MenuSimulacao(Supermercado *S)
 static void MenuGerente(Supermercado *S)
 {
     int op;
-    char nome[MAX_NOME], caixa[MAX_NOME];
+    char nome[MAX_NOME], caixa[MAX_NOME], entrada[MAX_NOME];
     do {
         printf("\n=== Acoes do Gerente ===\n");
+        MostrarResumoCaixas(S);
         printf("1 - Abrir nova caixa\n");
         printf("2 - Fechar uma caixa agora (redistribui clientes)\n");
         printf("3 - Mover cliente para outra caixa\n");
@@ -96,7 +99,8 @@ static void MenuGerente(Supermercado *S)
                 else printf("Nao foi possivel (sem operadores livres ou limite atingido).\n");
                 break;
             case 2:
-                LerString("Nome da caixa a fechar:", caixa, MAX_NOME);
+                LerString("Caixa a fechar (numero ou nome):", entrada, MAX_NOME);
+                ResolverNomeCaixa(entrada, caixa);
                 if (!Confirmar("Tem a certeza que quer fechar esta caixa?")) {
                     printf("Operacao cancelada.\n"); break;
                 }
@@ -104,7 +108,8 @@ static void MenuGerente(Supermercado *S)
                 break;
             case 3:
                 LerString("Nome do cliente:", nome, MAX_NOME);
-                LerString("Caixa de destino:", caixa, MAX_NOME);
+                LerString("Caixa de destino (numero ou nome):", entrada, MAX_NOME);
+                ResolverNomeCaixa(entrada, caixa);
                 if (!Confirmar("Confirma a mudanca de caixa?")) {
                     printf("Operacao cancelada.\n"); break;
                 }
@@ -118,7 +123,7 @@ static void MenuGerente(Supermercado *S)
     } while (op != 0);
 }
 
-/* Submenu: arrancar a simulacao ou fazer acoes do gerente. */
+/* Submenu: arrancar a simulacao, fazer acoes do gerente ou iniciar um dia. */
 static void MenuSimulacaoTopo(Supermercado *S)
 {
     int op;
@@ -126,11 +131,19 @@ static void MenuSimulacaoTopo(Supermercado *S)
         printf("\n--- Simulacao ---\n");
         printf("1 - Iniciar/retomar simulacao\n");
         printf("2 - Acoes do gerente (abrir/fechar/mover caixa)\n");
+        printf("3 - Iniciar novo dia (reinicia o relogio e estatisticas)\n");
         printf("0 - Voltar\n");
-        op = LerOpcao("Opcao:", 0, 2);
+        op = LerOpcao("Opcao:", 0, 3);
         switch (op) {
             case 1: RegistarHistorico("Abriu menu de simulacao", NULL); MenuSimulacao(S); break;
             case 2: MenuGerente(S); break;
+            case 3:
+                if (!Confirmar("Apagar o estado actual e iniciar um novo dia?")) {
+                    printf("Operacao cancelada.\n"); break;
+                }
+                IniciarNovoDia(S);
+                RegistarHistorico("Iniciou novo dia", NULL);
+                break;
         }
     } while (op != 0);
 }
@@ -180,11 +193,15 @@ static void MenuConsultas(Supermercado *S)
                 break;
             case 3: MedidasDesempenho(S);
                     RegistarHistorico("Viu medidas de desempenho", NULL); break;
-            case 4:
-                LerString("Nome da caixa:", nome, MAX_NOME);
-                ListarAtendidosPorCaixa(S, nome);
-                RegistarHistorico("Listou atendidos de uma caixa", nome);
+            case 4: {
+                char entrada[MAX_NOME], caixa[MAX_NOME];
+                MostrarResumoCaixas(S);
+                LerString("Caixa (numero ou nome):", entrada, MAX_NOME);
+                ResolverNomeCaixa(entrada, caixa);
+                ListarAtendidosPorCaixa(S, caixa);
+                RegistarHistorico("Listou atendidos de uma caixa", caixa);
                 break;
+            }
             case 5: MostrarMemoria(S); break;
         }
     } while (op != 0);

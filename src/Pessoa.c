@@ -51,6 +51,34 @@ int PesquisarCliente(ListaClientes *L, char *nome)
     return idx;
 }
 
+/* Verifica se 'prefixo' e' prefixo de 'str' ignorando maiusculas/minusculas. */
+static int PrefixoIgualSemCaso(char *str, char *prefixo)
+{
+    int i;
+    for (i = 0; prefixo[i] != '\0'; i++) {
+        if (str[i] == '\0') return 0;
+        if (ToMaiscula(str[i]) != ToMaiscula(prefixo[i])) return 0;
+    }
+    return 1;
+}
+
+/* Pesquisa tolerante: primeiro tenta match exato (rapido, via hash); se nao
+   encontrar, faz varrimento linear case-insensitive + prefixo. Devolve o
+   primeiro cliente ativo que comece pelas mesmas letras (qualquer caixa). */
+int PesquisarClienteTolerante(ListaClientes *L, char *texto)
+{
+    int idx = PesquisarCliente(L, texto);
+    int i;
+    if (idx >= 0) return idx;
+    if (texto[0] == '\0') return -1;
+    for (i = 0; i < L->total; i++) {
+        if (!L->v[i].ativo) continue;
+        if (PrefixoIgualSemCaso(L->v[i].nome, texto))
+            return i;
+    }
+    return -1;
+}
+
 int EditarCliente(ListaClientes *L, char *nome, int numProdutos)
 {
     int i = PesquisarCliente(L, nome);
@@ -69,17 +97,30 @@ int RemoverCliente(ListaClientes *L, char *nome)
     return 1;
 }
 
-/* Lista os clientes registados (limitada a 50 linhas para nao inundar o ecra). */
+/* Lista os clientes registados em paginas de 20. O utilizador pode pedir
+   a pagina seguinte (Enter) ou sair (q). */
 void ListarClientes(ListaClientes *L)
 {
-    int i, mostrados = 0;
+    int i = 0, naPagina;
+    char resp[8];
     printf("\n--- Clientes registados (%d) ---\n", L->total);
-    for (i = 0; i < L->total; i++) {
-        if (!L->v[i].ativo) continue;
-        printf("  %-15s | artigos: %2d | %s\n",
-               L->v[i].nome, L->v[i].numProdutos,
-               L->v[i].dentroLoja ? (L->v[i].naFila ? "em fila" : "as compras") : "fora");
-        if (++mostrados >= 50) { printf("  ... (%d no total)\n", L->total); break; }
+    while (i < L->total) {
+        naPagina = 0;
+        while (i < L->total && naPagina < 20) {
+            if (L->v[i].ativo) {
+                printf("  %-30s | artigos: %2d | %s\n",
+                       L->v[i].nome, L->v[i].numProdutos,
+                       L->v[i].dentroLoja ? (L->v[i].naFila ? "em fila" : "as compras") : "fora");
+                naPagina++;
+            }
+            i++;
+        }
+        if (i < L->total) {
+            printf("  --- Enter para mais, 'q' para sair: ");
+            fflush(stdout);
+            if (fgets(resp, sizeof(resp), stdin) == NULL) break;
+            if (resp[0] == 'q' || resp[0] == 'Q') break;
+        }
     }
 }
 

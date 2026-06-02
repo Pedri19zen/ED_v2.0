@@ -37,7 +37,8 @@ typedef struct {
 void CriarListaClientes(ListaClientes *L);
 void DestruirListaClientes(ListaClientes *L);     /* liberta a tabela idxNome */
 int  AdicionarCliente(ListaClientes *L, char *nome, int numProdutos); /* indice ou -1 */
-int  PesquisarCliente(ListaClientes *L, char *nome);                  /* indice ou -1 */
+int  PesquisarCliente(ListaClientes *L, char *nome);                  /* indice ou -1 (exato, via hash) */
+int  PesquisarClienteTolerante(ListaClientes *L, char *texto);        /* case-insensitive + prefixo */
 int  EditarCliente(ListaClientes *L, char *nome, int numProdutos);
 int  RemoverCliente(ListaClientes *L, char *nome);  /* desativa (-1 se estiver na loja) */
 void ListarClientes(ListaClientes *L);

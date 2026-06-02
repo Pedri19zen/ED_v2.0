@@ -34,8 +34,13 @@ typedef struct {
     int MAX_PRECO;
     int MAX_FILA;
     int MIN_FILA;
+    int VELOCIDADE_RELOGIO;   /* segundos de simulacao por passo (tick) */
+    int HORA_ABERTURA;        /* 24h: hora a que a loja abre (ex.: 8) */
+    int HORA_FECHO;           /* 24h: hora a que a loja fecha (ex.: 20) */
+    int CADENCIA_ENTRADA;     /* prob. (%) de uma entrada por tentativa */
+    int INTERVALO_AUTO_MS;    /* periodo (ms) entre frames do auto-display */
+    int TICKS_POR_FRAME;      /* quantos passos avancam entre frames */
 
-    int  cadenciaEntrada; /* probabilidade (%) de entrar um cliente por passo */
     bool aceitarEntradas; /* false = "porta fechada" (correr ate esvaziar) */
     bool verboso;         /* true = imprime os eventos passo a passo */
 
@@ -70,12 +75,18 @@ void DestruirSupermercado(Supermercado *S);
 int CarregarConfiguracao(Supermercado *S, char *ficheiro);
 int CarregarDados(Supermercado *S, char *ficheiro);
 
+/* ---- primitivas partilhadas entre modulos (Simulacao/Acoes/Relatorios) ---- */
+int    ContarDentroLoja(Supermercado *S);
+int    ContarCaixasAbertas(Supermercado *S);
+Caixa *EscolherMelhorCaixa(Supermercado *S, Caixa *excluir);
+
 /* ---- simulacao ---- */
 void ExecutarPasso(Supermercado *S);                       /* um "tick" */
 void ExecutarSimulacao(Supermercado *S, int nPassos, int comPausa);
 void CorrerAteEsvaziar(Supermercado *S, int comPausa);
 int  SimulacaoTerminada(Supermercado *S);
 bool LojaAberta(Supermercado *S);                          /* hora atual em horario? */
+void IniciarNovoDia(Supermercado *S);                      /* reset clock + stats */
 
 /* ---- acoes do gerente ---- */
 int  AbrirNovaCaixa(Supermercado *S);                                   /* requisito 5 */
@@ -83,6 +94,10 @@ int  FecharCaixaImediato(Supermercado *S, char *nomeCaixa);             /* requi
 int  MoverClienteEntreCaixas(Supermercado *S, char *nomeCliente, char *nomeCaixa); /* req. 4 */
 void PesquisarPessoa(Supermercado *S, char *nomeCliente);               /* requisito 8 */
 void ListarAtendidosPorCaixa(Supermercado *S, char *nomeCaixa);         /* requisito 11 */
+void MostrarResumoCaixas(Supermercado *S);                              /* ajuda UX */
+/* Se 'entrada' for um numero N positivo, escreve "CaixaN" em 'destino'.
+   Caso contrario copia 'entrada' tal e qual. */
+void ResolverNomeCaixa(char *entrada, char *destino);
 
 /* ---- relatorios / medidas ---- */
 void VerEstadoAtual(Supermercado *S);

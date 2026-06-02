@@ -60,19 +60,31 @@ int RemoverProduto(ListaProdutos *L, char *nome)
     return 1;
 }
 
-/* Mostra o catalogo. Como pode ter milhares de produtos, limita a 30 linhas
-   visiveis (o resto e' contabilizado pelo total). */
+/* Mostra o catalogo em paginas de 20 linhas. O utilizador escolhe se quer
+   ver mais (Enter) ou sair (q). */
 void ListarProdutos(ListaProdutos *L)
 {
-    int i, mostrados = 0;
+    int i = 0, naPagina;
+    char resp[8];
     printf("\n--- Produtos (%d) ---\n", L->total);
     printf("  %-6s %-50s %8s %8s %8s\n", "codigo", "nome", "preco", "comprar", "pagar");
-    for (i = 0; i < L->total; i++) {
-        if (!L->v[i].ativo) continue;
-        printf("  %-6d %-50.50s %8.2f %8.1f %8.1f\n",
-               L->v[i].codigo, L->v[i].nome,
-               L->v[i].preco, L->v[i].tempoComprar, L->v[i].tempoPagar);
-        if (++mostrados >= 30) { printf("  ... (%d no total)\n", L->total); break; }
+    while (i < L->total) {
+        naPagina = 0;
+        while (i < L->total && naPagina < 20) {
+            if (L->v[i].ativo) {
+                printf("  %-6d %-50.50s %8.2f %8.1f %8.1f\n",
+                       L->v[i].codigo, L->v[i].nome,
+                       L->v[i].preco, L->v[i].tempoComprar, L->v[i].tempoPagar);
+                naPagina++;
+            }
+            i++;
+        }
+        if (i < L->total) {
+            printf("  --- Enter para mais, 'q' para sair: ");
+            fflush(stdout);
+            if (fgets(resp, sizeof(resp), stdin) == NULL) break;
+            if (resp[0] == 'q' || resp[0] == 'Q') break;
+        }
     }
 }
 
