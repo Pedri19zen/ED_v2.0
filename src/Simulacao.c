@@ -282,9 +282,9 @@ static void VerificarTemposEspera(Supermercado *S)
                 S->produtosOferecidos++;
                 S->custoOferecido += c->precoMenorProduto;
                 S->ofertasDesdeUpdate++;
-                /* acrescenta "    Nome [ esperou Ns, ofertado X.XX EUR ]" ao buffer */
+                /* acrescenta "    Nome [ esperou Ns, oferecido X.XX EUR ]" ao buffer */
                 snprintf(linha, sizeof(linha),
-                         "    %s [ esperou %ds, ofertado %.2f EUR ]\n",
+                         "    %s [ esperou %ds, oferecido %.2f EUR ]\n",
                          c->nome, c->tempoEspera, c->precoMenorProduto);
                 usado = (int) strlen(S->nomesOfertas);
                 restante = (int) sizeof(S->nomesOfertas) - usado;

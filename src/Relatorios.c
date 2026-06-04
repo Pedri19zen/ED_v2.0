@@ -39,7 +39,7 @@ void VerEstadoAtual(Supermercado *S)
     printf("  Clientes na loja: %d\n", ContarDentroLoja(S));
     printf("  Desde a ultima atualizacao: %d entraram | %d sairam\n",
            S->entradasDesdeUpdate, S->saidasDesdeUpdate);
-    printf("  %sProdutos ofertados ate agora: %d (%.2f EUR)%s\n",
+    printf("  %sProdutos oferecidos ate agora: %d (%.2f EUR)%s\n",
            COR_WARN, S->produtosOferecidos, S->custoOferecido, COR_RESET);
     printf("%s----------------------------------------------------%s\n", COR_DIM, COR_RESET);
     limiteCaixas = S->N_CAIXAS;
