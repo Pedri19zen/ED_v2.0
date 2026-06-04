@@ -22,6 +22,38 @@ int Aleatorio(int min, int max)
     return min + rand() % (max - min + 1);
 }
 
+/* Activa o modo "Virtual Terminal" (interpretacao de ANSI) e a pagina de
+   codigos UTF-8 no terminal do Windows. Necessario para as cores e os
+   caracteres da barra (●·) aparecerem correctamente. Em Linux/macOS nao
+   e' preciso fazer nada. */
+void AtivarCoresTerminal(void)
+{
+#ifdef _WIN32
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+    DWORD modo = 0;
+    if (h != INVALID_HANDLE_VALUE && GetConsoleMode(h, &modo))
+        SetConsoleMode(h, modo | 0x0004); /* ENABLE_VIRTUAL_TERMINAL_PROCESSING */
+    SetConsoleOutputCP(65001);            /* UTF-8 */
+#endif
+}
+
+/* Imprime "Fila: N pessoas [●●●·······]" com cor consoante o tamanho:
+   verde ate 3, amarelo ate 6, vermelho acima de 6. A barra tem 10 celulas. */
+void ImprimirBarraFila(int n)
+{
+    int i, cheias;
+    char *cor;
+    if (n < 0) n = 0;
+    cheias = (n > 10) ? 10 : n;
+    if      (n <= 3) cor = COR_OK;
+    else if (n <= 6) cor = COR_WARN;
+    else             cor = COR_ERR;
+    printf("%sFila: %2d pessoas [", cor, n);
+    for (i = 0; i < cheias; i++) fputs("\xe2\x97\x8f", stdout); /* U+25CF '●' */
+    for (i = cheias; i < 10; i++) fputs("\xc2\xb7", stdout);     /* U+00B7 '·' */
+    printf("]%s", COR_RESET);
+}
+
 /* Esvazia o resto da linha que ficou no buffer de entrada. */
 void LimparBuffer(void)
 {

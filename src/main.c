@@ -241,6 +241,7 @@ int main(void)
        basta substituir time(NULL) por um valor fixo, por exemplo srand(1). */
     srand((unsigned) time(NULL));
 
+    AtivarCoresTerminal();    /* ANSI + UTF-8 no terminal Windows */
     IniciarHistorico();
     printf("Projeto ED 25/26 - Gestao de Caixas de um Supermercado\n");
 

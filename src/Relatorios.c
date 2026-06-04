@@ -31,24 +31,25 @@ void VerEstadoAtual(Supermercado *S)
     h = (t / 3600) % 24;
     m = (t / 60) % 60;
     sec = t % 60;
-    printf("\n[%02d:%02d:%02d] ---------- ESTADO DAS CAIXAS -------------------------\n",
-           h, m, sec);
+    printf("\n%s[%02d:%02d:%02d] ---------- ESTADO DAS CAIXAS -------------------------%s\n",
+           COR_HDR, h, m, sec, COR_RESET);
     printf("  Clientes na loja: %d\n", ContarDentroLoja(S));
     printf("  Desde a ultima atualizacao: %d entraram | %d sairam\n",
            S->entradasDesdeUpdate, S->saidasDesdeUpdate);
-    printf("----------------------------------------------------\n");
+    printf("%s----------------------------------------------------%s\n", COR_DIM, COR_RESET);
     for (i = 0; i < n; i++) {
         Caixa *cx = vec[i];
         FormatarNomeCaixa(nomeFmt, cx->nome);
         if (cx->ativa) {
-            printf("  %-8s [ABERTA] | Fila: %2d pessoas | A atender: %s\n",
-                   nomeFmt, TamanhoFila(&cx->fila),
+            printf("  %-8s %s[ABERTA]%s | ", nomeFmt, COR_OK, COR_RESET);
+            ImprimirBarraFila(TamanhoFila(&cx->fila));
+            printf(" | A atender: %s\n",
                    cx->aAtender ? cx->aAtender->nome : "(livre)");
         } else {
-            printf("  %-8s [FECHADA]\n", nomeFmt);
+            printf("  %-8s %s[FECHADA]%s\n", nomeFmt, COR_DIM, COR_RESET);
         }
     }
-    printf("----------------------------------------------------\n");
+    printf("%s----------------------------------------------------%s\n", COR_DIM, COR_RESET);
     if (S->nomesEntradas[0] != '\0') {
         printf("  Entraram:\n%s", S->nomesEntradas);
     }

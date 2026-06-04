@@ -47,6 +47,19 @@ bool  Confirmar(char *txt);                 /* mostra "txt (S/N)" e devolve true
 char ToMaiscula(char x);
 void CopiarNome(char *destino, char *origem); /* copia segura para um buffer [MAX_NOME] */
 
+/* ---- Cores ANSI (paleta 256, tons suaves) ----
+   Usamos sequencias ANSI; em Windows e' preciso activar Virtual Terminal e
+   UTF-8 no arranque (ver AtivarCoresTerminal). */
+#define COR_OK    "\x1b[38;5;108m"   /* verde-salva (fila <= 3) */
+#define COR_WARN  "\x1b[38;5;179m"   /* mostarda    (fila <= 6) */
+#define COR_ERR   "\x1b[38;5;174m"   /* vermelho-coral (fila > 6) */
+#define COR_HDR   "\x1b[38;5;110m"   /* azul-acinzentado (cabecalhos) */
+#define COR_DIM   "\x1b[38;5;244m"   /* cinza claro (separadores / FECHADA) */
+#define COR_RESET "\x1b[0m"
+
+void AtivarCoresTerminal(void);     /* habilita ANSI + UTF-8 no Windows */
+void ImprimirBarraFila(int n);      /* "Fila: N pessoas [●●●·······]" colorida */
+
 /* ---- Pausa (para a simulacao poder ser observada) ---- */
 void wait_segundos(int seconds);
 

@@ -126,7 +126,8 @@ void ListarAtendidosPorCaixa(Supermercado *S, char *nomeCaixa)
     ListarAtendidosCaixa(cx);
 }
 
-/* Mostra uma linha resumo com todas as caixas: nome + estado + fila. */
+/* Mostra um resumo (multi-linha) de todas as caixas com o nome, estado
+   e a barra colorida da fila. */
 void MostrarResumoCaixas(Supermercado *S)
 {
     Caixa *vec[MAX_CAIXAS];
@@ -137,15 +138,17 @@ void MostrarResumoCaixas(Supermercado *S)
             if (strcmp(vec[j]->nome, vec[j + 1]->nome) > 0) {
                 Caixa *t = vec[j]; vec[j] = vec[j + 1]; vec[j + 1] = t;
             }
-    printf("  Caixas disponiveis: ");
+    printf("  %sCaixas disponiveis:%s\n", COR_HDR, COR_RESET);
     for (i = 0; i < n; i++) {
         Caixa *cx = vec[i];
-        if (cx->ativa)
-            printf("%s(%d fila) ", cx->nome, TamanhoFila(&cx->fila));
-        else
-            printf("%s(FECHADA) ", cx->nome);
+        if (cx->ativa) {
+            printf("    %-8s %s[ABERTA]%s  ", cx->nome, COR_OK, COR_RESET);
+            ImprimirBarraFila(TamanhoFila(&cx->fila));
+            printf("\n");
+        } else {
+            printf("    %-8s %s[FECHADA]%s\n", cx->nome, COR_DIM, COR_RESET);
+        }
     }
-    printf("\n");
 }
 
 /* Aceita "Caixa1" ou simplesmente "1" como referencia a uma caixa. */
