@@ -1,0 +1,445 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Gestao de Caixas de um Supermercado: Referência ao ficheiro include/Funcionario.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Gestao de Caixas de um Supermercado<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Projeto ED 25/26 - 1o Ano / 2o Semestre</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('_funcionario_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência ao ficheiro Funcionario.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Operadores de caixa (array) e respectivo menu de gestao.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="_uteis_8h_source.html">Uteis.h</a>&quot;</code><br />
+</div>
+<p><a href="_funcionario_8h_source.html">Ir para o código fonte deste ficheiro.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Estruturas de Dados</h2></td></tr>
+<tr class="memitem:Funcionario" id="r_Funcionario"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="struct_funcionario.html">Funcionario</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Um funcionario / operador de caixa.  <a href="struct_funcionario.html#details">Mais...</a><br /></td></tr>
+<tr class="memitem:ListaFuncionarios" id="r_ListaFuncionarios"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Lista" de funcionarios implementada como array (pesquisa linear).  <a href="struct_lista_funcionarios.html#details">Mais...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:adfae708af40e37cbd4e2280f6db4a202" id="r_adfae708af40e37cbd4e2280f6db4a202"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#adfae708af40e37cbd4e2280f6db4a202">CriarListaFuncionarios</a> (<a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *L)</td></tr>
+<tr class="memdesc:adfae708af40e37cbd4e2280f6db4a202"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa a lista vazia.  <br /></td></tr>
+<tr class="memitem:a69689c2550b445f145e25ef33eebe189" id="r_a69689c2550b445f145e25ef33eebe189"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a69689c2550b445f145e25ef33eebe189">AdicionarFuncionario</a> (<a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *L, char *nome)</td></tr>
+<tr class="memdesc:a69689c2550b445f145e25ef33eebe189"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adiciona um funcionario novo.  <br /></td></tr>
+<tr class="memitem:ad1eb60345204ec2b207f5c71c11b5b1f" id="r_ad1eb60345204ec2b207f5c71c11b5b1f"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ad1eb60345204ec2b207f5c71c11b5b1f">PesquisarFuncionario</a> (<a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *L, char *nome)</td></tr>
+<tr class="memdesc:ad1eb60345204ec2b207f5c71c11b5b1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procura um funcionario pelo nome.  <br /></td></tr>
+<tr class="memitem:a2ef21e5ded68c16d24724a996abd968b" id="r_a2ef21e5ded68c16d24724a996abd968b"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a2ef21e5ded68c16d24724a996abd968b">EditarFuncionario</a> (<a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *L, char *nomeAntigo, char *nomeNovo)</td></tr>
+<tr class="memdesc:a2ef21e5ded68c16d24724a996abd968b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renomeia um funcionario.  <br /></td></tr>
+<tr class="memitem:afc81ea2547f1fc0a953c2c31fa71122b" id="r_afc81ea2547f1fc0a953c2c31fa71122b"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#afc81ea2547f1fc0a953c2c31fa71122b">RemoverFuncionario</a> (<a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *L, char *nome)</td></tr>
+<tr class="memdesc:afc81ea2547f1fc0a953c2c31fa71122b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Desactiva um funcionario.  <br /></td></tr>
+<tr class="memitem:ae1dc6677cd882d25f2cbc0904e0c1d2f" id="r_ae1dc6677cd882d25f2cbc0904e0c1d2f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ae1dc6677cd882d25f2cbc0904e0c1d2f">ListarFuncionarios</a> (<a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *L)</td></tr>
+<tr class="memdesc:ae1dc6677cd882d25f2cbc0904e0c1d2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista os funcionarios activos.  <br /></td></tr>
+<tr class="memitem:a5fb69bfeea90896fbf2b476d3d708037" id="r_a5fb69bfeea90896fbf2b476d3d708037"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a5fb69bfeea90896fbf2b476d3d708037">CarregarFuncionarios</a> (<a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *L, char *ficheiro)</td></tr>
+<tr class="memdesc:a5fb69bfeea90896fbf2b476d3d708037"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carrega de ficheiro (TSV ou linha simples).  <br /></td></tr>
+<tr class="memitem:af9abacb64c5ab65ac37eec71a37ff224" id="r_af9abacb64c5ab65ac37eec71a37ff224"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#af9abacb64c5ab65ac37eec71a37ff224">GravarFuncionarios</a> (<a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *L, char *ficheiro)</td></tr>
+<tr class="memdesc:af9abacb64c5ab65ac37eec71a37ff224"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grava os funcionarios em ficheiro (um nome por linha).  <br /></td></tr>
+<tr class="memitem:aea291bb8c44a2e35b366ec2f810a1221" id="r_aea291bb8c44a2e35b366ec2f810a1221"><td class="memItemLeft"><a class="el" href="struct_funcionario.html">Funcionario</a> *&#160;</td><td class="memItemRight"><a class="el" href="#aea291bb8c44a2e35b366ec2f810a1221">ObterFuncionarioLivre</a> (<a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *L)</td></tr>
+<tr class="memdesc:aea291bb8c44a2e35b366ec2f810a1221"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devolve um funcionario disponivel ou NULL.  <br /></td></tr>
+<tr class="memitem:a3646cba6b7139db5ce8628a177f4838d" id="r_a3646cba6b7139db5ce8628a177f4838d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a3646cba6b7139db5ce8628a177f4838d">MenuFuncionarios</a> (<a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *L)</td></tr>
+<tr class="memdesc:a3646cba6b7139db5ce8628a177f4838d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Submenu interactivo de gestao de funcionarios.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Operadores de caixa (array) e respectivo menu de gestao. </p>
+
+<p class="definition">Definido no ficheiro <a class="el" href="_funcionario_8h_source.html">Funcionario.h</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentação das funções</h2>
+<a id="a69689c2550b445f145e25ef33eebe189" name="a69689c2550b445f145e25ef33eebe189"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69689c2550b445f145e25ef33eebe189">&#9670;&#160;</a></span>AdicionarFuncionario()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AdicionarFuncionario </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nome</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adiciona um funcionario novo. </p>
+<p>Adiciona um funcionario (por omissao ao servico e livre).</p>
+<dl class="section return"><dt>Retorna</dt><dd>Indice ou -1.</dd></dl>
+<p>Adiciona um funcionario novo. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_funcionario_8c_source.html#l00013">13</a> do ficheiro <a class="el" href="_funcionario_8c_source.html">Funcionario.c</a>.</p>
+
+</div>
+</div>
+<a id="a5fb69bfeea90896fbf2b476d3d708037" name="a5fb69bfeea90896fbf2b476d3d708037"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fb69bfeea90896fbf2b476d3d708037">&#9670;&#160;</a></span>CarregarFuncionarios()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CarregarFuncionarios </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>ficheiro</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Carrega de ficheiro (TSV ou linha simples). </p>
+<p>Carrega os funcionarios do ficheiro.</p>
+<p>Carrega de ficheiro (TSV ou linha simples).</p>
+<p>Aceita dois formatos por linha:</p><ul>
+<li>"codigo TAB nome" (TSV, formato novo)</li>
+<li>"nome" (linha simples, formato antigo) </li>
+</ul>
+
+<p class="definition">Definido na linha <a class="el" href="_funcionario_8c_source.html#l00081">81</a> do ficheiro <a class="el" href="_funcionario_8c_source.html">Funcionario.c</a>.</p>
+
+</div>
+</div>
+<a id="adfae708af40e37cbd4e2280f6db4a202" name="adfae708af40e37cbd4e2280f6db4a202"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfae708af40e37cbd4e2280f6db4a202">&#9670;&#160;</a></span>CriarListaFuncionarios()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CriarListaFuncionarios </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicializa a lista vazia. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_funcionario_8c_source.html#l00010">10</a> do ficheiro <a class="el" href="_funcionario_8c_source.html">Funcionario.c</a>.</p>
+
+</div>
+</div>
+<a id="a2ef21e5ded68c16d24724a996abd968b" name="a2ef21e5ded68c16d24724a996abd968b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ef21e5ded68c16d24724a996abd968b">&#9670;&#160;</a></span>EditarFuncionario()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EditarFuncionario </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nomeAntigo</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nomeNovo</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renomeia um funcionario. </p>
+<p>Renomeia um funcionario existente.</p>
+<dl class="section return"><dt>Retorna</dt><dd>1/0.</dd></dl>
+<p>Renomeia um funcionario.</p>
+<dl class="section return"><dt>Retorna</dt><dd>1/0. </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="_funcionario_8c_source.html#l00041">41</a> do ficheiro <a class="el" href="_funcionario_8c_source.html">Funcionario.c</a>.</p>
+
+</div>
+</div>
+<a id="af9abacb64c5ab65ac37eec71a37ff224" name="af9abacb64c5ab65ac37eec71a37ff224"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9abacb64c5ab65ac37eec71a37ff224">&#9670;&#160;</a></span>GravarFuncionarios()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GravarFuncionarios </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>ficheiro</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Grava os funcionarios em ficheiro (um nome por linha). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_funcionario_8c_source.html#l00102">102</a> do ficheiro <a class="el" href="_funcionario_8c_source.html">Funcionario.c</a>.</p>
+
+</div>
+</div>
+<a id="ae1dc6677cd882d25f2cbc0904e0c1d2f" name="ae1dc6677cd882d25f2cbc0904e0c1d2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1dc6677cd882d25f2cbc0904e0c1d2f">&#9670;&#160;</a></span>ListarFuncionarios()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ListarFuncionarios </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lista os funcionarios activos. </p>
+<p>Lista os funcionarios activos com indicacao do estado.</p>
+<p>Lista os funcionarios activos. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_funcionario_8c_source.html#l00063">63</a> do ficheiro <a class="el" href="_funcionario_8c_source.html">Funcionario.c</a>.</p>
+
+</div>
+</div>
+<a id="a3646cba6b7139db5ce8628a177f4838d" name="a3646cba6b7139db5ce8628a177f4838d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3646cba6b7139db5ce8628a177f4838d">&#9670;&#160;</a></span>MenuFuncionarios()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MenuFuncionarios </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Submenu interactivo de gestao de funcionarios. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_funcionario_8c_source.html#l00125">125</a> do ficheiro <a class="el" href="_funcionario_8c_source.html">Funcionario.c</a>.</p>
+
+</div>
+</div>
+<a id="aea291bb8c44a2e35b366ec2f810a1221" name="aea291bb8c44a2e35b366ec2f810a1221"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea291bb8c44a2e35b366ec2f810a1221">&#9670;&#160;</a></span>ObterFuncionarioLivre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_funcionario.html">Funcionario</a> * ObterFuncionarioLivre </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devolve um funcionario disponivel ou NULL. </p>
+<p>Devolve um funcionario disponivel para abrir uma caixa, ou NULL.</p>
+<p>Devolve um funcionario disponivel ou NULL. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_funcionario_8c_source.html#l00115">115</a> do ficheiro <a class="el" href="_funcionario_8c_source.html">Funcionario.c</a>.</p>
+
+</div>
+</div>
+<a id="ad1eb60345204ec2b207f5c71c11b5b1f" name="ad1eb60345204ec2b207f5c71c11b5b1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1eb60345204ec2b207f5c71c11b5b1f">&#9670;&#160;</a></span>PesquisarFuncionario()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PesquisarFuncionario </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nome</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Procura um funcionario pelo nome. </p>
+<p>Pesquisa linear por nome.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Indice ou -1.</dd></dl>
+<p>Procura um funcionario pelo nome.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Indice ou -1. </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="_funcionario_8c_source.html#l00031">31</a> do ficheiro <a class="el" href="_funcionario_8c_source.html">Funcionario.c</a>.</p>
+
+</div>
+</div>
+<a id="afc81ea2547f1fc0a953c2c31fa71122b" name="afc81ea2547f1fc0a953c2c31fa71122b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc81ea2547f1fc0a953c2c31fa71122b">&#9670;&#160;</a></span>RemoverFuncionario()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int RemoverFuncionario </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nome</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Desactiva um funcionario. </p>
+<dl class="section return"><dt>Retorna</dt><dd>1 ok, -1 se estiver a operar uma caixa, 0 nao encontrado.</dd>
+<dd>
+1 ok, -1 se a operar uma caixa, 0 nao encontrado. </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="_funcionario_8c_source.html#l00053">53</a> do ficheiro <a class="el" href="_funcionario_8c_source.html">Funcionario.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="_funcionario_8h.html">Funcionario.h</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

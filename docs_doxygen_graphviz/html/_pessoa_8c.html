@@ -1,0 +1,554 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Gestao de Caixas de um Supermercado: Referência ao ficheiro src/Pessoa.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Gestao de Caixas de um Supermercado<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Projeto ED 25/26 - 1o Ano / 2o Semestre</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('_pessoa_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência ao ficheiro Pessoa.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Clientes do supermercado (array) com pesquisa O(1) por nome.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>&quot;</code><br />
+</div>
+<p><a href="_pessoa_8c_source.html">Ir para o código fonte deste ficheiro.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:aff89afd0a7311eb332d7e6a2b1572aae" id="r_aff89afd0a7311eb332d7e6a2b1572aae"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aff89afd0a7311eb332d7e6a2b1572aae">CriarListaClientes</a> (<a class="el" href="struct_lista_clientes.html">ListaClientes</a> *L)</td></tr>
+<tr class="memdesc:aff89afd0a7311eb332d7e6a2b1572aae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa a lista vazia e o indice de nomes.  <br /></td></tr>
+<tr class="memitem:a01c79a3dffd77199e3df49cf4a74b67a" id="r_a01c79a3dffd77199e3df49cf4a74b67a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a01c79a3dffd77199e3df49cf4a74b67a">DestruirListaClientes</a> (<a class="el" href="struct_lista_clientes.html">ListaClientes</a> *L)</td></tr>
+<tr class="memdesc:a01c79a3dffd77199e3df49cf4a74b67a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liberta o indice de nomes (o array v[] vive na struct mae).  <br /></td></tr>
+<tr class="memitem:a26538e78128f8a22aa38e6be1f9fa6ca" id="r_a26538e78128f8a22aa38e6be1f9fa6ca"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a26538e78128f8a22aa38e6be1f9fa6ca">AdicionarCliente</a> (<a class="el" href="struct_lista_clientes.html">ListaClientes</a> *L, char *nome, int numProdutos)</td></tr>
+<tr class="memdesc:a26538e78128f8a22aa38e6be1f9fa6ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adiciona um cliente registado (ainda fora da loja).  <br /></td></tr>
+<tr class="memitem:a252892a4edac405a9616a61c8e8b2b6e" id="r_a252892a4edac405a9616a61c8e8b2b6e"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a252892a4edac405a9616a61c8e8b2b6e">PesquisarCliente</a> (<a class="el" href="struct_lista_clientes.html">ListaClientes</a> *L, char *nome)</td></tr>
+<tr class="memdesc:a252892a4edac405a9616a61c8e8b2b6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pesquisa por nome em O(1) media usando a tabela de dispersao.  <br /></td></tr>
+<tr class="memitem:aa4617d56514564e9ac09b8713dbd148c" id="r_aa4617d56514564e9ac09b8713dbd148c"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#aa4617d56514564e9ac09b8713dbd148c">PrefixoIgualSemCaso</a> (char *str, char *prefixo)</td></tr>
+<tr class="memdesc:aa4617d56514564e9ac09b8713dbd148c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se 'prefixo' e' prefixo de 'str' ignorando maiusculas.  <br /></td></tr>
+<tr class="memitem:a42e5a114eddfe9c41d5b82f9d186d24a" id="r_a42e5a114eddfe9c41d5b82f9d186d24a"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a42e5a114eddfe9c41d5b82f9d186d24a">PesquisarClienteTolerante</a> (<a class="el" href="struct_lista_clientes.html">ListaClientes</a> *L, char *texto)</td></tr>
+<tr class="memdesc:a42e5a114eddfe9c41d5b82f9d186d24a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pesquisa tolerante: match exacto via hash, ou prefixo sem caso.  <br /></td></tr>
+<tr class="memitem:ac4126285308a9aa44c4d0c663a8584e0" id="r_ac4126285308a9aa44c4d0c663a8584e0"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ac4126285308a9aa44c4d0c663a8584e0">EditarCliente</a> (<a class="el" href="struct_lista_clientes.html">ListaClientes</a> *L, char *nome, int numProdutos)</td></tr>
+<tr class="memdesc:ac4126285308a9aa44c4d0c663a8584e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edita o numero de produtos do carrinho de um cliente.  <br /></td></tr>
+<tr class="memitem:a07c5a0e0126cca017c587e80b68251ae" id="r_a07c5a0e0126cca017c587e80b68251ae"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a07c5a0e0126cca017c587e80b68251ae">RemoverCliente</a> (<a class="el" href="struct_lista_clientes.html">ListaClientes</a> *L, char *nome)</td></tr>
+<tr class="memdesc:a07c5a0e0126cca017c587e80b68251ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Desactiva um cliente.  <br /></td></tr>
+<tr class="memitem:afd998c95176aafc9838ab924cee2fb92" id="r_afd998c95176aafc9838ab924cee2fb92"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afd998c95176aafc9838ab924cee2fb92">ListarClientes</a> (<a class="el" href="struct_lista_clientes.html">ListaClientes</a> *L)</td></tr>
+<tr class="memdesc:afd998c95176aafc9838ab924cee2fb92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista os clientes registados em paginas de 20.  <br /></td></tr>
+<tr class="memitem:a0240dc6752c65cc5785ce909b1327d86" id="r_a0240dc6752c65cc5785ce909b1327d86"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a0240dc6752c65cc5785ce909b1327d86">CarregarClientes</a> (<a class="el" href="struct_lista_clientes.html">ListaClientes</a> *L, char *ficheiro)</td></tr>
+<tr class="memdesc:a0240dc6752c65cc5785ce909b1327d86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carrega a "pool" de clientes do ficheiro.  <br /></td></tr>
+<tr class="memitem:a416dc6bdb0b2c3da1985ecfd2f9e1b43" id="r_a416dc6bdb0b2c3da1985ecfd2f9e1b43"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a416dc6bdb0b2c3da1985ecfd2f9e1b43">GerarClientesAleatorios</a> (<a class="el" href="struct_lista_clientes.html">ListaClientes</a> *L, int quantos, int maxProdutos)</td></tr>
+<tr class="memdesc:a416dc6bdb0b2c3da1985ecfd2f9e1b43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cria clientes ficticios "Cli#", util para testar com muitos dados.  <br /></td></tr>
+<tr class="memitem:a9aba7f6b6e90cac898ae3aacc3ecc049" id="r_a9aba7f6b6e90cac898ae3aacc3ecc049"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9aba7f6b6e90cac898ae3aacc3ecc049">PrepararCarrinho</a> (<a class="el" href="struct_cliente.html">Cliente</a> *c, <a class="el" href="struct_lista_produtos.html">ListaProdutos</a> *prods, int maxPreco, int tempoAtendProduto)</td></tr>
+<tr class="memdesc:a9aba7f6b6e90cac898ae3aacc3ecc049"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepara o carrinho do cliente.  <br /></td></tr>
+<tr class="memitem:a0930cc4fdfe99a86809d0546b8c62634" id="r_a0930cc4fdfe99a86809d0546b8c62634"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0930cc4fdfe99a86809d0546b8c62634">MenuClientes</a> (<a class="el" href="struct_lista_clientes.html">ListaClientes</a> *L)</td></tr>
+<tr class="memdesc:a0930cc4fdfe99a86809d0546b8c62634"><td class="mdescLeft">&#160;</td><td class="mdescRight">Submenu interactivo de gestao de clientes.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Clientes do supermercado (array) com pesquisa O(1) por nome. </p>
+
+<p class="definition">Definido no ficheiro <a class="el" href="_pessoa_8c_source.html">Pessoa.c</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentação das funções</h2>
+<a id="a26538e78128f8a22aa38e6be1f9fa6ca" name="a26538e78128f8a22aa38e6be1f9fa6ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26538e78128f8a22aa38e6be1f9fa6ca">&#9670;&#160;</a></span>AdicionarCliente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AdicionarCliente </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_clientes.html">ListaClientes</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nome</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>numProdutos</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adiciona um cliente registado (ainda fora da loja). </p>
+<dl class="section return"><dt>Retorna</dt><dd>Indice no array ou -1 se cheio.</dd>
+<dd>
+Indice ou -1 se cheio. </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8c_source.html#l00027">27</a> do ficheiro <a class="el" href="_pessoa_8c_source.html">Pessoa.c</a>.</p>
+
+</div>
+</div>
+<a id="a0240dc6752c65cc5785ce909b1327d86" name="a0240dc6752c65cc5785ce909b1327d86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0240dc6752c65cc5785ce909b1327d86">&#9670;&#160;</a></span>CarregarClientes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CarregarClientes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_clientes.html">ListaClientes</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>ficheiro</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Carrega a "pool" de clientes do ficheiro. </p>
+<p>Le a pool de clientes do ficheiro (formato "codigo TAB nome").</p>
+<p>Formato (TAB-separado): "codigo TAB nome". As terminacoes \r\n (Windows) sao tratadas. </p><dl class="section return"><dt>Retorna</dt><dd>1 se conseguiu abrir, 0 caso contrario.</dd></dl>
+<p>Carrega a "pool" de clientes do ficheiro. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8c_source.html#l00156">156</a> do ficheiro <a class="el" href="_pessoa_8c_source.html">Pessoa.c</a>.</p>
+
+</div>
+</div>
+<a id="aff89afd0a7311eb332d7e6a2b1572aae" name="aff89afd0a7311eb332d7e6a2b1572aae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff89afd0a7311eb332d7e6a2b1572aae">&#9670;&#160;</a></span>CriarListaClientes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CriarListaClientes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_clientes.html">ListaClientes</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicializa a lista vazia e o indice de nomes. </p>
+<p>Inicializa a lista vazia.</p>
+<p>Inicializa a lista vazia e o indice de nomes. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8c_source.html#l00010">10</a> do ficheiro <a class="el" href="_pessoa_8c_source.html">Pessoa.c</a>.</p>
+
+</div>
+</div>
+<a id="a01c79a3dffd77199e3df49cf4a74b67a" name="a01c79a3dffd77199e3df49cf4a74b67a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01c79a3dffd77199e3df49cf4a74b67a">&#9670;&#160;</a></span>DestruirListaClientes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DestruirListaClientes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_clientes.html">ListaClientes</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Liberta o indice de nomes (o array v[] vive na struct mae). </p>
+<p>Liberta a tabela idxNome (o array v[] vive na struct mae).</p>
+<p>Liberta o indice de nomes (o array v[] vive na struct mae). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8c_source.html#l00017">17</a> do ficheiro <a class="el" href="_pessoa_8c_source.html">Pessoa.c</a>.</p>
+
+</div>
+</div>
+<a id="ac4126285308a9aa44c4d0c663a8584e0" name="ac4126285308a9aa44c4d0c663a8584e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4126285308a9aa44c4d0c663a8584e0">&#9670;&#160;</a></span>EditarCliente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EditarCliente </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_clientes.html">ListaClientes</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nome</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>numProdutos</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Edita o numero de produtos do carrinho de um cliente. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8c_source.html#l00098">98</a> do ficheiro <a class="el" href="_pessoa_8c_source.html">Pessoa.c</a>.</p>
+
+</div>
+</div>
+<a id="a416dc6bdb0b2c3da1985ecfd2f9e1b43" name="a416dc6bdb0b2c3da1985ecfd2f9e1b43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a416dc6bdb0b2c3da1985ecfd2f9e1b43">&#9670;&#160;</a></span>GerarClientesAleatorios()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GerarClientesAleatorios </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_clientes.html">ListaClientes</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>quantos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>maxProdutos</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cria clientes ficticios "Cli#", util para testar com muitos dados. </p>
+<p>Cria 'quantos' clientes ficticios "Cli#" para teste.</p>
+<p>Cria clientes ficticios "Cli#", util para testar com muitos dados. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8c_source.html#l00174">174</a> do ficheiro <a class="el" href="_pessoa_8c_source.html">Pessoa.c</a>.</p>
+
+</div>
+</div>
+<a id="afd998c95176aafc9838ab924cee2fb92" name="afd998c95176aafc9838ab924cee2fb92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd998c95176aafc9838ab924cee2fb92">&#9670;&#160;</a></span>ListarClientes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ListarClientes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_clientes.html">ListaClientes</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lista os clientes registados em paginas de 20. </p>
+<p>Lista clientes activos com paginacao.</p>
+<p>O utilizador pode pedir a pagina seguinte (Enter) ou sair (q).</p>
+<p>Lista os clientes registados em paginas de 20. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8c_source.html#l00124">124</a> do ficheiro <a class="el" href="_pessoa_8c_source.html">Pessoa.c</a>.</p>
+
+</div>
+</div>
+<a id="a0930cc4fdfe99a86809d0546b8c62634" name="a0930cc4fdfe99a86809d0546b8c62634"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0930cc4fdfe99a86809d0546b8c62634">&#9670;&#160;</a></span>MenuClientes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MenuClientes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_clientes.html">ListaClientes</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Submenu interactivo de gestao de clientes. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8c_source.html#l00229">229</a> do ficheiro <a class="el" href="_pessoa_8c_source.html">Pessoa.c</a>.</p>
+
+</div>
+</div>
+<a id="a252892a4edac405a9616a61c8e8b2b6e" name="a252892a4edac405a9616a61c8e8b2b6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a252892a4edac405a9616a61c8e8b2b6e">&#9670;&#160;</a></span>PesquisarCliente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PesquisarCliente </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_clientes.html">ListaClientes</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nome</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pesquisa por nome em O(1) media usando a tabela de dispersao. </p>
+<p>Pesquisa exata por nome (O(1) media via hashing).</p>
+<p>So devolve indice se o cliente ainda estiver "activo".</p>
+<p>Pesquisa por nome em O(1) media usando a tabela de dispersao.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Indice ou -1 se nao existe ou esta inactivo. </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8c_source.html#l00057">57</a> do ficheiro <a class="el" href="_pessoa_8c_source.html">Pessoa.c</a>.</p>
+
+</div>
+</div>
+<a id="a42e5a114eddfe9c41d5b82f9d186d24a" name="a42e5a114eddfe9c41d5b82f9d186d24a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42e5a114eddfe9c41d5b82f9d186d24a">&#9670;&#160;</a></span>PesquisarClienteTolerante()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PesquisarClienteTolerante </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_clientes.html">ListaClientes</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>texto</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pesquisa tolerante: match exacto via hash, ou prefixo sem caso. </p>
+<p>Pesquisa case-insensitive + prefixo (fallback para varrimento linear).</p>
+<p>Primeiro tenta match exacto (rapido, via hash); se nao encontrar, faz um varrimento linear case-insensitive com prefixo. Devolve o primeiro cliente activo que comece pelas mesmas letras (qualquer caixa).</p>
+<p>Pesquisa tolerante: match exacto via hash, ou prefixo sem caso.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Indice do primeiro cliente activo cujo nome comece por 'texto'. </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8c_source.html#l00083">83</a> do ficheiro <a class="el" href="_pessoa_8c_source.html">Pessoa.c</a>.</p>
+
+</div>
+</div>
+<a id="aa4617d56514564e9ac09b8713dbd148c" name="aa4617d56514564e9ac09b8713dbd148c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4617d56514564e9ac09b8713dbd148c">&#9670;&#160;</a></span>PrefixoIgualSemCaso()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PrefixoIgualSemCaso </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>prefixo</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Verifica se 'prefixo' e' prefixo de 'str' ignorando maiusculas. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8c_source.html#l00066">66</a> do ficheiro <a class="el" href="_pessoa_8c_source.html">Pessoa.c</a>.</p>
+
+</div>
+</div>
+<a id="a9aba7f6b6e90cac898ae3aacc3ecc049" name="a9aba7f6b6e90cac898ae3aacc3ecc049"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9aba7f6b6e90cac898ae3aacc3ecc049">&#9670;&#160;</a></span>PrepararCarrinho()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PrepararCarrinho </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_cliente.html">Cliente</a> *</td>          <td class="paramname"><span class="paramname"><em>c</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_lista_produtos.html">ListaProdutos</a> *</td>          <td class="paramname"><span class="paramname"><em>prods</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>maxPreco</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>tempoAtendProduto</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prepara o carrinho do cliente. </p>
+<p>Preenche o carrinho do cliente com produtos aleatorios.</p>
+<p>Para cada artigo (numProdutos) escolhe um produto do catalogo e soma o preco; o tempo de passagem de cada produto e' um valor em [2, TEMPO_ATENDIMENTO_PRODUTO]. Se 'prods' for NULL usa valores aleatorios como fallback.</p>
+<p>Prepara o carrinho do cliente.</p>
+<p>Calcula valorCarrinho, precoMenorProduto, tempoAtendimento e tempoComprasRestante. Se 'prods' for NULL usa valores aleatorios. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8c_source.html#l00192">192</a> do ficheiro <a class="el" href="_pessoa_8c_source.html">Pessoa.c</a>.</p>
+
+</div>
+</div>
+<a id="a07c5a0e0126cca017c587e80b68251ae" name="a07c5a0e0126cca017c587e80b68251ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07c5a0e0126cca017c587e80b68251ae">&#9670;&#160;</a></span>RemoverCliente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int RemoverCliente </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_lista_clientes.html">ListaClientes</a> *</td>          <td class="paramname"><span class="paramname"><em>L</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nome</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Desactiva um cliente. </p>
+<dl class="section return"><dt>Retorna</dt><dd>1 ok, -1 se ainda estiver dentro da loja, 0 nao encontrado.</dd>
+<dd>
+1 ok, -1 se estiver dentro da loja, 0 nao encontrado. </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8c_source.html#l00110">110</a> do ficheiro <a class="el" href="_pessoa_8c_source.html">Pessoa.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="_pessoa_8c.html">Pessoa.c</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

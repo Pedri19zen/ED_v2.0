@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Gestao de Caixas de um Supermercado: Código-Fonte de include/Uteis.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Gestao de Caixas de um Supermercado<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Projeto ED 25/26 - 1o Ano / 2o Semestre</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('_uteis_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Uteis.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_uteis_8h.html">Ir para a documentação deste ficheiro.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file Uteis.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief Constantes globais e utilitarios partilhados (aleatorios, leitura</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *        validada do teclado, historico CSV, cores ANSI e barra de fila).</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * Este modulo nao depende de nenhum outro do projecto e e&#39; incluido por</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * todos os restantes.</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#ifndef UTEIS_H_INCLUDED</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define UTEIS_H_INCLUDED</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">/* ---- Tamanhos maximos dos arrays-mestre (dados carregados uma vez) ---- */</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="_uteis_8h.html#a650a929b45480c0875d8c814f442b6ac">   17</a></span><span class="preprocessor">#define MAX_NOME           50     </span><span class="comment">/**&lt; Tamanho de nome de cliente/caixa/funcionario. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="_uteis_8h.html#ad65f871456b07953dab9cd51f48c4744">   18</a></span><span class="preprocessor">#define MAX_NOME_PRODUTO   128    </span><span class="comment">/**&lt; Nomes de produtos sao mais longos. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="_uteis_8h.html#a0cf5c23bdf46ca7f4778aea7da2bc548">   19</a></span><span class="preprocessor">#define MAX_CLIENTES       12000  </span><span class="comment">/**&lt; Clientes registados (Clientes.txt). */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="_uteis_8h.html#a6f8b26e433788430f2bcd212ad2d7eb6">   20</a></span><span class="preprocessor">#define MAX_PRODUTOS       10000  </span><span class="comment">/**&lt; Produtos no catalogo. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="_uteis_8h.html#ae56b7e6ebd3278dc39f4c20c2e123c91">   21</a></span><span class="preprocessor">#define MAX_FUNCIONARIOS   200    </span><span class="comment">/**&lt; Operadores de caixa. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="_uteis_8h.html#a9cebeb550234e4af57e981c4f205cf8c">   22</a></span><span class="preprocessor">#define MAX_CAIXAS         100    </span><span class="comment">/**&lt; Limite ao percorrer o hashing das caixas. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="_uteis_8h.html#a5efaa0bd9ee057af47b92c6ed14cbee1">   23</a></span><span class="preprocessor">#define CAPACIDADE_LOJA    100    </span><span class="comment">/**&lt; Clientes dentro da loja em simultaneo. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="_uteis_8h.html#ad294824459cf75fc6cd3b0ca3b16bc21">   24</a></span><span class="preprocessor">#define TAMANHO_HASH       13     </span><span class="comment">/**&lt; Primo: tamanho da tabela das caixas. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">/* ---- Nomes dos ficheiros (entrada em data/, saida na raiz) ---- */</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="_uteis_8h.html#a6fd0112a000eea8bb9b69b0b70eee02a">   27</a></span><span class="preprocessor">#define FICH_CONFIG        &quot;data/Configuracao.txt&quot;   </span><span class="comment">/**&lt; Parametros da simulacao. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="_uteis_8h.html#acc93b64d5519963fac7ff87ca830a7a8">   28</a></span><span class="preprocessor">#define FICH_PRODUTOS      &quot;data/Produtos.txt&quot;       </span><span class="comment">/**&lt; Catalogo de produtos. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="_uteis_8h.html#a1ecd1b13a8a5d6a7a85b15ac8ae63334">   29</a></span><span class="preprocessor">#define FICH_FUNCIONARIOS  &quot;data/Funcionarios.txt&quot;   </span><span class="comment">/**&lt; Operadores de caixa. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="_uteis_8h.html#a4c280bd0382ff0a4d3055ed81050fa8e">   30</a></span><span class="preprocessor">#define FICH_CLIENTES      &quot;data/Clientes.txt&quot;       </span><span class="comment">/**&lt; Pool de nomes de clientes. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="_uteis_8h.html#a95eee5f555f544e22c19b9d03f13a5bf">   31</a></span><span class="preprocessor">#define FICH_HISTORICO     &quot;historico.csv&quot;           </span><span class="comment">/**&lt; Log das acoes do utilizador. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="_uteis_8h.html#a4ab781d160c2133ec43802fb513ead88">   32</a></span><span class="preprocessor">#define FICH_RESULTADO     &quot;resultado.txt&quot;           </span><span class="comment">/**&lt; Relatorio final. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"></span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"> * @brief Devolve um inteiro aleatorio em [min, max].</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"> * @param min Limite inferior (inclusivo).</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment"> * @param max Limite superior (inclusivo).</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment"> * @return Valor aleatorio no intervalo.</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">int</span> <a class="code hl_function" href="_uteis_8h.html#aa6715c44960d0df8ee93f16972d39c44">Aleatorio</a>(<span class="keywordtype">int</span> min, <span class="keywordtype">int</span> max);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment"></span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">/** @brief Esvazia o resto da linha que ficou no buffer de entrada. */</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keywordtype">void</span>  <a class="code hl_function" href="_uteis_8h.html#a8060a8792b5b11cd62a6e80bfdf890ec">LimparBuffer</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"></span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"> * @brief Le uma linha do stdin e converte para inteiro.</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"> * @param txt Texto a mostrar como prompt.</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"> * @return O inteiro lido, ou -1 se a entrada nao for um numero.</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keywordtype">int</span>   <a class="code hl_function" href="_uteis_8h.html#a05e2744aca83a3bf1572ba72083b71c3">LerInteiro</a>(<span class="keywordtype">char</span> *txt);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"></span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> * @brief Le um inteiro insistindo ate estar em [min, max].</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"> * @param txt Prompt a mostrar.</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"> * @param min Limite inferior aceitavel.</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"> * @param max Limite superior aceitavel.</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment"> * @return O inteiro lido dentro do intervalo.</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keywordtype">int</span>   <a class="code hl_function" href="_uteis_8h.html#a047f7e8c1ece3370e084dfa4b0761d1a">LerOpcao</a>(<span class="keywordtype">char</span> *txt, <span class="keywordtype">int</span> min, <span class="keywordtype">int</span> max);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment"></span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment"> * @brief Le um numero decimal do stdin.</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment"> * @param txt Prompt a mostrar.</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment"> * @return O numero lido ou -1 se invalido.</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keywordtype">float</span> <a class="code hl_function" href="_uteis_8h.html#a56c61ad3470d8500a4d3ec7f453b1c09">LerFloat</a>(<span class="keywordtype">char</span> *txt);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment"></span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment"> * @brief Le uma linha para &#39;destino&#39; (corta o &#39;\\n&#39; final).</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment"> * @param txt Prompt a mostrar.</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment"> * @param destino Buffer onde a string e&#39; guardada.</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment"> * @param tamanho Tamanho maximo do buffer.</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keywordtype">void</span>  <a class="code hl_function" href="_uteis_8h.html#afa3bedbf335c67fbfdb6ae08f5e93665">LerString</a>(<span class="keywordtype">char</span> *txt, <span class="keywordtype">char</span> *destino, <span class="keywordtype">int</span> tamanho);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment"></span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment"> * @brief Mostra &quot;txt (S/N)&quot; e devolve true se a resposta comecar por &#39;S&#39;/&#39;s&#39;.</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment"> * @param txt Pergunta a mostrar.</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment"> * @return true se confirmado, false caso contrario.</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keywordtype">bool</span>  <a class="code hl_function" href="_uteis_8h.html#a16fa15f06e681980d70189d6209e5003">Confirmar</a>(<span class="keywordtype">char</span> *txt);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment"></span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">/** @brief Converte um caracter para maiuscula (so a-z). */</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keywordtype">char</span> <a class="code hl_function" href="_uteis_8h.html#a5f34e18397fe7f993e6b4bfefabfb965">ToMaiscula</a>(<span class="keywordtype">char</span> x);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment"></span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment"> * @brief Copia de forma segura um nome para um buffer de tamanho MAX_NOME.</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment"> * @param destino Buffer destino.</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment"> * @param origem  String origem.</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keywordtype">void</span> <a class="code hl_function" href="_uteis_8h.html#a036cfe874a8bf00da9f2a039d4451651">CopiarNome</a>(<span class="keywordtype">char</span> *destino, <span class="keywordtype">char</span> *origem);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment"></span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">/** @brief Espera (aproximadamente) &#39;seconds&#39; segundos em espera activa. */</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keywordtype">void</span> <a class="code hl_function" href="_uteis_8h.html#a989ec8a09d6ea1467f668956177f1fb4">wait_segundos</a>(<span class="keywordtype">int</span> seconds);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">/* ---- Teclado em tempo real (usado pela simulacao automatica) ---- */</span><span class="comment"></span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">/** @brief Pausa de &#39;ms&#39; milissegundos sem gastar CPU. */</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keywordtype">void</span> <a class="code hl_function" href="_uteis_8h.html#aed4a65a9d207cccbc9b120f65468f6e3">DormirMs</a>(<span class="keywordtype">int</span> ms);<span class="comment"></span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">/** @brief Devolve 1 se houver uma tecla a espera (nao bloqueia). */</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keywordtype">int</span>  <a class="code hl_function" href="_uteis_8h.html#a2b01d2ffa9eea238d3570fbab5680b56">TeclaPressionada</a>(<span class="keywordtype">void</span>);<span class="comment"></span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">/** @brief Consome a(s) tecla(s) que estejam no buffer. */</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keywordtype">void</span> <a class="code hl_function" href="_uteis_8h.html#af92eaf84af1a50e67102093b071a5534">DescartarTecla</a>(<span class="keywordtype">void</span>);<span class="comment"></span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment"> * @brief Espera &#39;ms&#39; ms; se uma tecla for premida durante a espera, devolve 1.</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment"> * @param ms Tempo total a esperar em milissegundos.</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment"> * @return 1 se uma tecla foi premida antes do tempo expirar, 0 caso contrario.</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="keywordtype">int</span>  <a class="code hl_function" href="_uteis_8h.html#a119c16b345de7c6b4a637e0131d1b1a9">EsperarOuTecla</a>(<span class="keywordtype">int</span> ms);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">/* ---- Historico CSV das acoes do utilizador (requisito 3) ---- */</span><span class="comment"></span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">/** @brief Marca o inicio de uma sessao no historico CSV. */</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="keywordtype">void</span> <a class="code hl_function" href="_uteis_8h.html#aa7fe7927f979983d14033f08fc62ef81">IniciarHistorico</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment"></span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment"> * @brief Acrescenta uma linha ao historico CSV.</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment"> * Formato: &quot;data;accao;detalhe&quot;. O detalhe pode estar vazio (NULL) quando</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment"> * a accao nao tem parametros associados.</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment"> * @param accao   Identificador curto da accao.</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment"> * @param detalhe Parametro adicional (pode ser NULL).</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="keywordtype">void</span> <a class="code hl_function" href="_uteis_8h.html#af011f072c57f45c33650f2d9118c86b2">RegistarHistorico</a>(<span class="keywordtype">char</span> *accao, <span class="keywordtype">char</span> *detalhe);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment">/* ---- Cores ANSI (paleta 256, tons suaves) ---- */</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="_uteis_8h.html#a0523b7e99fee2fb9c92888a44e82fb49">  126</a></span><span class="preprocessor">#define COR_OK    &quot;\x1b[38;5;108m&quot;   </span><span class="comment">/**&lt; Verde-salva: fila &lt;= 3. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="_uteis_8h.html#a47365476f9562a6d76facf177ceeaaf0">  127</a></span><span class="preprocessor">#define COR_WARN  &quot;\x1b[38;5;179m&quot;   </span><span class="comment">/**&lt; Mostarda:    fila &lt;= 6. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="_uteis_8h.html#a7fd77e85e422062bd92735f52ad416ea">  128</a></span><span class="preprocessor">#define COR_ERR   &quot;\x1b[38;5;174m&quot;   </span><span class="comment">/**&lt; Coral:       fila &gt; 6. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="_uteis_8h.html#a9530f9f9884824bcb2b0477f24a70a9c">  129</a></span><span class="preprocessor">#define COR_HDR   &quot;\x1b[38;5;110m&quot;   </span><span class="comment">/**&lt; Azul: cabecalhos. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="_uteis_8h.html#a9d19b3da5530e5fc308758e7e209fdf9">  130</a></span><span class="preprocessor">#define COR_DIM   &quot;\x1b[38;5;244m&quot;   </span><span class="comment">/**&lt; Cinza: separadores e [FECHADA]. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="_uteis_8h.html#a641268c7761d910c7a9fb18c31c712f2">  131</a></span><span class="preprocessor">#define COR_RESET &quot;\x1b[0m&quot;          </span><span class="comment">/**&lt; Repor a cor por omissao. */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment"></span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment"> * @brief Habilita ANSI Virtual Terminal e UTF-8 no terminal do Windows.</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="comment"> * Em Linux/macOS nao faz nada (as cores e o UTF-8 estao activos por omissao).</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="keywordtype">void</span> <a class="code hl_function" href="_uteis_8h.html#a4222a2bafcb8e3484b80ad5117de2ea8">AtivarCoresTerminal</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="comment"></span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="comment"> * @brief Imprime &quot;Fila: N pessoas [●●●·······]&quot; colorida segundo o tamanho.</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment"> * @param n Tamanho da fila. Verde se n &lt;= 3, amarelo se n &lt;= 6, vermelho &gt; 6.</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="keywordtype">void</span> <a class="code hl_function" href="_uteis_8h.html#a273f50ca26d7a272c512270936ff2c7a">ImprimirBarraFila</a>(<span class="keywordtype">int</span> n);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="preprocessor">#endif </span><span class="comment">/* UTEIS_H_INCLUDED */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a_uteis_8h_html_a036cfe874a8bf00da9f2a039d4451651"><div class="ttname"><a href="_uteis_8h.html#a036cfe874a8bf00da9f2a039d4451651">CopiarNome</a></div><div class="ttdeci">void CopiarNome(char *destino, char *origem)</div><div class="ttdoc">Copia de forma segura um nome para um buffer de tamanho MAX_NOME.</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00142">Uteis.c:142</a></div></div>
+<div class="ttc" id="a_uteis_8h_html_a047f7e8c1ece3370e084dfa4b0761d1a"><div class="ttname"><a href="_uteis_8h.html#a047f7e8c1ece3370e084dfa4b0761d1a">LerOpcao</a></div><div class="ttdeci">int LerOpcao(char *txt, int min, int max)</div><div class="ttdoc">Le um inteiro insistindo ate estar em [min, max].</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00089">Uteis.c:89</a></div></div>
+<div class="ttc" id="a_uteis_8h_html_a05e2744aca83a3bf1572ba72083b71c3"><div class="ttname"><a href="_uteis_8h.html#a05e2744aca83a3bf1572ba72083b71c3">LerInteiro</a></div><div class="ttdeci">int LerInteiro(char *txt)</div><div class="ttdoc">Le uma linha do stdin e converte para inteiro.</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00077">Uteis.c:77</a></div></div>
+<div class="ttc" id="a_uteis_8h_html_a119c16b345de7c6b4a637e0131d1b1a9"><div class="ttname"><a href="_uteis_8h.html#a119c16b345de7c6b4a637e0131d1b1a9">EsperarOuTecla</a></div><div class="ttdeci">int EsperarOuTecla(int ms)</div><div class="ttdoc">Espera &#39;ms&#39; ms; se uma tecla for premida durante a espera, devolve 1.</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00234">Uteis.c:234</a></div></div>
+<div class="ttc" id="a_uteis_8h_html_a16fa15f06e681980d70189d6209e5003"><div class="ttname"><a href="_uteis_8h.html#a16fa15f06e681980d70189d6209e5003">Confirmar</a></div><div class="ttdeci">bool Confirmar(char *txt)</div><div class="ttdoc">Mostra &quot;txt (S/N)&quot; e devolve true se a resposta comecar por &#39;S&#39;/&#39;s&#39;.</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00125">Uteis.c:125</a></div></div>
+<div class="ttc" id="a_uteis_8h_html_a273f50ca26d7a272c512270936ff2c7a"><div class="ttname"><a href="_uteis_8h.html#a273f50ca26d7a272c512270936ff2c7a">ImprimirBarraFila</a></div><div class="ttdeci">void ImprimirBarraFila(int n)</div><div class="ttdoc">Imprime &quot;Fila: N pessoas [●●●·······]&quot; colorida segundo o tamanho.</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00051">Uteis.c:51</a></div></div>
+<div class="ttc" id="a_uteis_8h_html_a2b01d2ffa9eea238d3570fbab5680b56"><div class="ttname"><a href="_uteis_8h.html#a2b01d2ffa9eea238d3570fbab5680b56">TeclaPressionada</a></div><div class="ttdeci">int TeclaPressionada(void)</div><div class="ttdoc">Devolve 1 se houver uma tecla a espera (nao bloqueia).</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00209">Uteis.c:209</a></div></div>
+<div class="ttc" id="a_uteis_8h_html_a4222a2bafcb8e3484b80ad5117de2ea8"><div class="ttname"><a href="_uteis_8h.html#a4222a2bafcb8e3484b80ad5117de2ea8">AtivarCoresTerminal</a></div><div class="ttdeci">void AtivarCoresTerminal(void)</div><div class="ttdoc">Habilita ANSI Virtual Terminal e UTF-8 no terminal do Windows.</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00034">Uteis.c:34</a></div></div>
+<div class="ttc" id="a_uteis_8h_html_a56c61ad3470d8500a4d3ec7f453b1c09"><div class="ttname"><a href="_uteis_8h.html#a56c61ad3470d8500a4d3ec7f453b1c09">LerFloat</a></div><div class="ttdeci">float LerFloat(char *txt)</div><div class="ttdoc">Le um numero decimal do stdin.</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00101">Uteis.c:101</a></div></div>
+<div class="ttc" id="a_uteis_8h_html_a5f34e18397fe7f993e6b4bfefabfb965"><div class="ttname"><a href="_uteis_8h.html#a5f34e18397fe7f993e6b4bfefabfb965">ToMaiscula</a></div><div class="ttdeci">char ToMaiscula(char x)</div><div class="ttdoc">Converte um caracter para maiuscula (so a-z).</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00135">Uteis.c:135</a></div></div>
+<div class="ttc" id="a_uteis_8h_html_a8060a8792b5b11cd62a6e80bfdf890ec"><div class="ttname"><a href="_uteis_8h.html#a8060a8792b5b11cd62a6e80bfdf890ec">LimparBuffer</a></div><div class="ttdeci">void LimparBuffer(void)</div><div class="ttdoc">Esvazia o resto da linha que ficou no buffer de entrada.</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00067">Uteis.c:67</a></div></div>
+<div class="ttc" id="a_uteis_8h_html_a989ec8a09d6ea1467f668956177f1fb4"><div class="ttname"><a href="_uteis_8h.html#a989ec8a09d6ea1467f668956177f1fb4">wait_segundos</a></div><div class="ttdeci">void wait_segundos(int seconds)</div><div class="ttdoc">Espera (aproximadamente) &#39;seconds&#39; segundos em espera activa.</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00152">Uteis.c:152</a></div></div>
+<div class="ttc" id="a_uteis_8h_html_aa6715c44960d0df8ee93f16972d39c44"><div class="ttname"><a href="_uteis_8h.html#aa6715c44960d0df8ee93f16972d39c44">Aleatorio</a></div><div class="ttdeci">int Aleatorio(int min, int max)</div><div class="ttdoc">Devolve um inteiro aleatorio em [min, max].</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00022">Uteis.c:22</a></div></div>
+<div class="ttc" id="a_uteis_8h_html_aa7fe7927f979983d14033f08fc62ef81"><div class="ttname"><a href="_uteis_8h.html#aa7fe7927f979983d14033f08fc62ef81">IniciarHistorico</a></div><div class="ttdeci">void IniciarHistorico(void)</div><div class="ttdoc">Marca o inicio de uma sessao no historico CSV.</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00159">Uteis.c:159</a></div></div>
+<div class="ttc" id="a_uteis_8h_html_aed4a65a9d207cccbc9b120f65468f6e3"><div class="ttname"><a href="_uteis_8h.html#aed4a65a9d207cccbc9b120f65468f6e3">DormirMs</a></div><div class="ttdeci">void DormirMs(int ms)</div><div class="ttdoc">Pausa de &#39;ms&#39; milissegundos sem gastar CPU.</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00206">Uteis.c:206</a></div></div>
+<div class="ttc" id="a_uteis_8h_html_af011f072c57f45c33650f2d9118c86b2"><div class="ttname"><a href="_uteis_8h.html#af011f072c57f45c33650f2d9118c86b2">RegistarHistorico</a></div><div class="ttdeci">void RegistarHistorico(char *accao, char *detalhe)</div><div class="ttdoc">Acrescenta uma linha ao historico CSV.</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00175">Uteis.c:175</a></div></div>
+<div class="ttc" id="a_uteis_8h_html_af92eaf84af1a50e67102093b071a5534"><div class="ttname"><a href="_uteis_8h.html#af92eaf84af1a50e67102093b071a5534">DescartarTecla</a></div><div class="ttdeci">void DescartarTecla(void)</div><div class="ttdoc">Consome a(s) tecla(s) que estejam no buffer.</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00226">Uteis.c:226</a></div></div>
+<div class="ttc" id="a_uteis_8h_html_afa3bedbf335c67fbfdb6ae08f5e93665"><div class="ttname"><a href="_uteis_8h.html#afa3bedbf335c67fbfdb6ae08f5e93665">LerString</a></div><div class="ttdeci">void LerString(char *txt, char *destino, int tamanho)</div><div class="ttdoc">Le uma linha para &#39;destino&#39; (corta o &#39;\n&#39; final).</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8c_source.html#l00113">Uteis.c:113</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="_uteis_8h.html">Uteis.h</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

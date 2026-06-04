@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Gestao de Caixas de um Supermercado: Referência ao ficheiro include/Fila.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Gestao de Caixas de um Supermercado<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Projeto ED 25/26 - 1o Ano / 2o Semestre</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('_fila_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência ao ficheiro Fila.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><a class="el" href="struct_fila.html" title="Fila (FIFO) com referencias para o inicio e o fim.">Fila</a> (FIFO) de clientes implementada como lista ligada.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>&quot;</code><br />
+</div>
+<p><a href="_fila_8h_source.html">Ir para o código fonte deste ficheiro.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Estruturas de Dados</h2></td></tr>
+<tr class="memitem:NoFila" id="r_NoFila"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="struct_no_fila.html">NoFila</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">No da lista ligada da fila.  <a href="struct_no_fila.html#details">Mais...</a><br /></td></tr>
+<tr class="memitem:Fila" id="r_Fila"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="struct_fila.html">Fila</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_fila.html" title="Fila (FIFO) com referencias para o inicio e o fim.">Fila</a> (FIFO) com referencias para o inicio e o fim.  <a href="struct_fila.html#details">Mais...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a0f6be67cb39ee562d1e45930d45cbb83" id="r_a0f6be67cb39ee562d1e45930d45cbb83"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0f6be67cb39ee562d1e45930d45cbb83">CriarFila</a> (<a class="el" href="struct_fila.html">Fila</a> *f)</td></tr>
+<tr class="memdesc:a0f6be67cb39ee562d1e45930d45cbb83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa uma fila vazia.  <br /></td></tr>
+<tr class="memitem:abe8e93c88ca712905d41299dea948adc" id="r_abe8e93c88ca712905d41299dea948adc"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#abe8e93c88ca712905d41299dea948adc">FilaVazia</a> (<a class="el" href="struct_fila.html">Fila</a> *f)</td></tr>
+<tr class="memdesc:abe8e93c88ca712905d41299dea948adc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devolve 1 se a fila estiver vazia.  <br /></td></tr>
+<tr class="memitem:a47cf6a494e52da6c941954c38bfc9c06" id="r_a47cf6a494e52da6c941954c38bfc9c06"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a47cf6a494e52da6c941954c38bfc9c06">TamanhoFila</a> (<a class="el" href="struct_fila.html">Fila</a> *f)</td></tr>
+<tr class="memdesc:a47cf6a494e52da6c941954c38bfc9c06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devolve o numero de elementos.  <br /></td></tr>
+<tr class="memitem:a16a0a3d3be7b03b3b0ad03698e6df755" id="r_a16a0a3d3be7b03b3b0ad03698e6df755"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a16a0a3d3be7b03b3b0ad03698e6df755">EnfileirarCliente</a> (<a class="el" href="struct_fila.html">Fila</a> *f, <a class="el" href="struct_cliente.html">Cliente</a> *c)</td></tr>
+<tr class="memdesc:a16a0a3d3be7b03b3b0ad03698e6df755"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acrescenta um cliente ao fim da fila.  <br /></td></tr>
+<tr class="memitem:a47163fd997f82f188e8507c7521b72c8" id="r_a47163fd997f82f188e8507c7521b72c8"><td class="memItemLeft"><a class="el" href="struct_cliente.html">Cliente</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a47163fd997f82f188e8507c7521b72c8">FrenteFila</a> (<a class="el" href="struct_fila.html">Fila</a> *f)</td></tr>
+<tr class="memdesc:a47163fd997f82f188e8507c7521b72c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Espreita o cliente da frente sem o remover (NULL se vazia).  <br /></td></tr>
+<tr class="memitem:a44a46c97ebcf133014dc3996e0e001fa" id="r_a44a46c97ebcf133014dc3996e0e001fa"><td class="memItemLeft"><a class="el" href="struct_cliente.html">Cliente</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a44a46c97ebcf133014dc3996e0e001fa">DesenfileirarCliente</a> (<a class="el" href="struct_fila.html">Fila</a> *f)</td></tr>
+<tr class="memdesc:a44a46c97ebcf133014dc3996e0e001fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove e devolve o cliente da frente (NULL se vazia).  <br /></td></tr>
+<tr class="memitem:a838872fa44b82f683ee6d6ae717f5520" id="r_a838872fa44b82f683ee6d6ae717f5520"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a838872fa44b82f683ee6d6ae717f5520">RemoverClienteDaFila</a> (<a class="el" href="struct_fila.html">Fila</a> *f, <a class="el" href="struct_cliente.html">Cliente</a> *c)</td></tr>
+<tr class="memdesc:a838872fa44b82f683ee6d6ae717f5520"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove um cliente especifico da fila (usado para mover de caixa).  <br /></td></tr>
+<tr class="memitem:a133583d6b481476fcea5dc30a03bfe58" id="r_a133583d6b481476fcea5dc30a03bfe58"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a133583d6b481476fcea5dc30a03bfe58">DestruirFila</a> (<a class="el" href="struct_fila.html">Fila</a> *f)</td></tr>
+<tr class="memdesc:a133583d6b481476fcea5dc30a03bfe58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liberta todos os nos da fila (sem libertar os clientes).  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p><a class="el" href="struct_fila.html" title="Fila (FIFO) com referencias para o inicio e o fim.">Fila</a> (FIFO) de clientes implementada como lista ligada. </p>
+<p>Cada no guarda apenas um ponteiro para o cliente (que vive no array-mestre); destruir a fila NAO liberta os clientes. </p>
+
+<p class="definition">Definido no ficheiro <a class="el" href="_fila_8h_source.html">Fila.h</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentação das funções</h2>
+<a id="a0f6be67cb39ee562d1e45930d45cbb83" name="a0f6be67cb39ee562d1e45930d45cbb83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f6be67cb39ee562d1e45930d45cbb83">&#9670;&#160;</a></span>CriarFila()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CriarFila </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_fila.html">Fila</a> *</td>          <td class="paramname"><span class="paramname"><em>f</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicializa uma fila vazia. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_fila_8c_source.html#l00010">10</a> do ficheiro <a class="el" href="_fila_8c_source.html">Fila.c</a>.</p>
+
+</div>
+</div>
+<a id="a44a46c97ebcf133014dc3996e0e001fa" name="a44a46c97ebcf133014dc3996e0e001fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44a46c97ebcf133014dc3996e0e001fa">&#9670;&#160;</a></span>DesenfileirarCliente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_cliente.html">Cliente</a> * DesenfileirarCliente </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_fila.html">Fila</a> *</td>          <td class="paramname"><span class="paramname"><em>f</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove e devolve o cliente da frente (NULL se vazia). </p>
+<p>Retira e devolve o cliente do inicio da fila.</p>
+<p>Remove e devolve o cliente da frente (NULL se vazia). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_fila_8c_source.html#l00036">36</a> do ficheiro <a class="el" href="_fila_8c_source.html">Fila.c</a>.</p>
+
+</div>
+</div>
+<a id="a133583d6b481476fcea5dc30a03bfe58" name="a133583d6b481476fcea5dc30a03bfe58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a133583d6b481476fcea5dc30a03bfe58">&#9670;&#160;</a></span>DestruirFila()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DestruirFila </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_fila.html">Fila</a> *</td>          <td class="paramname"><span class="paramname"><em>f</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Liberta todos os nos da fila (sem libertar os clientes). </p>
+<p>Liberta todos os nos da fila (mas nao os clientes).</p>
+<p>Liberta todos os nos da fila (sem libertar os clientes). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_fila_8c_source.html#l00073">73</a> do ficheiro <a class="el" href="_fila_8c_source.html">Fila.c</a>.</p>
+
+</div>
+</div>
+<a id="a16a0a3d3be7b03b3b0ad03698e6df755" name="a16a0a3d3be7b03b3b0ad03698e6df755"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16a0a3d3be7b03b3b0ad03698e6df755">&#9670;&#160;</a></span>EnfileirarCliente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EnfileirarCliente </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_fila.html">Fila</a> *</td>          <td class="paramname"><span class="paramname"><em>f</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_cliente.html">Cliente</a> *</td>          <td class="paramname"><span class="paramname"><em>c</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Acrescenta um cliente ao fim da fila. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_fila_8c_source.html#l00019">19</a> do ficheiro <a class="el" href="_fila_8c_source.html">Fila.c</a>.</p>
+
+</div>
+</div>
+<a id="abe8e93c88ca712905d41299dea948adc" name="abe8e93c88ca712905d41299dea948adc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe8e93c88ca712905d41299dea948adc">&#9670;&#160;</a></span>FilaVazia()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int FilaVazia </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_fila.html">Fila</a> *</td>          <td class="paramname"><span class="paramname"><em>f</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devolve 1 se a fila estiver vazia. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_fila_8c_source.html#l00013">13</a> do ficheiro <a class="el" href="_fila_8c_source.html">Fila.c</a>.</p>
+
+</div>
+</div>
+<a id="a47163fd997f82f188e8507c7521b72c8" name="a47163fd997f82f188e8507c7521b72c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47163fd997f82f188e8507c7521b72c8">&#9670;&#160;</a></span>FrenteFila()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_cliente.html">Cliente</a> * FrenteFila </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_fila.html">Fila</a> *</td>          <td class="paramname"><span class="paramname"><em>f</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Espreita o cliente da frente sem o remover (NULL se vazia). </p>
+<p>Espreita o cliente da frente sem o retirar.</p>
+<p>Espreita o cliente da frente sem o remover (NULL se vazia). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_fila_8c_source.html#l00030">30</a> do ficheiro <a class="el" href="_fila_8c_source.html">Fila.c</a>.</p>
+
+</div>
+</div>
+<a id="a838872fa44b82f683ee6d6ae717f5520" name="a838872fa44b82f683ee6d6ae717f5520"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a838872fa44b82f683ee6d6ae717f5520">&#9670;&#160;</a></span>RemoverClienteDaFila()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int RemoverClienteDaFila </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_fila.html">Fila</a> *</td>          <td class="paramname"><span class="paramname"><em>f</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_cliente.html">Cliente</a> *</td>          <td class="paramname"><span class="paramname"><em>c</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove um cliente especifico da fila (usado para mover de caixa). </p>
+<p>Remove um cliente especifico da fila.</p>
+<dl class="section return"><dt>Retorna</dt><dd>1 se encontrou e removeu, 0 caso contrario.</dd></dl>
+<p>Remove um cliente especifico da fila (usado para mover de caixa).</p>
+<dl class="section return"><dt>Retorna</dt><dd>1 se encontrou e removeu, 0 caso contrario. </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="_fila_8c_source.html#l00054">54</a> do ficheiro <a class="el" href="_fila_8c_source.html">Fila.c</a>.</p>
+
+</div>
+</div>
+<a id="a47cf6a494e52da6c941954c38bfc9c06" name="a47cf6a494e52da6c941954c38bfc9c06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47cf6a494e52da6c941954c38bfc9c06">&#9670;&#160;</a></span>TamanhoFila()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TamanhoFila </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_fila.html">Fila</a> *</td>          <td class="paramname"><span class="paramname"><em>f</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devolve o numero de elementos. </p>
+<p>Devolve o numero de elementos da fila.</p>
+<p>Devolve o numero de elementos. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_fila_8c_source.html#l00016">16</a> do ficheiro <a class="el" href="_fila_8c_source.html">Fila.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="_fila_8h.html">Fila.h</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

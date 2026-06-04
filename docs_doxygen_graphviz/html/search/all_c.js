@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['passo_0',['Fluxo da simulação (passo a passo)',['../index.html#autotoc_md5',1,'']]],
+  ['passo_20a_20passo_1',['Fluxo da simulação (passo a passo)',['../index.html#autotoc_md5',1,'']]],
+  ['pesquisarcaixa_2',['PesquisarCaixa',['../_hashing_8h.html#a7dc0089bd4326e9c74ee942e623a7c59',1,'PesquisarCaixa(Hashing *h, char *nome):&#160;Hashing.c'],['../_hashing_8c.html#a7dc0089bd4326e9c74ee942e623a7c59',1,'PesquisarCaixa(Hashing *h, char *nome):&#160;Hashing.c']]],
+  ['pesquisarcliente_3',['PesquisarCliente',['../_pessoa_8h.html#a252892a4edac405a9616a61c8e8b2b6e',1,'PesquisarCliente(ListaClientes *L, char *nome):&#160;Pessoa.c'],['../_pessoa_8c.html#a252892a4edac405a9616a61c8e8b2b6e',1,'PesquisarCliente(ListaClientes *L, char *nome):&#160;Pessoa.c']]],
+  ['pesquisarclientetolerante_4',['PesquisarClienteTolerante',['../_pessoa_8h.html#a42e5a114eddfe9c41d5b82f9d186d24a',1,'PesquisarClienteTolerante(ListaClientes *L, char *texto):&#160;Pessoa.c'],['../_pessoa_8c.html#a42e5a114eddfe9c41d5b82f9d186d24a',1,'PesquisarClienteTolerante(ListaClientes *L, char *texto):&#160;Pessoa.c']]],
+  ['pesquisarfuncionario_5',['PesquisarFuncionario',['../_funcionario_8h.html#ad1eb60345204ec2b207f5c71c11b5b1f',1,'PesquisarFuncionario(ListaFuncionarios *L, char *nome):&#160;Funcionario.c'],['../_funcionario_8c.html#ad1eb60345204ec2b207f5c71c11b5b1f',1,'PesquisarFuncionario(ListaFuncionarios *L, char *nome):&#160;Funcionario.c']]],
+  ['pesquisarnomehash_6',['PesquisarNomeHash',['../_hashing_nomes_8h.html#af5565ae2ff3385fb32155993207069e8',1,'PesquisarNomeHash(HashingNomes *h, char *nome):&#160;HashingNomes.c'],['../_hashing_nomes_8c.html#af5565ae2ff3385fb32155993207069e8',1,'PesquisarNomeHash(HashingNomes *h, char *nome):&#160;HashingNomes.c']]],
+  ['pesquisarpessoa_7',['PesquisarPessoa',['../_supermercado_8h.html#aef88fd2ea6823db0429492de949727ca',1,'PesquisarPessoa(Supermercado *S, char *nomeCliente):&#160;Acoes.c'],['../_acoes_8c.html#aef88fd2ea6823db0429492de949727ca',1,'PesquisarPessoa(Supermercado *S, char *nomeCliente):&#160;Acoes.c']]],
+  ['pesquisarproduto_8',['PesquisarProduto',['../_produto_8h.html#a7d67db7204c6784fbfc81694c6556e8b',1,'PesquisarProduto(ListaProdutos *L, char *nome):&#160;Produto.c'],['../_produto_8c.html#a7d67db7204c6784fbfc81694c6556e8b',1,'PesquisarProduto(ListaProdutos *L, char *nome):&#160;Produto.c']]],
+  ['pessoa_2ec_9',['Pessoa.c',['../_pessoa_8c.html',1,'']]],
+  ['pessoa_2eh_10',['Pessoa.h',['../_pessoa_8h.html',1,'']]],
+  ['pessoasatendidas_11',['pessoasAtendidas',['../struct_caixa.html#a27ff714f677c2f57dd40defd9bd27e4e',1,'Caixa::pessoasAtendidas'],['../struct_funcionario.html#a5585d4b78b67cf0a16c14e0625054eb0',1,'Funcionario::pessoasAtendidas']]],
+  ['pool_5fclientes_5fmin_12',['POOL_CLIENTES_MIN',['../_supermercado_8c.html#ab139097d09e95ee836dfe5c6ed224bc1',1,'Supermercado.c']]],
+  ['preco_13',['preco',['../struct_produto.html#a9e1023fcf261a8fba7620ee61654163a',1,'Produto']]],
+  ['precomenorproduto_14',['precoMenorProduto',['../struct_cliente.html#ac92774cb06f0bbec1a0353ff87012b55',1,'Cliente']]],
+  ['prefixoigualsemcaso_15',['PrefixoIgualSemCaso',['../_pessoa_8c.html#aa4617d56514564e9ac09b8713dbd148c',1,'Pessoa.c']]],
+  ['prepararcarrinho_16',['PrepararCarrinho',['../_pessoa_8h.html#a9aba7f6b6e90cac898ae3aacc3ecc049',1,'PrepararCarrinho(Cliente *c, ListaProdutos *prods, int maxPreco, int tempoAtendProduto):&#160;Pessoa.c'],['../_pessoa_8c.html#a9aba7f6b6e90cac898ae3aacc3ecc049',1,'PrepararCarrinho(Cliente *c, ListaProdutos *prods, int maxPreco, int tempoAtendProduto):&#160;Pessoa.c']]],
+  ['produto_17',['Produto',['../struct_produto.html',1,'']]],
+  ['produto_2ec_18',['Produto.c',['../_produto_8c.html',1,'']]],
+  ['produto_2eh_19',['Produto.h',['../_produto_8h.html',1,'']]],
+  ['produtoaleatorio_20',['ProdutoAleatorio',['../_produto_8h.html#a0f781b2d5cd2d7497d0891d9b3cb7d7c',1,'ProdutoAleatorio(ListaProdutos *L):&#160;Produto.c'],['../_produto_8c.html#a0f781b2d5cd2d7497d0891d9b3cb7d7c',1,'ProdutoAleatorio(ListaProdutos *L):&#160;Produto.c']]],
+  ['produtos_21',['produtos',['../struct_supermercado.html#a87cf3a5b4c7d8e383b73d65d24298fcd',1,'Supermercado']]],
+  ['produtosoferecidos_22',['produtosOferecidos',['../struct_supermercado.html#a847b9ba482c8e39dd6ddb1de06a9062f',1,'Supermercado']]],
+  ['produtosvendidos_23',['produtosVendidos',['../struct_caixa.html#a02552bb250e60a76beb62ff340a453af',1,'Caixa::produtosVendidos'],['../struct_funcionario.html#ab85bd4b86de6ccc5ef2de80b8feafddb',1,'Funcionario::produtosVendidos']]],
+  ['prox_24',['prox',['../struct_no_nome.html#a1c7aa9f49f76b262b74950e232ddc8fe',1,'NoNome::prox'],['../struct_no_fila.html#a7f9687e979e2b7c3074ddd7e04b03b22',1,'NoFila::prox'],['../struct_no_hash.html#abc4c537ddfa7483a6e2a4b74794d1b30',1,'NoHash::prox'],['../struct_no_hash_nome.html#ab519f46f926ace16e823b20cbb1a0892',1,'NoHashNome::prox']]]
+];

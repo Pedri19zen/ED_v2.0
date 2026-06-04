@@ -1,0 +1,438 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Gestao de Caixas de um Supermercado: Referência à estrutura Cliente</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Gestao de Caixas de um Supermercado<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Projeto ED 25/26 - 1o Ano / 2o Semestre</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('struct_cliente.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência à estrutura Cliente</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Um cliente do supermercado.  
+ <a href="#details">Mais...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Campos de Dados</h2></td></tr>
+<tr class="memitem:aa2d6bef7bd5a72106372542f2c837b11" id="r_aa2d6bef7bd5a72106372542f2c837b11"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#aa2d6bef7bd5a72106372542f2c837b11">codigo</a></td></tr>
+<tr class="memdesc:aa2d6bef7bd5a72106372542f2c837b11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identificador (do ficheiro).  <br /></td></tr>
+<tr class="memitem:ae5856b60f7709ffb2e066a9e218bb4b8" id="r_ae5856b60f7709ffb2e066a9e218bb4b8"><td class="memItemLeft">char&#160;</td><td class="memItemRight"><a class="el" href="#ae5856b60f7709ffb2e066a9e218bb4b8">nome</a> [<a class="el" href="_uteis_8h.html#a650a929b45480c0875d8c814f442b6ac">MAX_NOME</a>]</td></tr>
+<tr class="memdesc:ae5856b60f7709ffb2e066a9e218bb4b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nome do cliente.  <br /></td></tr>
+<tr class="memitem:a1c5b4fdcb9227c80d3efdc5505190d77" id="r_a1c5b4fdcb9227c80d3efdc5505190d77"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a1c5b4fdcb9227c80d3efdc5505190d77">numProdutos</a></td></tr>
+<tr class="memdesc:a1c5b4fdcb9227c80d3efdc5505190d77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Artigos no carrinho.  <br /></td></tr>
+<tr class="memitem:a7f7b7002a691c227cb4fe9c858f85b41" id="r_a7f7b7002a691c227cb4fe9c858f85b41"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a7f7b7002a691c227cb4fe9c858f85b41">valorCarrinho</a></td></tr>
+<tr class="memdesc:a7f7b7002a691c227cb4fe9c858f85b41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Soma dos precos dos artigos.  <br /></td></tr>
+<tr class="memitem:ac92774cb06f0bbec1a0353ff87012b55" id="r_ac92774cb06f0bbec1a0353ff87012b55"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#ac92774cb06f0bbec1a0353ff87012b55">precoMenorProduto</a></td></tr>
+<tr class="memdesc:ac92774cb06f0bbec1a0353ff87012b55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Preco do artigo mais barato (oferecido se preciso).  <br /></td></tr>
+<tr class="memitem:a50cae4a7a025a8cdfd92c56b6e275904" id="r_a50cae4a7a025a8cdfd92c56b6e275904"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a50cae4a7a025a8cdfd92c56b6e275904">tempoAtendimento</a></td></tr>
+<tr class="memdesc:a50cae4a7a025a8cdfd92c56b6e275904"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tempo total na caixa.  <br /></td></tr>
+<tr class="memitem:a82f2ca99ee283ee6b3a2338dcd5f9c54" id="r_a82f2ca99ee283ee6b3a2338dcd5f9c54"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a82f2ca99ee283ee6b3a2338dcd5f9c54">tempoRestante</a></td></tr>
+<tr class="memdesc:a82f2ca99ee283ee6b3a2338dcd5f9c54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tempo que falta enquanto atendido.  <br /></td></tr>
+<tr class="memitem:a441a84a11c91312ad37e9527c9dab1d2" id="r_a441a84a11c91312ad37e9527c9dab1d2"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a441a84a11c91312ad37e9527c9dab1d2">tempoEspera</a></td></tr>
+<tr class="memdesc:a441a84a11c91312ad37e9527c9dab1d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tempo ja passado em fila.  <br /></td></tr>
+<tr class="memitem:af1d9b5c72004ea1494ef556791d32d33" id="r_af1d9b5c72004ea1494ef556791d32d33"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#af1d9b5c72004ea1494ef556791d32d33">tempoComprasRestante</a></td></tr>
+<tr class="memdesc:af1d9b5c72004ea1494ef556791d32d33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tempo que falta para acabar as compras.  <br /></td></tr>
+<tr class="memitem:a0a63fb51bb0a8565b0bc166be2f77618" id="r_a0a63fb51bb0a8565b0bc166be2f77618"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a0a63fb51bb0a8565b0bc166be2f77618">ativo</a></td></tr>
+<tr class="memdesc:a0a63fb51bb0a8565b0bc166be2f77618"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registo existe (gestao).  <br /></td></tr>
+<tr class="memitem:a8d7cdade3b5871984306792aba56dd08" id="r_a8d7cdade3b5871984306792aba56dd08"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a8d7cdade3b5871984306792aba56dd08">dentroLoja</a></td></tr>
+<tr class="memdesc:a8d7cdade3b5871984306792aba56dd08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta dentro do supermercado.  <br /></td></tr>
+<tr class="memitem:aee4221ecb5f37633d65282eb93de91ca" id="r_aee4221ecb5f37633d65282eb93de91ca"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aee4221ecb5f37633d65282eb93de91ca">naFila</a></td></tr>
+<tr class="memdesc:aee4221ecb5f37633d65282eb93de91ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta em fila de uma caixa.  <br /></td></tr>
+<tr class="memitem:a5615e686095e745b8c354b622843abae" id="r_a5615e686095e745b8c354b622843abae"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a5615e686095e745b8c354b622843abae">foiOferecido</a></td></tr>
+<tr class="memdesc:a5615e686095e745b8c354b622843abae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ja recebeu um produto gratis.  <br /></td></tr>
+<tr class="memitem:aacc5b9a6329c6b941f7e22bd4b1a97de" id="r_aacc5b9a6329c6b941f7e22bd4b1a97de"><td class="memItemLeft">char&#160;</td><td class="memItemRight"><a class="el" href="#aacc5b9a6329c6b941f7e22bd4b1a97de">caixaAtual</a> [<a class="el" href="_uteis_8h.html#a650a929b45480c0875d8c814f442b6ac">MAX_NOME</a>]</td></tr>
+<tr class="memdesc:aacc5b9a6329c6b941f7e22bd4b1a97de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nome da caixa onde esta ("" se nenhuma).  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Um cliente do supermercado. </p>
+<p>Os campos booleanos controlam o estado durante a simulacao e evitam estados invalidos (entrar duas vezes, sair sem ter entrado, etc.). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8h_source.html#l00018">18</a> do ficheiro <a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>.</p>
+</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Documentação dos campos e atributos</h2>
+<a id="a0a63fb51bb0a8565b0bc166be2f77618" name="a0a63fb51bb0a8565b0bc166be2f77618"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a63fb51bb0a8565b0bc166be2f77618">&#9670;&#160;</a></span>ativo</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Cliente::ativo</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registo existe (gestao). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8h_source.html#l00028">28</a> do ficheiro <a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>.</p>
+
+</div>
+</div>
+<a id="aacc5b9a6329c6b941f7e22bd4b1a97de" name="aacc5b9a6329c6b941f7e22bd4b1a97de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacc5b9a6329c6b941f7e22bd4b1a97de">&#9670;&#160;</a></span>caixaAtual</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Cliente::caixaAtual[<a class="el" href="_uteis_8h.html#a650a929b45480c0875d8c814f442b6ac">MAX_NOME</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nome da caixa onde esta ("" se nenhuma). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8h_source.html#l00032">32</a> do ficheiro <a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>.</p>
+
+</div>
+</div>
+<a id="aa2d6bef7bd5a72106372542f2c837b11" name="aa2d6bef7bd5a72106372542f2c837b11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2d6bef7bd5a72106372542f2c837b11">&#9670;&#160;</a></span>codigo</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Cliente::codigo</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Identificador (do ficheiro). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8h_source.html#l00019">19</a> do ficheiro <a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>.</p>
+
+</div>
+</div>
+<a id="a8d7cdade3b5871984306792aba56dd08" name="a8d7cdade3b5871984306792aba56dd08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d7cdade3b5871984306792aba56dd08">&#9670;&#160;</a></span>dentroLoja</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Cliente::dentroLoja</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Esta dentro do supermercado. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8h_source.html#l00029">29</a> do ficheiro <a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>.</p>
+
+</div>
+</div>
+<a id="a5615e686095e745b8c354b622843abae" name="a5615e686095e745b8c354b622843abae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5615e686095e745b8c354b622843abae">&#9670;&#160;</a></span>foiOferecido</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Cliente::foiOferecido</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ja recebeu um produto gratis. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8h_source.html#l00031">31</a> do ficheiro <a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>.</p>
+
+</div>
+</div>
+<a id="aee4221ecb5f37633d65282eb93de91ca" name="aee4221ecb5f37633d65282eb93de91ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee4221ecb5f37633d65282eb93de91ca">&#9670;&#160;</a></span>naFila</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Cliente::naFila</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Esta em fila de uma caixa. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8h_source.html#l00030">30</a> do ficheiro <a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>.</p>
+
+</div>
+</div>
+<a id="ae5856b60f7709ffb2e066a9e218bb4b8" name="ae5856b60f7709ffb2e066a9e218bb4b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5856b60f7709ffb2e066a9e218bb4b8">&#9670;&#160;</a></span>nome</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Cliente::nome[<a class="el" href="_uteis_8h.html#a650a929b45480c0875d8c814f442b6ac">MAX_NOME</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nome do cliente. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8h_source.html#l00020">20</a> do ficheiro <a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>.</p>
+
+</div>
+</div>
+<a id="a1c5b4fdcb9227c80d3efdc5505190d77" name="a1c5b4fdcb9227c80d3efdc5505190d77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c5b4fdcb9227c80d3efdc5505190d77">&#9670;&#160;</a></span>numProdutos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Cliente::numProdutos</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Artigos no carrinho. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8h_source.html#l00021">21</a> do ficheiro <a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>.</p>
+
+</div>
+</div>
+<a id="ac92774cb06f0bbec1a0353ff87012b55" name="ac92774cb06f0bbec1a0353ff87012b55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac92774cb06f0bbec1a0353ff87012b55">&#9670;&#160;</a></span>precoMenorProduto</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Cliente::precoMenorProduto</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Preco do artigo mais barato (oferecido se preciso). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8h_source.html#l00023">23</a> do ficheiro <a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>.</p>
+
+</div>
+</div>
+<a id="a50cae4a7a025a8cdfd92c56b6e275904" name="a50cae4a7a025a8cdfd92c56b6e275904"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50cae4a7a025a8cdfd92c56b6e275904">&#9670;&#160;</a></span>tempoAtendimento</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Cliente::tempoAtendimento</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tempo total na caixa. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8h_source.html#l00024">24</a> do ficheiro <a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>.</p>
+
+</div>
+</div>
+<a id="af1d9b5c72004ea1494ef556791d32d33" name="af1d9b5c72004ea1494ef556791d32d33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1d9b5c72004ea1494ef556791d32d33">&#9670;&#160;</a></span>tempoComprasRestante</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Cliente::tempoComprasRestante</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tempo que falta para acabar as compras. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8h_source.html#l00027">27</a> do ficheiro <a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>.</p>
+
+</div>
+</div>
+<a id="a441a84a11c91312ad37e9527c9dab1d2" name="a441a84a11c91312ad37e9527c9dab1d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a441a84a11c91312ad37e9527c9dab1d2">&#9670;&#160;</a></span>tempoEspera</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Cliente::tempoEspera</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tempo ja passado em fila. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8h_source.html#l00026">26</a> do ficheiro <a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>.</p>
+
+</div>
+</div>
+<a id="a82f2ca99ee283ee6b3a2338dcd5f9c54" name="a82f2ca99ee283ee6b3a2338dcd5f9c54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82f2ca99ee283ee6b3a2338dcd5f9c54">&#9670;&#160;</a></span>tempoRestante</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Cliente::tempoRestante</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tempo que falta enquanto atendido. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8h_source.html#l00025">25</a> do ficheiro <a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>.</p>
+
+</div>
+</div>
+<a id="a7f7b7002a691c227cb4fe9c858f85b41" name="a7f7b7002a691c227cb4fe9c858f85b41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f7b7002a691c227cb4fe9c858f85b41">&#9670;&#160;</a></span>valorCarrinho</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Cliente::valorCarrinho</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Soma dos precos dos artigos. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_pessoa_8h_source.html#l00022">22</a> do ficheiro <a class="el" href="_pessoa_8h_source.html">Pessoa.h</a>.</p>
+
+</div>
+</div>
+<hr/>A documentação para esta estrutura foi gerada a partir do seguinte ficheiro:<ul>
+<li>include/<a class="el" href="_pessoa_8h_source.html">Pessoa.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="struct_cliente.html">Cliente</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

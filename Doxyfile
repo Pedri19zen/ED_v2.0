@@ -2,15 +2,15 @@
 # Doxyfile - Projeto ED 25/26 "Gestao de Caixas de um Supermercado"
 #
 # Utilizacao:
-#   doxygen Doxyfile           # gera docs/html
-# Abrir docs/html/index.html no browser.
+#   doxygen Doxyfile           # gera docs_doxygen_graphviz/html
+# Abrir docs_doxygen_graphviz/html/index.html no browser.
 # =====================================================================
 
 PROJECT_NAME           = "Gestao de Caixas de um Supermercado"
 PROJECT_BRIEF          = "Projeto ED 25/26 - 1o Ano / 2o Semestre"
 PROJECT_NUMBER         = 1.0
 
-OUTPUT_DIRECTORY       = docs
+OUTPUT_DIRECTORY       = docs_doxygen_graphviz
 OUTPUT_LANGUAGE        = Portuguese
 
 # ---- Entrada ----
@@ -34,8 +34,8 @@ INLINE_SOURCES         = NO
 STRIP_CODE_COMMENTS    = NO
 
 # ---- Diagramas (precisam de Graphviz instalado; nao bloqueia se faltar) ----
-HAVE_DOT               = NO
-CLASS_DIAGRAMS         = YES
+HAVE_DOT               = YES
+DOT_PATH               = "C:/Program Files/Graphviz/bin"
 CLASS_GRAPH            = YES
 COLLABORATION_GRAPH    = NO
 INCLUDE_GRAPH          = NO

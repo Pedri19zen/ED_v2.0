@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Gestao de Caixas de um Supermercado: Referência ao ficheiro include/Hashing.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Gestao de Caixas de um Supermercado<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Projeto ED 25/26 - 1o Ano / 2o Semestre</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('_hashing_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência ao ficheiro Hashing.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Tabela de dispersao que guarda as caixas (chave = nome da caixa).  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="_caixa_8h_source.html">Caixa.h</a>&quot;</code><br />
+</div>
+<p><a href="_hashing_8h_source.html">Ir para o código fonte deste ficheiro.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Estruturas de Dados</h2></td></tr>
+<tr class="memitem:NoHash" id="r_NoHash"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="struct_no_hash.html">NoHash</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">No da tabela de dispersao das caixas.  <a href="struct_no_hash.html#details">Mais...</a><br /></td></tr>
+<tr class="memitem:Hashing" id="r_Hashing"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="struct_hashing.html">Hashing</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tabela de dispersao das caixas (chave = nome).  <a href="struct_hashing.html#details">Mais...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:ae9bd88d0e48c5fe58a7b81b350458b7c" id="r_ae9bd88d0e48c5fe58a7b81b350458b7c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ae9bd88d0e48c5fe58a7b81b350458b7c">CriarHashing</a> (<a class="el" href="struct_hashing.html">Hashing</a> *h)</td></tr>
+<tr class="memdesc:ae9bd88d0e48c5fe58a7b81b350458b7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa a tabela (todas as posicoes vazias).  <br /></td></tr>
+<tr class="memitem:ade356e8fc22a4aa52e7a1f183c325acb" id="r_ade356e8fc22a4aa52e7a1f183c325acb"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ade356e8fc22a4aa52e7a1f183c325acb">FuncaoHash</a> (char *nome)</td></tr>
+<tr class="memdesc:ade356e8fc22a4aa52e7a1f183c325acb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao de dispersao: soma dos codigos do nome modulo TAMANHO_HASH.  <br /></td></tr>
+<tr class="memitem:a70552a69368e590ccb99f826449e906f" id="r_a70552a69368e590ccb99f826449e906f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a70552a69368e590ccb99f826449e906f">InserirCaixa</a> (<a class="el" href="struct_hashing.html">Hashing</a> *h, <a class="el" href="struct_caixa.html">Caixa</a> *c)</td></tr>
+<tr class="memdesc:a70552a69368e590ccb99f826449e906f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insere uma caixa na tabela.  <br /></td></tr>
+<tr class="memitem:a7dc0089bd4326e9c74ee942e623a7c59" id="r_a7dc0089bd4326e9c74ee942e623a7c59"><td class="memItemLeft"><a class="el" href="struct_caixa.html">Caixa</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a7dc0089bd4326e9c74ee942e623a7c59">PesquisarCaixa</a> (<a class="el" href="struct_hashing.html">Hashing</a> *h, char *nome)</td></tr>
+<tr class="memdesc:a7dc0089bd4326e9c74ee942e623a7c59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procura uma caixa pelo nome.  <br /></td></tr>
+<tr class="memitem:a1dcd8b3d9f7300d1c0b9de9928ead4cb" id="r_a1dcd8b3d9f7300d1c0b9de9928ead4cb"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a1dcd8b3d9f7300d1c0b9de9928ead4cb">ObterTodasCaixas</a> (<a class="el" href="struct_hashing.html">Hashing</a> *h, <a class="el" href="struct_caixa.html">Caixa</a> *vetor[], int maxCaixas)</td></tr>
+<tr class="memdesc:a1dcd8b3d9f7300d1c0b9de9928ead4cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copia para 'vetor' os apontadores de todas as caixas.  <br /></td></tr>
+<tr class="memitem:a826a640136695b4fa6a1ff24a7eb5706" id="r_a826a640136695b4fa6a1ff24a7eb5706"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a826a640136695b4fa6a1ff24a7eb5706">DestruirHashing</a> (<a class="el" href="struct_hashing.html">Hashing</a> *h)</td></tr>
+<tr class="memdesc:a826a640136695b4fa6a1ff24a7eb5706"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liberta todos os nos da tabela E as caixas que guardam.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Tabela de dispersao que guarda as caixas (chave = nome da caixa). </p>
+<p>Colisoes resolvidas por encadeamento: cada posicao da tabela e' a cabeca de uma pequena lista ligada de <a class="el" href="struct_no_hash.html" title="No da tabela de dispersao das caixas.">NoHash</a>. </p>
+
+<p class="definition">Definido no ficheiro <a class="el" href="_hashing_8h_source.html">Hashing.h</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentação das funções</h2>
+<a id="ae9bd88d0e48c5fe58a7b81b350458b7c" name="ae9bd88d0e48c5fe58a7b81b350458b7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9bd88d0e48c5fe58a7b81b350458b7c">&#9670;&#160;</a></span>CriarHashing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CriarHashing </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_hashing.html">Hashing</a> *</td>          <td class="paramname"><span class="paramname"><em>h</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicializa a tabela (todas as posicoes vazias). </p>
+<p>Inicializa a tabela: todas as posicoes vazias.</p>
+<p>Inicializa a tabela (todas as posicoes vazias). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_hashing_8c_source.html#l00010">10</a> do ficheiro <a class="el" href="_hashing_8c_source.html">Hashing.c</a>.</p>
+
+</div>
+</div>
+<a id="a826a640136695b4fa6a1ff24a7eb5706" name="a826a640136695b4fa6a1ff24a7eb5706"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a826a640136695b4fa6a1ff24a7eb5706">&#9670;&#160;</a></span>DestruirHashing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DestruirHashing </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_hashing.html">Hashing</a> *</td>          <td class="paramname"><span class="paramname"><em>h</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Liberta todos os nos da tabela E as caixas que guardam. </p>
+<p>Liberta todos os nos da tabela e as caixas que eles guardam.</p>
+<p>Liberta todos os nos da tabela E as caixas que guardam. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_hashing_8c_source.html#l00065">65</a> do ficheiro <a class="el" href="_hashing_8c_source.html">Hashing.c</a>.</p>
+
+</div>
+</div>
+<a id="ade356e8fc22a4aa52e7a1f183c325acb" name="ade356e8fc22a4aa52e7a1f183c325acb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade356e8fc22a4aa52e7a1f183c325acb">&#9670;&#160;</a></span>FuncaoHash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int FuncaoHash </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nome</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funcao de dispersao: soma dos codigos do nome modulo TAMANHO_HASH. </p>
+<p>Soma dos codigos das letras modulo TAMANHO_HASH.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nome</td><td>Nome a hashear. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Indice no array de buckets.</dd></dl>
+<p>Funcao de dispersao: soma dos codigos do nome modulo TAMANHO_HASH. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_hashing_8c_source.html#l00018">18</a> do ficheiro <a class="el" href="_hashing_8c_source.html">Hashing.c</a>.</p>
+
+</div>
+</div>
+<a id="a70552a69368e590ccb99f826449e906f" name="a70552a69368e590ccb99f826449e906f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70552a69368e590ccb99f826449e906f">&#9670;&#160;</a></span>InserirCaixa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void InserirCaixa </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_hashing.html">Hashing</a> *</td>          <td class="paramname"><span class="paramname"><em>h</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_caixa.html">Caixa</a> *</td>          <td class="paramname"><span class="paramname"><em>c</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Insere uma caixa na tabela. </p>
+<p>Insere uma caixa na cabeca do bucket correspondente.</p>
+<p>Insere uma caixa na tabela. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_hashing_8c_source.html#l00027">27</a> do ficheiro <a class="el" href="_hashing_8c_source.html">Hashing.c</a>.</p>
+
+</div>
+</div>
+<a id="a1dcd8b3d9f7300d1c0b9de9928ead4cb" name="a1dcd8b3d9f7300d1c0b9de9928ead4cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dcd8b3d9f7300d1c0b9de9928ead4cb">&#9670;&#160;</a></span>ObterTodasCaixas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ObterTodasCaixas </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_hashing.html">Hashing</a> *</td>          <td class="paramname"><span class="paramname"><em>h</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_caixa.html">Caixa</a> *</td>          <td class="paramname"><span class="paramname"><em>vetor</em></span>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>maxCaixas</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copia para 'vetor' os apontadores de todas as caixas. </p>
+<dl class="section return"><dt>Retorna</dt><dd>Numero de caixas colocadas em 'vetor'. </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="_hashing_8c_source.html#l00050">50</a> do ficheiro <a class="el" href="_hashing_8c_source.html">Hashing.c</a>.</p>
+
+</div>
+</div>
+<a id="a7dc0089bd4326e9c74ee942e623a7c59" name="a7dc0089bd4326e9c74ee942e623a7c59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dc0089bd4326e9c74ee942e623a7c59">&#9670;&#160;</a></span>PesquisarCaixa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_caixa.html">Caixa</a> * PesquisarCaixa </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_hashing.html">Hashing</a> *</td>          <td class="paramname"><span class="paramname"><em>h</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nome</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Procura uma caixa pelo nome. </p>
+<dl class="section return"><dt>Retorna</dt><dd><a class="el" href="struct_caixa.html" title="Uma caixa de atendimento.">Caixa</a> ou NULL. </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="_hashing_8c_source.html#l00038">38</a> do ficheiro <a class="el" href="_hashing_8c_source.html">Hashing.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="_hashing_8h.html">Hashing.h</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,1120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Gestao de Caixas de um Supermercado: Referência ao ficheiro include/Uteis.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Gestao de Caixas de um Supermercado<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Projeto ED 25/26 - 1o Ano / 2o Semestre</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('_uteis_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência ao ficheiro Uteis.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Constantes globais e utilitarios partilhados (aleatorios, leitura validada do teclado, historico CSV, cores ANSI e barra de fila).  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+</div>
+<p><a href="_uteis_8h_source.html">Ir para o código fonte deste ficheiro.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a650a929b45480c0875d8c814f442b6ac" id="r_a650a929b45480c0875d8c814f442b6ac"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a650a929b45480c0875d8c814f442b6ac">MAX_NOME</a>&#160;&#160;&#160;50</td></tr>
+<tr class="memdesc:a650a929b45480c0875d8c814f442b6ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tamanho de nome de cliente/caixa/funcionario.  <br /></td></tr>
+<tr class="memitem:ad65f871456b07953dab9cd51f48c4744" id="r_ad65f871456b07953dab9cd51f48c4744"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ad65f871456b07953dab9cd51f48c4744">MAX_NOME_PRODUTO</a>&#160;&#160;&#160;128</td></tr>
+<tr class="memdesc:ad65f871456b07953dab9cd51f48c4744"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nomes de produtos sao mais longos.  <br /></td></tr>
+<tr class="memitem:a0cf5c23bdf46ca7f4778aea7da2bc548" id="r_a0cf5c23bdf46ca7f4778aea7da2bc548"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a0cf5c23bdf46ca7f4778aea7da2bc548">MAX_CLIENTES</a>&#160;&#160;&#160;12000</td></tr>
+<tr class="memdesc:a0cf5c23bdf46ca7f4778aea7da2bc548"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clientes registados (Clientes.txt).  <br /></td></tr>
+<tr class="memitem:a6f8b26e433788430f2bcd212ad2d7eb6" id="r_a6f8b26e433788430f2bcd212ad2d7eb6"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a6f8b26e433788430f2bcd212ad2d7eb6">MAX_PRODUTOS</a>&#160;&#160;&#160;10000</td></tr>
+<tr class="memdesc:a6f8b26e433788430f2bcd212ad2d7eb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produtos no catalogo.  <br /></td></tr>
+<tr class="memitem:ae56b7e6ebd3278dc39f4c20c2e123c91" id="r_ae56b7e6ebd3278dc39f4c20c2e123c91"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ae56b7e6ebd3278dc39f4c20c2e123c91">MAX_FUNCIONARIOS</a>&#160;&#160;&#160;200</td></tr>
+<tr class="memdesc:ae56b7e6ebd3278dc39f4c20c2e123c91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operadores de caixa.  <br /></td></tr>
+<tr class="memitem:a9cebeb550234e4af57e981c4f205cf8c" id="r_a9cebeb550234e4af57e981c4f205cf8c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a9cebeb550234e4af57e981c4f205cf8c">MAX_CAIXAS</a>&#160;&#160;&#160;100</td></tr>
+<tr class="memdesc:a9cebeb550234e4af57e981c4f205cf8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limite ao percorrer o hashing das caixas.  <br /></td></tr>
+<tr class="memitem:a5efaa0bd9ee057af47b92c6ed14cbee1" id="r_a5efaa0bd9ee057af47b92c6ed14cbee1"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a5efaa0bd9ee057af47b92c6ed14cbee1">CAPACIDADE_LOJA</a>&#160;&#160;&#160;100</td></tr>
+<tr class="memdesc:a5efaa0bd9ee057af47b92c6ed14cbee1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clientes dentro da loja em simultaneo.  <br /></td></tr>
+<tr class="memitem:ad294824459cf75fc6cd3b0ca3b16bc21" id="r_ad294824459cf75fc6cd3b0ca3b16bc21"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ad294824459cf75fc6cd3b0ca3b16bc21">TAMANHO_HASH</a>&#160;&#160;&#160;13</td></tr>
+<tr class="memdesc:ad294824459cf75fc6cd3b0ca3b16bc21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Primo: tamanho da tabela das caixas.  <br /></td></tr>
+<tr class="memitem:a6fd0112a000eea8bb9b69b0b70eee02a" id="r_a6fd0112a000eea8bb9b69b0b70eee02a"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a6fd0112a000eea8bb9b69b0b70eee02a">FICH_CONFIG</a>&#160;&#160;&#160;&quot;data/Configuracao.txt&quot;</td></tr>
+<tr class="memdesc:a6fd0112a000eea8bb9b69b0b70eee02a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parametros da simulacao.  <br /></td></tr>
+<tr class="memitem:acc93b64d5519963fac7ff87ca830a7a8" id="r_acc93b64d5519963fac7ff87ca830a7a8"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#acc93b64d5519963fac7ff87ca830a7a8">FICH_PRODUTOS</a>&#160;&#160;&#160;&quot;data/Produtos.txt&quot;</td></tr>
+<tr class="memdesc:acc93b64d5519963fac7ff87ca830a7a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Catalogo de produtos.  <br /></td></tr>
+<tr class="memitem:a1ecd1b13a8a5d6a7a85b15ac8ae63334" id="r_a1ecd1b13a8a5d6a7a85b15ac8ae63334"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a1ecd1b13a8a5d6a7a85b15ac8ae63334">FICH_FUNCIONARIOS</a>&#160;&#160;&#160;&quot;data/Funcionarios.txt&quot;</td></tr>
+<tr class="memdesc:a1ecd1b13a8a5d6a7a85b15ac8ae63334"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operadores de caixa.  <br /></td></tr>
+<tr class="memitem:a4c280bd0382ff0a4d3055ed81050fa8e" id="r_a4c280bd0382ff0a4d3055ed81050fa8e"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a4c280bd0382ff0a4d3055ed81050fa8e">FICH_CLIENTES</a>&#160;&#160;&#160;&quot;data/Clientes.txt&quot;</td></tr>
+<tr class="memdesc:a4c280bd0382ff0a4d3055ed81050fa8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pool de nomes de clientes.  <br /></td></tr>
+<tr class="memitem:a95eee5f555f544e22c19b9d03f13a5bf" id="r_a95eee5f555f544e22c19b9d03f13a5bf"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a95eee5f555f544e22c19b9d03f13a5bf">FICH_HISTORICO</a>&#160;&#160;&#160;&quot;historico.csv&quot;</td></tr>
+<tr class="memdesc:a95eee5f555f544e22c19b9d03f13a5bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log das acoes do utilizador.  <br /></td></tr>
+<tr class="memitem:a4ab781d160c2133ec43802fb513ead88" id="r_a4ab781d160c2133ec43802fb513ead88"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a4ab781d160c2133ec43802fb513ead88">FICH_RESULTADO</a>&#160;&#160;&#160;&quot;resultado.txt&quot;</td></tr>
+<tr class="memdesc:a4ab781d160c2133ec43802fb513ead88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relatorio final.  <br /></td></tr>
+<tr class="memitem:a0523b7e99fee2fb9c92888a44e82fb49" id="r_a0523b7e99fee2fb9c92888a44e82fb49"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a0523b7e99fee2fb9c92888a44e82fb49">COR_OK</a>&#160;&#160;&#160;&quot;\x1b[38;5;108m&quot;</td></tr>
+<tr class="memdesc:a0523b7e99fee2fb9c92888a44e82fb49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verde-salva: fila &lt;= 3.  <br /></td></tr>
+<tr class="memitem:a47365476f9562a6d76facf177ceeaaf0" id="r_a47365476f9562a6d76facf177ceeaaf0"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a47365476f9562a6d76facf177ceeaaf0">COR_WARN</a>&#160;&#160;&#160;&quot;\x1b[38;5;179m&quot;</td></tr>
+<tr class="memdesc:a47365476f9562a6d76facf177ceeaaf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mostarda: fila &lt;= 6.  <br /></td></tr>
+<tr class="memitem:a7fd77e85e422062bd92735f52ad416ea" id="r_a7fd77e85e422062bd92735f52ad416ea"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a7fd77e85e422062bd92735f52ad416ea">COR_ERR</a>&#160;&#160;&#160;&quot;\x1b[38;5;174m&quot;</td></tr>
+<tr class="memdesc:a7fd77e85e422062bd92735f52ad416ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coral: fila &gt; 6.  <br /></td></tr>
+<tr class="memitem:a9530f9f9884824bcb2b0477f24a70a9c" id="r_a9530f9f9884824bcb2b0477f24a70a9c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a9530f9f9884824bcb2b0477f24a70a9c">COR_HDR</a>&#160;&#160;&#160;&quot;\x1b[38;5;110m&quot;</td></tr>
+<tr class="memdesc:a9530f9f9884824bcb2b0477f24a70a9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Azul: cabecalhos.  <br /></td></tr>
+<tr class="memitem:a9d19b3da5530e5fc308758e7e209fdf9" id="r_a9d19b3da5530e5fc308758e7e209fdf9"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a9d19b3da5530e5fc308758e7e209fdf9">COR_DIM</a>&#160;&#160;&#160;&quot;\x1b[38;5;244m&quot;</td></tr>
+<tr class="memdesc:a9d19b3da5530e5fc308758e7e209fdf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cinza: separadores e [FECHADA].  <br /></td></tr>
+<tr class="memitem:a641268c7761d910c7a9fb18c31c712f2" id="r_a641268c7761d910c7a9fb18c31c712f2"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a641268c7761d910c7a9fb18c31c712f2">COR_RESET</a>&#160;&#160;&#160;&quot;\x1b[0m&quot;</td></tr>
+<tr class="memdesc:a641268c7761d910c7a9fb18c31c712f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Repor a cor por omissao.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:aa6715c44960d0df8ee93f16972d39c44" id="r_aa6715c44960d0df8ee93f16972d39c44"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#aa6715c44960d0df8ee93f16972d39c44">Aleatorio</a> (int min, int max)</td></tr>
+<tr class="memdesc:aa6715c44960d0df8ee93f16972d39c44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devolve um inteiro aleatorio em [min, max].  <br /></td></tr>
+<tr class="memitem:a8060a8792b5b11cd62a6e80bfdf890ec" id="r_a8060a8792b5b11cd62a6e80bfdf890ec"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a8060a8792b5b11cd62a6e80bfdf890ec">LimparBuffer</a> (void)</td></tr>
+<tr class="memdesc:a8060a8792b5b11cd62a6e80bfdf890ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esvazia o resto da linha que ficou no buffer de entrada.  <br /></td></tr>
+<tr class="memitem:a05e2744aca83a3bf1572ba72083b71c3" id="r_a05e2744aca83a3bf1572ba72083b71c3"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a05e2744aca83a3bf1572ba72083b71c3">LerInteiro</a> (char *txt)</td></tr>
+<tr class="memdesc:a05e2744aca83a3bf1572ba72083b71c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le uma linha do stdin e converte para inteiro.  <br /></td></tr>
+<tr class="memitem:a047f7e8c1ece3370e084dfa4b0761d1a" id="r_a047f7e8c1ece3370e084dfa4b0761d1a"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a047f7e8c1ece3370e084dfa4b0761d1a">LerOpcao</a> (char *txt, int min, int max)</td></tr>
+<tr class="memdesc:a047f7e8c1ece3370e084dfa4b0761d1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le um inteiro insistindo ate estar em [min, max].  <br /></td></tr>
+<tr class="memitem:a56c61ad3470d8500a4d3ec7f453b1c09" id="r_a56c61ad3470d8500a4d3ec7f453b1c09"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a56c61ad3470d8500a4d3ec7f453b1c09">LerFloat</a> (char *txt)</td></tr>
+<tr class="memdesc:a56c61ad3470d8500a4d3ec7f453b1c09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le um numero decimal do stdin.  <br /></td></tr>
+<tr class="memitem:afa3bedbf335c67fbfdb6ae08f5e93665" id="r_afa3bedbf335c67fbfdb6ae08f5e93665"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afa3bedbf335c67fbfdb6ae08f5e93665">LerString</a> (char *txt, char *destino, int tamanho)</td></tr>
+<tr class="memdesc:afa3bedbf335c67fbfdb6ae08f5e93665"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le uma linha para 'destino' (corta o '\n' final).  <br /></td></tr>
+<tr class="memitem:a16fa15f06e681980d70189d6209e5003" id="r_a16fa15f06e681980d70189d6209e5003"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a16fa15f06e681980d70189d6209e5003">Confirmar</a> (char *txt)</td></tr>
+<tr class="memdesc:a16fa15f06e681980d70189d6209e5003"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mostra "txt (S/N)" e devolve true se a resposta comecar por 'S'/'s'.  <br /></td></tr>
+<tr class="memitem:a5f34e18397fe7f993e6b4bfefabfb965" id="r_a5f34e18397fe7f993e6b4bfefabfb965"><td class="memItemLeft">char&#160;</td><td class="memItemRight"><a class="el" href="#a5f34e18397fe7f993e6b4bfefabfb965">ToMaiscula</a> (char x)</td></tr>
+<tr class="memdesc:a5f34e18397fe7f993e6b4bfefabfb965"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converte um caracter para maiuscula (so a-z).  <br /></td></tr>
+<tr class="memitem:a036cfe874a8bf00da9f2a039d4451651" id="r_a036cfe874a8bf00da9f2a039d4451651"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a036cfe874a8bf00da9f2a039d4451651">CopiarNome</a> (char *destino, char *origem)</td></tr>
+<tr class="memdesc:a036cfe874a8bf00da9f2a039d4451651"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copia de forma segura um nome para um buffer de tamanho MAX_NOME.  <br /></td></tr>
+<tr class="memitem:a989ec8a09d6ea1467f668956177f1fb4" id="r_a989ec8a09d6ea1467f668956177f1fb4"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a989ec8a09d6ea1467f668956177f1fb4">wait_segundos</a> (int seconds)</td></tr>
+<tr class="memdesc:a989ec8a09d6ea1467f668956177f1fb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Espera (aproximadamente) 'seconds' segundos em espera activa.  <br /></td></tr>
+<tr class="memitem:aed4a65a9d207cccbc9b120f65468f6e3" id="r_aed4a65a9d207cccbc9b120f65468f6e3"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aed4a65a9d207cccbc9b120f65468f6e3">DormirMs</a> (int ms)</td></tr>
+<tr class="memdesc:aed4a65a9d207cccbc9b120f65468f6e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pausa de 'ms' milissegundos sem gastar CPU.  <br /></td></tr>
+<tr class="memitem:a2b01d2ffa9eea238d3570fbab5680b56" id="r_a2b01d2ffa9eea238d3570fbab5680b56"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a2b01d2ffa9eea238d3570fbab5680b56">TeclaPressionada</a> (void)</td></tr>
+<tr class="memdesc:a2b01d2ffa9eea238d3570fbab5680b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devolve 1 se houver uma tecla a espera (nao bloqueia).  <br /></td></tr>
+<tr class="memitem:af92eaf84af1a50e67102093b071a5534" id="r_af92eaf84af1a50e67102093b071a5534"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af92eaf84af1a50e67102093b071a5534">DescartarTecla</a> (void)</td></tr>
+<tr class="memdesc:af92eaf84af1a50e67102093b071a5534"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consome a(s) tecla(s) que estejam no buffer.  <br /></td></tr>
+<tr class="memitem:a119c16b345de7c6b4a637e0131d1b1a9" id="r_a119c16b345de7c6b4a637e0131d1b1a9"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a119c16b345de7c6b4a637e0131d1b1a9">EsperarOuTecla</a> (int ms)</td></tr>
+<tr class="memdesc:a119c16b345de7c6b4a637e0131d1b1a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Espera 'ms' ms; se uma tecla for premida durante a espera, devolve 1.  <br /></td></tr>
+<tr class="memitem:aa7fe7927f979983d14033f08fc62ef81" id="r_aa7fe7927f979983d14033f08fc62ef81"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa7fe7927f979983d14033f08fc62ef81">IniciarHistorico</a> (void)</td></tr>
+<tr class="memdesc:aa7fe7927f979983d14033f08fc62ef81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marca o inicio de uma sessao no historico CSV.  <br /></td></tr>
+<tr class="memitem:af011f072c57f45c33650f2d9118c86b2" id="r_af011f072c57f45c33650f2d9118c86b2"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af011f072c57f45c33650f2d9118c86b2">RegistarHistorico</a> (char *accao, char *detalhe)</td></tr>
+<tr class="memdesc:af011f072c57f45c33650f2d9118c86b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acrescenta uma linha ao historico CSV.  <br /></td></tr>
+<tr class="memitem:a4222a2bafcb8e3484b80ad5117de2ea8" id="r_a4222a2bafcb8e3484b80ad5117de2ea8"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a4222a2bafcb8e3484b80ad5117de2ea8">AtivarCoresTerminal</a> (void)</td></tr>
+<tr class="memdesc:a4222a2bafcb8e3484b80ad5117de2ea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Habilita ANSI Virtual Terminal e UTF-8 no terminal do Windows.  <br /></td></tr>
+<tr class="memitem:a273f50ca26d7a272c512270936ff2c7a" id="r_a273f50ca26d7a272c512270936ff2c7a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a273f50ca26d7a272c512270936ff2c7a">ImprimirBarraFila</a> (int n)</td></tr>
+<tr class="memdesc:a273f50ca26d7a272c512270936ff2c7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imprime "Fila: N pessoas [●●●·······]" colorida segundo o tamanho.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Constantes globais e utilitarios partilhados (aleatorios, leitura validada do teclado, historico CSV, cores ANSI e barra de fila). </p>
+<p>Este modulo nao depende de nenhum outro do projecto e e' incluido por todos os restantes. </p>
+
+<p class="definition">Definido no ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentação das macros</h2>
+<a id="a5efaa0bd9ee057af47b92c6ed14cbee1" name="a5efaa0bd9ee057af47b92c6ed14cbee1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5efaa0bd9ee057af47b92c6ed14cbee1">&#9670;&#160;</a></span>CAPACIDADE_LOJA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CAPACIDADE_LOJA&#160;&#160;&#160;100</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clientes dentro da loja em simultaneo. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00023">23</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="a9d19b3da5530e5fc308758e7e209fdf9" name="a9d19b3da5530e5fc308758e7e209fdf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d19b3da5530e5fc308758e7e209fdf9">&#9670;&#160;</a></span>COR_DIM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define COR_DIM&#160;&#160;&#160;&quot;\x1b[38;5;244m&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cinza: separadores e [FECHADA]. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00130">130</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="a7fd77e85e422062bd92735f52ad416ea" name="a7fd77e85e422062bd92735f52ad416ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fd77e85e422062bd92735f52ad416ea">&#9670;&#160;</a></span>COR_ERR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define COR_ERR&#160;&#160;&#160;&quot;\x1b[38;5;174m&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Coral: fila &gt; 6. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00128">128</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="a9530f9f9884824bcb2b0477f24a70a9c" name="a9530f9f9884824bcb2b0477f24a70a9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9530f9f9884824bcb2b0477f24a70a9c">&#9670;&#160;</a></span>COR_HDR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define COR_HDR&#160;&#160;&#160;&quot;\x1b[38;5;110m&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Azul: cabecalhos. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00129">129</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="a0523b7e99fee2fb9c92888a44e82fb49" name="a0523b7e99fee2fb9c92888a44e82fb49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0523b7e99fee2fb9c92888a44e82fb49">&#9670;&#160;</a></span>COR_OK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define COR_OK&#160;&#160;&#160;&quot;\x1b[38;5;108m&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verde-salva: fila &lt;= 3. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00126">126</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="a641268c7761d910c7a9fb18c31c712f2" name="a641268c7761d910c7a9fb18c31c712f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a641268c7761d910c7a9fb18c31c712f2">&#9670;&#160;</a></span>COR_RESET</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define COR_RESET&#160;&#160;&#160;&quot;\x1b[0m&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Repor a cor por omissao. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00131">131</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="a47365476f9562a6d76facf177ceeaaf0" name="a47365476f9562a6d76facf177ceeaaf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47365476f9562a6d76facf177ceeaaf0">&#9670;&#160;</a></span>COR_WARN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define COR_WARN&#160;&#160;&#160;&quot;\x1b[38;5;179m&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Mostarda: fila &lt;= 6. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00127">127</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="a4c280bd0382ff0a4d3055ed81050fa8e" name="a4c280bd0382ff0a4d3055ed81050fa8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c280bd0382ff0a4d3055ed81050fa8e">&#9670;&#160;</a></span>FICH_CLIENTES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FICH_CLIENTES&#160;&#160;&#160;&quot;data/Clientes.txt&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pool de nomes de clientes. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00030">30</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="a6fd0112a000eea8bb9b69b0b70eee02a" name="a6fd0112a000eea8bb9b69b0b70eee02a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fd0112a000eea8bb9b69b0b70eee02a">&#9670;&#160;</a></span>FICH_CONFIG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FICH_CONFIG&#160;&#160;&#160;&quot;data/Configuracao.txt&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Parametros da simulacao. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00027">27</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="a1ecd1b13a8a5d6a7a85b15ac8ae63334" name="a1ecd1b13a8a5d6a7a85b15ac8ae63334"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ecd1b13a8a5d6a7a85b15ac8ae63334">&#9670;&#160;</a></span>FICH_FUNCIONARIOS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FICH_FUNCIONARIOS&#160;&#160;&#160;&quot;data/Funcionarios.txt&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operadores de caixa. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00029">29</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="a95eee5f555f544e22c19b9d03f13a5bf" name="a95eee5f555f544e22c19b9d03f13a5bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95eee5f555f544e22c19b9d03f13a5bf">&#9670;&#160;</a></span>FICH_HISTORICO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FICH_HISTORICO&#160;&#160;&#160;&quot;historico.csv&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Log das acoes do utilizador. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00031">31</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="acc93b64d5519963fac7ff87ca830a7a8" name="acc93b64d5519963fac7ff87ca830a7a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc93b64d5519963fac7ff87ca830a7a8">&#9670;&#160;</a></span>FICH_PRODUTOS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FICH_PRODUTOS&#160;&#160;&#160;&quot;data/Produtos.txt&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Catalogo de produtos. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00028">28</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="a4ab781d160c2133ec43802fb513ead88" name="a4ab781d160c2133ec43802fb513ead88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ab781d160c2133ec43802fb513ead88">&#9670;&#160;</a></span>FICH_RESULTADO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FICH_RESULTADO&#160;&#160;&#160;&quot;resultado.txt&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Relatorio final. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00032">32</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="a9cebeb550234e4af57e981c4f205cf8c" name="a9cebeb550234e4af57e981c4f205cf8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cebeb550234e4af57e981c4f205cf8c">&#9670;&#160;</a></span>MAX_CAIXAS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_CAIXAS&#160;&#160;&#160;100</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Limite ao percorrer o hashing das caixas. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00022">22</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="a0cf5c23bdf46ca7f4778aea7da2bc548" name="a0cf5c23bdf46ca7f4778aea7da2bc548"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cf5c23bdf46ca7f4778aea7da2bc548">&#9670;&#160;</a></span>MAX_CLIENTES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_CLIENTES&#160;&#160;&#160;12000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clientes registados (Clientes.txt). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00019">19</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="ae56b7e6ebd3278dc39f4c20c2e123c91" name="ae56b7e6ebd3278dc39f4c20c2e123c91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae56b7e6ebd3278dc39f4c20c2e123c91">&#9670;&#160;</a></span>MAX_FUNCIONARIOS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_FUNCIONARIOS&#160;&#160;&#160;200</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operadores de caixa. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00021">21</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="a650a929b45480c0875d8c814f442b6ac" name="a650a929b45480c0875d8c814f442b6ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a650a929b45480c0875d8c814f442b6ac">&#9670;&#160;</a></span>MAX_NOME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_NOME&#160;&#160;&#160;50</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tamanho de nome de cliente/caixa/funcionario. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00017">17</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="ad65f871456b07953dab9cd51f48c4744" name="ad65f871456b07953dab9cd51f48c4744"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad65f871456b07953dab9cd51f48c4744">&#9670;&#160;</a></span>MAX_NOME_PRODUTO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_NOME_PRODUTO&#160;&#160;&#160;128</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nomes de produtos sao mais longos. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00018">18</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="a6f8b26e433788430f2bcd212ad2d7eb6" name="a6f8b26e433788430f2bcd212ad2d7eb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f8b26e433788430f2bcd212ad2d7eb6">&#9670;&#160;</a></span>MAX_PRODUTOS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_PRODUTOS&#160;&#160;&#160;10000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Produtos no catalogo. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00020">20</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a id="ad294824459cf75fc6cd3b0ca3b16bc21" name="ad294824459cf75fc6cd3b0ca3b16bc21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad294824459cf75fc6cd3b0ca3b16bc21">&#9670;&#160;</a></span>TAMANHO_HASH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TAMANHO_HASH&#160;&#160;&#160;13</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Primo: tamanho da tabela das caixas. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8h_source.html#l00024">24</a> do ficheiro <a class="el" href="_uteis_8h_source.html">Uteis.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentação das funções</h2>
+<a id="aa6715c44960d0df8ee93f16972d39c44" name="aa6715c44960d0df8ee93f16972d39c44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6715c44960d0df8ee93f16972d39c44">&#9670;&#160;</a></span>Aleatorio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Aleatorio </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>min</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>max</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devolve um inteiro aleatorio em [min, max]. </p>
+<p>Devolve um inteiro aleatorio no intervalo [min, max].</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">min</td><td>Limite inferior (inclusivo). </td></tr>
+    <tr><td class="paramname">max</td><td>Limite superior (inclusivo). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Valor aleatorio no intervalo.</dd></dl>
+<p>Devolve um inteiro aleatorio em [min, max]. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00022">22</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+<a id="a4222a2bafcb8e3484b80ad5117de2ea8" name="a4222a2bafcb8e3484b80ad5117de2ea8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4222a2bafcb8e3484b80ad5117de2ea8">&#9670;&#160;</a></span>AtivarCoresTerminal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AtivarCoresTerminal </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Habilita ANSI Virtual Terminal e UTF-8 no terminal do Windows. </p>
+<p>Activa ANSI Virtual Terminal e UTF-8 no terminal Windows.</p>
+<p>Em Linux/macOS nao faz nada (as cores e o UTF-8 estao activos por omissao).</p>
+<p>Habilita ANSI Virtual Terminal e UTF-8 no terminal do Windows.</p>
+<p>Necessario para as cores e os caracteres da barra (●·) aparecerem correctamente. Em Linux/macOS nao e' preciso fazer nada. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00034">34</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+<a id="a16fa15f06e681980d70189d6209e5003" name="a16fa15f06e681980d70189d6209e5003"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16fa15f06e681980d70189d6209e5003">&#9670;&#160;</a></span>Confirmar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Confirmar </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>txt</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Mostra "txt (S/N)" e devolve true se a resposta comecar por 'S'/'s'. </p>
+<p>Pergunta "txt (S/N)" e devolve true se a resposta comecar por 'S'/'s'.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">txt</td><td>Pergunta a mostrar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>true se confirmado, false caso contrario.</dd></dl>
+<p>Mostra "txt (S/N)" e devolve true se a resposta comecar por 'S'/'s'. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00125">125</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+<a id="a036cfe874a8bf00da9f2a039d4451651" name="a036cfe874a8bf00da9f2a039d4451651"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a036cfe874a8bf00da9f2a039d4451651">&#9670;&#160;</a></span>CopiarNome()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CopiarNome </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>destino</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>origem</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copia de forma segura um nome para um buffer de tamanho MAX_NOME. </p>
+<p>Copia um nome de forma segura para um buffer de tamanho MAX_NOME.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">destino</td><td>Buffer destino. </td></tr>
+    <tr><td class="paramname">origem</td><td>String origem.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Copia de forma segura um nome para um buffer de tamanho MAX_NOME. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00142">142</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+<a id="af92eaf84af1a50e67102093b071a5534" name="af92eaf84af1a50e67102093b071a5534"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af92eaf84af1a50e67102093b071a5534">&#9670;&#160;</a></span>DescartarTecla()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DescartarTecla </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Consome a(s) tecla(s) que estejam no buffer. </p>
+<p>No-op em Linux/macOS: a tecla ja foi consumida em TeclaPressionada.</p>
+<p>Consome a(s) tecla(s) que estejam no buffer. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00226">226</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+<a id="aed4a65a9d207cccbc9b120f65468f6e3" name="aed4a65a9d207cccbc9b120f65468f6e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed4a65a9d207cccbc9b120f65468f6e3">&#9670;&#160;</a></span>DormirMs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DormirMs </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>ms</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pausa de 'ms' milissegundos sem gastar CPU. </p>
+<p>Pausa 'ms' milissegundos (usleep).</p>
+<p>Pausa de 'ms' milissegundos sem gastar CPU. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00206">206</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+<a id="a119c16b345de7c6b4a637e0131d1b1a9" name="a119c16b345de7c6b4a637e0131d1b1a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a119c16b345de7c6b4a637e0131d1b1a9">&#9670;&#160;</a></span>EsperarOuTecla()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EsperarOuTecla </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>ms</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Espera 'ms' ms; se uma tecla for premida durante a espera, devolve 1. </p>
+<p>Espera 'ms' milissegundos verificando o teclado a cada 100 ms.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ms</td><td>Tempo total a esperar em milissegundos. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>1 se uma tecla foi premida antes do tempo expirar, 0 caso contrario.</dd></dl>
+<p>Espera 'ms' ms; se uma tecla for premida durante a espera, devolve 1.</p>
+<dl class="section return"><dt>Retorna</dt><dd>1 se uma tecla foi premida durante a espera, 0 caso contrario. </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00234">234</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+<a id="a273f50ca26d7a272c512270936ff2c7a" name="a273f50ca26d7a272c512270936ff2c7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a273f50ca26d7a272c512270936ff2c7a">&#9670;&#160;</a></span>ImprimirBarraFila()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ImprimirBarraFila </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Imprime "Fila: N pessoas [●●●·······]" colorida segundo o tamanho. </p>
+<p>Imprime "Fila: N pessoas [●●●·······]" colorida.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Tamanho da fila. Verde se n &lt;= 3, amarelo se n &lt;= 6, vermelho &gt; 6.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Imprime "Fila: N pessoas [●●●·······]" colorida segundo o tamanho.</p>
+<p>Verde se n &lt;= 3, amarelo se n &lt;= 6, vermelho se n &gt; 6. A barra tem sempre 10 celulas. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00051">51</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+<a id="aa7fe7927f979983d14033f08fc62ef81" name="aa7fe7927f979983d14033f08fc62ef81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7fe7927f979983d14033f08fc62ef81">&#9670;&#160;</a></span>IniciarHistorico()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IniciarHistorico </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Marca o inicio de uma sessao no historico CSV. </p>
+<p>Escreve um separador de sessao no inicio do historico CSV.</p>
+<p>Marca o inicio de uma sessao no historico CSV. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00159">159</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+<a id="a56c61ad3470d8500a4d3ec7f453b1c09" name="a56c61ad3470d8500a4d3ec7f453b1c09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56c61ad3470d8500a4d3ec7f453b1c09">&#9670;&#160;</a></span>LerFloat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float LerFloat </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>txt</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Le um numero decimal do stdin. </p>
+<p>Le um numero decimal (ex.: preco).</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">txt</td><td>Prompt a mostrar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>O numero lido ou -1 se invalido.</dd></dl>
+<p>Le um numero decimal do stdin.</p>
+<dl class="section return"><dt>Retorna</dt><dd>-1 se invalido. </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00101">101</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+<a id="a05e2744aca83a3bf1572ba72083b71c3" name="a05e2744aca83a3bf1572ba72083b71c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05e2744aca83a3bf1572ba72083b71c3">&#9670;&#160;</a></span>LerInteiro()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int LerInteiro </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>txt</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Le uma linha do stdin e converte para inteiro. </p>
+<p>Le uma linha e tenta interpreta-la como um inteiro.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">txt</td><td>Texto a mostrar como prompt. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>O inteiro lido, ou -1 se a entrada nao for um numero.</dd></dl>
+<p>Le uma linha do stdin e converte para inteiro.</p>
+<dl class="section return"><dt>Retorna</dt><dd>O numero lido, ou -1 se a entrada nao for um numero valido. </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00077">77</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+<a id="a047f7e8c1ece3370e084dfa4b0761d1a" name="a047f7e8c1ece3370e084dfa4b0761d1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a047f7e8c1ece3370e084dfa4b0761d1a">&#9670;&#160;</a></span>LerOpcao()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int LerOpcao </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>txt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>min</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>max</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Le um inteiro insistindo ate estar em [min, max]. </p>
+<p>Le um inteiro insistindo ate o valor estar em [min, max].</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">txt</td><td>Prompt a mostrar. </td></tr>
+    <tr><td class="paramname">min</td><td>Limite inferior aceitavel. </td></tr>
+    <tr><td class="paramname">max</td><td>Limite superior aceitavel. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>O inteiro lido dentro do intervalo.</dd></dl>
+<p>Le um inteiro insistindo ate estar em [min, max]. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00089">89</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+<a id="afa3bedbf335c67fbfdb6ae08f5e93665" name="afa3bedbf335c67fbfdb6ae08f5e93665"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa3bedbf335c67fbfdb6ae08f5e93665">&#9670;&#160;</a></span>LerString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LerString </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>txt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>destino</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>tamanho</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Le uma linha para 'destino' (corta o '\n' final). </p>
+<p>Le uma linha para 'destino', cortando o '\n' final.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">txt</td><td>Prompt a mostrar. </td></tr>
+    <tr><td class="paramname">destino</td><td>Buffer onde a string e' guardada. </td></tr>
+    <tr><td class="paramname">tamanho</td><td>Tamanho maximo do buffer.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Le uma linha para 'destino' (corta o '\n' final). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00113">113</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+<a id="a8060a8792b5b11cd62a6e80bfdf890ec" name="a8060a8792b5b11cd62a6e80bfdf890ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8060a8792b5b11cd62a6e80bfdf890ec">&#9670;&#160;</a></span>LimparBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LimparBuffer </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Esvazia o resto da linha que ficou no buffer de entrada. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00067">67</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+<a id="af011f072c57f45c33650f2d9118c86b2" name="af011f072c57f45c33650f2d9118c86b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af011f072c57f45c33650f2d9118c86b2">&#9670;&#160;</a></span>RegistarHistorico()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RegistarHistorico </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>accao</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>detalhe</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Acrescenta uma linha ao historico CSV. </p>
+<p>Acrescenta uma acao do utilizador ao historico CSV.</p>
+<p>Formato: "data;accao;detalhe". O detalhe pode estar vazio (NULL) quando a accao nao tem parametros associados.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">accao</td><td>Identificador curto da accao. </td></tr>
+    <tr><td class="paramname">detalhe</td><td>Parametro adicional (pode ser NULL).</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Acrescenta uma linha ao historico CSV.</p>
+<p>Formato: "data;accao;detalhe" (detalhe pode estar vazio). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00175">175</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+<a id="a2b01d2ffa9eea238d3570fbab5680b56" name="a2b01d2ffa9eea238d3570fbab5680b56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b01d2ffa9eea238d3570fbab5680b56">&#9670;&#160;</a></span>TeclaPressionada()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TeclaPressionada </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devolve 1 se houver uma tecla a espera (nao bloqueia). </p>
+<p>Verifica, sem bloquear, se ha uma tecla a espera (consome-a se existir).</p>
+<p>Devolve 1 se houver uma tecla a espera (nao bloqueia). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00209">209</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+<a id="a5f34e18397fe7f993e6b4bfefabfb965" name="a5f34e18397fe7f993e6b4bfefabfb965"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f34e18397fe7f993e6b4bfefabfb965">&#9670;&#160;</a></span>ToMaiscula()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char ToMaiscula </td>
+          <td>(</td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converte um caracter para maiuscula (so a-z). </p>
+<p>Converte um caracter para maiuscula (apenas a-z).</p>
+<p>Converte um caracter para maiuscula (so a-z). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00135">135</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+<a id="a989ec8a09d6ea1467f668956177f1fb4" name="a989ec8a09d6ea1467f668956177f1fb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a989ec8a09d6ea1467f668956177f1fb4">&#9670;&#160;</a></span>wait_segundos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wait_segundos </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>seconds</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Espera (aproximadamente) 'seconds' segundos em espera activa. </p>
+<p>Util para a simulacao poder ser observada quando se corre passo a passo. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8c_source.html#l00152">152</a> do ficheiro <a class="el" href="_uteis_8c_source.html">Uteis.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="_uteis_8h.html">Uteis.h</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

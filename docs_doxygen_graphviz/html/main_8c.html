@@ -1,0 +1,438 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Gestao de Caixas de um Supermercado: Referência ao ficheiro src/main.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Gestao de Caixas de um Supermercado<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Projeto ED 25/26 - 1o Ano / 2o Semestre</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('main_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência ao ficheiro main.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Ponto de entrada do programa.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>&quot;</code><br />
+</div>
+<p><a href="main_8c_source.html">Ir para o código fonte deste ficheiro.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:abc65f836a3cbab5f454fbacf95d3b822" id="r_abc65f836a3cbab5f454fbacf95d3b822"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#abc65f836a3cbab5f454fbacf95d3b822">SaltarSegundos</a> (<a class="el" href="struct_supermercado.html">Supermercado</a> *S, int segundos)</td></tr>
+<tr class="memdesc:abc65f836a3cbab5f454fbacf95d3b822"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avanca 'segundos' segundos de uma so vez, em silencio.  <br /></td></tr>
+<tr class="memitem:ae581d11701afb2fce5ea363613ac6b4a" id="r_ae581d11701afb2fce5ea363613ac6b4a"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#ae581d11701afb2fce5ea363613ac6b4a">MenuPausaSimulacao</a> (<a class="el" href="struct_supermercado.html">Supermercado</a> *S)</td></tr>
+<tr class="memdesc:ae581d11701afb2fce5ea363613ac6b4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Menu mostrado quando o utilizador interrompe a simulacao.  <br /></td></tr>
+<tr class="memitem:aebae17f2f934109c1990707e7c8f1562" id="r_aebae17f2f934109c1990707e7c8f1562"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#aebae17f2f934109c1990707e7c8f1562">MenuSimulacao</a> (<a class="el" href="struct_supermercado.html">Supermercado</a> *S)</td></tr>
+<tr class="memdesc:aebae17f2f934109c1990707e7c8f1562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modo "Iniciar simulacao": corre sozinha em loop.  <br /></td></tr>
+<tr class="memitem:a7ece16a1a0e999740e816cd96cd09acc" id="r_a7ece16a1a0e999740e816cd96cd09acc"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a7ece16a1a0e999740e816cd96cd09acc">MenuGerente</a> (<a class="el" href="struct_supermercado.html">Supermercado</a> *S)</td></tr>
+<tr class="memdesc:a7ece16a1a0e999740e816cd96cd09acc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Submenu com as acoes do gerente sobre caixas e clientes.  <br /></td></tr>
+<tr class="memitem:a64f5430b64089338ccf0f0605eb0273e" id="r_a64f5430b64089338ccf0f0605eb0273e"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a64f5430b64089338ccf0f0605eb0273e">MenuSimulacaoTopo</a> (<a class="el" href="struct_supermercado.html">Supermercado</a> *S)</td></tr>
+<tr class="memdesc:a64f5430b64089338ccf0f0605eb0273e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Submenu: arrancar simulacao, acoes do gerente ou novo dia.  <br /></td></tr>
+<tr class="memitem:ad44b87a6184ea8a448600bc09f076729" id="r_ad44b87a6184ea8a448600bc09f076729"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ad44b87a6184ea8a448600bc09f076729">MenuGestao</a> (<a class="el" href="struct_supermercado.html">Supermercado</a> *S)</td></tr>
+<tr class="memdesc:ad44b87a6184ea8a448600bc09f076729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Submenu: gestao dos dados-mestre (produtos, clientes, funcionarios).  <br /></td></tr>
+<tr class="memitem:abf473f9e11744f76c8b0b8fa9b2cc780" id="r_abf473f9e11744f76c8b0b8fa9b2cc780"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#abf473f9e11744f76c8b0b8fa9b2cc780">MenuConsultas</a> (<a class="el" href="struct_supermercado.html">Supermercado</a> *S)</td></tr>
+<tr class="memdesc:abf473f9e11744f76c8b0b8fa9b2cc780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Submenu: consultas, relatorios e contabilidade da memoria.  <br /></td></tr>
+<tr class="memitem:a1f92abf4e734dfc69fa2029cbe1119ae" id="r_a1f92abf4e734dfc69fa2029cbe1119ae"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a1f92abf4e734dfc69fa2029cbe1119ae">MenuPrincipal</a> (<a class="el" href="struct_supermercado.html">Supermercado</a> *S)</td></tr>
+<tr class="memdesc:a1f92abf4e734dfc69fa2029cbe1119ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Menu principal do programa (5 entradas).  <br /></td></tr>
+<tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe" id="r_a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
+<tr class="memdesc:a840291bc02cba5474a4cb46a9b9566fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ponto de entrada.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Ponto de entrada do programa. </p>
+<p>Carrega os dados, mostra os menus e, no fim, grava e liberta tudo. A simulacao so arranca quando o utilizador escolhe "Iniciar simulacao". </p>
+
+<p class="definition">Definido no ficheiro <a class="el" href="main_8c_source.html">main.c</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentação das funções</h2>
+<a id="a840291bc02cba5474a4cb46a9b9566fe" name="a840291bc02cba5474a4cb46a9b9566fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a840291bc02cba5474a4cb46a9b9566fe">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ponto de entrada. </p>
+<p>Inicializa, corre o menu e liberta recursos. </p><dl class="section return"><dt>Retorna</dt><dd>0 em sucesso. </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="main_8c_source.html#l00256">256</a> do ficheiro <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="abf473f9e11744f76c8b0b8fa9b2cc780" name="abf473f9e11744f76c8b0b8fa9b2cc780"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf473f9e11744f76c8b0b8fa9b2cc780">&#9670;&#160;</a></span>MenuConsultas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MenuConsultas </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_supermercado.html">Supermercado</a> *</td>          <td class="paramname"><span class="paramname"><em>S</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Submenu: consultas, relatorios e contabilidade da memoria. </p>
+
+<p class="definition">Definido na linha <a class="el" href="main_8c_source.html#l00190">190</a> do ficheiro <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a7ece16a1a0e999740e816cd96cd09acc" name="a7ece16a1a0e999740e816cd96cd09acc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ece16a1a0e999740e816cd96cd09acc">&#9670;&#160;</a></span>MenuGerente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MenuGerente </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_supermercado.html">Supermercado</a> *</td>          <td class="paramname"><span class="paramname"><em>S</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Submenu com as acoes do gerente sobre caixas e clientes. </p>
+
+<p class="definition">Definido na linha <a class="el" href="main_8c_source.html#l00100">100</a> do ficheiro <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="ad44b87a6184ea8a448600bc09f076729" name="ad44b87a6184ea8a448600bc09f076729"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad44b87a6184ea8a448600bc09f076729">&#9670;&#160;</a></span>MenuGestao()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MenuGestao </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_supermercado.html">Supermercado</a> *</td>          <td class="paramname"><span class="paramname"><em>S</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Submenu: gestao dos dados-mestre (produtos, clientes, funcionarios). </p>
+
+<p class="definition">Definido na linha <a class="el" href="main_8c_source.html#l00168">168</a> do ficheiro <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="ae581d11701afb2fce5ea363613ac6b4a" name="ae581d11701afb2fce5ea363613ac6b4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae581d11701afb2fce5ea363613ac6b4a">&#9670;&#160;</a></span>MenuPausaSimulacao()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MenuPausaSimulacao </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_supermercado.html">Supermercado</a> *</td>          <td class="paramname"><span class="paramname"><em>S</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Menu mostrado quando o utilizador interrompe a simulacao. </p>
+<p>Enquanto este menu estiver aberto a simulacao fica parada (o tempo nao avanca). </p><dl class="section return"><dt>Retorna</dt><dd>1 se a simulacao deve terminar, 0 se deve retomar. </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="main_8c_source.html#l00043">43</a> do ficheiro <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a1f92abf4e734dfc69fa2029cbe1119ae" name="a1f92abf4e734dfc69fa2029cbe1119ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f92abf4e734dfc69fa2029cbe1119ae">&#9670;&#160;</a></span>MenuPrincipal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MenuPrincipal </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_supermercado.html">Supermercado</a> *</td>          <td class="paramname"><span class="paramname"><em>S</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Menu principal do programa (5 entradas). </p>
+
+<p class="definition">Definido na linha <a class="el" href="main_8c_source.html#l00227">227</a> do ficheiro <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="aebae17f2f934109c1990707e7c8f1562" name="aebae17f2f934109c1990707e7c8f1562"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebae17f2f934109c1990707e7c8f1562">&#9670;&#160;</a></span>MenuSimulacao()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MenuSimulacao </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_supermercado.html">Supermercado</a> *</td>          <td class="paramname"><span class="paramname"><em>S</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Modo "Iniciar simulacao": corre sozinha em loop. </p>
+<p>Imprime o estado a cada S-&gt;INTERVALO_AUTO_MS, ate o utilizador premir uma tecla (que abre o menu de pausa). </p>
+
+<p class="definition">Definido na linha <a class="el" href="main_8c_source.html#l00074">74</a> do ficheiro <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a64f5430b64089338ccf0f0605eb0273e" name="a64f5430b64089338ccf0f0605eb0273e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64f5430b64089338ccf0f0605eb0273e">&#9670;&#160;</a></span>MenuSimulacaoTopo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MenuSimulacaoTopo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_supermercado.html">Supermercado</a> *</td>          <td class="paramname"><span class="paramname"><em>S</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Submenu: arrancar simulacao, acoes do gerente ou novo dia. </p>
+
+<p class="definition">Definido na linha <a class="el" href="main_8c_source.html#l00143">143</a> do ficheiro <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="abc65f836a3cbab5f454fbacf95d3b822" name="abc65f836a3cbab5f454fbacf95d3b822"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc65f836a3cbab5f454fbacf95d3b822">&#9670;&#160;</a></span>SaltarSegundos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SaltarSegundos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_supermercado.html">Supermercado</a> *</td>          <td class="paramname"><span class="paramname"><em>S</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>segundos</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Avanca 'segundos' segundos de uma so vez, em silencio. </p>
+<p>So o estado final e' impresso (atraves de VerEstadoAtual). Usado pela opcao "saltar X segundos" do menu de pausa. </p>
+
+<p class="definition">Definido na linha <a class="el" href="main_8c_source.html#l00025">25</a> do ficheiro <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="main_8c.html">main.c</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

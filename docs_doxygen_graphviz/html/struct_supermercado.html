@@ -1,0 +1,940 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Gestao de Caixas de um Supermercado: Referência à estrutura Supermercado</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Gestao de Caixas de um Supermercado<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Projeto ED 25/26 - 1o Ano / 2o Semestre</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('struct_supermercado.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência à estrutura Supermercado</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Estrutura central do projecto.  
+ <a href="#details">Mais...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Campos de Dados</h2></td></tr>
+<tr class="memitem:a531c12bb9d3e43b653f9dc36fc1b0090" id="r_a531c12bb9d3e43b653f9dc36fc1b0090"><td class="memItemLeft">char *&#160;</td><td class="memItemRight"><a class="el" href="#a531c12bb9d3e43b653f9dc36fc1b0090">nome</a></td></tr>
+<tr class="memdesc:a531c12bb9d3e43b653f9dc36fc1b0090"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nome do supermercado.  <br /></td></tr>
+<tr class="memitem:a87cf3a5b4c7d8e383b73d65d24298fcd" id="r_a87cf3a5b4c7d8e383b73d65d24298fcd"><td class="memItemLeft"><a class="el" href="struct_lista_produtos.html">ListaProdutos</a>&#160;</td><td class="memItemRight"><a class="el" href="#a87cf3a5b4c7d8e383b73d65d24298fcd">produtos</a></td></tr>
+<tr class="memdesc:a87cf3a5b4c7d8e383b73d65d24298fcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Catalogo + indice de pesquisa.  <br /></td></tr>
+<tr class="memitem:a6057640fce94e82db5ed2e4b6b476168" id="r_a6057640fce94e82db5ed2e4b6b476168"><td class="memItemLeft"><a class="el" href="struct_lista_clientes.html">ListaClientes</a>&#160;</td><td class="memItemRight"><a class="el" href="#a6057640fce94e82db5ed2e4b6b476168">clientes</a></td></tr>
+<tr class="memdesc:a6057640fce94e82db5ed2e4b6b476168"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pool + indice de pesquisa.  <br /></td></tr>
+<tr class="memitem:a434ab440c458084818ddda5eab9e6e77" id="r_a434ab440c458084818ddda5eab9e6e77"><td class="memItemLeft"><a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a>&#160;</td><td class="memItemRight"><a class="el" href="#a434ab440c458084818ddda5eab9e6e77">funcionarios</a></td></tr>
+<tr class="memdesc:a434ab440c458084818ddda5eab9e6e77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operadores de caixa.  <br /></td></tr>
+<tr class="memitem:aa5660087316e3e587e7437ff7f025f6a" id="r_aa5660087316e3e587e7437ff7f025f6a"><td class="memItemLeft"><a class="el" href="struct_fila.html">Fila</a>&#160;</td><td class="memItemRight"><a class="el" href="#aa5660087316e3e587e7437ff7f025f6a">emCompras</a></td></tr>
+<tr class="memdesc:aa5660087316e3e587e7437ff7f025f6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clientes a fazer compras (sem caixa ainda).  <br /></td></tr>
+<tr class="memitem:afd233621e288ad33f72a56e94fcdd778" id="r_afd233621e288ad33f72a56e94fcdd778"><td class="memItemLeft"><a class="el" href="struct_hashing.html">Hashing</a>&#160;</td><td class="memItemRight"><a class="el" href="#afd233621e288ad33f72a56e94fcdd778">caixas</a></td></tr>
+<tr class="memdesc:afd233621e288ad33f72a56e94fcdd778"><td class="mdescLeft">&#160;</td><td class="mdescRight">Todas as caixas, acessiveis pelo nome.  <br /></td></tr>
+<tr class="memitem:acc1526073c657d5a4f8860e5e73e32d4" id="r_acc1526073c657d5a4f8860e5e73e32d4"><td class="memItemLeft"><a class="el" href="struct_relogio.html">Relogio</a> *&#160;</td><td class="memItemRight"><a class="el" href="#acc1526073c657d5a4f8860e5e73e32d4">relogio</a></td></tr>
+<tr class="memdesc:acc1526073c657d5a4f8860e5e73e32d4"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_relogio.html" title="Relogio logico que avanca em passos discretos.">Relogio</a> logico da simulacao.  <br /></td></tr>
+<tr class="memitem:a27dfd94d5ef990f17e035f15df2872eb" id="r_a27dfd94d5ef990f17e035f15df2872eb"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a27dfd94d5ef990f17e035f15df2872eb">MAX_ESPERA</a></td></tr>
+<tr class="memdesc:a27dfd94d5ef990f17e035f15df2872eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limiar para oferecer um produto.  <br /></td></tr>
+<tr class="memitem:ad14e675a1d32d4f0005846283fcba9c1" id="r_ad14e675a1d32d4f0005846283fcba9c1"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ad14e675a1d32d4f0005846283fcba9c1">N_CAIXAS</a></td></tr>
+<tr class="memdesc:ad14e675a1d32d4f0005846283fcba9c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numero maximo de caixas.  <br /></td></tr>
+<tr class="memitem:af4638b79d823c9060692276c6b07b714" id="r_af4638b79d823c9060692276c6b07b714"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#af4638b79d823c9060692276c6b07b714">TEMPO_ATENDIMENTO_PRODUTO</a></td></tr>
+<tr class="memdesc:af4638b79d823c9060692276c6b07b714"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limite [2, este] de tempo por produto.  <br /></td></tr>
+<tr class="memitem:a19ea2f523c281419e134824fd9c596b2" id="r_a19ea2f523c281419e134824fd9c596b2"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a19ea2f523c281419e134824fd9c596b2">MAX_PRECO</a></td></tr>
+<tr class="memdesc:a19ea2f523c281419e134824fd9c596b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Preco maximo de um produto.  <br /></td></tr>
+<tr class="memitem:a3e3d2310588f80813b79eb50561b2c12" id="r_a3e3d2310588f80813b79eb50561b2c12"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a3e3d2310588f80813b79eb50561b2c12">MAX_FILA</a></td></tr>
+<tr class="memdesc:a3e3d2310588f80813b79eb50561b2c12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Media de fila para abrir nova caixa.  <br /></td></tr>
+<tr class="memitem:a68689264c2a134b2afda8b00a6b2687f" id="r_a68689264c2a134b2afda8b00a6b2687f"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a68689264c2a134b2afda8b00a6b2687f">MIN_FILA</a></td></tr>
+<tr class="memdesc:a68689264c2a134b2afda8b00a6b2687f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Media de fila para fechar uma caixa.  <br /></td></tr>
+<tr class="memitem:a2d729daf2909656c099e28edcc25872f" id="r_a2d729daf2909656c099e28edcc25872f"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a2d729daf2909656c099e28edcc25872f">LIMITE_FILA_CAIXA</a></td></tr>
+<tr class="memdesc:a2d729daf2909656c099e28edcc25872f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cap rigido de pessoas por caixa (default 10).  <br /></td></tr>
+<tr class="memitem:a48f0d70bd257ba4b104f3c9b684182a8" id="r_a48f0d70bd257ba4b104f3c9b684182a8"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a48f0d70bd257ba4b104f3c9b684182a8">VELOCIDADE_RELOGIO</a></td></tr>
+<tr class="memdesc:a48f0d70bd257ba4b104f3c9b684182a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Segundos por tick.  <br /></td></tr>
+<tr class="memitem:ab95cbf03511fead20ce60f57294094f4" id="r_ab95cbf03511fead20ce60f57294094f4"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ab95cbf03511fead20ce60f57294094f4">HORA_ABERTURA</a></td></tr>
+<tr class="memdesc:ab95cbf03511fead20ce60f57294094f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">24h: hora a que a loja abre.  <br /></td></tr>
+<tr class="memitem:a2bbe9292b4ed01a1d0e6e8e999310979" id="r_a2bbe9292b4ed01a1d0e6e8e999310979"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a2bbe9292b4ed01a1d0e6e8e999310979">HORA_FECHO</a></td></tr>
+<tr class="memdesc:a2bbe9292b4ed01a1d0e6e8e999310979"><td class="mdescLeft">&#160;</td><td class="mdescRight">24h: hora a que a loja fecha.  <br /></td></tr>
+<tr class="memitem:a54e2ef1c27e87ecc17ecda14748288a4" id="r_a54e2ef1c27e87ecc17ecda14748288a4"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a54e2ef1c27e87ecc17ecda14748288a4">CADENCIA_ENTRADA</a></td></tr>
+<tr class="memdesc:a54e2ef1c27e87ecc17ecda14748288a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Probabilidade (%) de entrada por tentativa.  <br /></td></tr>
+<tr class="memitem:a64adc4ea68e72317aa0e30c5a58f8cfe" id="r_a64adc4ea68e72317aa0e30c5a58f8cfe"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a64adc4ea68e72317aa0e30c5a58f8cfe">INTERVALO_AUTO_MS</a></td></tr>
+<tr class="memdesc:a64adc4ea68e72317aa0e30c5a58f8cfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Periodo (ms) entre frames do auto-display.  <br /></td></tr>
+<tr class="memitem:ad12fb1d29aabdb60e0dad98dbf147f84" id="r_ad12fb1d29aabdb60e0dad98dbf147f84"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ad12fb1d29aabdb60e0dad98dbf147f84">TICKS_POR_FRAME</a></td></tr>
+<tr class="memdesc:ad12fb1d29aabdb60e0dad98dbf147f84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Passos avancados entre frames.  <br /></td></tr>
+<tr class="memitem:a9af0e412ae44c4743e3ae935ba7b845f" id="r_a9af0e412ae44c4743e3ae935ba7b845f"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a9af0e412ae44c4743e3ae935ba7b845f">aceitarEntradas</a></td></tr>
+<tr class="memdesc:a9af0e412ae44c4743e3ae935ba7b845f"><td class="mdescLeft">&#160;</td><td class="mdescRight">false = porta fechada (atende ate esvaziar).  <br /></td></tr>
+<tr class="memitem:ad92ddea5017bdb4a2722a97bfb0bc3f8" id="r_ad92ddea5017bdb4a2722a97bfb0bc3f8"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ad92ddea5017bdb4a2722a97bfb0bc3f8">verboso</a></td></tr>
+<tr class="memdesc:ad92ddea5017bdb4a2722a97bfb0bc3f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">true = imprime eventos passo a passo.  <br /></td></tr>
+<tr class="memitem:a14b3ab3f701f5414c7136e414226ec48" id="r_a14b3ab3f701f5414c7136e414226ec48"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a14b3ab3f701f5414c7136e414226ec48">totalAtendidos</a></td></tr>
+<tr class="memdesc:a14b3ab3f701f5414c7136e414226ec48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total de clientes atendidos.  <br /></td></tr>
+<tr class="memitem:a22161faea10f7faa29a9d8cf4a7abaa8" id="r_a22161faea10f7faa29a9d8cf4a7abaa8"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a22161faea10f7faa29a9d8cf4a7abaa8">totalProdutosVendidos</a></td></tr>
+<tr class="memdesc:a22161faea10f7faa29a9d8cf4a7abaa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total de produtos vendidos.  <br /></td></tr>
+<tr class="memitem:af4e8fb2bb27e72f8f30e58e0b588ecc6" id="r_af4e8fb2bb27e72f8f30e58e0b588ecc6"><td class="memItemLeft">long&#160;</td><td class="memItemRight"><a class="el" href="#af4e8fb2bb27e72f8f30e58e0b588ecc6">somaTemposEspera</a></td></tr>
+<tr class="memdesc:af4e8fb2bb27e72f8f30e58e0b588ecc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Soma dos tempos de espera.  <br /></td></tr>
+<tr class="memitem:a847b9ba482c8e39dd6ddb1de06a9062f" id="r_a847b9ba482c8e39dd6ddb1de06a9062f"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a847b9ba482c8e39dd6ddb1de06a9062f">produtosOferecidos</a></td></tr>
+<tr class="memdesc:a847b9ba482c8e39dd6ddb1de06a9062f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numero de ofertas (req.  <br /></td></tr>
+<tr class="memitem:a162e062d36d4ea4652f152d349269cf9" id="r_a162e062d36d4ea4652f152d349269cf9"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a162e062d36d4ea4652f152d349269cf9">custoOferecido</a></td></tr>
+<tr class="memdesc:a162e062d36d4ea4652f152d349269cf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Custo total das ofertas.  <br /></td></tr>
+<tr class="memitem:a493e7e62f8ab1b273d117583afaad7fe" id="r_a493e7e62f8ab1b273d117583afaad7fe"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a493e7e62f8ab1b273d117583afaad7fe">totalDinheiro</a></td></tr>
+<tr class="memdesc:a493e7e62f8ab1b273d117583afaad7fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faturacao total.  <br /></td></tr>
+<tr class="memitem:a1d5a4ac33347de6f387c45fa376c0b53" id="r_a1d5a4ac33347de6f387c45fa376c0b53"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a1d5a4ac33347de6f387c45fa376c0b53">caixasAbertasMax</a></td></tr>
+<tr class="memdesc:a1d5a4ac33347de6f387c45fa376c0b53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximo de caixas abertas em simultaneo.  <br /></td></tr>
+<tr class="memitem:ab2a688f56c01569cb8889baee75d73bc" id="r_ab2a688f56c01569cb8889baee75d73bc"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ab2a688f56c01569cb8889baee75d73bc">entradasDesdeUpdate</a></td></tr>
+<tr class="memdesc:ab2a688f56c01569cb8889baee75d73bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entradas desde o ultimo frame.  <br /></td></tr>
+<tr class="memitem:a2c58b43507f224c5c58def9417c57b89" id="r_a2c58b43507f224c5c58def9417c57b89"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a2c58b43507f224c5c58def9417c57b89">saidasDesdeUpdate</a></td></tr>
+<tr class="memdesc:a2c58b43507f224c5c58def9417c57b89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saidas desde o ultimo frame.  <br /></td></tr>
+<tr class="memitem:a1a0ff6552a7773b7454e7a281b510bc6" id="r_a1a0ff6552a7773b7454e7a281b510bc6"><td class="memItemLeft">char&#160;</td><td class="memItemRight"><a class="el" href="#a1a0ff6552a7773b7454e7a281b510bc6">nomesEntradas</a> [1024]</td></tr>
+<tr class="memdesc:a1a0ff6552a7773b7454e7a281b510bc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nomes acumulados (req.  <br /></td></tr>
+<tr class="memitem:a3670fe2234230e712aed5314632b10f8" id="r_a3670fe2234230e712aed5314632b10f8"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a3670fe2234230e712aed5314632b10f8">ofertasDesdeUpdate</a></td></tr>
+<tr class="memdesc:a3670fe2234230e712aed5314632b10f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ofertas (MAX_ESPERA) desde o ultimo frame.  <br /></td></tr>
+<tr class="memitem:aa2b1ce592535906bf7c95f7ebf67e09c" id="r_aa2b1ce592535906bf7c95f7ebf67e09c"><td class="memItemLeft">char&#160;</td><td class="memItemRight"><a class="el" href="#aa2b1ce592535906bf7c95f7ebf67e09c">nomesOfertas</a> [1024]</td></tr>
+<tr class="memdesc:aa2b1ce592535906bf7c95f7ebf67e09c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linhas "Nome [ -X.XX EUR ]" acumuladas.  <br /></td></tr>
+<tr class="memitem:aa8ed07cac6b0b7346d20a6f7acc782af" id="r_aa8ed07cac6b0b7346d20a6f7acc782af"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#aa8ed07cac6b0b7346d20a6f7acc782af">maxFilaObservada</a></td></tr>
+<tr class="memdesc:aa8ed07cac6b0b7346d20a6f7acc782af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maior fila vista em qualquer caixa.  <br /></td></tr>
+<tr class="memitem:a566c49815cc20783dbede5b5859530bf" id="r_a566c49815cc20783dbede5b5859530bf"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a566c49815cc20783dbede5b5859530bf">dentroLojaPico</a></td></tr>
+<tr class="memdesc:a566c49815cc20783dbede5b5859530bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pico de clientes dentro da loja.  <br /></td></tr>
+<tr class="memitem:a1143cd74a44b4d82ba5a9cec82b0a857" id="r_a1143cd74a44b4d82ba5a9cec82b0a857"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a1143cd74a44b4d82ba5a9cec82b0a857">horaPico</a></td></tr>
+<tr class="memdesc:a1143cd74a44b4d82ba5a9cec82b0a857"><td class="mdescLeft">&#160;</td><td class="mdescRight">Segundos absolutos do pico.  <br /></td></tr>
+<tr class="memitem:ac129eae7fbf8f1597297b66d5bb225c0" id="r_ac129eae7fbf8f1597297b66d5bb225c0"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ac129eae7fbf8f1597297b66d5bb225c0">entradasPorHora</a> [24]</td></tr>
+<tr class="memdesc:ac129eae7fbf8f1597297b66d5bb225c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Histograma de entradas.  <br /></td></tr>
+<tr class="memitem:a31a09919675fa54a937d97f19edca08b" id="r_a31a09919675fa54a937d97f19edca08b"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a31a09919675fa54a937d97f19edca08b">saidasPorHora</a> [24]</td></tr>
+<tr class="memdesc:a31a09919675fa54a937d97f19edca08b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Histograma de saidas.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Estrutura central do projecto. </p>
+<p>Junta os arrays-mestre carregados uma vez dos ficheiros, as estruturas dinamicas (fila de quem anda as compras e tabela de dispersao das caixas), o relogio logico, os parametros de configuracao e as estatisticas globais. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00031">31</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Documentação dos campos e atributos</h2>
+<a id="a9af0e412ae44c4743e3ae935ba7b845f" name="a9af0e412ae44c4743e3ae935ba7b845f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9af0e412ae44c4743e3ae935ba7b845f">&#9670;&#160;</a></span>aceitarEntradas</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Supermercado::aceitarEntradas</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>false = porta fechada (atende ate esvaziar). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00057">57</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a54e2ef1c27e87ecc17ecda14748288a4" name="a54e2ef1c27e87ecc17ecda14748288a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54e2ef1c27e87ecc17ecda14748288a4">&#9670;&#160;</a></span>CADENCIA_ENTRADA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::CADENCIA_ENTRADA</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Probabilidade (%) de entrada por tentativa. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00053">53</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="afd233621e288ad33f72a56e94fcdd778" name="afd233621e288ad33f72a56e94fcdd778"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd233621e288ad33f72a56e94fcdd778">&#9670;&#160;</a></span>caixas</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_hashing.html">Hashing</a> Supermercado::caixas</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Todas as caixas, acessiveis pelo nome. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00039">39</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a1d5a4ac33347de6f387c45fa376c0b53" name="a1d5a4ac33347de6f387c45fa376c0b53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d5a4ac33347de6f387c45fa376c0b53">&#9670;&#160;</a></span>caixasAbertasMax</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::caixasAbertasMax</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Maximo de caixas abertas em simultaneo. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00067">67</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a6057640fce94e82db5ed2e4b6b476168" name="a6057640fce94e82db5ed2e4b6b476168"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6057640fce94e82db5ed2e4b6b476168">&#9670;&#160;</a></span>clientes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_lista_clientes.html">ListaClientes</a> Supermercado::clientes</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pool + indice de pesquisa. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00035">35</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a162e062d36d4ea4652f152d349269cf9" name="a162e062d36d4ea4652f152d349269cf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a162e062d36d4ea4652f152d349269cf9">&#9670;&#160;</a></span>custoOferecido</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Supermercado::custoOferecido</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Custo total das ofertas. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00065">65</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a566c49815cc20783dbede5b5859530bf" name="a566c49815cc20783dbede5b5859530bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a566c49815cc20783dbede5b5859530bf">&#9670;&#160;</a></span>dentroLojaPico</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::dentroLojaPico</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pico de clientes dentro da loja. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00078">78</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="aa5660087316e3e587e7437ff7f025f6a" name="aa5660087316e3e587e7437ff7f025f6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5660087316e3e587e7437ff7f025f6a">&#9670;&#160;</a></span>emCompras</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_fila.html">Fila</a> Supermercado::emCompras</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clientes a fazer compras (sem caixa ainda). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00038">38</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="ab2a688f56c01569cb8889baee75d73bc" name="ab2a688f56c01569cb8889baee75d73bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2a688f56c01569cb8889baee75d73bc">&#9670;&#160;</a></span>entradasDesdeUpdate</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::entradasDesdeUpdate</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Entradas desde o ultimo frame. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00070">70</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="ac129eae7fbf8f1597297b66d5bb225c0" name="ac129eae7fbf8f1597297b66d5bb225c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac129eae7fbf8f1597297b66d5bb225c0">&#9670;&#160;</a></span>entradasPorHora</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::entradasPorHora[24]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Histograma de entradas. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00080">80</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a434ab440c458084818ddda5eab9e6e77" name="a434ab440c458084818ddda5eab9e6e77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a434ab440c458084818ddda5eab9e6e77">&#9670;&#160;</a></span>funcionarios</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_lista_funcionarios.html">ListaFuncionarios</a> Supermercado::funcionarios</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operadores de caixa. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00036">36</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="ab95cbf03511fead20ce60f57294094f4" name="ab95cbf03511fead20ce60f57294094f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab95cbf03511fead20ce60f57294094f4">&#9670;&#160;</a></span>HORA_ABERTURA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::HORA_ABERTURA</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>24h: hora a que a loja abre. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00051">51</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a2bbe9292b4ed01a1d0e6e8e999310979" name="a2bbe9292b4ed01a1d0e6e8e999310979"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bbe9292b4ed01a1d0e6e8e999310979">&#9670;&#160;</a></span>HORA_FECHO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::HORA_FECHO</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>24h: hora a que a loja fecha. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00052">52</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a1143cd74a44b4d82ba5a9cec82b0a857" name="a1143cd74a44b4d82ba5a9cec82b0a857"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1143cd74a44b4d82ba5a9cec82b0a857">&#9670;&#160;</a></span>horaPico</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::horaPico</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Segundos absolutos do pico. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00079">79</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a64adc4ea68e72317aa0e30c5a58f8cfe" name="a64adc4ea68e72317aa0e30c5a58f8cfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64adc4ea68e72317aa0e30c5a58f8cfe">&#9670;&#160;</a></span>INTERVALO_AUTO_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::INTERVALO_AUTO_MS</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Periodo (ms) entre frames do auto-display. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00054">54</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a2d729daf2909656c099e28edcc25872f" name="a2d729daf2909656c099e28edcc25872f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d729daf2909656c099e28edcc25872f">&#9670;&#160;</a></span>LIMITE_FILA_CAIXA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::LIMITE_FILA_CAIXA</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cap rigido de pessoas por caixa (default 10). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00049">49</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a27dfd94d5ef990f17e035f15df2872eb" name="a27dfd94d5ef990f17e035f15df2872eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27dfd94d5ef990f17e035f15df2872eb">&#9670;&#160;</a></span>MAX_ESPERA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::MAX_ESPERA</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Limiar para oferecer um produto. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00043">43</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a3e3d2310588f80813b79eb50561b2c12" name="a3e3d2310588f80813b79eb50561b2c12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e3d2310588f80813b79eb50561b2c12">&#9670;&#160;</a></span>MAX_FILA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::MAX_FILA</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Media de fila para abrir nova caixa. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00047">47</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a19ea2f523c281419e134824fd9c596b2" name="a19ea2f523c281419e134824fd9c596b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19ea2f523c281419e134824fd9c596b2">&#9670;&#160;</a></span>MAX_PRECO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::MAX_PRECO</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Preco maximo de um produto. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00046">46</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="aa8ed07cac6b0b7346d20a6f7acc782af" name="aa8ed07cac6b0b7346d20a6f7acc782af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8ed07cac6b0b7346d20a6f7acc782af">&#9670;&#160;</a></span>maxFilaObservada</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::maxFilaObservada</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Maior fila vista em qualquer caixa. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00077">77</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a68689264c2a134b2afda8b00a6b2687f" name="a68689264c2a134b2afda8b00a6b2687f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68689264c2a134b2afda8b00a6b2687f">&#9670;&#160;</a></span>MIN_FILA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::MIN_FILA</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Media de fila para fechar uma caixa. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00048">48</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="ad14e675a1d32d4f0005846283fcba9c1" name="ad14e675a1d32d4f0005846283fcba9c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad14e675a1d32d4f0005846283fcba9c1">&#9670;&#160;</a></span>N_CAIXAS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::N_CAIXAS</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Numero maximo de caixas. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00044">44</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a531c12bb9d3e43b653f9dc36fc1b0090" name="a531c12bb9d3e43b653f9dc36fc1b0090"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a531c12bb9d3e43b653f9dc36fc1b0090">&#9670;&#160;</a></span>nome</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* Supermercado::nome</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nome do supermercado. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00032">32</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a1a0ff6552a7773b7454e7a281b510bc6" name="a1a0ff6552a7773b7454e7a281b510bc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a0ff6552a7773b7454e7a281b510bc6">&#9670;&#160;</a></span>nomesEntradas</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Supermercado::nomesEntradas[1024]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nomes acumulados (req. </p>
+<p>2: quem entrou). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00072">72</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="aa2b1ce592535906bf7c95f7ebf67e09c" name="aa2b1ce592535906bf7c95f7ebf67e09c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2b1ce592535906bf7c95f7ebf67e09c">&#9670;&#160;</a></span>nomesOfertas</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Supermercado::nomesOfertas[1024]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Linhas "Nome [ -X.XX EUR ]" acumuladas. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00074">74</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a3670fe2234230e712aed5314632b10f8" name="a3670fe2234230e712aed5314632b10f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3670fe2234230e712aed5314632b10f8">&#9670;&#160;</a></span>ofertasDesdeUpdate</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::ofertasDesdeUpdate</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ofertas (MAX_ESPERA) desde o ultimo frame. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00073">73</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a87cf3a5b4c7d8e383b73d65d24298fcd" name="a87cf3a5b4c7d8e383b73d65d24298fcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87cf3a5b4c7d8e383b73d65d24298fcd">&#9670;&#160;</a></span>produtos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_lista_produtos.html">ListaProdutos</a> Supermercado::produtos</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Catalogo + indice de pesquisa. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00034">34</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a847b9ba482c8e39dd6ddb1de06a9062f" name="a847b9ba482c8e39dd6ddb1de06a9062f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a847b9ba482c8e39dd6ddb1de06a9062f">&#9670;&#160;</a></span>produtosOferecidos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::produtosOferecidos</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Numero de ofertas (req. </p>
+<p>qualidade). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00064">64</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="acc1526073c657d5a4f8860e5e73e32d4" name="acc1526073c657d5a4f8860e5e73e32d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc1526073c657d5a4f8860e5e73e32d4">&#9670;&#160;</a></span>relogio</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_relogio.html">Relogio</a>* Supermercado::relogio</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="struct_relogio.html" title="Relogio logico que avanca em passos discretos.">Relogio</a> logico da simulacao. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00040">40</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a2c58b43507f224c5c58def9417c57b89" name="a2c58b43507f224c5c58def9417c57b89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c58b43507f224c5c58def9417c57b89">&#9670;&#160;</a></span>saidasDesdeUpdate</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::saidasDesdeUpdate</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Saidas desde o ultimo frame. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00071">71</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a31a09919675fa54a937d97f19edca08b" name="a31a09919675fa54a937d97f19edca08b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31a09919675fa54a937d97f19edca08b">&#9670;&#160;</a></span>saidasPorHora</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::saidasPorHora[24]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Histograma de saidas. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00081">81</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="af4e8fb2bb27e72f8f30e58e0b588ecc6" name="af4e8fb2bb27e72f8f30e58e0b588ecc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4e8fb2bb27e72f8f30e58e0b588ecc6">&#9670;&#160;</a></span>somaTemposEspera</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long Supermercado::somaTemposEspera</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Soma dos tempos de espera. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00063">63</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="af4638b79d823c9060692276c6b07b714" name="af4638b79d823c9060692276c6b07b714"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4638b79d823c9060692276c6b07b714">&#9670;&#160;</a></span>TEMPO_ATENDIMENTO_PRODUTO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::TEMPO_ATENDIMENTO_PRODUTO</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Limite [2, este] de tempo por produto. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00045">45</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="ad12fb1d29aabdb60e0dad98dbf147f84" name="ad12fb1d29aabdb60e0dad98dbf147f84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad12fb1d29aabdb60e0dad98dbf147f84">&#9670;&#160;</a></span>TICKS_POR_FRAME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::TICKS_POR_FRAME</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Passos avancados entre frames. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00055">55</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a14b3ab3f701f5414c7136e414226ec48" name="a14b3ab3f701f5414c7136e414226ec48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14b3ab3f701f5414c7136e414226ec48">&#9670;&#160;</a></span>totalAtendidos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::totalAtendidos</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Total de clientes atendidos. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00061">61</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a493e7e62f8ab1b273d117583afaad7fe" name="a493e7e62f8ab1b273d117583afaad7fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a493e7e62f8ab1b273d117583afaad7fe">&#9670;&#160;</a></span>totalDinheiro</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Supermercado::totalDinheiro</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Faturacao total. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00066">66</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a22161faea10f7faa29a9d8cf4a7abaa8" name="a22161faea10f7faa29a9d8cf4a7abaa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22161faea10f7faa29a9d8cf4a7abaa8">&#9670;&#160;</a></span>totalProdutosVendidos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::totalProdutosVendidos</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Total de produtos vendidos. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00062">62</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="a48f0d70bd257ba4b104f3c9b684182a8" name="a48f0d70bd257ba4b104f3c9b684182a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48f0d70bd257ba4b104f3c9b684182a8">&#9670;&#160;</a></span>VELOCIDADE_RELOGIO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Supermercado::VELOCIDADE_RELOGIO</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Segundos por tick. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00050">50</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<a id="ad92ddea5017bdb4a2722a97bfb0bc3f8" name="ad92ddea5017bdb4a2722a97bfb0bc3f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad92ddea5017bdb4a2722a97bfb0bc3f8">&#9670;&#160;</a></span>verboso</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Supermercado::verboso</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>true = imprime eventos passo a passo. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_supermercado_8h_source.html#l00058">58</a> do ficheiro <a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>.</p>
+
+</div>
+</div>
+<hr/>A documentação para esta estrutura foi gerada a partir do seguinte ficheiro:<ul>
+<li>include/<a class="el" href="_supermercado_8h_source.html">Supermercado.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="struct_supermercado.html">Supermercado</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

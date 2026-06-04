@@ -1,0 +1,26 @@
+var _simulacao_8c =
+[
+    [ "ENTRADAS_POR_TICK_MAX", "_simulacao_8c.html#a51a2d1b3cbe2ccfb130e16a58d22b170", null ],
+    [ "MAX_CARRINHO", "_simulacao_8c.html#a35f533ebe7b477c3434005c97b34eb88", null ],
+    [ "MAX_ITERACOES_SIM", "_simulacao_8c.html#afa56aee6af59f6382f942e931d770394", null ],
+    [ "AcrescentarEntrada", "_simulacao_8c.html#a0cab70e8b5a295cb4dd15a7f0080198c", null ],
+    [ "AtenderCaixas", "_simulacao_8c.html#aead0e2141bb1f8eab04f1daeeaa3786b", null ],
+    [ "AtualizarPicos", "_simulacao_8c.html#a850e62d8c0c2d04f89dcd553150a7f68", null ],
+    [ "AvancarCompras", "_simulacao_8c.html#a59b0774ae4238a6c83f8eea48e95374b", null ],
+    [ "ContarCaixasAbertas", "_simulacao_8c.html#a7d418a3a72908bcf8cefed164801ba1d", null ],
+    [ "ContarClientesEmFilas", "_simulacao_8c.html#a35039f6b77a71610111fe98bed99b7d7", null ],
+    [ "ContarDentroLoja", "_simulacao_8c.html#a617a9035e49f95081e9a12012a241897", null ],
+    [ "CorrerAteEsvaziar", "_simulacao_8c.html#aa25f09d35a813628bb1a20503cd711de", null ],
+    [ "EntradaCliente", "_simulacao_8c.html#aa6e51aa2fbee9ce9fe630611e97b3ae1", null ],
+    [ "EscolherClienteParaEntrar", "_simulacao_8c.html#af43531e17acc85acda09dd81cadd5c76", null ],
+    [ "EscolherMelhorCaixa", "_simulacao_8c.html#a22d55764e75043bc448d08e2cb11d9ac", null ],
+    [ "ExecutarPasso", "_simulacao_8c.html#a7a06ae084411d0fc6ec9567e7eb6a228", null ],
+    [ "ExecutarSimulacao", "_simulacao_8c.html#ad99325d9058ded212e833f096b4e1b80", null ],
+    [ "FecharCaixaSeVazia", "_simulacao_8c.html#a3a887a43e7ab1d1f8d840f3c0558286e", null ],
+    [ "GerirCaixas", "_simulacao_8c.html#ad89a7f8347e8630ec440180558e68168", null ],
+    [ "IniciarNovoDia", "_simulacao_8c.html#a7c1e33472bc0a3d64055854050fc9e3f", null ],
+    [ "LojaAberta", "_simulacao_8c.html#ae40c63bad9696efb7e0e7ec6127d926a", null ],
+    [ "SimulacaoTerminada", "_simulacao_8c.html#a822e090a712591a0c74b049569401ad5", null ],
+    [ "TerminarAtendimento", "_simulacao_8c.html#a828ed2317e958bbfb5bf3ffcae539aa5", null ],
+    [ "VerificarTemposEspera", "_simulacao_8c.html#af1fbe7dc19654fa121a41bda3c9fbe62", null ]
+];

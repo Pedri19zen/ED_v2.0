@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['fecharcaixaimediato_0',['FecharCaixaImediato',['../_supermercado_8h.html#a0027161dae1f30af5c8a02dbc0a324c7',1,'FecharCaixaImediato(Supermercado *S, char *nomeCaixa):&#160;Acoes.c'],['../_acoes_8c.html#a0027161dae1f30af5c8a02dbc0a324c7',1,'FecharCaixaImediato(Supermercado *S, char *nomeCaixa):&#160;Acoes.c']]],
+  ['fecharcaixasevazia_1',['FecharCaixaSeVazia',['../_simulacao_8c.html#a3a887a43e7ab1d1f8d840f3c0558286e',1,'Simulacao.c']]],
+  ['fich_5fclientes_2',['FICH_CLIENTES',['../_uteis_8h.html#a4c280bd0382ff0a4d3055ed81050fa8e',1,'Uteis.h']]],
+  ['fich_5fconfig_3',['FICH_CONFIG',['../_uteis_8h.html#a6fd0112a000eea8bb9b69b0b70eee02a',1,'Uteis.h']]],
+  ['fich_5ffuncionarios_4',['FICH_FUNCIONARIOS',['../_uteis_8h.html#a1ecd1b13a8a5d6a7a85b15ac8ae63334',1,'Uteis.h']]],
+  ['fich_5fhistorico_5',['FICH_HISTORICO',['../_uteis_8h.html#a95eee5f555f544e22c19b9d03f13a5bf',1,'Uteis.h']]],
+  ['fich_5fprodutos_6',['FICH_PRODUTOS',['../_uteis_8h.html#acc93b64d5519963fac7ff87ca830a7a8',1,'Uteis.h']]],
+  ['fich_5fresultado_7',['FICH_RESULTADO',['../_uteis_8h.html#a4ab781d160c2133ec43802fb513ead88',1,'Uteis.h']]],
+  ['fila_8',['Fila',['../struct_fila.html',1,'']]],
+  ['fila_9',['fila',['../struct_caixa.html#aedb844e3e98a939f66c548a71fbc2a15',1,'Caixa']]],
+  ['fila_2ec_10',['Fila.c',['../_fila_8c.html',1,'']]],
+  ['fila_2eh_11',['Fila.h',['../_fila_8h.html',1,'']]],
+  ['filavazia_12',['FilaVazia',['../_fila_8h.html#abe8e93c88ca712905d41299dea948adc',1,'FilaVazia(Fila *f):&#160;Fila.c'],['../_fila_8c.html#abe8e93c88ca712905d41299dea948adc',1,'FilaVazia(Fila *f):&#160;Fila.c']]],
+  ['fim_13',['fim',['../struct_fila.html#a88f6de0d692fe9da34fa854437403626',1,'Fila']]],
+  ['fluxo_20da_20simulação_20passo_20a_20passo_14',['Fluxo da simulação (passo a passo)',['../index.html#autotoc_md5',1,'']]],
+  ['foioferecido_15',['foiOferecido',['../struct_cliente.html#a5615e686095e745b8c354b622843abae',1,'Cliente']]],
+  ['formatarnomecaixa_16',['FormatarNomeCaixa',['../_relatorios_8c.html#a56f546bc224bf1f0d98580a07ebb5d8e',1,'Relatorios.c']]],
+  ['frentefila_17',['FrenteFila',['../_fila_8h.html#a47163fd997f82f188e8507c7521b72c8',1,'FrenteFila(Fila *f):&#160;Fila.c'],['../_fila_8c.html#a47163fd997f82f188e8507c7521b72c8',1,'FrenteFila(Fila *f):&#160;Fila.c']]],
+  ['funcaohash_18',['FuncaoHash',['../_hashing_8h.html#ade356e8fc22a4aa52e7a1f183c325acb',1,'FuncaoHash(char *nome):&#160;Hashing.c'],['../_hashing_8c.html#ade356e8fc22a4aa52e7a1f183c325acb',1,'FuncaoHash(char *nome):&#160;Hashing.c']]],
+  ['funcaohashnome_19',['FuncaoHashNome',['../_hashing_nomes_8c.html#a26f062bb96b49c06205efe35ae22f830',1,'HashingNomes.c']]],
+  ['funcionario_20',['Funcionario',['../struct_funcionario.html',1,'']]],
+  ['funcionario_2ec_21',['Funcionario.c',['../_funcionario_8c.html',1,'']]],
+  ['funcionario_2eh_22',['Funcionario.h',['../_funcionario_8h.html',1,'']]],
+  ['funcionarios_23',['funcionarios',['../struct_supermercado.html#a434ab440c458084818ddda5eab9e6e77',1,'Supermercado']]]
+];

@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Gestao de Caixas de um Supermercado: Referência ao ficheiro include/Relogio.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Gestao de Caixas de um Supermercado<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Projeto ED 25/26 - 1o Ano / 2o Semestre</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('_relogio_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência ao ficheiro Relogio.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><a class="el" href="struct_relogio.html" title="Relogio logico que avanca em passos discretos.">Relogio</a> logico da simulacao.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="_uteis_8h_source.html">Uteis.h</a>&quot;</code><br />
+</div>
+<p><a href="_relogio_8h_source.html">Ir para o código fonte deste ficheiro.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Estruturas de Dados</h2></td></tr>
+<tr class="memitem:Relogio" id="r_Relogio"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="struct_relogio.html">Relogio</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_relogio.html" title="Relogio logico que avanca em passos discretos.">Relogio</a> logico que avanca em passos discretos.  <a href="struct_relogio.html#details">Mais...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:ab18fc0281b71f7e4ffc6abdf130811dc" id="r_ab18fc0281b71f7e4ffc6abdf130811dc"><td class="memItemLeft"><a class="el" href="struct_relogio.html">Relogio</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ab18fc0281b71f7e4ffc6abdf130811dc">CriarRelogio</a> (int velocidade)</td></tr>
+<tr class="memdesc:ab18fc0281b71f7e4ffc6abdf130811dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cria um relogio com a velocidade indicada.  <br /></td></tr>
+<tr class="memitem:a3b1eabe6b0932c20df2465a474ea507b" id="r_a3b1eabe6b0932c20df2465a474ea507b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a3b1eabe6b0932c20df2465a474ea507b">DestruirRelogio</a> (<a class="el" href="struct_relogio.html">Relogio</a> *R)</td></tr>
+<tr class="memdesc:a3b1eabe6b0932c20df2465a474ea507b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liberta o relogio.  <br /></td></tr>
+<tr class="memitem:aea18c9347a40c986709581f03a31d73f" id="r_aea18c9347a40c986709581f03a31d73f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aea18c9347a40c986709581f03a31d73f">AvancarRelogio</a> (<a class="el" href="struct_relogio.html">Relogio</a> *R)</td></tr>
+<tr class="memdesc:aea18c9347a40c986709581f03a31d73f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avanca o relogio um passo (tempoAtual += velocidade).  <br /></td></tr>
+<tr class="memitem:aa3aba8238c8107368557d494d091006f" id="r_aa3aba8238c8107368557d494d091006f"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#aa3aba8238c8107368557d494d091006f">GetTempo</a> (<a class="el" href="struct_relogio.html">Relogio</a> *R)</td></tr>
+<tr class="memdesc:aa3aba8238c8107368557d494d091006f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devolve o tempo actual em segundos.  <br /></td></tr>
+<tr class="memitem:a301d3b3758aa53bd601379548909da6f" id="r_a301d3b3758aa53bd601379548909da6f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a301d3b3758aa53bd601379548909da6f">ReiniciarRelogio</a> (<a class="el" href="struct_relogio.html">Relogio</a> *R)</td></tr>
+<tr class="memdesc:a301d3b3758aa53bd601379548909da6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Repoe tempoAtual a 0.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p><a class="el" href="struct_relogio.html" title="Relogio logico que avanca em passos discretos.">Relogio</a> logico da simulacao. </p>
+<p>Conta os segundos de simulacao decorridos. A cada "tick" (passo) o relogio avanca 'velocidade' segundos. Isto torna a simulacao independente do tempo real do computador e facil de seguir. </p>
+
+<p class="definition">Definido no ficheiro <a class="el" href="_relogio_8h_source.html">Relogio.h</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentação das funções</h2>
+<a id="aea18c9347a40c986709581f03a31d73f" name="aea18c9347a40c986709581f03a31d73f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea18c9347a40c986709581f03a31d73f">&#9670;&#160;</a></span>AvancarRelogio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AvancarRelogio </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_relogio.html">Relogio</a> *</td>          <td class="paramname"><span class="paramname"><em>R</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Avanca o relogio um passo (tempoAtual += velocidade). </p>
+<p>Avanca o relogio em 'velocidade' segundos.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">R</td><td><a class="el" href="struct_relogio.html" title="Relogio logico que avanca em passos discretos.">Relogio</a>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Avanca o relogio um passo (tempoAtual += velocidade). </p>
+
+<p class="definition">Definido na linha <a class="el" href="_relogio_8c_source.html#l00021">21</a> do ficheiro <a class="el" href="_relogio_8c_source.html">Relogio.c</a>.</p>
+
+</div>
+</div>
+<a id="ab18fc0281b71f7e4ffc6abdf130811dc" name="ab18fc0281b71f7e4ffc6abdf130811dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab18fc0281b71f7e4ffc6abdf130811dc">&#9670;&#160;</a></span>CriarRelogio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_relogio.html">Relogio</a> * CriarRelogio </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>velocidade</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cria um relogio com a velocidade indicada. </p>
+<p>Cria um relogio com velocidade &gt;= 1 (default 1 se &lt;= 0).</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">velocidade</td><td>Segundos por passo (&gt;= 1). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Apontador para o relogio recem-alocado.</dd></dl>
+<p>Cria um relogio com a velocidade indicada. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_relogio_8c_source.html#l00009">9</a> do ficheiro <a class="el" href="_relogio_8c_source.html">Relogio.c</a>.</p>
+
+</div>
+</div>
+<a id="a3b1eabe6b0932c20df2465a474ea507b" name="a3b1eabe6b0932c20df2465a474ea507b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b1eabe6b0932c20df2465a474ea507b">&#9670;&#160;</a></span>DestruirRelogio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DestruirRelogio </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_relogio.html">Relogio</a> *</td>          <td class="paramname"><span class="paramname"><em>R</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Liberta o relogio. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">R</td><td><a class="el" href="struct_relogio.html" title="Relogio logico que avanca em passos discretos.">Relogio</a> a libertar. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definido na linha <a class="el" href="_relogio_8c_source.html#l00018">18</a> do ficheiro <a class="el" href="_relogio_8c_source.html">Relogio.c</a>.</p>
+
+</div>
+</div>
+<a id="aa3aba8238c8107368557d494d091006f" name="aa3aba8238c8107368557d494d091006f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3aba8238c8107368557d494d091006f">&#9670;&#160;</a></span>GetTempo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GetTempo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_relogio.html">Relogio</a> *</td>          <td class="paramname"><span class="paramname"><em>R</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devolve o tempo actual em segundos. </p>
+<p>Devolve o tempo actual (segundos).</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">R</td><td><a class="el" href="struct_relogio.html" title="Relogio logico que avanca em passos discretos.">Relogio</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Segundos de simulacao decorridos.</dd></dl>
+<p>Devolve o tempo actual em segundos. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_relogio_8c_source.html#l00024">24</a> do ficheiro <a class="el" href="_relogio_8c_source.html">Relogio.c</a>.</p>
+
+</div>
+</div>
+<a id="a301d3b3758aa53bd601379548909da6f" name="a301d3b3758aa53bd601379548909da6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a301d3b3758aa53bd601379548909da6f">&#9670;&#160;</a></span>ReiniciarRelogio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ReiniciarRelogio </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_relogio.html">Relogio</a> *</td>          <td class="paramname"><span class="paramname"><em>R</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Repoe tempoAtual a 0. </p>
+<p>Repoe o tempo a zero.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">R</td><td><a class="el" href="struct_relogio.html" title="Relogio logico que avanca em passos discretos.">Relogio</a>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Repoe tempoAtual a 0. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_relogio_8c_source.html#l00027">27</a> do ficheiro <a class="el" href="_relogio_8c_source.html">Relogio.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="_relogio_8h.html">Relogio.h</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

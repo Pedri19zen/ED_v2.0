@@ -1,0 +1,353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Gestao de Caixas de um Supermercado: Estruturas de dados e dependências</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Gestao de Caixas de um Supermercado<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Projeto ED 25/26 - 1o Ano / 2o Semestre</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('index.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Estruturas de dados e dependências </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_docs_2_estrutura"></a></p>
+<p>Este documento corresponde ao requisito do enunciado: <em>"A ilustração das dependências entre as várias entidades (estruturas) criadas"</em>.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
+Visão geral</h1>
+<div class="mermaidgraph">
+<pre class="mermaid">
+classDiagram
+    direction LR
+
+    class Supermercado {
+        +char* nome
+        +ListaProdutos produtos
+        +ListaClientes clientes
+        +ListaFuncionarios funcionarios
+        +Fila emCompras
+        +Hashing caixas
+        +Relogio* relogio
+        +configuracao (MAX_ESPERA, MAX_FILA, LIMITE_FILA_CAIXA, ...)
+        +estatisticas (totais, picos)
+    }
+
+    class ListaProdutos {
+        +Produto v[MAX_PRODUTOS]
+        +int total
+        +HashingNomes idxNome
+    }
+    class ListaClientes {
+        +Cliente v[MAX_CLIENTES]
+        +int total
+        +HashingNomes idxNome
+    }
+    class ListaFuncionarios {
+        +Funcionario v[MAX_FUNCIONARIOS]
+        +int total
+    }
+
+    class Produto {
+        +int codigo
+        +char nome[128]
+        +float preco
+        +float tempoComprar
+        +float tempoPagar
+        +bool ativo
+    }
+    class Cliente {
+        +int codigo
+        +char nome[50]
+        +int numProdutos
+        +float valorCarrinho
+        +int tempo*
+        +bool ativo / dentroLoja / naFila
+        +char caixaAtual[50]
+    }
+    class Funcionario {
+        +int codigo
+        +char nome[50]
+        +bool ativo / dentroLoja / ocupado
+        +int pessoasAtendidas
+        +int produtosVendidos
+        +float dinheiroFeito
+    }
+
+    class Caixa {
+        +char nome[50]
+        +bool ativa / aFechar
+        +Fila fila (max LIMITE_FILA_CAIXA)
+        +Cliente* aAtender
+        +Funcionario* operador
+        +NoNome* atendidos
+        +int pessoasAtendidas
+        +float dinheiroFeito
+    }
+
+    class Fila {
+        +NoFila* inicio
+        +NoFila* fim
+        +int tamanho
+    }
+    class NoFila {
+        +Cliente* cliente
+        +NoFila* prox
+    }
+    class NoNome {
+        +char nome[50]
+        +NoNome* prox
+    }
+
+    class Hashing {
+        +NoHash* tabela[13]
+        +int totalCaixas
+    }
+    class NoHash {
+        +Caixa* caixa
+        +NoHash* prox
+    }
+
+    class HashingNomes {
+        +NoHashNome* tabela[1009]
+        +int totalEntradas
+    }
+    class NoHashNome {
+        +char* nome
+        +int indice
+        +NoHashNome* prox
+    }
+
+    class Relogio {
+        +int tempoAtual
+        +int velocidade
+    }
+
+    Supermercado *-- ListaProdutos
+    Supermercado *-- ListaClientes
+    Supermercado *-- ListaFuncionarios
+    Supermercado *-- Fila : emCompras
+    Supermercado *-- Hashing : caixas
+    Supermercado --&gt; Relogio
+
+    ListaProdutos *-- Produto : v[]
+    ListaProdutos *-- HashingNomes : idxNome
+    ListaClientes *-- Cliente : v[]
+    ListaClientes *-- HashingNomes : idxNome
+    ListaFuncionarios *-- Funcionario : v[]
+
+    Fila *-- NoFila
+    NoFila --&gt; Cliente : pointer
+
+    Hashing *-- NoHash
+    NoHash --&gt; Caixa : owns
+
+    Caixa *-- Fila
+    Caixa *-- NoNome : atendidos
+    Caixa --&gt; Funcionario : operador (pointer)
+    Caixa --&gt; Cliente : aAtender (pointer)
+
+    HashingNomes *-- NoHashNome
+    NoHashNome --&gt; Produto : refers
+    NoHashNome --&gt; Cliente : refers</pre>
+</div>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+Notação</h1>
+<ul>
+<li><span class="tt">*--</span>: <b>composição</b> (a estrutura pai contém / é dona da memória da filha).</li>
+<li><span class="tt">--&gt;</span>: <b>referência</b> (ponteiro/índice; o pai não liberta a filha).</li>
+</ul>
+<p>Pelas regras de Doxygen, esta convenção corresponde a <em>"strong containment"</em> para os arrays-mestre e listas ligadas; e a <em>"weak association"</em> para os ponteiros que apenas referenciam objectos que vivem noutro array.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+Quem aloca/liberta o quê</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Estrutura  </th><th class="markdownTableHeadNone">Onde está alocada  </th><th class="markdownTableHeadNone">Quem liberta  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt"><a class="el" href="struct_supermercado.html" title="Estrutura central do projecto.">Supermercado</a></span>  </td><td class="markdownTableBodyNone"><span class="tt">malloc</span> em <span class="tt"><a class="el" href="_supermercado_8h.html#a68abd0e912c4001da47a95ee7607473a" title="Aloca e inicializa um Supermercado com defaults.">CriarSupermercado</a></span>  </td><td class="markdownTableBodyNone"><span class="tt"><a class="el" href="_supermercado_8h.html#a76cf349fd671d6f68f83a9d8ddf39bc6" title="Liberta toda a memoria dinamica.">DestruirSupermercado</a></span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Arrays-mestre <span class="tt">v[]</span> (produtos, clientes, funcionarios)  </td><td class="markdownTableBodyNone">dentro do <span class="tt"><a class="el" href="struct_supermercado.html" title="Estrutura central do projecto.">Supermercado</a></span> (stack-like)  </td><td class="markdownTableBodyNone">libertados com o <span class="tt"><a class="el" href="struct_supermercado.html" title="Estrutura central do projecto.">Supermercado</a></span>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt"><a class="el" href="struct_caixa.html" title="Uma caixa de atendimento.">Caixa</a></span> (cada uma)  </td><td class="markdownTableBodyNone"><span class="tt">malloc</span> em <span class="tt"><a class="el" href="_caixa_8h.html#a14f8671caf3095ae087fb95b63903e1e" title="Cria uma caixa nova, sem operador e com a fila vazia.">CriarCaixa</a></span>  </td><td class="markdownTableBodyNone"><span class="tt"><a class="el" href="_caixa_8h.html#a48631412b462d98bd377938ed2a74ffd" title="Liberta fila + lista de atendidos + a propria caixa.">DestruirCaixa</a></span> (via <span class="tt"><a class="el" href="_hashing_8h.html#a826a640136695b4fa6a1ff24a7eb5706" title="Liberta todos os nos da tabela E as caixas que guardam.">DestruirHashing</a></span>)  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Nós da <span class="tt"><a class="el" href="struct_fila.html" title="Fila (FIFO) com referencias para o inicio e o fim.">Fila</a></span> (<span class="tt"><a class="el" href="struct_no_fila.html" title="No da lista ligada da fila.">NoFila</a></span>)  </td><td class="markdownTableBodyNone"><span class="tt">malloc</span> em <span class="tt"><a class="el" href="_fila_8h.html#a16a0a3d3be7b03b3b0ad03698e6df755" title="Acrescenta um cliente ao fim da fila.">EnfileirarCliente</a></span>  </td><td class="markdownTableBodyNone"><span class="tt"><a class="el" href="_fila_8h.html#a44a46c97ebcf133014dc3996e0e001fa" title="Remove e devolve o cliente da frente (NULL se vazia).">DesenfileirarCliente</a></span>/<span class="tt"><a class="el" href="_fila_8h.html#a133583d6b481476fcea5dc30a03bfe58" title="Liberta todos os nos da fila (sem libertar os clientes).">DestruirFila</a></span>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Nós dos atendidos (<span class="tt"><a class="el" href="struct_no_nome.html" title="No simples para guardar os nomes dos clientes ja atendidos.">NoNome</a></span>)  </td><td class="markdownTableBodyNone"><span class="tt">malloc</span> em <span class="tt"><a class="el" href="_caixa_8h.html#af639678d038bd4282bbddd2f6d6d86e1" title="Acrescenta o nome de um cliente a lista de atendidos.">RegistarAtendido</a></span>  </td><td class="markdownTableBodyNone"><span class="tt"><a class="el" href="_caixa_8h.html#a48631412b462d98bd377938ed2a74ffd" title="Liberta fila + lista de atendidos + a propria caixa.">DestruirCaixa</a></span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Nós do hash de caixas (<span class="tt"><a class="el" href="struct_no_hash.html" title="No da tabela de dispersao das caixas.">NoHash</a></span>)  </td><td class="markdownTableBodyNone"><span class="tt">malloc</span> em <span class="tt"><a class="el" href="_hashing_8h.html#a70552a69368e590ccb99f826449e906f" title="Insere uma caixa na tabela.">InserirCaixa</a></span>  </td><td class="markdownTableBodyNone"><span class="tt"><a class="el" href="_hashing_8h.html#a826a640136695b4fa6a1ff24a7eb5706" title="Liberta todos os nos da tabela E as caixas que guardam.">DestruirHashing</a></span>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Nós do hash de nomes (<span class="tt"><a class="el" href="struct_no_hash_nome.html" title="No da tabela de dispersao nome -&gt; indice.">NoHashNome</a></span>)  </td><td class="markdownTableBodyNone"><span class="tt">malloc</span> em <span class="tt"><a class="el" href="_hashing_nomes_8h.html#a18c845b772428231d4f6322ac7b465dd" title="Insere o par (nome, indice) na cabeca do bucket.">InserirNomeHash</a></span>  </td><td class="markdownTableBodyNone"><span class="tt"><a class="el" href="_hashing_nomes_8h.html#a78a6cc5d68e23379e7deb52edcb10038" title="Liberta todos os nos (os nomes em si vivem no array-mestre).">DestruirHashingNomes</a></span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt"><a class="el" href="struct_relogio.html" title="Relogio logico que avanca em passos discretos.">Relogio</a></span>  </td><td class="markdownTableBodyNone"><span class="tt">malloc</span> em <span class="tt"><a class="el" href="_relogio_8h.html#ab18fc0281b71f7e4ffc6abdf130811dc" title="Cria um relogio com a velocidade indicada.">CriarRelogio</a></span>  </td><td class="markdownTableBodyNone"><span class="tt"><a class="el" href="_relogio_8h.html#a3b1eabe6b0932c20df2465a474ea507b" title="Liberta o relogio.">DestruirRelogio</a></span>  </td></tr>
+</table>
+<p>Os nós da fila <b>não libertam</b> os <span class="tt"><a class="el" href="struct_cliente.html" title="Um cliente do supermercado.">Cliente</a></span> para onde apontam — esses vivem no array-mestre dentro do <span class="tt"><a class="el" href="struct_supermercado.html" title="Estrutura central do projecto.">Supermercado</a></span>. Da mesma forma os <span class="tt"><a class="el" href="struct_no_hash_nome.html" title="No da tabela de dispersao nome -&gt; indice.">NoHashNome</a></span> não copiam o nome: guardam apenas o ponteiro para o buffer que vive no array-mestre.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
+Resumo das ED escolhidas</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">ED  </th><th class="markdownTableHeadNone">Onde se usa  </th><th class="markdownTableHeadNone">Porquê  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Array  </td><td class="markdownTableBodyNone">produtos, clientes, funcionarios  </td><td class="markdownTableBodyNone">acesso O(1) por índice; tamanho conhecido após carregar os ficheiros  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Lista ligada (queue)  </td><td class="markdownTableBodyNone">filas das caixas + "em compras"  </td><td class="markdownTableBodyNone">inserir no fim e remover do início em O(1), sem deslocar elementos  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Lista ligada simples  </td><td class="markdownTableBodyNone">atendidos por caixa  </td><td class="markdownTableBodyNone">só se insere e percorre  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Tabela de dispersão  </td><td class="markdownTableBodyNone">caixas, índices de nome (clientes/produtos)  </td><td class="markdownTableBodyNone">pesquisa O(1) média; substitui a varredura linear sobre 10.000+ entradas  </td></tr>
+</table>
+<p>Tudo respeita o enunciado: "*Deverá usar listas/filas e hashing ou árvores*". Não foram usadas árvores, grafos ou heaps.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+Fluxo da simulação (passo a passo)</h1>
+<div class="mermaidgraph">
+<pre class="mermaid">
+flowchart LR
+    A[AvancarRelogio] --&gt; B[EntradaCliente]
+    B --&gt; C[AvancarCompras / EscolherMelhorCaixa]
+    C --&gt; D[AtenderCaixas]
+    D --&gt; E[VerificarTemposEspera]
+    E --&gt; F[GerirCaixas]
+    F --&gt; G[AtualizarPicos]
+    G --&gt; A</pre>
+</div>
+<p>Cada passo consume <span class="tt">velocidade</span> segundos do relógio lógico. A função <span class="tt"><a class="el" href="_supermercado_8h.html#a7a06ae084411d0fc6ec9567e7eb6a228" title="Executa um tick (passo) completo da simulacao.">ExecutarPasso</a></span> corre os 7 estágios pela ordem indicada.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+Diagrama dos módulos (.c)</h1>
+<div class="mermaidgraph">
+<pre class="mermaid">
+flowchart TB
+    main --&gt; Supermercado
+    main --&gt; Uteis
+    Supermercado --&gt; Simulacao
+    Supermercado --&gt; Acoes
+    Supermercado --&gt; Relatorios
+    Simulacao --&gt; Acoes
+    Acoes --&gt; Pessoa
+    Acoes --&gt; Caixa
+    Relatorios --&gt; Caixa
+    Pessoa --&gt; HashingNomes
+    Produto --&gt; HashingNomes
+    Caixa --&gt; Fila
+    Caixa --&gt; Funcionario
+    Hashing --&gt; Caixa
+    Fila --&gt; Pessoa</pre>
+</div>
+ </div></div><!-- PageDoc -->
+<a href="doxygen_crawl.html"></a>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

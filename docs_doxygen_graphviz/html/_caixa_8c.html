@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Gestao de Caixas de um Supermercado: Referência ao ficheiro src/Caixa.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Gestao de Caixas de um Supermercado<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Projeto ED 25/26 - 1o Ano / 2o Semestre</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('_caixa_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência ao ficheiro Caixa.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Operacoes proprias da caixa (criacao, lista de atendidos, destruicao).  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="_caixa_8h_source.html">Caixa.h</a>&quot;</code><br />
+</div>
+<p><a href="_caixa_8c_source.html">Ir para o código fonte deste ficheiro.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a14f8671caf3095ae087fb95b63903e1e" id="r_a14f8671caf3095ae087fb95b63903e1e"><td class="memItemLeft"><a class="el" href="struct_caixa.html">Caixa</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a14f8671caf3095ae087fb95b63903e1e">CriarCaixa</a> (char *nome, bool ativa)</td></tr>
+<tr class="memdesc:a14f8671caf3095ae087fb95b63903e1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cria uma caixa nova, sem operador e com a fila vazia.  <br /></td></tr>
+<tr class="memitem:af639678d038bd4282bbddd2f6d6d86e1" id="r_af639678d038bd4282bbddd2f6d6d86e1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af639678d038bd4282bbddd2f6d6d86e1">RegistarAtendido</a> (<a class="el" href="struct_caixa.html">Caixa</a> *c, char *nomeCliente)</td></tr>
+<tr class="memdesc:af639678d038bd4282bbddd2f6d6d86e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acrescenta um nome a cabeca da lista de atendidos.  <br /></td></tr>
+<tr class="memitem:a8c51dd77f370a63d7726655d5e4880b7" id="r_a8c51dd77f370a63d7726655d5e4880b7"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a8c51dd77f370a63d7726655d5e4880b7">ListarAtendidosCaixa</a> (<a class="el" href="struct_caixa.html">Caixa</a> *c)</td></tr>
+<tr class="memdesc:a8c51dd77f370a63d7726655d5e4880b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imprime "Caixa -- N cliente(s) atendido(s):" + um nome por linha.  <br /></td></tr>
+<tr class="memitem:a48631412b462d98bd377938ed2a74ffd" id="r_a48631412b462d98bd377938ed2a74ffd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a48631412b462d98bd377938ed2a74ffd">DestruirCaixa</a> (<a class="el" href="struct_caixa.html">Caixa</a> *c)</td></tr>
+<tr class="memdesc:a48631412b462d98bd377938ed2a74ffd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liberta a fila, a lista de atendidos e a propria caixa.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Operacoes proprias da caixa (criacao, lista de atendidos, destruicao). </p>
+<p>A logica de abrir/fechar/atender (que depende do contexto do <a class="el" href="struct_supermercado.html" title="Estrutura central do projecto.">Supermercado</a>) esta em <a class="el" href="_simulacao_8c.html" title="Motor da simulacao (passos, picos e gestao automatica das caixas).">Simulacao.c</a> e <a class="el" href="_acoes_8c.html" title="Acoes do gerente sobre caixas e clientes (requisitos 4, 5, 7, 8).">Acoes.c</a>. </p>
+
+<p class="definition">Definido no ficheiro <a class="el" href="_caixa_8c_source.html">Caixa.c</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentação das funções</h2>
+<a id="a14f8671caf3095ae087fb95b63903e1e" name="a14f8671caf3095ae087fb95b63903e1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14f8671caf3095ae087fb95b63903e1e">&#9670;&#160;</a></span>CriarCaixa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_caixa.html">Caixa</a> * CriarCaixa </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nome</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>ativa</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cria uma caixa nova, sem operador e com a fila vazia. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nome</td><td>Nome a atribuir. </td></tr>
+    <tr><td class="paramname">ativa</td><td>Estado inicial. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Apontador para a caixa recem-alocada. </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="_caixa_8c_source.html#l00013">13</a> do ficheiro <a class="el" href="_caixa_8c_source.html">Caixa.c</a>.</p>
+
+</div>
+</div>
+<a id="a48631412b462d98bd377938ed2a74ffd" name="a48631412b462d98bd377938ed2a74ffd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48631412b462d98bd377938ed2a74ffd">&#9670;&#160;</a></span>DestruirCaixa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DestruirCaixa </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_caixa.html">Caixa</a> *</td>          <td class="paramname"><span class="paramname"><em>c</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Liberta a fila, a lista de atendidos e a propria caixa. </p>
+<p>Liberta fila + lista de atendidos + a propria caixa.</p>
+<p>Liberta a fila, a lista de atendidos e a propria caixa. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_caixa_8c_source.html#l00051">51</a> do ficheiro <a class="el" href="_caixa_8c_source.html">Caixa.c</a>.</p>
+
+</div>
+</div>
+<a id="a8c51dd77f370a63d7726655d5e4880b7" name="a8c51dd77f370a63d7726655d5e4880b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c51dd77f370a63d7726655d5e4880b7">&#9670;&#160;</a></span>ListarAtendidosCaixa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ListarAtendidosCaixa </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_caixa.html">Caixa</a> *</td>          <td class="paramname"><span class="paramname"><em>c</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Imprime "Caixa -- N cliente(s) atendido(s):" + um nome por linha. </p>
+<p>Imprime a lista de atendidos da caixa (um por linha).</p>
+<p>Imprime "Caixa -- N cliente(s) atendido(s):" + um nome por linha. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_caixa_8c_source.html#l00039">39</a> do ficheiro <a class="el" href="_caixa_8c_source.html">Caixa.c</a>.</p>
+
+</div>
+</div>
+<a id="af639678d038bd4282bbddd2f6d6d86e1" name="af639678d038bd4282bbddd2f6d6d86e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af639678d038bd4282bbddd2f6d6d86e1">&#9670;&#160;</a></span>RegistarAtendido()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RegistarAtendido </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_caixa.html">Caixa</a> *</td>          <td class="paramname"><span class="paramname"><em>c</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nomeCliente</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Acrescenta um nome a cabeca da lista de atendidos. </p>
+<p>Acrescenta o nome de um cliente a lista de atendidos.</p>
+<p>Acrescenta um nome a cabeca da lista de atendidos.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td><a class="el" href="struct_caixa.html" title="Uma caixa de atendimento.">Caixa</a> que atendeu o cliente. </td></tr>
+    <tr><td class="paramname">nomeCliente</td><td>Nome a registar. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definido na linha <a class="el" href="_caixa_8c_source.html#l00030">30</a> do ficheiro <a class="el" href="_caixa_8c_source.html">Caixa.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="_caixa_8c.html">Caixa.c</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

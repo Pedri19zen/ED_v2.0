@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Gestao de Caixas de um Supermercado: Campos de dados</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Gestao de Caixas de um Supermercado<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Projeto ED 25/26 - 1o Ano / 2o Semestre</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('functions.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="contents">
+<div class="textblock">Lista de todas as estruturas e campos de uniões com referência para as estruturas/uniões a que pertencem:</div><br/>
+<div class="qindex"><a class="qindex" href="#index_a">A</a><div class="alphasepar"></div><a class="qindex" href="#index_c">C</a><div class="alphasepar"></div><a class="qindex" href="#index_d">D</a><div class="alphasepar"></div><a class="qindex" href="#index_e">E</a><div class="alphasepar"></div><a class="qindex" href="#index_f">F</a><div class="alphasepar"></div><a class="qindex" href="#index_h">H</a><div class="alphasepar"></div><a class="qindex" href="#index_i">I</a><div class="alphasepar"></div><a class="qindex" href="#index_l">L</a><div class="alphasepar"></div><a class="qindex" href="#index_m">M</a><div class="alphasepar"></div><a class="qindex" href="#index_n">N</a><div class="alphasepar"></div><a class="qindex" href="#index_o">O</a><div class="alphasepar"></div><a class="qindex" href="#index_p">P</a><div class="alphasepar"></div><a class="qindex" href="#index_r">R</a><div class="alphasepar"></div><a class="qindex" href="#index_s">S</a><div class="alphasepar"></div><a class="qindex" href="#index_t">T</a><div class="alphasepar"></div><a class="qindex" href="#index_v">V</a></div>
+
+
+<h3 class="doxsection"><a id="index_a" name="index_a"></a>- a -</h3><ul>
+<li>aAtender&#160;:&#160;<a class="el" href="struct_caixa.html#ad3dca50c381f10195ed8516c8db8a76e">Caixa</a></li>
+<li>aceitarEntradas&#160;:&#160;<a class="el" href="struct_supermercado.html#a9af0e412ae44c4743e3ae935ba7b845f">Supermercado</a></li>
+<li>aFechar&#160;:&#160;<a class="el" href="struct_caixa.html#a4ccc3c696a98d605e154ca198e7584b3">Caixa</a></li>
+<li>atendidos&#160;:&#160;<a class="el" href="struct_caixa.html#a4208d5dcb4180aa99e13d10bbb3b7326">Caixa</a></li>
+<li>ativa&#160;:&#160;<a class="el" href="struct_caixa.html#ab112396a26a12ca01ac5cf2e06cc35b6">Caixa</a></li>
+<li>ativo&#160;:&#160;<a class="el" href="struct_cliente.html#a0a63fb51bb0a8565b0bc166be2f77618">Cliente</a>, <a class="el" href="struct_funcionario.html#a10796095481d71905ee918763ea76316">Funcionario</a>, <a class="el" href="struct_produto.html#a2dcfe92e8ed5aaa4834c812547c732d9">Produto</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_c" name="index_c"></a>- c -</h3><ul>
+<li>CADENCIA_ENTRADA&#160;:&#160;<a class="el" href="struct_supermercado.html#a54e2ef1c27e87ecc17ecda14748288a4">Supermercado</a></li>
+<li>caixa&#160;:&#160;<a class="el" href="struct_no_hash.html#ab5f677c3cf92e66d2ea9ac70a0c49ad7">NoHash</a></li>
+<li>caixaAtual&#160;:&#160;<a class="el" href="struct_cliente.html#aacc5b9a6329c6b941f7e22bd4b1a97de">Cliente</a></li>
+<li>caixas&#160;:&#160;<a class="el" href="struct_supermercado.html#afd233621e288ad33f72a56e94fcdd778">Supermercado</a></li>
+<li>caixasAbertasMax&#160;:&#160;<a class="el" href="struct_supermercado.html#a1d5a4ac33347de6f387c45fa376c0b53">Supermercado</a></li>
+<li>cliente&#160;:&#160;<a class="el" href="struct_no_fila.html#aaa325388373559e58a3e9fba572ab21e">NoFila</a></li>
+<li>clientes&#160;:&#160;<a class="el" href="struct_supermercado.html#a6057640fce94e82db5ed2e4b6b476168">Supermercado</a></li>
+<li>codigo&#160;:&#160;<a class="el" href="struct_cliente.html#aa2d6bef7bd5a72106372542f2c837b11">Cliente</a>, <a class="el" href="struct_funcionario.html#a56c23069d1958e0f2a949f1a09ac2f95">Funcionario</a>, <a class="el" href="struct_produto.html#a46ef2f0c721c04a662674f3ef47208c1">Produto</a></li>
+<li>custoOferecido&#160;:&#160;<a class="el" href="struct_supermercado.html#a162e062d36d4ea4652f152d349269cf9">Supermercado</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_d" name="index_d"></a>- d -</h3><ul>
+<li>dentroLoja&#160;:&#160;<a class="el" href="struct_cliente.html#a8d7cdade3b5871984306792aba56dd08">Cliente</a>, <a class="el" href="struct_funcionario.html#afc4a955b55bb10644e88e788950d4a81">Funcionario</a></li>
+<li>dentroLojaPico&#160;:&#160;<a class="el" href="struct_supermercado.html#a566c49815cc20783dbede5b5859530bf">Supermercado</a></li>
+<li>dinheiroFeito&#160;:&#160;<a class="el" href="struct_caixa.html#af2e93165785e4db914960c93dfb20eec">Caixa</a>, <a class="el" href="struct_funcionario.html#ace99eb333e0957c715459a9e86166f12">Funcionario</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_e" name="index_e"></a>- e -</h3><ul>
+<li>emCompras&#160;:&#160;<a class="el" href="struct_supermercado.html#aa5660087316e3e587e7437ff7f025f6a">Supermercado</a></li>
+<li>entradasDesdeUpdate&#160;:&#160;<a class="el" href="struct_supermercado.html#ab2a688f56c01569cb8889baee75d73bc">Supermercado</a></li>
+<li>entradasPorHora&#160;:&#160;<a class="el" href="struct_supermercado.html#ac129eae7fbf8f1597297b66d5bb225c0">Supermercado</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_f" name="index_f"></a>- f -</h3><ul>
+<li>fila&#160;:&#160;<a class="el" href="struct_caixa.html#aedb844e3e98a939f66c548a71fbc2a15">Caixa</a></li>
+<li>fim&#160;:&#160;<a class="el" href="struct_fila.html#a88f6de0d692fe9da34fa854437403626">Fila</a></li>
+<li>foiOferecido&#160;:&#160;<a class="el" href="struct_cliente.html#a5615e686095e745b8c354b622843abae">Cliente</a></li>
+<li>funcionarios&#160;:&#160;<a class="el" href="struct_supermercado.html#a434ab440c458084818ddda5eab9e6e77">Supermercado</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_h" name="index_h"></a>- h -</h3><ul>
+<li>HORA_ABERTURA&#160;:&#160;<a class="el" href="struct_supermercado.html#ab95cbf03511fead20ce60f57294094f4">Supermercado</a></li>
+<li>HORA_FECHO&#160;:&#160;<a class="el" href="struct_supermercado.html#a2bbe9292b4ed01a1d0e6e8e999310979">Supermercado</a></li>
+<li>horaPico&#160;:&#160;<a class="el" href="struct_supermercado.html#a1143cd74a44b4d82ba5a9cec82b0a857">Supermercado</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_i" name="index_i"></a>- i -</h3><ul>
+<li>idxNome&#160;:&#160;<a class="el" href="struct_lista_clientes.html#a89098a937981e70453474a86cdeb0f0c">ListaClientes</a>, <a class="el" href="struct_lista_produtos.html#a7986103ff433cffd37f778e1cad5bb5d">ListaProdutos</a></li>
+<li>indice&#160;:&#160;<a class="el" href="struct_no_hash_nome.html#a597c6a92d1236d9c4ba4bacc6eb92f2a">NoHashNome</a></li>
+<li>inicio&#160;:&#160;<a class="el" href="struct_fila.html#aa6b58e47cf9e7f10353d021ccc90bb3e">Fila</a></li>
+<li>INTERVALO_AUTO_MS&#160;:&#160;<a class="el" href="struct_supermercado.html#a64adc4ea68e72317aa0e30c5a58f8cfe">Supermercado</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_l" name="index_l"></a>- l -</h3><ul>
+<li>LIMITE_FILA_CAIXA&#160;:&#160;<a class="el" href="struct_supermercado.html#a2d729daf2909656c099e28edcc25872f">Supermercado</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_m" name="index_m"></a>- m -</h3><ul>
+<li>MAX_ESPERA&#160;:&#160;<a class="el" href="struct_supermercado.html#a27dfd94d5ef990f17e035f15df2872eb">Supermercado</a></li>
+<li>MAX_FILA&#160;:&#160;<a class="el" href="struct_supermercado.html#a3e3d2310588f80813b79eb50561b2c12">Supermercado</a></li>
+<li>MAX_PRECO&#160;:&#160;<a class="el" href="struct_supermercado.html#a19ea2f523c281419e134824fd9c596b2">Supermercado</a></li>
+<li>maxFilaObservada&#160;:&#160;<a class="el" href="struct_supermercado.html#aa8ed07cac6b0b7346d20a6f7acc782af">Supermercado</a></li>
+<li>MIN_FILA&#160;:&#160;<a class="el" href="struct_supermercado.html#a68689264c2a134b2afda8b00a6b2687f">Supermercado</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_n" name="index_n"></a>- n -</h3><ul>
+<li>N_CAIXAS&#160;:&#160;<a class="el" href="struct_supermercado.html#ad14e675a1d32d4f0005846283fcba9c1">Supermercado</a></li>
+<li>naFila&#160;:&#160;<a class="el" href="struct_cliente.html#aee4221ecb5f37633d65282eb93de91ca">Cliente</a></li>
+<li>nome&#160;:&#160;<a class="el" href="struct_caixa.html#ae124e4d952af42f3e9fbe285942695cf">Caixa</a>, <a class="el" href="struct_cliente.html#ae5856b60f7709ffb2e066a9e218bb4b8">Cliente</a>, <a class="el" href="struct_funcionario.html#a759b91c2365a47886f880497648cfa20">Funcionario</a>, <a class="el" href="struct_no_hash_nome.html#a72d06979bd7d0aa743c01cfda5327460">NoHashNome</a>, <a class="el" href="struct_no_nome.html#a8cf729a3623283193e79f12261843305">NoNome</a>, <a class="el" href="struct_produto.html#a76455b5664a45b1b8174f10670881e84">Produto</a>, <a class="el" href="struct_supermercado.html#a531c12bb9d3e43b653f9dc36fc1b0090">Supermercado</a></li>
+<li>nomesEntradas&#160;:&#160;<a class="el" href="struct_supermercado.html#a1a0ff6552a7773b7454e7a281b510bc6">Supermercado</a></li>
+<li>nomesOfertas&#160;:&#160;<a class="el" href="struct_supermercado.html#aa2b1ce592535906bf7c95f7ebf67e09c">Supermercado</a></li>
+<li>numProdutos&#160;:&#160;<a class="el" href="struct_cliente.html#a1c5b4fdcb9227c80d3efdc5505190d77">Cliente</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_o" name="index_o"></a>- o -</h3><ul>
+<li>ocupado&#160;:&#160;<a class="el" href="struct_funcionario.html#a14fce7208c7a222647e8c8d76971d29f">Funcionario</a></li>
+<li>ofertasDesdeUpdate&#160;:&#160;<a class="el" href="struct_supermercado.html#a3670fe2234230e712aed5314632b10f8">Supermercado</a></li>
+<li>operador&#160;:&#160;<a class="el" href="struct_caixa.html#ad8adc5602bbc1d0b4218e4ff25d0e72d">Caixa</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_p" name="index_p"></a>- p -</h3><ul>
+<li>pessoasAtendidas&#160;:&#160;<a class="el" href="struct_caixa.html#a27ff714f677c2f57dd40defd9bd27e4e">Caixa</a>, <a class="el" href="struct_funcionario.html#a5585d4b78b67cf0a16c14e0625054eb0">Funcionario</a></li>
+<li>preco&#160;:&#160;<a class="el" href="struct_produto.html#a9e1023fcf261a8fba7620ee61654163a">Produto</a></li>
+<li>precoMenorProduto&#160;:&#160;<a class="el" href="struct_cliente.html#ac92774cb06f0bbec1a0353ff87012b55">Cliente</a></li>
+<li>produtos&#160;:&#160;<a class="el" href="struct_supermercado.html#a87cf3a5b4c7d8e383b73d65d24298fcd">Supermercado</a></li>
+<li>produtosOferecidos&#160;:&#160;<a class="el" href="struct_supermercado.html#a847b9ba482c8e39dd6ddb1de06a9062f">Supermercado</a></li>
+<li>produtosVendidos&#160;:&#160;<a class="el" href="struct_caixa.html#a02552bb250e60a76beb62ff340a453af">Caixa</a>, <a class="el" href="struct_funcionario.html#ab85bd4b86de6ccc5ef2de80b8feafddb">Funcionario</a></li>
+<li>prox&#160;:&#160;<a class="el" href="struct_no_fila.html#a7f9687e979e2b7c3074ddd7e04b03b22">NoFila</a>, <a class="el" href="struct_no_hash.html#abc4c537ddfa7483a6e2a4b74794d1b30">NoHash</a>, <a class="el" href="struct_no_hash_nome.html#ab519f46f926ace16e823b20cbb1a0892">NoHashNome</a>, <a class="el" href="struct_no_nome.html#a1c7aa9f49f76b262b74950e232ddc8fe">NoNome</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_r" name="index_r"></a>- r -</h3><ul>
+<li>relogio&#160;:&#160;<a class="el" href="struct_supermercado.html#acc1526073c657d5a4f8860e5e73e32d4">Supermercado</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_s" name="index_s"></a>- s -</h3><ul>
+<li>saidasDesdeUpdate&#160;:&#160;<a class="el" href="struct_supermercado.html#a2c58b43507f224c5c58def9417c57b89">Supermercado</a></li>
+<li>saidasPorHora&#160;:&#160;<a class="el" href="struct_supermercado.html#a31a09919675fa54a937d97f19edca08b">Supermercado</a></li>
+<li>somaTemposEspera&#160;:&#160;<a class="el" href="struct_supermercado.html#af4e8fb2bb27e72f8f30e58e0b588ecc6">Supermercado</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_t" name="index_t"></a>- t -</h3><ul>
+<li>tabela&#160;:&#160;<a class="el" href="struct_hashing.html#a6d7c21f83568cedf7dfd9ad245320b7b">Hashing</a>, <a class="el" href="struct_hashing_nomes.html#aa9e8ed980e98fcbfd96d6f6a3338de9c">HashingNomes</a></li>
+<li>tamanho&#160;:&#160;<a class="el" href="struct_fila.html#a46bbd844d92a49df2f9f1dff542301db">Fila</a></li>
+<li>TEMPO_ATENDIMENTO_PRODUTO&#160;:&#160;<a class="el" href="struct_supermercado.html#af4638b79d823c9060692276c6b07b714">Supermercado</a></li>
+<li>tempoAtendimento&#160;:&#160;<a class="el" href="struct_cliente.html#a50cae4a7a025a8cdfd92c56b6e275904">Cliente</a></li>
+<li>tempoAtual&#160;:&#160;<a class="el" href="struct_relogio.html#ac3648fd1b0a4cac8ca386820e9b96bff">Relogio</a></li>
+<li>tempoComprar&#160;:&#160;<a class="el" href="struct_produto.html#abafaacdf00fdf04520a22cd40c0abd8b">Produto</a></li>
+<li>tempoComprasRestante&#160;:&#160;<a class="el" href="struct_cliente.html#af1d9b5c72004ea1494ef556791d32d33">Cliente</a></li>
+<li>tempoEspera&#160;:&#160;<a class="el" href="struct_cliente.html#a441a84a11c91312ad37e9527c9dab1d2">Cliente</a></li>
+<li>tempoPagar&#160;:&#160;<a class="el" href="struct_produto.html#a043fe5840137978cdaf70fa71ee8dc5a">Produto</a></li>
+<li>tempoRestante&#160;:&#160;<a class="el" href="struct_cliente.html#a82f2ca99ee283ee6b3a2338dcd5f9c54">Cliente</a></li>
+<li>TICKS_POR_FRAME&#160;:&#160;<a class="el" href="struct_supermercado.html#ad12fb1d29aabdb60e0dad98dbf147f84">Supermercado</a></li>
+<li>total&#160;:&#160;<a class="el" href="struct_lista_clientes.html#a55344fdca966b72c44623e1256e57c30">ListaClientes</a>, <a class="el" href="struct_lista_funcionarios.html#aa24d8d997b2bbd80621f0f1705e79340">ListaFuncionarios</a>, <a class="el" href="struct_lista_produtos.html#a461885c4c3fa1f41c707bf7a66ebb4b2">ListaProdutos</a></li>
+<li>totalAtendidos&#160;:&#160;<a class="el" href="struct_supermercado.html#a14b3ab3f701f5414c7136e414226ec48">Supermercado</a></li>
+<li>totalCaixas&#160;:&#160;<a class="el" href="struct_hashing.html#ae72aaf8ff0c317c74bc18185c282e700">Hashing</a></li>
+<li>totalDinheiro&#160;:&#160;<a class="el" href="struct_supermercado.html#a493e7e62f8ab1b273d117583afaad7fe">Supermercado</a></li>
+<li>totalEntradas&#160;:&#160;<a class="el" href="struct_hashing_nomes.html#a23fae28e3f70506aa8cea69d4675725c">HashingNomes</a></li>
+<li>totalProdutosVendidos&#160;:&#160;<a class="el" href="struct_supermercado.html#a22161faea10f7faa29a9d8cf4a7abaa8">Supermercado</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_v" name="index_v"></a>- v -</h3><ul>
+<li>v&#160;:&#160;<a class="el" href="struct_lista_clientes.html#ab88ee61aeb02409f9ca50490f7ae16d7">ListaClientes</a>, <a class="el" href="struct_lista_funcionarios.html#aa73ca49952405b263a09edf4182ab04b">ListaFuncionarios</a>, <a class="el" href="struct_lista_produtos.html#a478dd46c39c24afb52d64677ba0ab356">ListaProdutos</a></li>
+<li>valorCarrinho&#160;:&#160;<a class="el" href="struct_cliente.html#a7f7b7002a691c227cb4fe9c858f85b41">Cliente</a></li>
+<li>velocidade&#160;:&#160;<a class="el" href="struct_relogio.html#a2cd13aadd568cd30d87c9bf6b8ed40fb">Relogio</a></li>
+<li>VELOCIDADE_RELOGIO&#160;:&#160;<a class="el" href="struct_supermercado.html#a48f0d70bd257ba4b104f3c9b684182a8">Supermercado</a></li>
+<li>verboso&#160;:&#160;<a class="el" href="struct_supermercado.html#ad92ddea5017bdb4a2722a97bfb0bc3f8">Supermercado</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

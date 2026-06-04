@@ -1,0 +1,411 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Gestao de Caixas de um Supermercado: Referência ao ficheiro src/Acoes.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Gestao de Caixas de um Supermercado<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Projeto ED 25/26 - 1o Ano / 2o Semestre</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('_acoes_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência ao ficheiro Acoes.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Acoes do gerente sobre caixas e clientes (requisitos 4, 5, 7, 8).  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="_supermercado_8h_source.html">Supermercado.h</a>&quot;</code><br />
+</div>
+<p><a href="_acoes_8c_source.html">Ir para o código fonte deste ficheiro.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a95576e6b025898e7051255fdfc21d14b" id="r_a95576e6b025898e7051255fdfc21d14b"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a95576e6b025898e7051255fdfc21d14b">AbrirNovaCaixa</a> (<a class="el" href="struct_supermercado.html">Supermercado</a> *S)</td></tr>
+<tr class="memdesc:a95576e6b025898e7051255fdfc21d14b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requisito 5: abre uma caixa.  <br /></td></tr>
+<tr class="memitem:a249a305c69aeae2acf3585eaaafdd172" id="r_a249a305c69aeae2acf3585eaaafdd172"><td class="memItemLeft">static <a class="el" href="struct_caixa.html">Caixa</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a249a305c69aeae2acf3585eaaafdd172">EscolherDestinoOuAbrir</a> (<a class="el" href="struct_supermercado.html">Supermercado</a> *S, <a class="el" href="struct_caixa.html">Caixa</a> *excluir)</td></tr>
+<tr class="memdesc:a249a305c69aeae2acf3585eaaafdd172"><td class="mdescLeft">&#160;</td><td class="mdescRight">Escolhe uma caixa de destino com espaco; se necessario tenta abrir uma.  <br /></td></tr>
+<tr class="memitem:a0027161dae1f30af5c8a02dbc0a324c7" id="r_a0027161dae1f30af5c8a02dbc0a324c7"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a0027161dae1f30af5c8a02dbc0a324c7">FecharCaixaImediato</a> (<a class="el" href="struct_supermercado.html">Supermercado</a> *S, char *nomeCaixa)</td></tr>
+<tr class="memdesc:a0027161dae1f30af5c8a02dbc0a324c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requisito 7: fecha uma caixa de imediato.  <br /></td></tr>
+<tr class="memitem:a138f131133c642440edbf20e550e8210" id="r_a138f131133c642440edbf20e550e8210"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a138f131133c642440edbf20e550e8210">MoverClienteEntreCaixas</a> (<a class="el" href="struct_supermercado.html">Supermercado</a> *S, char *nomeCliente, char *nomeCaixa)</td></tr>
+<tr class="memdesc:a138f131133c642440edbf20e550e8210"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requisito 4: muda um cliente que esta numa fila para outra caixa.  <br /></td></tr>
+<tr class="memitem:aef88fd2ea6823db0429492de949727ca" id="r_aef88fd2ea6823db0429492de949727ca"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aef88fd2ea6823db0429492de949727ca">PesquisarPessoa</a> (<a class="el" href="struct_supermercado.html">Supermercado</a> *S, char *nomeCliente)</td></tr>
+<tr class="memdesc:aef88fd2ea6823db0429492de949727ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requisito 8: diz onde esta uma pessoa.  <br /></td></tr>
+<tr class="memitem:a39b42d5903681b5e5a7834d0921de1f9" id="r_a39b42d5903681b5e5a7834d0921de1f9"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a39b42d5903681b5e5a7834d0921de1f9">ListarAtendidosPorCaixa</a> (<a class="el" href="struct_supermercado.html">Supermercado</a> *S, char *nomeCaixa)</td></tr>
+<tr class="memdesc:a39b42d5903681b5e5a7834d0921de1f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requisito 11: lista os clientes ja atendidos por uma caixa especifica.  <br /></td></tr>
+<tr class="memitem:a8c4dd5127bee14745e3027e844f5ca9f" id="r_a8c4dd5127bee14745e3027e844f5ca9f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a8c4dd5127bee14745e3027e844f5ca9f">MostrarResumoCaixas</a> (<a class="el" href="struct_supermercado.html">Supermercado</a> *S)</td></tr>
+<tr class="memdesc:a8c4dd5127bee14745e3027e844f5ca9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resumo multi-linha de todas as caixas.  <br /></td></tr>
+<tr class="memitem:a06327b804e5910a00b6a5e58a7dae297" id="r_a06327b804e5910a00b6a5e58a7dae297"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a06327b804e5910a00b6a5e58a7dae297">ResolverNomeCaixa</a> (char *entrada, char *destino)</td></tr>
+<tr class="memdesc:a06327b804e5910a00b6a5e58a7dae297"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aceita "Caixa1" ou simplesmente "1" como referencia a uma caixa.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Acoes do gerente sobre caixas e clientes (requisitos 4, 5, 7, 8). </p>
+<p>Inclui tambem helpers de UX usados pelos menus. </p>
+
+<p class="definition">Definido no ficheiro <a class="el" href="_acoes_8c_source.html">Acoes.c</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentação das funções</h2>
+<a id="a95576e6b025898e7051255fdfc21d14b" name="a95576e6b025898e7051255fdfc21d14b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95576e6b025898e7051255fdfc21d14b">&#9670;&#160;</a></span>AbrirNovaCaixa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AbrirNovaCaixa </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_supermercado.html">Supermercado</a> *</td>          <td class="paramname"><span class="paramname"><em>S</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Requisito 5: abre uma caixa. </p>
+<p>Requisito 5: abre uma caixa (reabre fechada ou cria nova).</p>
+<p>Reutiliza uma caixa fechada se existir; se nao houver e ainda nao se atingiu N_CAIXAS, cria uma nova. Precisa de um operador livre. Os clientes ja em fila nas outras caixas NAO sao movidos &ndash; a nova caixa comeca vazia e recebe naturalmente os clientes que acabam as compras (via EscolherMelhorCaixa) e ainda nao chegaram ao LIMITE_FILA_CAIXA das antigas. </p><dl class="section return"><dt>Retorna</dt><dd>1 se conseguiu, 0 caso contrario.</dd></dl>
+<p>Requisito 5: abre uma caixa. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_acoes_8c_source.html#l00022">22</a> do ficheiro <a class="el" href="_acoes_8c_source.html">Acoes.c</a>.</p>
+
+</div>
+</div>
+<a id="a249a305c69aeae2acf3585eaaafdd172" name="a249a305c69aeae2acf3585eaaafdd172"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a249a305c69aeae2acf3585eaaafdd172">&#9670;&#160;</a></span>EscolherDestinoOuAbrir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_caixa.html">Caixa</a> * EscolherDestinoOuAbrir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_supermercado.html">Supermercado</a> *</td>          <td class="paramname"><span class="paramname"><em>S</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_caixa.html">Caixa</a> *</td>          <td class="paramname"><span class="paramname"><em>excluir</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Escolhe uma caixa de destino com espaco; se necessario tenta abrir uma. </p>
+<p>Usado apenas no fecho imediato: se todas as restantes caixas estiverem cheias, tenta criar/reabrir outra antes de desistir. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_acoes_8c_source.html#l00057">57</a> do ficheiro <a class="el" href="_acoes_8c_source.html">Acoes.c</a>.</p>
+
+</div>
+</div>
+<a id="a0027161dae1f30af5c8a02dbc0a324c7" name="a0027161dae1f30af5c8a02dbc0a324c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0027161dae1f30af5c8a02dbc0a324c7">&#9670;&#160;</a></span>FecharCaixaImediato()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int FecharCaixaImediato </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_supermercado.html">Supermercado</a> *</td>          <td class="paramname"><span class="paramname"><em>S</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nomeCaixa</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Requisito 7: fecha uma caixa de imediato. </p>
+<p>Requisito 7: fecha caixa de imediato e redistribui clientes se houver espaco.</p>
+<p>Distribui os clientes em fila pelas restantes caixas abertas, respeitando LIMITE_FILA_CAIXA. Se nao houver destino com espaco, a caixa nao fecha.</p>
+<p>Requisito 7: fecha uma caixa de imediato. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_acoes_8c_source.html#l00071">71</a> do ficheiro <a class="el" href="_acoes_8c_source.html">Acoes.c</a>.</p>
+
+</div>
+</div>
+<a id="a39b42d5903681b5e5a7834d0921de1f9" name="a39b42d5903681b5e5a7834d0921de1f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39b42d5903681b5e5a7834d0921de1f9">&#9670;&#160;</a></span>ListarAtendidosPorCaixa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ListarAtendidosPorCaixa </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_supermercado.html">Supermercado</a> *</td>          <td class="paramname"><span class="paramname"><em>S</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nomeCaixa</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Requisito 11: lista os clientes ja atendidos por uma caixa especifica. </p>
+<p>Requisito 11: lista os clientes atendidos por uma caixa.</p>
+<p>Requisito 11: lista os clientes ja atendidos por uma caixa especifica. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_acoes_8c_source.html#l00170">170</a> do ficheiro <a class="el" href="_acoes_8c_source.html">Acoes.c</a>.</p>
+
+</div>
+</div>
+<a id="a8c4dd5127bee14745e3027e844f5ca9f" name="a8c4dd5127bee14745e3027e844f5ca9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c4dd5127bee14745e3027e844f5ca9f">&#9670;&#160;</a></span>MostrarResumoCaixas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MostrarResumoCaixas </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_supermercado.html">Supermercado</a> *</td>          <td class="paramname"><span class="paramname"><em>S</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resumo multi-linha de todas as caixas. </p>
+<p>Resumo (multi-linha) de todas as caixas com barra colorida.</p>
+<p>Mostra Caixa1..CaixaN, mesmo que algumas ainda nao tenham sido criadas. As caixas inexistentes aparecem como fechadas.</p>
+<p>Resumo multi-linha de todas as caixas. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_acoes_8c_source.html#l00183">183</a> do ficheiro <a class="el" href="_acoes_8c_source.html">Acoes.c</a>.</p>
+
+</div>
+</div>
+<a id="a138f131133c642440edbf20e550e8210" name="a138f131133c642440edbf20e550e8210"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a138f131133c642440edbf20e550e8210">&#9670;&#160;</a></span>MoverClienteEntreCaixas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MoverClienteEntreCaixas </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_supermercado.html">Supermercado</a> *</td>          <td class="paramname"><span class="paramname"><em>S</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nomeCliente</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nomeCaixa</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Requisito 4: muda um cliente que esta numa fila para outra caixa. </p>
+<p>Requisito 4: muda um cliente em fila para outra caixa.</p>
+<p>Requisito 4: muda um cliente que esta numa fila para outra caixa. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_acoes_8c_source.html#l00118">118</a> do ficheiro <a class="el" href="_acoes_8c_source.html">Acoes.c</a>.</p>
+
+</div>
+</div>
+<a id="aef88fd2ea6823db0429492de949727ca" name="aef88fd2ea6823db0429492de949727ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef88fd2ea6823db0429492de949727ca">&#9670;&#160;</a></span>PesquisarPessoa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PesquisarPessoa </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_supermercado.html">Supermercado</a> *</td>          <td class="paramname"><span class="paramname"><em>S</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>nomeCliente</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Requisito 8: diz onde esta uma pessoa. </p>
+<p>Requisito 8: diz onde esta uma pessoa (tolerante a maiusculas/prefixo).</p>
+<p>Resultado possivel: fora, a fazer compras, em fila numa caixa, ou a ser atendida. Aceita variacoes em maiusculas/minusculas e correspondencia por prefixo.</p>
+<p>Requisito 8: diz onde esta uma pessoa. </p>
+
+<p class="definition">Definido na linha <a class="el" href="_acoes_8c_source.html#l00151">151</a> do ficheiro <a class="el" href="_acoes_8c_source.html">Acoes.c</a>.</p>
+
+</div>
+</div>
+<a id="a06327b804e5910a00b6a5e58a7dae297" name="a06327b804e5910a00b6a5e58a7dae297"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06327b804e5910a00b6a5e58a7dae297">&#9670;&#160;</a></span>ResolverNomeCaixa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ResolverNomeCaixa </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>entrada</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>destino</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aceita "Caixa1" ou simplesmente "1" como referencia a uma caixa. </p>
+<p>Aceita "Caixa1" ou "1"; resolve para o nome canonico.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entrada</td><td>Texto introduzido pelo utilizador. </td></tr>
+    <tr><td class="paramname">destino</td><td>Buffer onde se escreve o nome canonico.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Aceita "Caixa1" ou simplesmente "1" como referencia a uma caixa.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entrada</td><td>Texto introduzido pelo utilizador. </td></tr>
+    <tr><td class="paramname">destino</td><td>Buffer onde escreve o nome (tamanho MAX_NOME). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definido na linha <a class="el" href="_acoes_8c_source.html#l00208">208</a> do ficheiro <a class="el" href="_acoes_8c_source.html">Acoes.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="_acoes_8c.html">Acoes.c</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>
