@@ -122,7 +122,7 @@ para muitas caixas.
 | 2 | Gravar dados / medidas (tempo, atendidos, espera média…) | `GravarDados` → `resultado.txt` |
 | 3 | Histórico em `*.csv` das ações do utilizador | `RegistarHistorico` → `historico.csv` |
 | 4 | Cliente muda de caixa | `MoverClienteEntreCaixas` |
-| 5 | Abrir caixa (manual + automático se média > `MAX_FILA`) | `AbrirNovaCaixa`, `GerirCaixas` |
+| 5 | Abrir caixa (manual + automático se média > `MAX_FILA`), respeitando `LIMITE_FILA_CAIXA` | `AbrirNovaCaixa`, `GerirCaixas`, `EscolherMelhorCaixa` |
 | 6 | Fechar a caixa com menos pessoas se média < `MIN_FILA` | `GerirCaixas` (fecho gracioso) |
 | 7 | Fecho forçado + redistribuição dos clientes | `FecharCaixaImediato` |
 | 8 | Pesquisar pessoa (em que caixa está) | `PesquisarPessoa` |
@@ -141,7 +141,7 @@ Em cada passo (`ExecutarPasso`):
    vezes, e só durante o horário (`HORA_ABERTURA`-`HORA_FECHO`). O carrinho é gerado com
    produtos aleatórios do catálogo.
 3. **Compras → caixa**: quem termina as compras vai para a **fila mais curta** entre as
-   caixas abertas.
+   caixas abertas que ainda tenham menos de `LIMITE_FILA_CAIXA` pessoas em espera.
 4. **Atendimento**: cada caixa atende o cliente da frente (decrementa `tempoRestante`, que é
    a soma dos `tempoPagar` dos artigos do carrinho); os restantes acumulam `tempoEspera`.
    Ao terminar, o cliente sai e atualizam-se as estatísticas.
@@ -154,8 +154,9 @@ Ao escolher **Iniciar simulação**, esta corre **automaticamente**, mostrando o
 `INTERVALO_AUTO_MS` ms, até o utilizador premir uma tecla. Aí abre-se um menu de **pausa**
 que permite **retomar simulação**, **avançar 1 passo**, **saltar X segundos**, **ver o estado**
 ou **parar e voltar ao menu principal** (o estado fica congelado enquanto o menu está aberto).
-Cada *frame* mostra o cabeçalho `[HH:MM:SS]` em ciano, cada caixa com uma **barra colorida** da
-fila (verde ≤3, amarelo ≤6, vermelho >6) e os blocos `Entraram:` e `Ofertas:` da última janela.
+Cada *frame* mostra o cabeçalho `[HH:MM:SS]` em ciano, todas as caixas planeadas
+(`Caixa1` até `N_CAIXAS`), a **barra colorida** da fila nas que estiverem abertas
+(verde ≤3, amarelo ≤6, vermelho >6), e os blocos `Entraram:` e `Ofertas:` da última janela.
 
 ## 7. Gestão de memória
 
@@ -199,9 +200,17 @@ Ou abrir `Projeto_ED_25_26.cbp` no Code::Blocks. Compila sem erros nem avisos (`
 
 - O catálogo de produtos e a lista de funcionários não constam do enunciado: foram criados os
   ficheiros `Produtos.txt` e `Funcionarios.txt` (geríveis por menu).
-- `Dados.txt` indica o **número de produtos** por cliente; nome/preço de cada artigo são
-  sorteados do catálogo, com preço em `]0, MAX_PRECO]` e tempo de passagem em
-  `[2, TEMPO_ATENDIMENTO_PRODUTO]`.
+- O sistema arranca **sempre só com a Caixa1 aberta** (criada em
+  `CriarCaixaInicial`); as restantes caixas (até `N_CAIXAS`) só abrem dinamicamente
+  via `GerirCaixas` quando a média de fila ultrapassar `MAX_FILA`, ou manualmente pelo
+  gerente. Ao abrir uma caixa nova, os clientes que já estavam nas filas antigas ficam
+  onde estavam; a caixa nova passa a receber naturalmente clientes que terminem as compras.
+- Cada caixa aceita no máximo `LIMITE_FILA_CAIXA` pessoas em espera (10 por omissão).
+  Quando uma fila chega a esse limite, `EscolherMelhorCaixa` deixa de enviar clientes para
+  essa caixa e procura outra aberta com espaço.
+- O carrinho de cada cliente que entra é gerado dinamicamente: número de produtos
+  aleatório em `[1, MAX_CARRINHO]`, cada artigo sorteado do catálogo com preço em
+  `]0, MAX_PRECO]` e tempo de passagem em `[2, TEMPO_ATENDIMENTO_PRODUTO]`.
 - Os tempos estão em segundos; a simulação é discreta (1 passo = `velocidade` segundos).
 - "Dentro da loja" = a fazer compras **ou** numa fila; `CAPACIDADE_LOJA` limita os clientes
   simultâneos.

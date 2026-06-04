@@ -39,7 +39,11 @@ int ContarCaixasAbertas(Supermercado *S)
 }
 
 /**
- * @brief Escolhe a caixa aberta (e nao 'a fechar') com a fila mais curta.
+ * @brief Escolhe a caixa aberta, nao cheia e com a fila mais curta.
+ *
+ * Uma caixa com LIMITE_FILA_CAIXA pessoas em espera deixa de receber
+ * novos clientes; quem acabar as compras fica em emCompras ate existir
+ * outra caixa com espaco (ou ate GerirCaixas abrir mais uma).
  * @param excluir Caixa a ignorar (ex.: a que esta a fechar) ou NULL.
  * @return Caixa ou NULL se nenhuma estiver disponivel.
  */
@@ -49,6 +53,7 @@ Caixa *EscolherMelhorCaixa(Supermercado *S, Caixa *excluir)
     int n = ObterTodasCaixas(&S->caixas, vec, MAX_CAIXAS), i;
     for (i = 0; i < n; i++) {
         if (!vec[i]->ativa || vec[i]->aFechar || vec[i] == excluir) continue;
+        if (TamanhoFila(&vec[i]->fila) >= S->LIMITE_FILA_CAIXA) continue;
         if (melhor == NULL || TamanhoFila(&vec[i]->fila) < TamanhoFila(&melhor->fila))
             melhor = vec[i];
     }

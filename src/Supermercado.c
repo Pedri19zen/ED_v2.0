@@ -43,6 +43,7 @@ static void AplicarConfig(Supermercado *S, char *chave, int valor)
     else if (strcmp(chave, "MAX_PRECO") == 0)                 S->MAX_PRECO = valor;
     else if (strcmp(chave, "MAX_FILA") == 0)                  S->MAX_FILA = valor;
     else if (strcmp(chave, "MIN_FILA") == 0)                  S->MIN_FILA = valor;
+    else if (strcmp(chave, "LIMITE_FILA_CAIXA") == 0)         S->LIMITE_FILA_CAIXA = valor;
     else if (strcmp(chave, "VELOCIDADE_RELOGIO") == 0)        S->VELOCIDADE_RELOGIO = valor;
     else if (strcmp(chave, "HORA_ABERTURA") == 0)             S->HORA_ABERTURA = valor;
     else if (strcmp(chave, "HORA_FECHO") == 0)                S->HORA_FECHO = valor;
@@ -73,6 +74,7 @@ Supermercado *CriarSupermercado(char *nome)
     /* valores por omissao (caso falte o ficheiro de configuracao) */
     S->MAX_ESPERA = 120; S->N_CAIXAS = 6; S->TEMPO_ATENDIMENTO_PRODUTO = 6;
     S->MAX_PRECO = 40;   S->MAX_FILA = 7; S->MIN_FILA = 3;
+    S->LIMITE_FILA_CAIXA = 10;
     S->VELOCIDADE_RELOGIO = 10;
     S->HORA_ABERTURA = 8;  S->HORA_FECHO = 20;
     S->CADENCIA_ENTRADA = 70;
@@ -125,64 +127,32 @@ int CarregarConfiguracao(Supermercado *S, char *ficheiro)
 }
 
 /**
- * @brief Le o ficheiro de dados.
+ * @brief Cria a Caixa1 (unica caixa inicial, activa, com primeiro operador livre).
  *
- * Formato: numero de caixas e, para cada uma, se esta activa, o numero
- * de clientes e cada cliente (com o seu numero de produtos). As caixas
- * vao para o hashing e os clientes para as respectivas filas.
+ * O sistema arranca sempre com apenas uma caixa aberta; as restantes
+ * (ate N_CAIXAS) sao abertas dinamicamente por GerirCaixas / o gerente
+ * quando a media de fila ultrapassar MAX_FILA.
  */
-int CarregarDados(Supermercado *S, char *ficheiro)
+static void CriarCaixaInicial(Supermercado *S)
 {
-    FILE *f = fopen(ficheiro, "r");
-    char linha[128], nomeCaixa[MAX_NOME], nomeCli[MAX_NOME];
-    int nCaixas, nClientes, ativa, nProd, i, j;
-    if (f == NULL) return 0;
-    if (fgets(linha, sizeof(linha), f) == NULL || sscanf(linha, "%d", &nCaixas) != 1) {
-        fclose(f);
-        return 0;
-    }
-    for (i = 0; i < nCaixas; i++) {
-        Caixa *cx;
-        if (fgets(linha, sizeof(linha), f) == NULL) break;
-        if (sscanf(linha, "%49s : %d", nomeCaixa, &ativa) != 2) continue;
-        cx = CriarCaixa(nomeCaixa, ativa != 0);
-        if (cx->ativa) {
-            Funcionario *op = ObterFuncionarioLivre(&S->funcionarios);
-            if (op != NULL) { cx->operador = op; op->ocupado = true; }
-        }
-        InserirCaixa(&S->caixas, cx);
-        if (fgets(linha, sizeof(linha), f) == NULL || sscanf(linha, "%d", &nClientes) != 1)
-            nClientes = 0;
-        for (j = 0; j < nClientes; j++) {
-            int idx;
-            Cliente *c;
-            if (fgets(linha, sizeof(linha), f) == NULL) break;
-            if (sscanf(linha, "%49s : %d", nomeCli, &nProd) != 2) continue;
-            idx = AdicionarCliente(&S->clientes, nomeCli, nProd);
-            if (idx < 0) continue;
-            c = &S->clientes.v[idx];
-            PrepararCarrinho(c, &S->produtos, S->MAX_PRECO, S->TEMPO_ATENDIMENTO_PRODUTO);
-            c->dentroLoja = true;
-            c->naFila = true;
-            CopiarNome(c->caixaAtual, nomeCaixa);
-            EnfileirarCliente(&cx->fila, c);
-        }
-    }
-    fclose(f);
-    return 1;
+    Caixa *cx = CriarCaixa("Caixa1", true);
+    Funcionario *op = ObterFuncionarioLivre(&S->funcionarios);
+    if (op != NULL) { cx->operador = op; op->ocupado = true; }
+    InserirCaixa(&S->caixas, cx);
 }
 
-/** @brief Le todos os ficheiros, prepara o relogio e garante uma pool minima. */
+/** @brief Le todos os ficheiros, prepara o relogio e cria a Caixa1 inicial. */
 int InicializarSupermercado(Supermercado *S)
 {
     CarregarConfiguracao(S, FICH_CONFIG);
+    if (S->LIMITE_FILA_CAIXA < 1) S->LIMITE_FILA_CAIXA = 10;
     /* sincroniza a velocidade do relogio com o valor (talvez) lido da config */
     S->relogio->velocidade = S->VELOCIDADE_RELOGIO;
     CarregarProdutos(&S->produtos, FICH_PRODUTOS);
     ClamparProdutos(S);                                  /* impoe limites da config */
     CarregarFuncionarios(&S->funcionarios, FICH_FUNCIONARIOS);
     CarregarClientes(&S->clientes, FICH_CLIENTES);
-    CarregarDados(S, FICH_DADOS);
+    CriarCaixaInicial(S);                                /* arranca so com Caixa1 */
     if (S->clientes.total < POOL_CLIENTES_MIN)
         GerarClientesAleatorios(&S->clientes, POOL_CLIENTES_MIN - S->clientes.total, MAX_CARRINHO);
     /* poe o relogio a hora de abertura (ex.: 08:00) */

@@ -22,21 +22,14 @@ static void FormatarNomeCaixa(char *destino, char *original)
  * @brief Imprime o "frame" da simulacao com o estado das caixas.
  *
  * Mostra cabecalho com hora, contadores desde a ultima actualizacao,
- * cada caixa com a barra colorida da fila, e a lista de quem entrou
+ * todas as caixas planeadas (Caixa1..CaixaN), e a lista de quem entrou
  * desde o frame anterior. Reinicia os contadores no fim.
  */
 void VerEstadoAtual(Supermercado *S)
 {
-    Caixa *vec[MAX_CAIXAS];
-    int n = ObterTodasCaixas(&S->caixas, vec, MAX_CAIXAS), i, j;
+    int i, limiteCaixas;
     int t, h, m, sec;
-    char nomeFmt[MAX_NOME];
-    /* ordena por nome (bubble sort) para uma listagem estavel */
-    for (i = 0; i < n - 1; i++)
-        for (j = 0; j < n - 1 - i; j++)
-            if (strcmp(vec[j]->nome, vec[j + 1]->nome) > 0) {
-                Caixa *tmp = vec[j]; vec[j] = vec[j + 1]; vec[j + 1] = tmp;
-            }
+    char nomeCaixa[MAX_NOME], nomeFmt[MAX_NOME];
     t = GetTempo(S->relogio);
     h = (t / 3600) % 24;
     m = (t / 60) % 60;
@@ -49,10 +42,14 @@ void VerEstadoAtual(Supermercado *S)
     printf("  %sProdutos ofertados ate agora: %d (%.2f EUR)%s\n",
            COR_WARN, S->produtosOferecidos, S->custoOferecido, COR_RESET);
     printf("%s----------------------------------------------------%s\n", COR_DIM, COR_RESET);
-    for (i = 0; i < n; i++) {
-        Caixa *cx = vec[i];
-        FormatarNomeCaixa(nomeFmt, cx->nome);
-        if (cx->ativa) {
+    limiteCaixas = S->N_CAIXAS;
+    if (limiteCaixas > MAX_CAIXAS) limiteCaixas = MAX_CAIXAS;
+    for (i = 1; i <= limiteCaixas; i++) {
+        Caixa *cx;
+        snprintf(nomeCaixa, sizeof(nomeCaixa), "Caixa%d", i);
+        FormatarNomeCaixa(nomeFmt, nomeCaixa);
+        cx = PesquisarCaixa(&S->caixas, nomeCaixa);
+        if (cx != NULL && cx->ativa) {
             printf("  %-8s %s[ABERTA]%s | ", nomeFmt, COR_OK, COR_RESET);
             ImprimirBarraFila(TamanhoFila(&cx->fila));
             printf(" | A atender: %s\n",

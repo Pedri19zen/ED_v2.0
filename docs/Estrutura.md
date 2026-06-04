@@ -17,7 +17,7 @@ classDiagram
         +Fila emCompras
         +Hashing caixas
         +Relogio* relogio
-        +configuracao (MAX_ESPERA, ...)
+        +configuracao (MAX_ESPERA, MAX_FILA, LIMITE_FILA_CAIXA, ...)
         +estatisticas (totais, picos)
     }
 
@@ -65,7 +65,7 @@ classDiagram
     class Caixa {
         +char nome[50]
         +bool ativa / aFechar
-        +Fila fila
+        +Fila fila (max LIMITE_FILA_CAIXA)
         +Cliente* aAtender
         +Funcionario* operador
         +NoNome* atendidos
@@ -184,7 +184,7 @@ Não foram usadas árvores, grafos ou heaps.
 ```mermaid
 flowchart LR
     A[AvancarRelogio] --> B[EntradaCliente]
-    B --> C[AvancarCompras]
+    B --> C[AvancarCompras / EscolherMelhorCaixa]
     C --> D[AtenderCaixas]
     D --> E[VerificarTemposEspera]
     E --> F[GerirCaixas]

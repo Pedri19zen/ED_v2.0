@@ -46,6 +46,7 @@ typedef struct {
     int MAX_PRECO;                 /**< Preco maximo de um produto. */
     int MAX_FILA;                  /**< Media de fila para abrir nova caixa. */
     int MIN_FILA;                  /**< Media de fila para fechar uma caixa. */
+    int LIMITE_FILA_CAIXA;         /**< Cap rigido de pessoas por caixa (default 10). */
     int VELOCIDADE_RELOGIO;        /**< Segundos por tick. */
     int HORA_ABERTURA;             /**< 24h: hora a que a loja abre. */
     int HORA_FECHO;                /**< 24h: hora a que a loja fecha. */
@@ -98,8 +99,6 @@ void DestruirSupermercado(Supermercado *S);
 /* ---- carregamento de ficheiros (requisito 1) ---- */
 /** @brief Le pares "CHAVE valor" de Configuracao.txt. */
 int CarregarConfiguracao(Supermercado *S, char *ficheiro);
-/** @brief Le caixas + clientes iniciais de Dados.txt. */
-int CarregarDados(Supermercado *S, char *ficheiro);
 
 /* ---- primitivas partilhadas entre modulos ---- */
 /** @brief Conta clientes activos dentro da loja. */
@@ -107,7 +106,7 @@ int    ContarDentroLoja(Supermercado *S);
 /** @brief Conta caixas com ativa=true. */
 int    ContarCaixasAbertas(Supermercado *S);
 /**
- * @brief Escolhe a caixa aberta com a fila mais curta.
+ * @brief Escolhe a caixa aberta, com espaco, e com a fila mais curta.
  * @param excluir Caixa a ignorar (NULL para nao excluir nenhuma).
  * @return Caixa ou NULL se nenhuma estiver disponivel.
  */
@@ -130,7 +129,7 @@ void IniciarNovoDia(Supermercado *S);
 /* ---- acoes do gerente ---- */
 /** @brief Requisito 5: abre uma caixa (reabre fechada ou cria nova). */
 int  AbrirNovaCaixa(Supermercado *S);
-/** @brief Requisito 7: fecha caixa de imediato e redistribui clientes. */
+/** @brief Requisito 7: fecha caixa de imediato e redistribui clientes se houver espaco. */
 int  FecharCaixaImediato(Supermercado *S, char *nomeCaixa);
 /** @brief Requisito 4: muda um cliente em fila para outra caixa. */
 int  MoverClienteEntreCaixas(Supermercado *S, char *nomeCliente, char *nomeCaixa);

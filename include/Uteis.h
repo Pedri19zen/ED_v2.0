@@ -16,7 +16,7 @@
 /* ---- Tamanhos maximos dos arrays-mestre (dados carregados uma vez) ---- */
 #define MAX_NOME           50     /**< Tamanho de nome de cliente/caixa/funcionario. */
 #define MAX_NOME_PRODUTO   128    /**< Nomes de produtos sao mais longos. */
-#define MAX_CLIENTES       12000  /**< Clientes registados (Clientes.txt + Dados.txt). */
+#define MAX_CLIENTES       12000  /**< Clientes registados (Clientes.txt). */
 #define MAX_PRODUTOS       10000  /**< Produtos no catalogo. */
 #define MAX_FUNCIONARIOS   200    /**< Operadores de caixa. */
 #define MAX_CAIXAS         100    /**< Limite ao percorrer o hashing das caixas. */
@@ -25,7 +25,6 @@
 
 /* ---- Nomes dos ficheiros (entrada em data/, saida na raiz) ---- */
 #define FICH_CONFIG        "data/Configuracao.txt"   /**< Parametros da simulacao. */
-#define FICH_DADOS         "data/Dados.txt"          /**< Caixas iniciais e clientes. */
 #define FICH_PRODUTOS      "data/Produtos.txt"       /**< Catalogo de produtos. */
 #define FICH_FUNCIONARIOS  "data/Funcionarios.txt"   /**< Operadores de caixa. */
 #define FICH_CLIENTES      "data/Clientes.txt"       /**< Pool de nomes de clientes. */

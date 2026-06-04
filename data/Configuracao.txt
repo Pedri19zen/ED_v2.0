@@ -1,12 +1,13 @@
-MAX_ESPERA 120
+MAX_ESPERA 160
 N_CAIXAS 6
 TEMPO_ATENDIMENTO_PRODUTO 6
 MAX_PRECO 40
 # limiares ajustados para carrinhos ate 30 produtos:
 #   atendimento medio ~60s/cliente -> servico ~1 cliente/tick com 6 caixas
 #   queremos chegadas ~0.8 cli/tick para utilizacao ~80% (filas estaveis)
-MAX_FILA 5
+MAX_FILA 7
 MIN_FILA 2
+LIMITE_FILA_CAIXA 10
 # parametros da simulacao automatica (segundos / ms / %)
 VELOCIDADE_RELOGIO 10
 HORA_ABERTURA 8
