@@ -1,10 +1,15 @@
-/* Relatorios.c - saidas para o utilizador, medidas de desempenho, contabilidade
-   da memoria e gravacao do relatorio final (requisitos 2, 9, 10 e 11). */
+/**
+ * @file Relatorios.c
+ * @brief Saidas para o utilizador, medidas de desempenho, contabilidade
+ *        da memoria e gravacao do relatorio final.
+ *
+ * Cobre os requisitos 2, 9, 10 e 11.
+ */
 
 #include <string.h>
 #include "Supermercado.h"
 
-/* Converte "Caixa1" em "Caixa 1" para uma listagem mais legivel. */
+/** @brief Converte "Caixa1" em "Caixa 1" para uma listagem mais legivel. */
 static void FormatarNomeCaixa(char *destino, char *original)
 {
     if (strncmp(original, "Caixa", 5) == 0 && original[5] != '\0' && original[5] != ' ')
@@ -13,8 +18,13 @@ static void FormatarNomeCaixa(char *destino, char *original)
         snprintf(destino, MAX_NOME, "%s", original);
 }
 
-/* Mostra o estado atual da loja e de todas as caixas no formato de "frame"
-   da simulacao automatica (cabecalho com hora + caixas em colunas). */
+/**
+ * @brief Imprime o "frame" da simulacao com o estado das caixas.
+ *
+ * Mostra cabecalho com hora, contadores desde a ultima actualizacao,
+ * cada caixa com a barra colorida da fila, e a lista de quem entrou
+ * desde o frame anterior. Reinicia os contadores no fim.
+ */
 void VerEstadoAtual(Supermercado *S)
 {
     Caixa *vec[MAX_CAIXAS];
@@ -36,6 +46,8 @@ void VerEstadoAtual(Supermercado *S)
     printf("  Clientes na loja: %d\n", ContarDentroLoja(S));
     printf("  Desde a ultima atualizacao: %d entraram | %d sairam\n",
            S->entradasDesdeUpdate, S->saidasDesdeUpdate);
+    printf("  %sProdutos ofertados ate agora: %d (%.2f EUR)%s\n",
+           COR_WARN, S->produtosOferecidos, S->custoOferecido, COR_RESET);
     printf("%s----------------------------------------------------%s\n", COR_DIM, COR_RESET);
     for (i = 0; i < n; i++) {
         Caixa *cx = vec[i];
@@ -53,13 +65,19 @@ void VerEstadoAtual(Supermercado *S)
     if (S->nomesEntradas[0] != '\0') {
         printf("  Entraram:\n%s", S->nomesEntradas);
     }
+    if (S->nomesOfertas[0] != '\0') {
+        printf("  %sOfertas (esperaram > %ds):%s\n%s",
+               COR_WARN, S->MAX_ESPERA, COR_RESET, S->nomesOfertas);
+    }
     /* reinicia os contadores para a proxima atualizacao */
     S->entradasDesdeUpdate = 0;
     S->saidasDesdeUpdate = 0;
     S->nomesEntradas[0] = '\0';
+    S->ofertasDesdeUpdate = 0;
+    S->nomesOfertas[0] = '\0';
 }
 
-/* req. 11: medidas de desempenho do sistema. */
+/** @brief Requisito 11: imprime as medidas de desempenho do sistema. */
 void MedidasDesempenho(Supermercado *S)
 {
     Caixa *vec[MAX_CAIXAS], *maisPessoas = NULL, *maisProdutos = NULL, *maisDinheiro = NULL;
@@ -118,8 +136,12 @@ void MedidasDesempenho(Supermercado *S)
         ListarAtendidosCaixa(vec[i]);
 }
 
-/* req. 9: memoria usada = struct principal + relogio + nos alocados nas
-   listas/filas/hashes dinamicos. */
+/**
+ * @brief Requisito 9: bytes alocados pelo programa.
+ *
+ * Soma a struct principal, o relogio, o nome dinamico, e todos os nos
+ * alocados pelas listas/filas/tabelas de dispersao.
+ */
 long CalcularMemoriaUtilizada(Supermercado *S)
 {
     Caixa *vec[MAX_CAIXAS];
@@ -139,8 +161,12 @@ long CalcularMemoriaUtilizada(Supermercado *S)
     return total;
 }
 
-/* req. 10: memoria desperdicada = espaco reservado nos arrays mas nao usado
-   + posicoes vazias das tabelas de dispersao. */
+/**
+ * @brief Requisito 10: bytes reservados mas nao usados.
+ *
+ * Inclui os slots livres dos arrays-mestre e os buckets vazios das
+ * tabelas de dispersao.
+ */
 long CalcularMemoriaDesperdicada(Supermercado *S)
 {
     long desp = 0;
@@ -162,6 +188,7 @@ long CalcularMemoriaDesperdicada(Supermercado *S)
     return desp;
 }
 
+/** @brief Mostra as duas contas de memoria no ecra. */
 void MostrarMemoria(Supermercado *S)
 {
     printf("\n===== Memoria =====\n");
@@ -169,7 +196,7 @@ void MostrarMemoria(Supermercado *S)
     printf("Memoria desperdicada: %ld bytes\n", CalcularMemoriaDesperdicada(S));
 }
 
-/* req. 2: grava um relatorio com o resumo da simulacao. */
+/** @brief Requisito 2: grava um relatorio textual com o resumo da simulacao. */
 int GravarDados(Supermercado *S, char *ficheiro)
 {
     FILE *f = fopen(ficheiro, "w");

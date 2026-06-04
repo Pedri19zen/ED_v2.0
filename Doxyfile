@@ -1,0 +1,45 @@
+# =====================================================================
+# Doxyfile - Projeto ED 25/26 "Gestao de Caixas de um Supermercado"
+#
+# Utilizacao:
+#   doxygen Doxyfile           # gera docs/html
+# Abrir docs/html/index.html no browser.
+# =====================================================================
+
+PROJECT_NAME           = "Gestao de Caixas de um Supermercado"
+PROJECT_BRIEF          = "Projeto ED 25/26 - 1o Ano / 2o Semestre"
+PROJECT_NUMBER         = 1.0
+
+OUTPUT_DIRECTORY       = docs
+OUTPUT_LANGUAGE        = Portuguese
+
+# ---- Entrada ----
+INPUT                  = include src docs/Estrutura.md
+USE_MDFILE_AS_MAINPAGE = docs/Estrutura.md
+RECURSIVE              = NO
+FILE_PATTERNS          = *.c *.h *.md
+EXTRACT_ALL            = YES
+EXTRACT_STATIC         = YES
+EXTRACT_PRIVATE        = NO
+JAVADOC_AUTOBRIEF      = YES
+QUIET                  = YES
+
+# ---- Saida ----
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+GENERATE_LATEX         = NO
+GENERATE_TREEVIEW      = YES
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = NO
+STRIP_CODE_COMMENTS    = NO
+
+# ---- Diagramas (precisam de Graphviz instalado; nao bloqueia se faltar) ----
+HAVE_DOT               = NO
+CLASS_DIAGRAMS         = YES
+CLASS_GRAPH            = YES
+COLLABORATION_GRAPH    = NO
+INCLUDE_GRAPH          = NO
+INCLUDED_BY_GRAPH      = NO
+
+OPTIMIZE_OUTPUT_FOR_C  = YES
+TYPEDEF_HIDES_STRUCT   = YES

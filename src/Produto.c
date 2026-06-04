@@ -1,21 +1,26 @@
-/* Produto.c - catalogo de produtos (array) e respetivo menu de gestao */
+/**
+ * @file Produto.c
+ * @brief Catalogo de produtos (array) e respectivo menu de gestao.
+ */
 
 #include <string.h>
 #include "Produto.h"
 
+/** @brief Inicializa a lista vazia e o indice de nomes. */
 void CriarListaProdutos(ListaProdutos *L)
 {
     L->total = 0;
     CriarHashingNomes(&L->idxNome);
 }
 
+/** @brief Liberta a tabela de dispersao (o array v[] vive na struct mae). */
 void DestruirListaProdutos(ListaProdutos *L)
 {
     DestruirHashingNomes(&L->idxNome);
     L->total = 0;
 }
 
-/* Adiciona um produto ao catalogo. Devolve o indice ou -1 se cheio. */
+/** @brief Adiciona um produto ao catalogo. @return Indice ou -1 se cheio. */
 int AdicionarProduto(ListaProdutos *L, int codigo, char *nome,
                      float preco, float tempoComprar, float tempoPagar)
 {
@@ -34,7 +39,7 @@ int AdicionarProduto(ListaProdutos *L, int codigo, char *nome,
     return L->total - 1;
 }
 
-/* Pesquisa por nome em O(1) media via tabela de dispersao. */
+/** @brief Pesquisa por nome em O(1) media via tabela de dispersao. */
 int PesquisarProduto(ListaProdutos *L, char *nome)
 {
     int idx = PesquisarNomeHash(&L->idxNome, nome);
@@ -43,6 +48,7 @@ int PesquisarProduto(ListaProdutos *L, char *nome)
     return idx;
 }
 
+/** @brief Altera o preco de um produto. */
 int EditarProduto(ListaProdutos *L, char *nome, float novoPreco)
 {
     int i = PesquisarProduto(L, nome);
@@ -51,7 +57,11 @@ int EditarProduto(ListaProdutos *L, char *nome, float novoPreco)
     return 1;
 }
 
-/* "Remover" = desativar, para manter o array (e os indices) estaveis. */
+/**
+ * @brief Remove logicamente um produto.
+ *
+ * "Remover" = desactivar, para manter o array (e os indices) estaveis.
+ */
 int RemoverProduto(ListaProdutos *L, char *nome)
 {
     int i = PesquisarProduto(L, nome);
@@ -60,8 +70,11 @@ int RemoverProduto(ListaProdutos *L, char *nome)
     return 1;
 }
 
-/* Mostra o catalogo em paginas de 20 linhas. O utilizador escolhe se quer
-   ver mais (Enter) ou sair (q). */
+/**
+ * @brief Mostra o catalogo em paginas de 20 linhas.
+ *
+ * O utilizador escolhe se quer ver mais (Enter) ou sair (q).
+ */
 void ListarProdutos(ListaProdutos *L)
 {
     int i = 0, naPagina;
@@ -88,7 +101,7 @@ void ListarProdutos(ListaProdutos *L)
     }
 }
 
-/* Devolve o indice de um produto ativo escolhido ao acaso (ou -1). */
+/** @brief Devolve o indice de um produto activo escolhido ao acaso (ou -1). */
 int ProdutoAleatorio(ListaProdutos *L)
 {
     int i, tentativa;
@@ -103,8 +116,12 @@ int ProdutoAleatorio(ListaProdutos *L)
     return -1;
 }
 
-/* Carrega o catalogo do ficheiro. Formato (uma linha por produto, separado
-   por TAB): codigo \t nome \t preco \t tempoComprar \t tempoPagar */
+/**
+ * @brief Carrega o catalogo do ficheiro.
+ *
+ * Formato (uma linha por produto, separado por TAB):
+ *   codigo TAB nome TAB preco TAB tempoComprar TAB tempoPagar
+ */
 int CarregarProdutos(ListaProdutos *L, char *ficheiro)
 {
     FILE *f = fopen(ficheiro, "r");
@@ -123,6 +140,7 @@ int CarregarProdutos(ListaProdutos *L, char *ficheiro)
     return 1;
 }
 
+/** @brief Grava o catalogo (no mesmo formato TSV). */
 int GravarProdutos(ListaProdutos *L, char *ficheiro)
 {
     FILE *f = fopen(ficheiro, "w");
@@ -137,7 +155,7 @@ int GravarProdutos(ListaProdutos *L, char *ficheiro)
     return 1;
 }
 
-/* Submenu de gestao do catalogo de produtos. */
+/** @brief Submenu interactivo de gestao do catalogo de produtos. */
 void MenuProdutos(ListaProdutos *L)
 {
     int op, i;

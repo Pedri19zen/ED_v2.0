@@ -1,15 +1,21 @@
-/* Fila.c - fila de clientes (lista ligada) usada por cada caixa e pela
-   lista de clientes que andam as compras. */
+/**
+ * @file Fila.c
+ * @brief Fila de clientes (lista ligada) usada por cada caixa e pela
+ *        lista global "em compras".
+ */
 
 #include "Fila.h"
 
+/** @brief Inicializa uma fila vazia. */
 void CriarFila(Fila *f) { f->inicio = f->fim = NULL; f->tamanho = 0; }
 
+/** @brief Devolve 1 se a fila estiver vazia. */
 int FilaVazia(Fila *f)  { return f->tamanho == 0; }
 
+/** @brief Devolve o numero de elementos da fila. */
 int TamanhoFila(Fila *f) { return f->tamanho; }
 
-/* Acrescenta um cliente ao fim da fila. */
+/** @brief Acrescenta um cliente ao fim da fila. */
 void EnfileirarCliente(Fila *f, Cliente *c)
 {
     NoFila *novo = (NoFila *) malloc(sizeof(NoFila));
@@ -20,13 +26,13 @@ void EnfileirarCliente(Fila *f, Cliente *c)
     f->tamanho++;
 }
 
-/* Espreita o cliente que esta a frente, sem o retirar. */
+/** @brief Espreita o cliente da frente sem o retirar. */
 Cliente *FrenteFila(Fila *f)
 {
     return (f->inicio != NULL) ? f->inicio->cliente : NULL;
 }
 
-/* Retira e devolve o cliente do inicio da fila. */
+/** @brief Retira e devolve o cliente do inicio da fila. */
 Cliente *DesenfileirarCliente(Fila *f)
 {
     NoFila *no;
@@ -41,8 +47,10 @@ Cliente *DesenfileirarCliente(Fila *f)
     return c;
 }
 
-/* Remove um cliente especifico (usado para mudar de caixa / fechar caixa).
-   Devolve 1 se o encontrou e removeu, 0 caso contrario. */
+/**
+ * @brief Remove um cliente especifico da fila.
+ * @return 1 se encontrou e removeu, 0 caso contrario.
+ */
 int RemoverClienteDaFila(Fila *f, Cliente *c)
 {
     NoFila *atual = f->inicio, *anterior = NULL;
@@ -61,7 +69,7 @@ int RemoverClienteDaFila(Fila *f, Cliente *c)
     return 0;
 }
 
-/* Liberta todos os nos da fila (mas nao os clientes). */
+/** @brief Liberta todos os nos da fila (mas nao os clientes). */
 void DestruirFila(Fila *f)
 {
     NoFila *atual = f->inicio, *seguinte;

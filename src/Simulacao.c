@@ -1,6 +1,10 @@
-/* Simulacao.c - motor da simulacao (passos, picos, e gestao automatica
-   das caixas). As acoes invocadas pelo utilizador estao em Acoes.c e os
-   relatorios em Relatorios.c. */
+/**
+ * @file Simulacao.c
+ * @brief Motor da simulacao (passos, picos e gestao automatica das caixas).
+ *
+ * As acoes invocadas pelo utilizador estao em Acoes.c e os relatorios em
+ * Relatorios.c.
+ */
 
 #include <string.h>
 #include "Supermercado.h"
@@ -8,14 +12,14 @@
 /* ---- limites internos do simulador ----
    (os parametros configuraveis estao em Configuracao.txt; ver Supermercado.h) */
 #define ENTRADAS_POR_TICK_MAX  4       /* tentativas de entrada por tick */
-#define MAX_CARRINHO           5       /* artigos maximos de quem entra ao acaso */
+#define MAX_CARRINHO           30      /* artigos maximos de quem entra ao acaso */
 #define MAX_ITERACOES_SIM      100000  /* trava de seguranca em CorrerAteEsvaziar */
 
 /* =====================================================================
    Primitivas partilhadas (declaradas em Supermercado.h)
    ===================================================================== */
 
-/* Conta os clientes que estao dentro da loja (a comprar ou em fila). */
+/** @brief Conta os clientes activos que estao dentro da loja. */
 int ContarDentroLoja(Supermercado *S)
 {
     int i, n = 0;
@@ -24,7 +28,7 @@ int ContarDentroLoja(Supermercado *S)
     return n;
 }
 
-/* Conta as caixas que estao abertas. */
+/** @brief Conta as caixas com ativa=true. */
 int ContarCaixasAbertas(Supermercado *S)
 {
     Caixa *vec[MAX_CAIXAS];
@@ -34,8 +38,11 @@ int ContarCaixasAbertas(Supermercado *S)
     return abertas;
 }
 
-/* Escolhe a caixa aberta (e que nao esteja a fechar) com a fila mais curta.
-   'excluir' permite ignorar uma caixa (ex.: a que esta a ser fechada). */
+/**
+ * @brief Escolhe a caixa aberta (e nao 'a fechar') com a fila mais curta.
+ * @param excluir Caixa a ignorar (ex.: a que esta a fechar) ou NULL.
+ * @return Caixa ou NULL se nenhuma estiver disponivel.
+ */
 Caixa *EscolherMelhorCaixa(Supermercado *S, Caixa *excluir)
 {
     Caixa *vec[MAX_CAIXAS], *melhor = NULL;
@@ -48,14 +55,14 @@ Caixa *EscolherMelhorCaixa(Supermercado *S, Caixa *excluir)
     return melhor;
 }
 
-/* True se a hora atual estiver dentro do horario de funcionamento. */
+/** @brief true se a hora actual estiver em [HORA_ABERTURA, HORA_FECHO[. */
 bool LojaAberta(Supermercado *S)
 {
     int hora = (GetTempo(S->relogio) / 3600) % 24;
     return hora >= S->HORA_ABERTURA && hora < S->HORA_FECHO;
 }
 
-/* A simulacao "termina" quando nao ha ninguem dentro da loja. */
+/** @brief A simulacao "termina" quando nao ha ninguem dentro da loja. */
 int SimulacaoTerminada(Supermercado *S)
 {
     return ContarDentroLoja(S) == 0;
@@ -65,7 +72,7 @@ int SimulacaoTerminada(Supermercado *S)
    Helpers internos
    ===================================================================== */
 
-/* Soma o numero de clientes em espera em todas as caixas. */
+/** @brief Soma o numero de clientes em espera em todas as caixas. */
 static int ContarClientesEmFilas(Supermercado *S)
 {
     Caixa *vec[MAX_CAIXAS];
@@ -75,7 +82,7 @@ static int ContarClientesEmFilas(Supermercado *S)
     return total;
 }
 
-/* Escolhe, ao acaso, um cliente registado que esteja fora da loja. */
+/** @brief Escolhe ao acaso um cliente registado que esteja fora da loja. */
 static Cliente *EscolherClienteParaEntrar(Supermercado *S)
 {
     int total = S->clientes.total, inicio, i;
@@ -88,8 +95,11 @@ static Cliente *EscolherClienteParaEntrar(Supermercado *S)
     return NULL;
 }
 
-/* Acrescenta uma linha "    Nome [ X produtos ]\n" ao buffer de entradas
-   desde a ultima atualizacao. Se faltar espaco, marca com "    ...\n" e para. */
+/**
+ * @brief Acrescenta uma linha "Nome [ X produtos ]" ao buffer de entradas.
+ *
+ * Se faltar espaco no buffer, marca com "..." e ignora os restantes.
+ */
 static void AcrescentarEntrada(Supermercado *S, Cliente *c)
 {
     char linha[128];
@@ -109,8 +119,12 @@ static void AcrescentarEntrada(Supermercado *S, Cliente *c)
    Passos da simulacao
    ===================================================================== */
 
-/* Passo "entrada": pode entrar mais do que um cliente por passo (durante o
-   horario de funcionamento) para manter a loja com movimento. */
+/**
+ * @brief Passo "entrada" - tenta admitir ate ENTRADAS_POR_TICK_MAX clientes.
+ *
+ * So aceita entradas dentro do horario e enquanto S->aceitarEntradas
+ * for true. Para a loja em capacidade maxima ou sem clientes disponiveis.
+ */
 static void EntradaCliente(Supermercado *S)
 {
     int tentativa;
@@ -139,8 +153,12 @@ static void EntradaCliente(Supermercado *S)
     }
 }
 
-/* Passo "compras -> caixa": cada cliente avanca o seu tempo de compras; quando
-   chega a zero, vai para a fila da melhor caixa. */
+/**
+ * @brief Passo "compras -> caixa".
+ *
+ * Cada cliente avanca o seu tempoComprasRestante; quando chega a zero,
+ * vai para a fila da melhor caixa (a com a fila mais curta).
+ */
 static void AvancarCompras(Supermercado *S)
 {
     Cliente *prontos[CAPACIDADE_LOJA];
@@ -163,8 +181,12 @@ static void AvancarCompras(Supermercado *S)
     }
 }
 
-/* Finaliza o atendimento do cliente que estava a ser atendido na caixa cx
-   (atualiza estatisticas e poe o cliente a sair da loja). */
+/**
+ * @brief Finaliza o atendimento do cliente em curso na caixa cx.
+ *
+ * Actualiza estatisticas (caixa, operador, globais), regista o cliente
+ * como atendido e poe-no a sair da loja.
+ */
 static void TerminarAtendimento(Supermercado *S, Caixa *cx)
 {
     Cliente *c = cx->aAtender;
@@ -197,7 +219,7 @@ static void TerminarAtendimento(Supermercado *S, Caixa *cx)
     }
 }
 
-/* Fecha uma caixa que estava marcada para fechar e ja esvaziou. */
+/** @brief Fecha definitivamente uma caixa marcada com aFechar quando esvazia. */
 static void FecharCaixaSeVazia(Caixa *cx, int verboso)
 {
     if (cx->aFechar && cx->aAtender == NULL && FilaVazia(&cx->fila)) {
@@ -208,7 +230,7 @@ static void FecharCaixaSeVazia(Caixa *cx, int verboso)
     }
 }
 
-/* Passo "atendimento": cada caixa aberta atende um pouco o cliente da frente. */
+/** @brief Passo "atendimento": cada caixa aberta atende um pouco o cliente da frente. */
 static void AtenderCaixas(Supermercado *S)
 {
     Caixa *vec[MAX_CAIXAS];
@@ -234,8 +256,12 @@ static void AtenderCaixas(Supermercado *S)
     }
 }
 
-/* Passo "garantia de qualidade": oferece um produto a quem ja esperou mais
-   do que MAX_ESPERA (apenas uma vez por cliente). */
+/**
+ * @brief Passo "garantia de qualidade".
+ *
+ * Oferece um produto (o mais barato do carrinho) a quem ja esperou mais
+ * do que MAX_ESPERA. Cada cliente so e' "agraciado" uma vez.
+ */
 static void VerificarTemposEspera(Supermercado *S)
 {
     Caixa *vec[MAX_CAIXAS];
@@ -245,9 +271,22 @@ static void VerificarTemposEspera(Supermercado *S)
         for (p = vec[i]->fila.inicio; p != NULL; p = p->prox) {
             Cliente *c = p->cliente;
             if (!c->foiOferecido && c->tempoEspera > S->MAX_ESPERA && c->numProdutos > 0) {
+                char linha[128];
+                int usado, restante;
                 c->foiOferecido = true;
                 S->produtosOferecidos++;
                 S->custoOferecido += c->precoMenorProduto;
+                S->ofertasDesdeUpdate++;
+                /* acrescenta "    Nome [ esperou Ns, ofertado X.XX EUR ]" ao buffer */
+                snprintf(linha, sizeof(linha),
+                         "    %s [ esperou %ds, ofertado %.2f EUR ]\n",
+                         c->nome, c->tempoEspera, c->precoMenorProduto);
+                usado = (int) strlen(S->nomesOfertas);
+                restante = (int) sizeof(S->nomesOfertas) - usado;
+                if ((int) strlen(linha) + 1 < restante)
+                    strcat(S->nomesOfertas, linha);
+                else if (restante > 9)
+                    strcat(S->nomesOfertas, "    ...\n");
                 if (S->verboso)
                     printf("  [Oferta] %s esperou demais; oferta de 1 produto (%.2f EUR).\n",
                            c->nome, c->precoMenorProduto);
@@ -256,8 +295,13 @@ static void VerificarTemposEspera(Supermercado *S)
     }
 }
 
-/* Passo "gerir caixas": abre ou fecha caixas conforme a media de clientes
-   por fila (requisitos 5 e 6). */
+/**
+ * @brief Passo "gerir caixas".
+ *
+ * Abre uma caixa se a media de clientes por fila ultrapassar MAX_FILA
+ * (requisito 5) ou marca para fechar a caixa com menos pessoas se a
+ * media for inferior a MIN_FILA (requisito 6).
+ */
 static void GerirCaixas(Supermercado *S)
 {
     int abertas = ContarCaixasAbertas(S);
@@ -285,7 +329,7 @@ static void GerirCaixas(Supermercado *S)
     if (abertas > S->caixasAbertasMax) S->caixasAbertasMax = abertas;
 }
 
-/* Atualiza o pico de clientes dentro da loja e a maior fila observada. */
+/** @brief Actualiza o pico de clientes dentro da loja e a maior fila observada. */
 static void AtualizarPicos(Supermercado *S)
 {
     Caixa *vec[MAX_CAIXAS];
@@ -305,6 +349,12 @@ static void AtualizarPicos(Supermercado *S)
    API publica
    ===================================================================== */
 
+/**
+ * @brief Executa um tick completo da simulacao.
+ *
+ * Avanca o relogio, processa entradas, faz as compras, atende as caixas,
+ * verifica esperas, gere o numero de caixas e actualiza os picos.
+ */
 void ExecutarPasso(Supermercado *S)
 {
     AvancarRelogio(S->relogio);
@@ -316,7 +366,11 @@ void ExecutarPasso(Supermercado *S)
     AtualizarPicos(S);
 }
 
-/* Corre 'nPassos' passos. Se comPausa != 0, espera 1 segundo entre passos. */
+/**
+ * @brief Corre 'nPassos' passos consecutivos da simulacao.
+ * @param nPassos Numero de passos a executar.
+ * @param comPausa Se != 0, espera 1 segundo entre passos (para observacao).
+ */
 void ExecutarSimulacao(Supermercado *S, int nPassos, int comPausa)
 {
     int i;
@@ -327,7 +381,12 @@ void ExecutarSimulacao(Supermercado *S, int nPassos, int comPausa)
     }
 }
 
-/* Fecha a "porta" (deixa de aceitar entradas) e atende ate a loja ficar vazia. */
+/**
+ * @brief Fecha a "porta" (deixa de aceitar entradas) e atende ate esvaziar.
+ *
+ * Garante que ha pelo menos uma caixa aberta. Tem uma trava de seguranca
+ * de MAX_ITERACOES_SIM passos.
+ */
 void CorrerAteEsvaziar(Supermercado *S, int comPausa)
 {
     int it = 0;
@@ -342,10 +401,12 @@ void CorrerAteEsvaziar(Supermercado *S, int comPausa)
     printf("Simulacao terminada (loja vazia) ao fim de t = %d s.\n", GetTempo(S->relogio));
 }
 
-/* Reinicia um "novo dia": evacua todos os clientes, esvazia as filas,
-   limpa os contadores e poe o relogio na hora de abertura. As caixas
-   mantem-se com o estado actual (abertas/fechadas) e os funcionarios
-   continuam ao servico. */
+/**
+ * @brief Reinicia o "dia": evacua clientes, esvazia filas, zera contadores.
+ *
+ * As caixas mantem-se com o estado actual (abertas/fechadas) e os
+ * funcionarios continuam ao servico. O relogio volta a HORA_ABERTURA.
+ */
 void IniciarNovoDia(Supermercado *S)
 {
     Caixa *vec[MAX_CAIXAS];
@@ -395,6 +456,8 @@ void IniciarNovoDia(Supermercado *S)
     S->entradasDesdeUpdate = 0;
     S->saidasDesdeUpdate = 0;
     S->nomesEntradas[0] = '\0';
+    S->ofertasDesdeUpdate = 0;
+    S->nomesOfertas[0] = '\0';
     for (i = 0; i < 24; i++) {
         S->entradasPorHora[i] = 0;
         S->saidasPorHora[i] = 0;

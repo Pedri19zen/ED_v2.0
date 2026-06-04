@@ -1,9 +1,12 @@
-/* HashingNomes.c - tabela de dispersao nome -> indice (ver HashingNomes.h) */
+/**
+ * @file HashingNomes.c
+ * @brief Tabela de dispersao nome -> indice (ver HashingNomes.h).
+ */
 
 #include <string.h>
 #include "HashingNomes.h"
 
-/* Inicializa a tabela: todos os buckets vazios. */
+/** @brief Inicializa a tabela: todos os buckets vazios. */
 void CriarHashingNomes(HashingNomes *h)
 {
     int i;
@@ -11,7 +14,11 @@ void CriarHashingNomes(HashingNomes *h)
     h->totalEntradas = 0;
 }
 
-/* Funcao de dispersao "djb2"-like: simples e com boa distribuicao. */
+/**
+ * @brief Funcao de dispersao "djb2"-like (multiplicador 31).
+ * @param nome Cadeia a hashear.
+ * @return Indice no array de buckets.
+ */
 static int FuncaoHashNome(char *nome)
 {
     unsigned int s = 0;
@@ -21,7 +28,7 @@ static int FuncaoHashNome(char *nome)
     return (int) (s % TAMANHO_HASH_NOMES);
 }
 
-/* Insere o par (nome, indice) na cabeca do bucket correspondente. */
+/** @brief Insere o par (nome, indice) na cabeca do bucket correspondente. */
 void InserirNomeHash(HashingNomes *h, char *nome, int indice)
 {
     int pos = FuncaoHashNome(nome);
@@ -33,7 +40,7 @@ void InserirNomeHash(HashingNomes *h, char *nome, int indice)
     h->totalEntradas++;
 }
 
-/* Devolve o indice associado ao nome, ou -1 se nao existir. */
+/** @brief Devolve o indice associado ao nome, ou -1 se nao existir. */
 int PesquisarNomeHash(HashingNomes *h, char *nome)
 {
     int pos = FuncaoHashNome(nome);
@@ -45,7 +52,7 @@ int PesquisarNomeHash(HashingNomes *h, char *nome)
     return -1;
 }
 
-/* Liberta todos os nos da tabela (os nomes em si vivem no array-mestre). */
+/** @brief Liberta todos os nos da tabela (os nomes vivem no array-mestre). */
 void DestruirHashingNomes(HashingNomes *h)
 {
     int i;

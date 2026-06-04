@@ -1,6 +1,10 @@
-/* main.c - ponto de entrada do programa.
-   Carrega os dados, mostra os menus e, no fim, grava e liberta tudo.
-   A simulacao SO arranca quando o utilizador escolhe "Iniciar simulacao". */
+/**
+ * @file main.c
+ * @brief Ponto de entrada do programa.
+ *
+ * Carrega os dados, mostra os menus e, no fim, grava e liberta tudo. A
+ * simulacao so arranca quando o utilizador escolhe "Iniciar simulacao".
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,8 +16,12 @@
    TICKS_POR_FRAME) sao lidos de Configuracao.txt para campos do
    Supermercado e usados via S->INTERVALO_AUTO_MS / S->TICKS_POR_FRAME. */
 
-/* Avanca a simulacao 'segundos' segundos de uma so vez (sem imprimir os
-   eventos, so o estado final). Usado pela opcao "saltar X segundos". */
+/**
+ * @brief Avanca 'segundos' segundos de uma so vez, em silencio.
+ *
+ * So o estado final e' impresso (atraves de VerEstadoAtual). Usado
+ * pela opcao "saltar X segundos" do menu de pausa.
+ */
 static void SaltarSegundos(Supermercado *S, int segundos)
 {
     int alvo = GetTempo(S->relogio) + segundos;
@@ -25,9 +33,13 @@ static void SaltarSegundos(Supermercado *S, int segundos)
     VerEstadoAtual(S);
 }
 
-/* Menu mostrado quando o utilizador interrompe a simulacao com uma tecla.
-   Enquanto este menu estiver aberto a simulacao fica PARADA (o tempo nao
-   avanca). Devolve 1 se a simulacao deve terminar, 0 se deve retomar. */
+/**
+ * @brief Menu mostrado quando o utilizador interrompe a simulacao.
+ *
+ * Enquanto este menu estiver aberto a simulacao fica parada (o tempo
+ * nao avanca).
+ * @return 1 se a simulacao deve terminar, 0 se deve retomar.
+ */
 static int MenuPausaSimulacao(Supermercado *S)
 {
     int op, x;
@@ -53,8 +65,12 @@ static int MenuPausaSimulacao(Supermercado *S)
     } while (1);
 }
 
-/* "Iniciar simulacao": corre sozinha, mostrando o estado a cada
-   S->INTERVALO_AUTO_MS, ate o utilizador premir uma tecla (abre menu de pausa). */
+/**
+ * @brief Modo "Iniciar simulacao": corre sozinha em loop.
+ *
+ * Imprime o estado a cada S->INTERVALO_AUTO_MS, ate o utilizador premir
+ * uma tecla (que abre o menu de pausa).
+ */
 static void MenuSimulacao(Supermercado *S)
 {
     int terminar = 0, k;
@@ -80,7 +96,7 @@ static void MenuSimulacao(Supermercado *S)
     RegistarHistorico("Usou a simulacao", NULL);
 }
 
-/* Submenu com as acoes do gerente sobre caixas e clientes. */
+/** @brief Submenu com as acoes do gerente sobre caixas e clientes. */
 static void MenuGerente(Supermercado *S)
 {
     int op;
@@ -123,7 +139,7 @@ static void MenuGerente(Supermercado *S)
     } while (op != 0);
 }
 
-/* Submenu: arrancar a simulacao, fazer acoes do gerente ou iniciar um dia. */
+/** @brief Submenu: arrancar simulacao, acoes do gerente ou novo dia. */
 static void MenuSimulacaoTopo(Supermercado *S)
 {
     int op;
@@ -148,7 +164,7 @@ static void MenuSimulacaoTopo(Supermercado *S)
     } while (op != 0);
 }
 
-/* Submenu: gestao dos dados-mestre (produtos, clientes, funcionarios). */
+/** @brief Submenu: gestao dos dados-mestre (produtos, clientes, funcionarios). */
 static void MenuGestao(Supermercado *S)
 {
     int op;
@@ -170,7 +186,7 @@ static void MenuGestao(Supermercado *S)
     } while (op != 0);
 }
 
-/* Submenu: consultas e relatorios. */
+/** @brief Submenu: consultas, relatorios e contabilidade da memoria. */
 static void MenuConsultas(Supermercado *S)
 {
     int op;
@@ -207,7 +223,7 @@ static void MenuConsultas(Supermercado *S)
     } while (op != 0);
 }
 
-/* Menu principal do programa (5 entradas). */
+/** @brief Menu principal do programa (5 entradas). */
 static void MenuPrincipal(Supermercado *S)
 {
     int op;
@@ -233,6 +249,10 @@ static void MenuPrincipal(Supermercado *S)
     } while (op != 0);
 }
 
+/**
+ * @brief Ponto de entrada. Inicializa, corre o menu e liberta recursos.
+ * @return 0 em sucesso.
+ */
 int main(void)
 {
     Supermercado *S;

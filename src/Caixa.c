@@ -1,11 +1,15 @@
-/* Caixa.c - estrutura de uma caixa de atendimento.
-   A logica de abrir/fechar/atender (que precisa do contexto do supermercado)
-   esta em Supermercado.c; aqui ficam apenas as operacoes proprias da caixa. */
+/**
+ * @file Caixa.c
+ * @brief Operacoes proprias da caixa (criacao, lista de atendidos, destruicao).
+ *
+ * A logica de abrir/fechar/atender (que depende do contexto do
+ * Supermercado) esta em Simulacao.c e Acoes.c.
+ */
 
 #include <string.h>
 #include "Caixa.h"
 
-/* Cria uma caixa nova, sem operador e com a fila vazia. */
+/** @brief Cria uma caixa nova, sem operador e com a fila vazia. */
 Caixa *CriarCaixa(char *nome, bool ativa)
 {
     Caixa *c = (Caixa *) malloc(sizeof(Caixa));
@@ -22,7 +26,7 @@ Caixa *CriarCaixa(char *nome, bool ativa)
     return c;
 }
 
-/* Acrescenta o nome de um cliente a lista de atendidos da caixa. */
+/** @brief Acrescenta um nome a cabeca da lista de atendidos. */
 void RegistarAtendido(Caixa *c, char *nomeCliente)
 {
     NoNome *novo = (NoNome *) malloc(sizeof(NoNome));
@@ -31,9 +35,10 @@ void RegistarAtendido(Caixa *c, char *nomeCliente)
     c->atendidos = novo;
 }
 
+/** @brief Imprime "Caixa -- N cliente(s) atendido(s):" + um nome por linha. */
 void ListarAtendidosCaixa(Caixa *c)
 {
-    NoNome *p = c->atendidos;
+    NoNome *p;
     int total = 0;
     for (p = c->atendidos; p != NULL; p = p->prox) total++;
     printf("  %s -- %d cliente(s) atendido(s):\n", c->nome, total);
@@ -42,7 +47,7 @@ void ListarAtendidosCaixa(Caixa *c)
         printf("    - %s\n", p->nome);
 }
 
-/* Liberta a fila, a lista de atendidos e a propria caixa. */
+/** @brief Liberta a fila, a lista de atendidos e a propria caixa. */
 void DestruirCaixa(Caixa *c)
 {
     NoNome *p = c->atendidos, *seguinte;

@@ -1,9 +1,12 @@
-/* Hashing.c - tabela de dispersao que guarda as caixas (chave = nome). */
+/**
+ * @file Hashing.c
+ * @brief Tabela de dispersao das caixas (chave = nome).
+ */
 
 #include <string.h>
 #include "Hashing.h"
 
-/* Inicializa a tabela: todas as posicoes vazias. */
+/** @brief Inicializa a tabela: todas as posicoes vazias. */
 void CriarHashing(Hashing *h)
 {
     int i;
@@ -11,7 +14,7 @@ void CriarHashing(Hashing *h)
     h->totalCaixas = 0;
 }
 
-/* Funcao de dispersao simples: soma dos codigos das letras, modulo o tamanho. */
+/** @brief Soma dos codigos das letras modulo TAMANHO_HASH. */
 int FuncaoHash(char *nome)
 {
     int soma = 0, i;
@@ -20,7 +23,7 @@ int FuncaoHash(char *nome)
     return soma % TAMANHO_HASH;
 }
 
-/* Insere uma caixa na tabela (a cabeca da lista da sua posicao). */
+/** @brief Insere uma caixa na cabeca do bucket correspondente. */
 void InserirCaixa(Hashing *h, Caixa *c)
 {
     int pos = FuncaoHash(c->nome);
@@ -31,7 +34,7 @@ void InserirCaixa(Hashing *h, Caixa *c)
     h->totalCaixas++;
 }
 
-/* Procura uma caixa pelo nome. Devolve a caixa ou NULL. */
+/** @brief Procura uma caixa pelo nome. */
 Caixa *PesquisarCaixa(Hashing *h, char *nome)
 {
     int pos = FuncaoHash(nome);
@@ -43,8 +46,7 @@ Caixa *PesquisarCaixa(Hashing *h, char *nome)
     return NULL;
 }
 
-/* Copia para 'vetor' os ponteiros de todas as caixas (ate maxCaixas).
-   Devolve quantas caixas foram colocadas. Util para percorrer todas. */
+/** @brief Copia para 'vetor' os apontadores de todas as caixas. */
 int ObterTodasCaixas(Hashing *h, Caixa *vetor[], int maxCaixas)
 {
     int i, n = 0;
@@ -59,7 +61,7 @@ int ObterTodasCaixas(Hashing *h, Caixa *vetor[], int maxCaixas)
     return n;
 }
 
-/* Liberta todos os nos da tabela e tambem as caixas que eles guardam. */
+/** @brief Liberta todos os nos da tabela e as caixas que eles guardam. */
 void DestruirHashing(Hashing *h)
 {
     int i;

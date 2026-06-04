@@ -1,11 +1,15 @@
-/* Funcionario.c - operadores de caixa (array) e respetivo menu de gestao */
+/**
+ * @file Funcionario.c
+ * @brief Operadores de caixa (array) e respectivo menu de gestao.
+ */
 
 #include <string.h>
 #include "Funcionario.h"
 
+/** @brief Inicializa a lista vazia. */
 void CriarListaFuncionarios(ListaFuncionarios *L) { L->total = 0; }
 
-/* Adiciona um funcionario. Por omissao fica ao servico e livre. */
+/** @brief Adiciona um funcionario (por omissao ao servico e livre). */
 int AdicionarFuncionario(ListaFuncionarios *L, char *nome)
 {
     Funcionario *f;
@@ -23,6 +27,7 @@ int AdicionarFuncionario(ListaFuncionarios *L, char *nome)
     return L->total - 1;
 }
 
+/** @brief Pesquisa linear por nome. @return Indice ou -1. */
 int PesquisarFuncionario(ListaFuncionarios *L, char *nome)
 {
     int i;
@@ -32,6 +37,7 @@ int PesquisarFuncionario(ListaFuncionarios *L, char *nome)
     return -1;
 }
 
+/** @brief Renomeia um funcionario existente. @return 1/0. */
 int EditarFuncionario(ListaFuncionarios *L, char *nomeAntigo, char *nomeNovo)
 {
     int i = PesquisarFuncionario(L, nomeAntigo);
@@ -40,7 +46,10 @@ int EditarFuncionario(ListaFuncionarios *L, char *nomeAntigo, char *nomeNovo)
     return 1;
 }
 
-/* Desativa um funcionario. Devolve -1 se estiver a operar uma caixa. */
+/**
+ * @brief Desactiva um funcionario.
+ * @return 1 ok, -1 se a operar uma caixa, 0 nao encontrado.
+ */
 int RemoverFuncionario(ListaFuncionarios *L, char *nome)
 {
     int i = PesquisarFuncionario(L, nome);
@@ -50,6 +59,7 @@ int RemoverFuncionario(ListaFuncionarios *L, char *nome)
     return 1;
 }
 
+/** @brief Lista os funcionarios activos com indicacao do estado. */
 void ListarFuncionarios(ListaFuncionarios *L)
 {
     int i;
@@ -61,9 +71,13 @@ void ListarFuncionarios(ListaFuncionarios *L)
                    L->v[i].pessoasAtendidas, L->v[i].produtosVendidos);
 }
 
-/* Carrega os funcionarios do ficheiro. Aceita dois formatos por linha:
-   - "codigo \t nome"      (TSV, formato novo)
-   - "nome"                 (linha simples, formato antigo) */
+/**
+ * @brief Carrega os funcionarios do ficheiro.
+ *
+ * Aceita dois formatos por linha:
+ *  - "codigo TAB nome"  (TSV, formato novo)
+ *  - "nome"             (linha simples, formato antigo)
+ */
 int CarregarFuncionarios(ListaFuncionarios *L, char *ficheiro)
 {
     FILE *f = fopen(ficheiro, "r");
@@ -84,6 +98,7 @@ int CarregarFuncionarios(ListaFuncionarios *L, char *ficheiro)
     return 1;
 }
 
+/** @brief Grava os funcionarios em ficheiro (um nome por linha). */
 int GravarFuncionarios(ListaFuncionarios *L, char *ficheiro)
 {
     FILE *f = fopen(ficheiro, "w");
@@ -96,7 +111,7 @@ int GravarFuncionarios(ListaFuncionarios *L, char *ficheiro)
     return 1;
 }
 
-/* Devolve um funcionario disponivel para abrir uma caixa, ou NULL. */
+/** @brief Devolve um funcionario disponivel para abrir uma caixa, ou NULL. */
 Funcionario *ObterFuncionarioLivre(ListaFuncionarios *L)
 {
     int i;
@@ -106,7 +121,7 @@ Funcionario *ObterFuncionarioLivre(ListaFuncionarios *L)
     return NULL;
 }
 
-/* Submenu de gestao de funcionarios. */
+/** @brief Submenu interactivo de gestao de funcionarios. */
 void MenuFuncionarios(ListaFuncionarios *L)
 {
     int op, r;

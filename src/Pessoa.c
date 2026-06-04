@@ -1,21 +1,29 @@
-/* Pessoa.c - clientes do supermercado (array) e respetivo menu de gestao */
+/**
+ * @file Pessoa.c
+ * @brief Clientes do supermercado (array) com pesquisa O(1) por nome.
+ */
 
 #include <string.h>
 #include "Pessoa.h"
 
+/** @brief Inicializa a lista vazia e o indice de nomes. */
 void CriarListaClientes(ListaClientes *L)
 {
     L->total = 0;
     CriarHashingNomes(&L->idxNome);
 }
 
+/** @brief Liberta o indice de nomes (o array v[] vive na struct mae). */
 void DestruirListaClientes(ListaClientes *L)
 {
     DestruirHashingNomes(&L->idxNome);
     L->total = 0;
 }
 
-/* Adiciona um cliente registado (ainda fora da loja). Devolve indice ou -1. */
+/**
+ * @brief Adiciona um cliente registado (ainda fora da loja).
+ * @return Indice no array ou -1 se cheio.
+ */
 int AdicionarCliente(ListaClientes *L, char *nome, int numProdutos)
 {
     Cliente *c;
@@ -41,8 +49,11 @@ int AdicionarCliente(ListaClientes *L, char *nome, int numProdutos)
     return L->total - 1;
 }
 
-/* Pesquisa por nome em O(1) media usando a tabela de dispersao.
-   So devolve indice se o cliente ainda estiver "ativo". */
+/**
+ * @brief Pesquisa por nome em O(1) media usando a tabela de dispersao.
+ *
+ * So devolve indice se o cliente ainda estiver "activo".
+ */
 int PesquisarCliente(ListaClientes *L, char *nome)
 {
     int idx = PesquisarNomeHash(&L->idxNome, nome);
@@ -51,7 +62,7 @@ int PesquisarCliente(ListaClientes *L, char *nome)
     return idx;
 }
 
-/* Verifica se 'prefixo' e' prefixo de 'str' ignorando maiusculas/minusculas. */
+/** @brief Verifica se 'prefixo' e' prefixo de 'str' ignorando maiusculas. */
 static int PrefixoIgualSemCaso(char *str, char *prefixo)
 {
     int i;
@@ -62,9 +73,13 @@ static int PrefixoIgualSemCaso(char *str, char *prefixo)
     return 1;
 }
 
-/* Pesquisa tolerante: primeiro tenta match exato (rapido, via hash); se nao
-   encontrar, faz varrimento linear case-insensitive + prefixo. Devolve o
-   primeiro cliente ativo que comece pelas mesmas letras (qualquer caixa). */
+/**
+ * @brief Pesquisa tolerante: match exacto via hash, ou prefixo sem caso.
+ *
+ * Primeiro tenta match exacto (rapido, via hash); se nao encontrar, faz
+ * um varrimento linear case-insensitive com prefixo. Devolve o primeiro
+ * cliente activo que comece pelas mesmas letras (qualquer caixa).
+ */
 int PesquisarClienteTolerante(ListaClientes *L, char *texto)
 {
     int idx = PesquisarCliente(L, texto);
@@ -79,6 +94,7 @@ int PesquisarClienteTolerante(ListaClientes *L, char *texto)
     return -1;
 }
 
+/** @brief Edita o numero de produtos do carrinho de um cliente. */
 int EditarCliente(ListaClientes *L, char *nome, int numProdutos)
 {
     int i = PesquisarCliente(L, nome);
@@ -87,7 +103,10 @@ int EditarCliente(ListaClientes *L, char *nome, int numProdutos)
     return 1;
 }
 
-/* Desativa um cliente. Devolve -1 se ele ainda estiver dentro da loja. */
+/**
+ * @brief Desactiva um cliente.
+ * @return 1 ok, -1 se ainda estiver dentro da loja, 0 nao encontrado.
+ */
 int RemoverCliente(ListaClientes *L, char *nome)
 {
     int i = PesquisarCliente(L, nome);
@@ -97,8 +116,11 @@ int RemoverCliente(ListaClientes *L, char *nome)
     return 1;
 }
 
-/* Lista os clientes registados em paginas de 20. O utilizador pode pedir
-   a pagina seguinte (Enter) ou sair (q). */
+/**
+ * @brief Lista os clientes registados em paginas de 20.
+ *
+ * O utilizador pode pedir a pagina seguinte (Enter) ou sair (q).
+ */
 void ListarClientes(ListaClientes *L)
 {
     int i = 0, naPagina;
@@ -124,9 +146,13 @@ void ListarClientes(ListaClientes *L)
     }
 }
 
-/* Carrega a "pool" de clientes do ficheiro. Formato (TAB-separado):
-   codigo \t nome
-   As terminacoes \r\n (Windows) sao tratadas. Devolve 1 se conseguiu abrir. */
+/**
+ * @brief Carrega a "pool" de clientes do ficheiro.
+ *
+ * Formato (TAB-separado): "codigo TAB nome". As terminacoes \\r\\n
+ * (Windows) sao tratadas.
+ * @return 1 se conseguiu abrir, 0 caso contrario.
+ */
 int CarregarClientes(ListaClientes *L, char *ficheiro)
 {
     FILE *f = fopen(ficheiro, "r");
@@ -144,7 +170,7 @@ int CarregarClientes(ListaClientes *L, char *ficheiro)
     return 1;
 }
 
-/* Cria clientes ficticios, util para testar com muitos dados. */
+/** @brief Cria clientes ficticios "Cli#", util para testar com muitos dados. */
 void GerarClientesAleatorios(ListaClientes *L, int quantos, int maxProdutos)
 {
     char nome[MAX_NOME];
@@ -155,9 +181,14 @@ void GerarClientesAleatorios(ListaClientes *L, int quantos, int maxProdutos)
     }
 }
 
-/* Prepara o carrinho do cliente: para cada artigo (numProdutos) escolhe um
-   produto do catalogo e soma o preco; o tempo de passagem de cada produto e
-   um valor em [2, TEMPO_ATENDIMENTO_PRODUTO]. */
+/**
+ * @brief Prepara o carrinho do cliente.
+ *
+ * Para cada artigo (numProdutos) escolhe um produto do catalogo e soma
+ * o preco; o tempo de passagem de cada produto e' um valor em
+ * [2, TEMPO_ATENDIMENTO_PRODUTO]. Se 'prods' for NULL usa valores
+ * aleatorios como fallback.
+ */
 void PrepararCarrinho(Cliente *c, ListaProdutos *prods, int maxPreco, int tempoAtendProduto)
 {
     int k, idx;
@@ -194,7 +225,7 @@ void PrepararCarrinho(Cliente *c, ListaProdutos *prods, int maxPreco, int tempoA
     c->foiOferecido = false;
 }
 
-/* Submenu de gestao de clientes. */
+/** @brief Submenu interactivo de gestao de clientes. */
 void MenuClientes(ListaClientes *L)
 {
     int op, n, i, r;

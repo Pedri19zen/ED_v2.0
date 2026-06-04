@@ -82,21 +82,37 @@ para muitas caixas.
 
 ```
                          Supermercado  (estrutura central)
-        ┌───────────────┬──────┴───────┬────────────────┐
-   arrays-mestre    emCompras        Hashing          Relogio
-   ┌────┼────┐      (Fila)           (caixas)
-Produto Cliente Funcionario             │
-                                       Caixa ── Fila (espera) ── Cliente*
-                                         │
-                                      Funcionario (operador da caixa)
+        ┌───────────────┬──────┴───────┬─────────────────┐
+   ListaProdutos     ListaClientes  ListaFuncionarios  Relogio
+   Produto[] +       Cliente[] +      Funcionario[]
+   HashingNomes      HashingNomes
+                            │
+                       emCompras (Fila ──> Cliente*)
+                            │
+                       Hashing das caixas ──> Caixa
+                                                │
+                                  Fila (espera) ──> Cliente*
+                                  aAtender ──> Cliente*
+                                  operador ──> Funcionario*
+                                  atendidos: NoNome (lista ligada)
 
-   Uteis  →  usado por todos (constantes globais + funções auxiliares)
+   Uteis  →  usado por todos (constantes, cores ANSI, historico CSV, …)
 ```
 
-- `Supermercado` agrega tudo: os três arrays-mestre, a lista `emCompras`, o `Hashing` das
+> Diagrama completo (com cardinalidades, *ownership* e o fluxograma da simulação)
+> em [`docs/Estrutura.md`](docs/Estrutura.md), em Mermaid.
+
+- `Supermercado` agrega tudo: os três arrays-mestre (cada um com a sua tabela de
+  dispersão para pesquisa O(1) por nome), a lista `emCompras`, o `Hashing` das
   caixas, o `Relogio` e os parâmetros de configuração + estatísticas globais.
 - Uma `Caixa` contém uma `Fila` de `Cliente*` e aponta para o seu `Funcionario` (operador).
-- As filas guardam **ponteiros** para os clientes do array-mestre (sem duplicar dados).
+- As filas e as tabelas de dispersão guardam **ponteiros/índices** para o array-mestre
+  (não duplicam dados — destruir a fila não liberta os clientes).
+- Código dividido em 4 ficheiros para clareza:
+  - `Supermercado.c` — ciclo de vida + I/O de ficheiros.
+  - `Simulacao.c` — `ExecutarPasso` e todos os passos do tick.
+  - `Acoes.c` — acções do gerente (abrir/fechar/mover caixa, pesquisar pessoa).
+  - `Relatorios.c` — `VerEstadoAtual`, `MedidasDesempenho`, `GravarDados`, memória.
 
 ## 5. Funcionalidades implementadas (mapa para o enunciado)
 
@@ -112,7 +128,7 @@ Produto Cliente Funcionario             │
 | 8 | Pesquisar pessoa (em que caixa está) | `PesquisarPessoa` |
 | 9 | Memória utilizada | `CalcularMemoriaUtilizada` |
 | 10 | Memória desperdiçada | `CalcularMemoriaDesperdicada` |
-| 11 | Medidas finais (caixa que atendeu mais pessoas, mais produtos, **mais dinheiro**, operador que atendeu menos, produtos oferecidos e respetivo custo, dinheiro por caixa) | `MedidasDesempenho` |
+| 11 | Medidas finais (caixa que atendeu mais pessoas, mais produtos, **mais dinheiro**; operador que atendeu menos; **operador que fez mais dinheiro**; produtos oferecidos e respectivo custo; dinheiro por caixa; **maior fila observada**; **pico de clientes na loja com hora**; **histograma de entradas/saídas por hora** no relatório) | `MedidasDesempenho` e `GravarDados` |
 
 ## 6. Funcionamento da simulação
 
@@ -135,9 +151,11 @@ Em cada passo (`ExecutarPasso`):
 6. **Gestão de caixas**: abre/fecha caixas conforme a média de clientes por fila.
 
 Ao escolher **Iniciar simulação**, esta corre **automaticamente**, mostrando o estado a cada
-~2 segundos, até o utilizador premir uma tecla. Aí abre-se um menu de pausa que permite
-**continuar**, **saltar X segundos**, **avançar 1 passo**, **ver o estado** ou **terminar**.
-O estado mostra, por caixa, quem está a ser atendido, o tamanho da fila e o **dinheiro feito**.
+`INTERVALO_AUTO_MS` ms, até o utilizador premir uma tecla. Aí abre-se um menu de **pausa**
+que permite **retomar simulação**, **avançar 1 passo**, **saltar X segundos**, **ver o estado**
+ou **parar e voltar ao menu principal** (o estado fica congelado enquanto o menu está aberto).
+Cada *frame* mostra o cabeçalho `[HH:MM:SS]` em ciano, cada caixa com uma **barra colorida** da
+fila (verde ≤3, amarelo ≤6, vermelho >6) e os blocos `Entraram:` e `Ofertas:` da última janela.
 
 ## 7. Gestão de memória
 
@@ -152,7 +170,14 @@ utilizada e a desperdiçada (requisitos 9 e 10).
 include/  -> ficheiros .h            obj/  -> objetos .o   (gerado)
 src/      -> ficheiros .c            bin/  -> executavel   (gerado)
 data/     -> ficheiros de dados .txt
-Makefile  Relatorio.md  Alunos.txt
+docs/     -> Estrutura.md (Mermaid: classes + modulos + fluxo)
+Makefile  Doxyfile  Relatorio.md  Alunos.txt
+```
+
+Para gerar a documentação Doxygen (HTML em `docs/html/index.html`):
+
+```
+doxygen Doxyfile
 ```
 
 A partir da raiz do projeto (Windows com MSYS2 usa `mingw32-make`; em Linux/Mac usa `make`):
@@ -182,4 +207,7 @@ Ou abrir `Projeto_ED_25_26.cbp` no Code::Blocks. Compila sem erros nem avisos (`
   simultâneos.
 - Memória desperdiçada = espaço reservado nos arrays fixos mas não usado + posições vazias da
   tabela de dispersão.
-- O custo de um produto oferecido é estimado como um artigo de valor médio do carrinho.
+- O custo de um produto oferecido é o **preço do artigo mais barato** do carrinho do cliente
+  (calculado em `PrepararCarrinho`, guardado em `Cliente.precoMenorProduto`).
+- `ClamparProdutos` é chamado após `CarregarProdutos` e força os preços para `]0, MAX_PRECO]`
+  e os tempos para `[2, TEMPO_ATENDIMENTO_PRODUTO]`.

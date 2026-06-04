@@ -1,16 +1,23 @@
-/* Supermercado.c - ciclo de vida do Supermercado e leitura dos ficheiros.
-   A simulacao em si esta em Simulacao.c, as acoes do gerente em Acoes.c
-   e os relatorios em Relatorios.c. */
+/**
+ * @file Supermercado.c
+ * @brief Ciclo de vida do Supermercado e leitura dos ficheiros de entrada.
+ *
+ * A simulacao em si esta em Simulacao.c, as acoes do gerente em Acoes.c
+ * e os relatorios em Relatorios.c.
+ */
 
 #include <string.h>
 #include "Supermercado.h"
 
 /* ---- limites internos do carregamento ---- */
 #define POOL_CLIENTES_MIN  40   /* pool minimo se o ficheiro Clientes.txt falhar */
-#define MAX_CARRINHO       5    /* artigos maximos dos clientes gerados ao acaso */
+#define MAX_CARRINHO       30   /* artigos maximos dos clientes gerados ao acaso */
 
-/* Garante que cada produto carregado respeita os limites da configuracao:
-   preco em ]0, MAX_PRECO] e tempos em [2, TEMPO_ATENDIMENTO_PRODUTO]. */
+/**
+ * @brief Garante que cada produto carregado respeita os limites da config.
+ *
+ * Preco em ]0, MAX_PRECO] e tempos em [2, TEMPO_ATENDIMENTO_PRODUTO].
+ */
 static void ClamparProdutos(Supermercado *S)
 {
     int i;
@@ -27,7 +34,7 @@ static void ClamparProdutos(Supermercado *S)
     }
 }
 
-/* Atualiza um parametro de configuracao a partir de um par "CHAVE valor". */
+/** @brief Aplica um par "CHAVE valor" da configuracao na estrutura. */
 static void AplicarConfig(Supermercado *S, char *chave, int valor)
 {
     if      (strcmp(chave, "MAX_ESPERA") == 0)                S->MAX_ESPERA = valor;
@@ -48,6 +55,11 @@ static void AplicarConfig(Supermercado *S, char *chave, int valor)
    API publica - ciclo de vida e I/O
    ===================================================================== */
 
+/**
+ * @brief Aloca e inicializa um Supermercado com valores por omissao.
+ * @param nome Nome do supermercado (copiado para memoria propria).
+ * @return Apontador para a nova instancia.
+ */
 Supermercado *CriarSupermercado(char *nome)
 {
     Supermercado *S = (Supermercado *) malloc(sizeof(Supermercado));
@@ -75,6 +87,8 @@ Supermercado *CriarSupermercado(char *nome)
     S->entradasDesdeUpdate = 0;
     S->saidasDesdeUpdate = 0;
     S->nomesEntradas[0] = '\0';
+    S->ofertasDesdeUpdate = 0;
+    S->nomesOfertas[0] = '\0';
     S->maxFilaObservada = 0;
     S->dentroLojaPico = 0;
     S->horaPico = 0;
@@ -88,8 +102,13 @@ Supermercado *CriarSupermercado(char *nome)
     return S;
 }
 
-/* Le o ficheiro de configuracao (pares "CHAVE valor", um por linha).
-   Linhas comecadas por '#' sao ignoradas (comentarios). */
+/**
+ * @brief Le o ficheiro de configuracao.
+ *
+ * Pares "CHAVE valor", um por linha. Linhas iniciadas por '#' sao
+ * tratadas como comentarios e ignoradas.
+ * @return 1 se conseguiu abrir o ficheiro, 0 caso contrario.
+ */
 int CarregarConfiguracao(Supermercado *S, char *ficheiro)
 {
     FILE *f = fopen(ficheiro, "r");
@@ -105,9 +124,13 @@ int CarregarConfiguracao(Supermercado *S, char *ficheiro)
     return 1;
 }
 
-/* Le o ficheiro de dados: numero de caixas e, para cada uma, se esta ativa,
-   o numero de clientes e cada cliente (com o seu numero de produtos).
-   As caixas vao para o hashing e os clientes para as respetivas filas. */
+/**
+ * @brief Le o ficheiro de dados.
+ *
+ * Formato: numero de caixas e, para cada uma, se esta activa, o numero
+ * de clientes e cada cliente (com o seu numero de produtos). As caixas
+ * vao para o hashing e os clientes para as respectivas filas.
+ */
 int CarregarDados(Supermercado *S, char *ficheiro)
 {
     FILE *f = fopen(ficheiro, "r");
@@ -149,7 +172,7 @@ int CarregarDados(Supermercado *S, char *ficheiro)
     return 1;
 }
 
-/* Carrega tudo dos ficheiros e garante um conjunto minimo de clientes. */
+/** @brief Le todos os ficheiros, prepara o relogio e garante uma pool minima. */
 int InicializarSupermercado(Supermercado *S)
 {
     CarregarConfiguracao(S, FICH_CONFIG);
@@ -167,8 +190,12 @@ int InicializarSupermercado(Supermercado *S)
     return 1;
 }
 
-/* Liberta toda a memoria dinamica. Os arrays-mestre ficam dentro da struct
-   principal, por isso sao libertados com ela. */
+/**
+ * @brief Liberta toda a memoria dinamica.
+ *
+ * Os arrays-mestre ficam dentro da struct principal, por isso sao
+ * libertados com ela.
+ */
 void DestruirSupermercado(Supermercado *S)
 {
     DestruirHashing(&S->caixas);          /* caixas, filas e listas de atendidos */

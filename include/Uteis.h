@@ -1,78 +1,148 @@
+/**
+ * @file Uteis.h
+ * @brief Constantes globais e utilitarios partilhados (aleatorios, leitura
+ *        validada do teclado, historico CSV, cores ANSI e barra de fila).
+ *
+ * Este modulo nao depende de nenhum outro do projecto e e' incluido por
+ * todos os restantes.
+ */
 #ifndef UTEIS_H_INCLUDED
 #define UTEIS_H_INCLUDED
-
-/* =====================================================================
-   Uteis.h - constantes globais do projeto e funcoes auxiliares usadas
-   por (quase) todos os modulos: numeros aleatorios, leitura validada do
-   teclado e registo do historico de acoes do utilizador.
-   ===================================================================== */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
 /* ---- Tamanhos maximos dos arrays-mestre (dados carregados uma vez) ---- */
-#define MAX_NOME           50     /* nome de cliente, caixa ou funcionario */
-#define MAX_NOME_PRODUTO   128    /* nomes de produtos sao mais longos */
-#define MAX_CLIENTES       12000  /* clientes registados (suporta Clientes.txt + Dados.txt) */
-#define MAX_PRODUTOS       10000  /* produtos no catalogo (suporta o ficheiro completo) */
-#define MAX_FUNCIONARIOS   200    /* operadores de caixa (suporta Funcionarios.txt) */
-#define MAX_CAIXAS         100    /* limite ao percorrer o hashing das caixas */
-#define CAPACIDADE_LOJA    100    /* clientes dentro da loja em simultaneo */
-#define TAMANHO_HASH       13     /* tamanho (primo) da tabela das caixas */
+#define MAX_NOME           50     /**< Tamanho de nome de cliente/caixa/funcionario. */
+#define MAX_NOME_PRODUTO   128    /**< Nomes de produtos sao mais longos. */
+#define MAX_CLIENTES       12000  /**< Clientes registados (Clientes.txt + Dados.txt). */
+#define MAX_PRODUTOS       10000  /**< Produtos no catalogo. */
+#define MAX_FUNCIONARIOS   200    /**< Operadores de caixa. */
+#define MAX_CAIXAS         100    /**< Limite ao percorrer o hashing das caixas. */
+#define CAPACIDADE_LOJA    100    /**< Clientes dentro da loja em simultaneo. */
+#define TAMANHO_HASH       13     /**< Primo: tamanho da tabela das caixas. */
 
-/* ---- Nomes dos ficheiros ---- */
-/* Os ficheiros de ENTRADA estao na pasta data/; os de SAIDA sao criados na
-   pasta onde o programa e executado (a raiz do projeto). */
-#define FICH_CONFIG        "data/Configuracao.txt"
-#define FICH_DADOS         "data/Dados.txt"
-#define FICH_PRODUTOS      "data/Produtos.txt"
-#define FICH_FUNCIONARIOS  "data/Funcionarios.txt"
-#define FICH_CLIENTES      "data/Clientes.txt"
-#define FICH_HISTORICO     "historico.csv"
-#define FICH_RESULTADO     "resultado.txt"
+/* ---- Nomes dos ficheiros (entrada em data/, saida na raiz) ---- */
+#define FICH_CONFIG        "data/Configuracao.txt"   /**< Parametros da simulacao. */
+#define FICH_DADOS         "data/Dados.txt"          /**< Caixas iniciais e clientes. */
+#define FICH_PRODUTOS      "data/Produtos.txt"       /**< Catalogo de produtos. */
+#define FICH_FUNCIONARIOS  "data/Funcionarios.txt"   /**< Operadores de caixa. */
+#define FICH_CLIENTES      "data/Clientes.txt"       /**< Pool de nomes de clientes. */
+#define FICH_HISTORICO     "historico.csv"           /**< Log das acoes do utilizador. */
+#define FICH_RESULTADO     "resultado.txt"           /**< Relatorio final. */
 
-/* ---- Numeros aleatorios ---- */
-int Aleatorio(int min, int max);            /* inteiro ao acaso em [min, max] */
+/**
+ * @brief Devolve um inteiro aleatorio em [min, max].
+ * @param min Limite inferior (inclusivo).
+ * @param max Limite superior (inclusivo).
+ * @return Valor aleatorio no intervalo.
+ */
+int Aleatorio(int min, int max);
 
-/* ---- Leitura validada do teclado ---- */
+/** @brief Esvazia o resto da linha que ficou no buffer de entrada. */
 void  LimparBuffer(void);
-int   LerInteiro(char *txt);                /* devolve o numero, ou -1 se invalido */
-int   LerOpcao(char *txt, int min, int max);/* insiste ate o valor estar no intervalo */
-float LerFloat(char *txt);                  /* devolve o numero, ou -1 se invalido */
+
+/**
+ * @brief Le uma linha do stdin e converte para inteiro.
+ * @param txt Texto a mostrar como prompt.
+ * @return O inteiro lido, ou -1 se a entrada nao for um numero.
+ */
+int   LerInteiro(char *txt);
+
+/**
+ * @brief Le um inteiro insistindo ate estar em [min, max].
+ * @param txt Prompt a mostrar.
+ * @param min Limite inferior aceitavel.
+ * @param max Limite superior aceitavel.
+ * @return O inteiro lido dentro do intervalo.
+ */
+int   LerOpcao(char *txt, int min, int max);
+
+/**
+ * @brief Le um numero decimal do stdin.
+ * @param txt Prompt a mostrar.
+ * @return O numero lido ou -1 se invalido.
+ */
+float LerFloat(char *txt);
+
+/**
+ * @brief Le uma linha para 'destino' (corta o '\\n' final).
+ * @param txt Prompt a mostrar.
+ * @param destino Buffer onde a string e' guardada.
+ * @param tamanho Tamanho maximo do buffer.
+ */
 void  LerString(char *txt, char *destino, int tamanho);
-bool  Confirmar(char *txt);                 /* mostra "txt (S/N)" e devolve true se 'S' */
 
-/* ---- Strings ---- */
+/**
+ * @brief Mostra "txt (S/N)" e devolve true se a resposta comecar por 'S'/'s'.
+ * @param txt Pergunta a mostrar.
+ * @return true se confirmado, false caso contrario.
+ */
+bool  Confirmar(char *txt);
+
+/** @brief Converte um caracter para maiuscula (so a-z). */
 char ToMaiscula(char x);
-void CopiarNome(char *destino, char *origem); /* copia segura para um buffer [MAX_NOME] */
 
-/* ---- Cores ANSI (paleta 256, tons suaves) ----
-   Usamos sequencias ANSI; em Windows e' preciso activar Virtual Terminal e
-   UTF-8 no arranque (ver AtivarCoresTerminal). */
-#define COR_OK    "\x1b[38;5;108m"   /* verde-salva (fila <= 3) */
-#define COR_WARN  "\x1b[38;5;179m"   /* mostarda    (fila <= 6) */
-#define COR_ERR   "\x1b[38;5;174m"   /* vermelho-coral (fila > 6) */
-#define COR_HDR   "\x1b[38;5;110m"   /* azul-acinzentado (cabecalhos) */
-#define COR_DIM   "\x1b[38;5;244m"   /* cinza claro (separadores / FECHADA) */
-#define COR_RESET "\x1b[0m"
+/**
+ * @brief Copia de forma segura um nome para um buffer de tamanho MAX_NOME.
+ * @param destino Buffer destino.
+ * @param origem  String origem.
+ */
+void CopiarNome(char *destino, char *origem);
 
-void AtivarCoresTerminal(void);     /* habilita ANSI + UTF-8 no Windows */
-void ImprimirBarraFila(int n);      /* "Fila: N pessoas [●●●·······]" colorida */
-
-/* ---- Pausa (para a simulacao poder ser observada) ---- */
+/** @brief Espera (aproximadamente) 'seconds' segundos em espera activa. */
 void wait_segundos(int seconds);
 
 /* ---- Teclado em tempo real (usado pela simulacao automatica) ---- */
-void DormirMs(int ms);        /* pausa de ms milissegundos sem gastar CPU */
-int  TeclaPressionada(void);  /* 1 se houver uma tecla a espera (nao bloqueia) */
-void DescartarTecla(void);    /* consome a(s) tecla(s) que estejam no buffer */
-int  EsperarOuTecla(int ms);  /* espera ms; devolve 1 se uma tecla foi premida antes */
+/** @brief Pausa de 'ms' milissegundos sem gastar CPU. */
+void DormirMs(int ms);
+/** @brief Devolve 1 se houver uma tecla a espera (nao bloqueia). */
+int  TeclaPressionada(void);
+/** @brief Consome a(s) tecla(s) que estejam no buffer. */
+void DescartarTecla(void);
+/**
+ * @brief Espera 'ms' ms; se uma tecla for premida durante a espera, devolve 1.
+ * @param ms Tempo total a esperar em milissegundos.
+ * @return 1 se uma tecla foi premida antes do tempo expirar, 0 caso contrario.
+ */
+int  EsperarOuTecla(int ms);
 
-/* ---- Historico das acoes do utilizador, gravado em CSV (requisito 3) ---- */
-void IniciarHistorico(void);                      /* marca o inicio de uma sessao */
-/* Acrescenta uma linha ao historico.csv: "data;accao;detalhe".
-   'detalhe' pode ser NULL ou "" quando a accao nao tem parametros. */
+/* ---- Historico CSV das acoes do utilizador (requisito 3) ---- */
+/** @brief Marca o inicio de uma sessao no historico CSV. */
+void IniciarHistorico(void);
+
+/**
+ * @brief Acrescenta uma linha ao historico CSV.
+ *
+ * Formato: "data;accao;detalhe". O detalhe pode estar vazio (NULL) quando
+ * a accao nao tem parametros associados.
+ *
+ * @param accao   Identificador curto da accao.
+ * @param detalhe Parametro adicional (pode ser NULL).
+ */
 void RegistarHistorico(char *accao, char *detalhe);
 
-#endif // UTEIS_H_INCLUDED
+/* ---- Cores ANSI (paleta 256, tons suaves) ---- */
+#define COR_OK    "\x1b[38;5;108m"   /**< Verde-salva: fila <= 3. */
+#define COR_WARN  "\x1b[38;5;179m"   /**< Mostarda:    fila <= 6. */
+#define COR_ERR   "\x1b[38;5;174m"   /**< Coral:       fila > 6. */
+#define COR_HDR   "\x1b[38;5;110m"   /**< Azul: cabecalhos. */
+#define COR_DIM   "\x1b[38;5;244m"   /**< Cinza: separadores e [FECHADA]. */
+#define COR_RESET "\x1b[0m"          /**< Repor a cor por omissao. */
+
+/**
+ * @brief Habilita ANSI Virtual Terminal e UTF-8 no terminal do Windows.
+ *
+ * Em Linux/macOS nao faz nada (as cores e o UTF-8 estao activos por omissao).
+ */
+void AtivarCoresTerminal(void);
+
+/**
+ * @brief Imprime "Fila: N pessoas [●●●·······]" colorida segundo o tamanho.
+ *
+ * @param n Tamanho da fila. Verde se n <= 3, amarelo se n <= 6, vermelho > 6.
+ */
+void ImprimirBarraFila(int n);
+
+#endif /* UTEIS_H_INCLUDED */
